@@ -1,0 +1,40 @@
+(ns opencv3.core
+  (:import
+    [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
+    [org.opencv.photo Photo]
+    [org.opencv.calib3d Calib3d]
+    [org.opencv.imgcodecs Imgcodecs]
+    [org.opencv.imgproc Imgproc]))
+
+; NOT AUTO GENERATED YET
+
+(defn imread
+  ([string] (Imgcodecs/imread string))
+  ([string type] (Imgcodecs/imread string type)))
+
+(defn imwrite[mat string]
+  (Imgcodecs/imwrite string mat)
+  mat)
+
+(declare new-arraylist)
+(def new-list new-arraylist)
+
+(defn clone[mat]
+  (.clone mat))
+
+(defn convert-to
+  ([src target a1] (.convertTo src target a1) target)
+  ([src target type alpha beta] (.convertTo src target type alpha beta) target))
+
+(defn convert-to!
+  ([mat a1 a2 a3]
+  (.convertTo mat mat a1 a2 a3) mat)
+  ([mat a1 a2]
+  (.convertTo mat mat a1 a2) mat)
+  ([mat a1]
+  (.convertTo mat mat a1) mat))
+
+(defn copy-to [src target mask]
+  (.copyTo src target mask))
+(defn copy-to![src mask]
+  (copy-to src src mask))
