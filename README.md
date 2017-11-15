@@ -20,7 +20,6 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
  (imwrite "doc/canny-cat.jpg"))
 ```
 
+<img src="doc/cat_in_bowl.jpeg" width="50%" height="50%"/>
 
-![](doc/cat_in_bowl.jpeg)
-
-![](doc/canny-cat.jpg)
+<img src="doc/canny-cat.jpg" width="50%" height="50%"/>
