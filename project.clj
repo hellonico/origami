@@ -1,8 +1,9 @@
-(defproject origami "0.1.1"
+(defproject origami "0.1.2"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+:repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
 :profiles {:dev {
     :resource-paths ["resources-dev"]
     :dependencies [

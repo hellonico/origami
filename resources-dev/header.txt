@@ -22,6 +22,9 @@
 (defn clone[mat]
   (.clone mat))
 
+(defn dump[mat]
+  (.dump mat))
+
 (defn convert-to
   ([src target a1] (.convertTo src target a1) target)
   ([src target type alpha beta] (.convertTo src target type alpha beta) target))

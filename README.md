@@ -1,4 +1,6 @@
-This is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way.
+Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way.
+
+![](doc/origami.jpg)
 
 ```
 (require

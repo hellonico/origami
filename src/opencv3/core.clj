@@ -20,6 +20,7 @@
 (def new-list new-arraylist)
 
 (defn clone[mat] (.clone mat))
+(defn dump[mat] (.dump mat))
 (defn set-to[mat scalar] (.setTo mat scalar))
 (defn copy-to
   ([src target] (.copyTo src target))
