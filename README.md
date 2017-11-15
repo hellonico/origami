@@ -2,8 +2,8 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 ![](doc/origami.jpg)
 
-> After staring at origami directions long enough, you sort of become one with them and start understanding them from the inside. 
-> Zooey Deschanel 
+> After staring at origami directions long enough, you sort of become one with them and start understanding them from the inside.
+> Zooey Deschanel
 
 
 ```
@@ -21,6 +21,6 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 ```
 
 
-![](output/cat_in_bowl.jpeg)
+![](doc/cat_in_bowl.jpeg)
 
-![](output/canny-cat.jpg)
+![](doc/canny-cat.jpg)
