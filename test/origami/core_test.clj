@@ -1,7 +1,20 @@
 (ns origami.core-test
-  (:require [clojure.test :refer :all]
-            [origami.core :refer :all]))
+  (:require
+    [opencv3.utils :as u]
+    [clojure.test :refer :all]
+    [opencv3.core :refer :all]))
+
+
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "Cat in bowl."
+  (is (not (nil?
+  (->
+   (imread "doc/cat_in_bowl.jpeg")
+   (cvt-color! COLOR_RGB2GRAY)
+   (canny! 300.0 100.0 3 true)
+   (bitwise-not!)
+   (u/resize-by 0.5)
+   (imwrite "doc/canny-cat.jpg"))
+
+    )))))
