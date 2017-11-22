@@ -69,6 +69,14 @@ matrix))
     (.put mat 0 0 bytes)
     mat))
 
+(defn scalar->bytes [s]
+  (byte-array (take 3 (.val s ))))
+
+(defn scalar-matrix-to-mat [matrix]
+  (let [ row (count matrix) col (count (first matrix)) b (new-mat row col CV_8UC3)]
+   (dotimes [i row j col]
+     (.put b i j (scalar->bytes (nth (nth matrix i) j )))))
+   b)
 
 (defn mat-from [src]
   (Mat. (.rows src) (.cols src) (.type src)))
