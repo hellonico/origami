@@ -1,6 +1,6 @@
-(defproject origami "0.1.3"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+(defproject origami "0.1.5"
+  :description "OpenCV Wrapper"
+  :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 :repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
@@ -16,5 +16,4 @@
   	[org.clojure/clojure "1.8.0"]
     [opencv/opencv "3.3.1"]
     [opencv/opencv-native "3.3.1"]
-    [gorilla-repl "0.4.0"]
-])
+    [gorilla-repl "0.4.0"]])
