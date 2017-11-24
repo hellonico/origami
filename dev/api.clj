@@ -180,7 +180,9 @@
     (doseq [klass #{VideoCapture CascadeClassifier RotatedRect MatOfDouble MatOfRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
       (print-constructors klass))
 
-    (println ";;; ImgProc"
+    (print-fields Imgcodecs)
+    
+    (println ";;; ImgProc")
     (print-cv-methods Imgproc)
     (print-fields Imgproc)
     (println ";;; Core")
