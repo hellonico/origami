@@ -9,6 +9,11 @@
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.videoio VideoCapture]
     [org.opencv.imgproc Imgproc]
+
+    [java.net URL]
+    [java.nio.channels ReadableByteChannel Channels]
+    [java.io File FileOutputStream]
+
     [javax.imageio ImageIO]
     [javax.swing ImageIcon JFrame JLabel]
     [java.awt.event KeyListener MouseAdapter]
@@ -124,8 +129,30 @@ matrix))
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31")
       (ImageIO/read (.getInputStream connection))))
 
-(defn mat-from-url[url]
+(defn mat-from-url2 [url option]
+  (let [
+        tmp-file (File/createTempFile "temp-image" ".tmp")
+        fos (FileOutputStream. tmp-file)
+        url (URL. url)
+        connection (.openConnection url)
+       ]
+  (.setRequestProperty connection
+      "User-Agent"
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31")
+(.transferFrom  
+  (.getChannel fos) 
+  (Channels/newChannel (.getInputStream connection)) 
+  0 Long/MAX_VALUE)
+(.close fos)
+(.disconnect connection)
+  (cv/imread (.getAbsolutePath tmp-file) option)))
+
+
+(defn mat-from-url
+  ([url]
   (buffered-image-to-mat (image-from-url url)))
+  ([url option]
+  (mat-from-url2 url option)))
 
 (defn annotate![mat text]
  (cv/put-text mat
@@ -202,7 +229,7 @@ matrix))
     (doto pane
      (.setOpaque true)
      (.setPreferredSize (java.awt.Dimension. (-> options :frame :width)  (-> options :frame :height) ))
-     (.setBackground (java.awt.Color. (-> options :frame :color)))
+     (.setBackground (java.awt.Color/decode (-> options :frame :color)))
      (.setLayout (FlowLayout.))
      (.add label))
     ; (.addComponentListener frame
@@ -216,7 +243,7 @@ matrix))
         (keyReleased [event])
         (keyPressed [event]
           (let [c (.getKeyCode event) handler (-> options :handlers (get c))]
-          (println c ">" handler)
+          ;(println c ">" handler)
           (if (not (nil? handler))
              (re-show pane (handler (get-src))))
            (condp = c
@@ -256,6 +283,7 @@ matrix))
       (.pack)
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))
       pane)))
+(def imshow show)
 
 
 (defn simple-cam-window
