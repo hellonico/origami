@@ -20,7 +20,22 @@
 (def new-list new-arraylist)
 
 (defn clone[mat] (.clone mat))
-(defn dump[mat] (.dump mat))
+
+(defn- pr-seq [seq]
+   (letfn [(lineify-seq [items]
+       (apply str (interpose "\n" items)))]
+     (println (lineify-seq seq))))
+
+(defn dump[ _mat ]
+  (-> 
+  _mat
+  (.dump)
+  (clojure.string/replace  #";" "]")
+  (clojure.string/replace  #"\n" "[")
+  (#(str "[" % "]"))
+  (read-string)
+  (pr-seq)))
+
 (defn set-to[mat scalar] (.setTo mat scalar))
 (defn copy-to
   ([src target] (.copyTo src target))
