@@ -7,7 +7,7 @@
 ["vendredi" "https://repository.hellonico.info/repository/hellonico/"]
 ]
 :deploy-repositories [["releases" {:url "https://repository.hellonico.info/repository/hellonico/"
-                                   :creds :gpg}
+                                   :creds :gpg}]]
 :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
 
