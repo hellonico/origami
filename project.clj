@@ -13,8 +13,9 @@
 :release-tasks [["vcs" "assert-committed"]
                 ["change" "version" "leiningen.release/bump-version" "release"]
                 ["vcs" "commit"]
-                ["vcs" "tag" "--no-sign"]
-                ["deploy" "vendredi"]]
+                ;["vcs" "tag" "--no-sign"]
+                ["deploy" "vendredi"]
+                ]
 
 :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
