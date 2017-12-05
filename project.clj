@@ -6,7 +6,7 @@
 :repositories [
 ["vendredi" "https://repository.hellonico.info/repository/hellonico/"]
 ]
-:deploy-repositories [["releases" {:url "https://repository.hellonico.info/repository/hellonico/"
+:deploy-repositories [["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"
                                    :creds :gpg}]]
 :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
@@ -15,7 +15,7 @@
                 ["change" "version" "leiningen.release/bump-version" "release"]
                 ["vcs" "commit"]
                 ["vcs" "tag" "--no-sign"]
-                ["deploy"]]
+                ["deploy" "vendredi"]]
 
 :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
