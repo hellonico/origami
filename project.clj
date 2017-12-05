@@ -1,4 +1,4 @@
-(defproject origami "0.1.7"
+(defproject origami "0.1.8-SNAPSHOT"
   :description "OpenCV Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
@@ -10,8 +10,7 @@
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
 
 :release-tasks [["vcs" "assert-committed"]
-                ["change" "version"
-                 "leiningen.release/bump-version" "release"]
+                ["change" "version" "leiningen.release/bump-version" "release"]
                 ["vcs" "commit"]
                 ["vcs" "tag" "--no-sign"]
                 ["deploy"]]
