@@ -8,6 +8,14 @@
 ["releases" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]]
 :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
+
+:release-tasks [["vcs" "assert-committed"]
+                ["change" "version"
+                 "leiningen.release/bump-version" "release"]
+                ["vcs" "commit"]
+                ["vcs" "tag" "--no-sign"]
+                ["deploy"]]
+
 :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
     :dependencies [
