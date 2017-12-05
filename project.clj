@@ -5,7 +5,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 :repositories [
 ["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
-["releases" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
 ]
 :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
