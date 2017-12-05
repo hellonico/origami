@@ -1,11 +1,24 @@
-(defproject origami "0.1.7-SNAPSHOT"
+(defproject origami "0.1.10-SNAPSHOT"
   :description "OpenCV Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-:repositories [["vendredi" "https://repository.hellonico.info/repository/hellonico/"]]
+:repositories [
+["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
+]
 :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
+
+:release-tasks [["vcs" "assert-committed"]
+                ["change" "version" "leiningen.release/bump-version" "release"]
+                ["vcs" "commit"]
+                ["vcs" "tag" "--no-sign"]
+                ["deploy" "vendredi"]
+                ["change" "version" "leiningen.release/bump-version"]
+                ["vcs" "commit"]
+                ["vcs" "push"]
+                ]
+
 :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
     :dependencies [
