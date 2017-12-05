@@ -215,7 +215,7 @@ matrix))
   ([src] (show src {}))
   ([src _options]
   (let [
-    options (merge-with merge {:frame {:color 0 :title "image" :width 400 :height 400}} _options)
+    options (merge-with merge {:frame {:color "00" :title "image" :width 400 :height 400}} _options)
     is-atom? (= (class src) clojure.lang.Atom)
     buf (if is-atom? (mat-to-buffered-image @src) (mat-to-buffered-image src))
     frame (JFrame. (-> options :frame :title))

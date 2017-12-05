@@ -36,7 +36,10 @@
   (read-string)
   (pr-seq)))
 
-(defn set-to[mat scalar] (.setTo mat scalar))
+(defn set-to
+  ([mat scalar] (.setTo mat scalar))
+  ([mat scalar mask] (.setTo mat scalar mask)))
+
 (defn copy-to
   ([src target] (.copyTo src target))
   ([src target mask] (.copyTo src target mask)))
@@ -523,11 +526,17 @@
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ))
 )
 
+; (defn flood-fill!
+; ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+;   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ]
+;   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ) org_opencv_core_mat_0 )
+; )
 (defn flood-fill!
-([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
-  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ]
-  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ]
+  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ) org_opencv_core_mat_0 )
 )
 
 (defn rotated-rectangle-intersection

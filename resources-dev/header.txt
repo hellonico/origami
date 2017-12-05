@@ -1,4 +1,4 @@
-(ns opencv3.core
+  (ns opencv3.core
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
@@ -19,11 +19,37 @@
 (declare new-arraylist)
 (def new-list new-arraylist)
 
-(defn clone[mat]
-  (.clone mat))
+(defn clone[mat] (.clone mat))
 
-(defn dump[mat]
-  (.dump mat))
+(defn- pr-seq [seq]
+   (letfn [(lineify-seq [items]
+       (apply str (interpose "\n" items)))]
+     (println (lineify-seq seq))))
+
+(defn dump[ _mat ]
+  (-> 
+  _mat
+  (.dump)
+  (clojure.string/replace  #";" "]")
+  (clojure.string/replace  #"\n" "[")
+  (#(str "[" % "]"))
+  (read-string)
+  (pr-seq)))
+
+(defn set-to
+  ([mat scalar] (.setTo mat scalar))
+  ([mat scalar mask] (.setTo mat scalar mask)))
+
+(defn copy-to
+  ([src target] (.copyTo src target))
+  ([src target mask] (.copyTo src target mask)))
+(defn copy-to![src mask]
+  (copy-to src src mask))
+
+(defn submat[src rect] (.submat src rect))
+(defn size[src] (.size src))
+(defn rows[src] (.rows src))
+(defn cols[src] (.cols src))
 
 (defn convert-to
   ([src target a1] (.convertTo src target a1) target)
@@ -37,7 +63,30 @@
   ([mat a1]
   (.convertTo mat mat a1) mat))
 
-(defn copy-to [src target mask]
-  (.copyTo src target mask))
-(defn copy-to![src mask]
-  (copy-to src src mask))
+
+(declare put-text)
+(declare hconcat)
+(declare new-mat)
+(declare vconcat)
+
+(defn put-text!
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 )
+  org_opencv_core_mat_0
+  )
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8)
+  org_opencv_core_mat_0)
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 ]
+  (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 )
+  org_opencv_core_mat_0))
+
+(defn hconcat! [mats]
+  (let [ output (new-mat) ]
+  (hconcat mats output)
+  output))
+
+(defn vconcat! [mats]
+  (let [ output (new-mat) ]
+  (vconcat mats output)
+  output))
