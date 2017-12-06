@@ -74,7 +74,7 @@ lein run -m opencv3.tutorial
 
 Webcam Sample
 ```
-lein run -m opencv3.webcam
+lein run -m opencv3.videosample
 ```
 
 Gorilla Based Notebook
