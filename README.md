@@ -53,4 +53,26 @@ git clone https://github.com/hellonico/opencv-fun.git
 ```
 
 
-#### 
+#### some samples
+
+Examples are included in the project template.
+
+Origami Setup Check (including OpenCV native dependencies check)
+```
+lein run -m opencv3.ok
+```
+
+Some Simple OpenCV transformation using origami
+```
+lein run -m opencv3.simple
+```
+
+A more advanced set of imaging transformation.
+```
+lein run -m opencv3.tutorial
+```
+
+Webcam Sample
+```
+lein run -m opencv3.webcam
+```

@@ -291,7 +291,7 @@ matrix))
   ([_options myvideofn]
 
   (let [
-    options (merge-with merge {:frame {:color 0 :title "video"} :video {:device 0 :width 200 :height 220}} _options )
+    options (merge-with merge {:frame {:color "00" :title "video"} :video {:device 0 :width 200 :height 220}} _options )
     capture (vid/new-videocapture)
     window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)
@@ -328,7 +328,7 @@ matrix))
 
 (defn cams-window[ _options ]
  (let [
-   options        (merge-with merge {:frame {:color 0 :title "video"}} _options )
+   options        (merge-with merge {:frame {:color "00" :title "video"}} _options )
    devices        (-> options :devices)
    devices-count  (count devices)
    buffer-atoms   (into [] (map (fn [_] (atom (cv/new-mat))) devices))
