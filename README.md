@@ -76,3 +76,14 @@ Webcam Sample
 ```
 lein run -m opencv3.webcam
 ```
+
+Gorilla Based Notebook
+
+```
+lein notebook
+```
+
+And two notebooks are included in the project template:
+
+- [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
+- [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
