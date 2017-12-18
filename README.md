@@ -88,6 +88,16 @@ And two notebooks are included in the project template:
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
 
+#### experimental electron based IDE
+
+An experimental self-contained native application for windows and osx can be downloaded from the following project:
+
+https://github.com/hellonico/origami-electron/releases
+
+<img src="doc/electron-osx.png" width="50%" height="50%"/>
+
+<img src="doc/electron-windows.png" width="50%" height="50%"/>
+
 
 @Copyright Nicolas Modrzyk - 2017
 Eclipse Public License 
