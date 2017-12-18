@@ -87,3 +87,7 @@ And two notebooks are included in the project template:
 
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
+
+
+@Copyright Nicolas Modrzyk - 2017
+Eclipse Public License 

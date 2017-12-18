@@ -109,6 +109,15 @@ matrix))
     (/ (+ (.-x p1) (.-x p2)) 2)
     (/ (+ (.-y p1) (.-y p2)) 2)))
 
+(defn bytes-to-mat![mat bytes]
+     (.put mat 0 0 bytes);
+     mat)
+
+(defn mat-to-bytes[mat]
+  (let [bytes (byte-array (* (.total mat) (.channels mat))) ]
+  (.get mat 0 0 bytes)
+  bytes))
+
 (defn center-of-rect [ rect ]
   (middle-of-two-points (.tl rect) (.br rect)))
 
