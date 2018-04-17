@@ -30,5 +30,5 @@
   :dependencies [
   	[org.clojure/clojure "1.8.0"]
     [opencv/opencv "3.3.1"]
-    [opencv/opencv-native "3.3.1"]
+    [opencv/opencv-native "3.3.1_4"]
     [gorilla-repl "0.4.0"]])
