@@ -24,6 +24,10 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 <img src="doc/canny-cat.jpg" width="50%" height="50%"/>
 
+## NEWS! Book is out!!
+
+[Java Image Processing Recipes: With OpenCV and JVM](http://a.co/3iImWz7) published by Apress will show you all the tricks to play and produce art and understand the underlying concepts of origami.
+
 ### Getting Started 
 
 #### Required Software to install
