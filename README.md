@@ -99,5 +99,5 @@ https://github.com/hellonico/origami-electron/releases
 <img src="doc/electron-windows.png" width="50%" height="50%"/>
 
 
-@Copyright Nicolas Modrzyk - 2017
+@Copyright Nicolas Modrzyk - 2017-2018
 Eclipse Public License 
