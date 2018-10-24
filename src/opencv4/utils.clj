@@ -2,8 +2,8 @@
 (ns opencv4.utils
   (:use [gorilla-repl.image])
   (:require
-    [opencv3.core :as cv]
-    [opencv3.video :as vid]
+    [opencv4.core :as cv]
+    [opencv4.video :as vid]
     )
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
