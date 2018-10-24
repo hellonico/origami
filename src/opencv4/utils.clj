@@ -1,5 +1,5 @@
 
-(ns opencv3.utils
+(ns opencv4.utils
   (:use [gorilla-repl.image])
   (:require
     [opencv3.core :as cv]

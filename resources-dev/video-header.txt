@@ -1,0 +1,5 @@
+(ns opencv4.video
+  (:import
+    [org.opencv.core Mat Core CvType]
+    [org.opencv.videoio Videoio VideoCapture]
+    [org.opencv.video Video]))

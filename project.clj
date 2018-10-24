@@ -1,4 +1,4 @@
-(defproject origami "0.1.12-SNAPSHOT"
+(defproject origami "4.0.0-beta-SNAPSHOT"
   :description "OpenCV Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
@@ -29,6 +29,6 @@
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
   	[org.clojure/clojure "1.8.0"]
-    [opencv/opencv "3.3.1"]
-    [opencv/opencv-native "3.3.1_4"]
+    [opencv/opencv "4.0.0-beta"]
+    [opencv/opencv-native "4.0.0-beta"]
     [gorilla-repl "0.4.0"]])

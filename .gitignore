@@ -9,3 +9,12 @@ pom.xml.asc
 /.nrepl-port
 .hgignore
 .hg/
+.classpath
+.project
+.settings/
+.vscode/
+cv.clj
+debug.log
+output.clj
+rgb.clj
+video.clj

@@ -1,4 +1,4 @@
-(ns opencv3.colors.html
+(ns opencv4.colors.html
    (:require [opencv3.core :only [new-scalar]]))
 
 (defn- hex->num [#^String s]

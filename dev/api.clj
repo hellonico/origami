@@ -1,4 +1,4 @@
-(ns opencv3.api
+(ns opencv4.api
   (:use camel-snake-kebab.core)
   (:require [clojure.string :as str])
   (:import
@@ -9,6 +9,7 @@
     [org.opencv.core MatOfDouble RotatedRect MatOfDMatch MatOfFloat MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte MatOfKeyPoint MatOfRect Point Rect Mat Size Scalar Core]
     [org.opencv.core CvType Core Mat]
     [org.opencv.videoio Videoio VideoWriter VideoCapture]
+    [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
 (defn print-fields[klass]
@@ -58,14 +59,6 @@
       ))
       @result
       ))
-;
-; (def methods (.getDeclaredMethods Imgproc))
-; (def cannies (filter-m-like methods "canny"))
-;
-; (doseq[ c cannies ]
-;   (println (.getName c) ">" (count (.getParameterTypes c)) (is-first-with-those-params c cannies))
-;   ; (println (positions #{c} cannies))
-;   )
 
 (defn print-sub
   ([m others]
@@ -166,8 +159,8 @@
 
  (print ")\n")))
 
-(defn print-headers[]
-  (println (slurp "resources/header.txt")))
+(defn print-headers [header-file]
+  (println (slurp header-file)))
 
 (defn generate-api
   ([] (generate-api "cv.clj"))
@@ -175,9 +168,24 @@
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
 
-    (print-headers)
+    (print-headers "resources-dev/header.txt")
 
-    (doseq [klass #{VideoCapture CascadeClassifier RotatedRect MatOfDouble MatOfRect Point Scalar MatOfByte Size MatOfInt ArrayList MatOfPoint Mat Rect MatOfPoint2f }]
+    (doseq [klass
+      #{VideoCapture
+        CascadeClassifier
+        RotatedRect
+        MatOfFloat
+        MatOfDouble
+        MatOfRect
+        Point
+        Scalar
+        MatOfByte
+        Size
+        MatOfInt
+        ArrayList
+        MatOfPoint
+        Mat
+        Rect MatOfPoint2f }]
       (print-constructors klass))
 
 
@@ -192,23 +200,41 @@
     (print-cv-methods Core)
     (println ";;; CvType ")
     (print-fields CvType)
+
     (println ";;; Photo")
     (print-cv-methods Photo)
 
-    ; (print-cv-methods VideoCapture)
-    ; (print-fields Videoio)
 
-    )))))
+    (println ";;; Calib3d")
+    (print-cv-methods Calib3d)
+    (print-fields Calib3d)
 
-(defn color-generator[]
+    ))))
 
-   (with-open [w (-> "rgb.clj" clojure.java.io/writer)]
+(defn generate-video-api
+  ([] (generate-video-api "video.clj"))
+  ([output-file]
+  (with-open [w (-> output-file clojure.java.io/writer)]
+    (binding [*out* w]
+      (print-headers "resources-dev/video-header.txt")
+      ; in opencv3.video
+      ; (println ";;; Video")
+      (print-constructors VideoWriter)
+      (print-constructors VideoCapture)
+      ; (print-cv-methods VideoCapture)
+      (print-fields Videoio)))))
+
+(defn generate-rgb-mappings
+
+  ([] (generate-rgb-mappings "rgb.clj"))
+ ([output-file]
+   (with-open [w (-> output-file clojure.java.io/writer)]
    (binding [*out* w]
 
   (println "
 
-   (ns opencv3.colors.rgb
-     (:require [opencv3.core :only [new-scalar]])
+   (ns opencv4.colors.rgb
+     (:require [opencv4.core :only [new-scalar]])
      )
 
    (defn rgb [r g b]
@@ -225,24 +251,27 @@
 
   ))
 
-  )
+  ))
+
 
 (comment
-(def target-file "output.clj")
-(generate-api target-file )
+
+(generate-api)
+(generate-video-api)
+(generate-rgb-mappings)
 
 ; ad-hoc
+(def target-file "output.clj")
 (with-open [w (-> target-file clojure.java.io/writer)]
   (binding [*out* w]
-      ; (print-constructors RotatedRect)
-      ; (print-headers)
-      ; (print-constructors VideoCapture)
-      ; (print-fields Videoio)
-      ; (print-constructors MatOfDouble)
-      (print-constructors MatOfFloat)
 
-      ; (print-cv-methods Calib3d)
-      ; (print-fields Calib3d)
+      ; (print-headers)
+      ; (print-constructors RotatedRect)
+      ; (print-constructors VideoCapture)
+      ; (print-constructors MatOfFloat)
+      ; (print-constructors MatOfDouble)
+      ; (print-fields Videoio)
+
   ))
 
 )
