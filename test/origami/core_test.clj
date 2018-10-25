@@ -1,8 +1,8 @@
 (ns origami.core-test
   (:require
-    [opencv3.utils :as u]
+    [opencv4.utils :as u]
     [clojure.test :refer :all]
-    [opencv3.core :refer :all]))
+    [opencv4.core :refer :all]))
 
 (deftest a-test
   (testing "Cat in bowl."
