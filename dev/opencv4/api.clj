@@ -64,7 +64,7 @@
   ([m others]
     (print-sub m others false))
   ([m others bikkuri-mode]
-    (spit "debug.log"  (str "print-sub:" m) :append true)
+    (spit "debug.log"  (str "print-sub:" m "\n") :append true)
   (let[
     sname (.getName m)
     params (.getParameterTypes m)
@@ -93,13 +93,24 @@
     (print (str " " (param-name (nth params 0)) "_0" " ")))
   (print ")\n"))))))
 
+(def skip-methods ["rectify-3-collinear"])
+(defn in?
+  "true if coll contains elm"
+  [coll elm]
+  (some #(= elm %) coll))
+
 (defn print-cv-method[methods method-name]
   (let[ fmethods (filter-m-like methods method-name)]
-  (do
-    (println (str "(defn " (->kebab-case method-name)))
-    (doseq [m fmethods]
-      (print-sub m fmethods))
-  (println ")\n"))))
+  
+  (let [kebab (->kebab-case method-name)]
+    (if (in? skip-methods kebab)
+    (spit "skip.log"  (str kebab "\n") :append true)
+    (do 
+      (spit "kebab.log"  (str kebab "\n") :append true) 
+      (println (str "(defn " kebab))
+      (doseq [m fmethods]
+        (print-sub m fmethods))
+      (println ")\n"))))))
 
 (defn print-bikkuri-method[methods method-name]
   (let[
@@ -163,7 +174,7 @@
   (println (slurp header-file)))
 
 (defn generate-api
-  ([] (generate-api "cv.clj"))
+  ([] (generate-api "src/opencv4/core.clj"))
   ([output-file]
 (with-open [w (-> output-file clojure.java.io/writer)]
   (binding [*out* w]
@@ -212,7 +223,7 @@
     ))))
 
 (defn generate-video-api
-  ([] (generate-video-api "video.clj"))
+  ([] (generate-video-api "src/opencv4/video.clj"))
   ([output-file]
   (with-open [w (-> output-file clojure.java.io/writer)]
     (binding [*out* w]
@@ -226,7 +237,7 @@
 
 (defn generate-rgb-mappings
 
-  ([] (generate-rgb-mappings "rgb.clj"))
+  ([] (generate-rgb-mappings "src/opencv4/rgb.clj"))
  ([output-file]
    (with-open [w (-> output-file clojure.java.io/writer)]
    (binding [*out* w]
@@ -253,18 +264,19 @@
 
   ))
 
+(defn -main[]
+  
+  (generate-api)
+  (generate-video-api)
+  (generate-rgb-mappings)
+  )
 
 (comment
-
-(generate-api)
-(generate-video-api)
-(generate-rgb-mappings)
 
 ; ad-hoc
 (def target-file "output.clj")
 (with-open [w (-> target-file clojure.java.io/writer)]
   (binding [*out* w]
-
       ; (print-headers)
       ; (print-constructors RotatedRect)
       ; (print-constructors VideoCapture)

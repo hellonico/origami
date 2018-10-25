@@ -6,9 +6,9 @@
 :repositories [
 ["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
 ]
-:resource-paths ["rsc"]
+; :resource-paths ["rsc"]
 :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
-
+:aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api" ]}
 :release-tasks [["vcs" "assert-committed"]
                 ["change" "version" "leiningen.release/bump-version" "release"]
                 ["vcs" "commit"]
@@ -21,6 +21,7 @@
 
 :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
+    :source-paths ["dev"]
     :dependencies [
     ; used for proto repl
     [org.clojure/tools.nrepl "0.2.11"]
@@ -29,6 +30,7 @@
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
   	[org.clojure/clojure "1.8.0"]
+    [org.scijava/native-lib-loader "2.3.1"]                 
     [opencv/opencv "4.0.0-beta"]
     [opencv/opencv-native "4.0.0-beta"]
     [gorilla-repl "0.4.0"]])
