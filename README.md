@@ -8,8 +8,8 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 ```
 (require
-  '[opencv3.utils :as u]
-  '[opencv3.core :refer :all])
+  '[opencv4.utils :as u]
+  '[opencv4.core :refer :all])
 
 (->
  (imread "doc/cat_in_bowl.jpeg")
@@ -67,22 +67,22 @@ Examples are included in the project template.
 
 Origami Setup Check (including OpenCV native dependencies check)
 ```
-lein run -m opencv3.ok
+lein run -m opencv4.ok
 ```
 
 Some Simple OpenCV transformation using origami
 ```
-lein run -m opencv3.simple
+lein run -m opencv4.simple
 ```
 
 A more advanced set of imaging transformation.
 ```
-lein run -m opencv3.tutorial
+lein run -m opencv4.tutorial
 ```
 
 Webcam Sample
 ```
-lein run -m opencv3.videosample
+lein run -m opencv4.videosample
 ```
 
 Gorilla Based Notebook

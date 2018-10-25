@@ -354,7 +354,7 @@ matrix))
          (println "Recording Mode")
          (.open
          outputVideo
-         (get-in recording [:output] "opencv3.avi")
+         (get-in recording [:output] "opencv4.avi")
          1196444237
          (get-in recording [:frame-rate] 30)
          (cv/new-size (get-in recording [:width] 400) (get-in recording [:height] 300) ))))

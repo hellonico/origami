@@ -228,7 +228,7 @@
   (with-open [w (-> output-file clojure.java.io/writer)]
     (binding [*out* w]
       (print-headers "resources-dev/video-header.txt")
-      ; in opencv3.video
+      ; in opencv4.video
       ; (println ";;; Video")
       (print-constructors VideoWriter)
       (print-constructors VideoCapture)
@@ -274,15 +274,15 @@
 (comment
 
 ; ad-hoc
-(def target-file "output.clj")
+(def target-file "target/output.clj")
 (with-open [w (-> target-file clojure.java.io/writer)]
   (binding [*out* w]
-      ; (print-headers)
-      ; (print-constructors RotatedRect)
-      ; (print-constructors VideoCapture)
-      ; (print-constructors MatOfFloat)
-      ; (print-constructors MatOfDouble)
-      ; (print-fields Videoio)
+      (print-headers)
+      (print-constructors RotatedRect)
+      (print-constructors VideoCapture)
+      (print-constructors MatOfFloat)
+      (print-constructors MatOfDouble)
+      (print-fields Videoio)
 
   ))
 
