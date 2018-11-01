@@ -41,6 +41,9 @@
 (defn set-to
   ([mat scalar] (.setTo mat scalar))
   ([mat scalar mask] (.setTo mat scalar mask)))
+(defn set-to!
+  ([mat scalar] (.setTo mat scalar) mat)
+  ([mat scalar mask] (.setTo mat scalar mask) mat))
 
 (defn copy-to
   ([src target] (.copyTo src target))
