@@ -175,10 +175,10 @@ darkslategray 1,#97FFFF,151,255,255
 darkslategray 2,#8DEEEE,141,238,238
 darkslategray 3,#79CDCD,121,205,205
 darkslategray 4,#528B8B,82,139,139
-cyan / aqua*,#00FFFF,0,255,255
-cyan 2,#00EEEE,0,238,238
-cyan 3,#00CDCD,0,205,205
-cyan 4 (darkcyan),#008B8B,0,139,139
+cyanaqua,#00FFFF,0,255,255
+cyan2,#00EEEE,0,238,238
+cyan3,#00CDCD,0,205,205
+darkcyan,#008B8B,0,139,139
 teal*,#008080,0,128,128
 mediumturquoise,#48D1CC,72,209,204
 lightseagreen,#20B2AA,32,178,170
