@@ -237,7 +237,7 @@
 
 (defn generate-rgb-mappings
 
-  ([] (generate-rgb-mappings "src/opencv4/rgb.clj"))
+  ([] (generate-rgb-mappings "src/opencv4/colors/rgb.clj"))
  ([output-file]
    (with-open [w (-> output-file clojure.java.io/writer)]
    (binding [*out* w]
@@ -249,7 +249,7 @@
      )
 
    (defn rgb [r g b]
-     (new-scalar b g r))
+     (opencv4.core/new-scalar b g r))
   ")
 
   (with-open [rdr (clojure.java.io/reader "resources-dev/colors.csv")]

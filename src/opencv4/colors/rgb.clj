@@ -4,7 +4,7 @@
      (:require [opencv4.core :only [new-scalar]]))
 
 (defn rgb [r g b]
-  (new-scalar b g r))
+  (opencv4.core/new-scalar b g r))
 
 (def  indian-red  (rgb  176 23 31))
 (def  crimson  (rgb  220 20 60))
