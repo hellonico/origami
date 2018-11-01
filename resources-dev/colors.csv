@@ -56,11 +56,11 @@ plum 3,#CD96CD,205,150,205
 plum 4,#8B668B,139,102,139
 plum,#DDA0DD,221,160,221
 violet,#EE82EE,238,130,238
-magenta (fuchsia*),#FF00FF,255,0,255
+magenta (fuchsia),#FF00FF,255,0,255
 magenta 2,#EE00EE,238,0,238
 magenta 3,#CD00CD,205,0,205
 magenta 4 (darkmagenta),#8B008B,139,0,139
-purple*,#800080,128,0,128
+purple,#800080,128,0,128
 mediumorchid,#BA55D3,186,85,211
 mediumorchid 1,#E066FF,224,102,255
 mediumorchid 2,#D15FEE,209,95,238
@@ -93,11 +93,11 @@ slateblue 3,#6959CD,105,89,205
 slateblue 4,#473C8B,71,60,139
 ghostwhite,#F8F8FF,248,248,255
 lavender,#E6E6FA,230,230,250
-blue*,#0000FF,0,0,255
+blue,#0000FF,0,0,255
 blue 2,#0000EE,0,0,238
 blue 3 (mediumblue),#0000CD,0,0,205
 blue 4 (darkblue),#00008B,0,0,139
-navy*,#000080,0,0,128
+navy,#000080,0,0,128
 midnightblue,#191970,25,25,112
 cobalt,#3D59AB,61,89,171
 royalblue,#4169E1,65,105,225
@@ -175,11 +175,11 @@ darkslategray 1,#97FFFF,151,255,255
 darkslategray 2,#8DEEEE,141,238,238
 darkslategray 3,#79CDCD,121,205,205
 darkslategray 4,#528B8B,82,139,139
-cyanaqua,#00FFFF,0,255,255
-cyan2,#00EEEE,0,238,238
-cyan3,#00CDCD,0,205,205
+cyan aqua,#00FFFF,0,255,255
+cyan 2,#00EEEE,0,238,238
+cyan 3,#00CDCD,0,205,205
 darkcyan,#008B8B,0,139,139
-teal*,#008080,0,128,128
+teal,#008080,0,128,128
 mediumturquoise,#48D1CC,72,209,204
 lightseagreen,#20B2AA,32,178,170
 manganeseblue,#03A89E,3,168,158
@@ -220,11 +220,11 @@ palegreen 3,#7CCD7C,124,205,124
 palegreen 4,#548B54,84,139,84
 limegreen,#32CD32,50,205,50
 forestgreen,#228B22,34,139,34
-green 1 (lime*),#00FF00,0,255,0
+green 1 (lime),#00FF00,0,255,0
 green 2,#00EE00,0,238,0
 green 3,#00CD00,0,205,0
 green 4,#008B00,0,139,0
-green*,#008000,0,128,0
+green,#008000,0,128,0
 darkgreen,#006400,0,100,0
 sapgreen,#308014,48,128,20
 lawngreen,#7CFC00,124,252,0
@@ -253,12 +253,12 @@ lightyellow 2,#EEEED1,238,238,209
 lightyellow 3,#CDCDB4,205,205,180
 lightyellow 4,#8B8B7A,139,139,122
 lightgoldenrodyellow,#FAFAD2,250,250,210
-yellow 1 (yellow*),#FFFF00,255,255,0
+yellow 1 (yellow),#FFFF00,255,255,0
 yellow 2,#EEEE00,238,238,0
 yellow 3,#CDCD00,205,205,0
 yellow 4,#8B8B00,139,139,0
 warmgrey,#808069,128,128,105
-olive*,#808000,128,128,0
+olive,#808000,128,128,0
 darkkhaki,#BDB76B,189,183,107
 khaki 1,#FFF68F,255,246,143
 khaki 2,#EEE685,238,230,133
@@ -420,11 +420,11 @@ firebrick 1,#FF3030,255,48,48
 firebrick 2,#EE2C2C,238,44,44
 firebrick 3,#CD2626,205,38,38
 firebrick 4,#8B1A1A,139,26,26
-red 1 (red*),#FF0000,255,0,0
+red 1 (red),#FF0000,255,0,0
 red 2,#EE0000,238,0,0
 red 3,#CD0000,205,0,0
 red 4 (darkred),#8B0000,139,0,0
-maroon*,#800000,128,0,0
+maroon,#800000,128,0,0
 sgi beet,#8E388E,142,56,142
 sgi slateblue,#7171C6,113,113,198
 sgi lightblue,#7D9EC0,125,158,192
@@ -445,15 +445,15 @@ sgi gray 72,#B7B7B7,183,183,183
 sgi gray 76,#C1C1C1,193,193,193
 sgi gray 92,#EAEAEA,234,234,234
 sgi gray 96,#F4F4F4,244,244,244
-white*,#FFFFFF,255,255,255
+white,#FFFFFF,255,255,255
 white smoke (gray 96),#F5F5F5,245,245,245
 gainsboro,#DCDCDC,220,220,220
 lightgrey,#D3D3D3,211,211,211
-silver*,#C0C0C0,192,192,192
+silver,#C0C0C0,192,192,192
 darkgray,#A9A9A9,169,169,169
-gray*,#808080,128,128,128
+gray,#808080,128,128,128
 dimgray (gray 42),#696969,105,105,105
-black*,#000000,0,0,0
+black,#000000,0,0,0
 gray 99,#FCFCFC,252,252,252
 gray 98,#FAFAFA,250,250,250
 gray 97,#F7F7F7,247,247,247
