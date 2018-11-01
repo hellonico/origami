@@ -1,4 +1,8 @@
-Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way.
+![](doc/new.png) 
+
+**Support for OpenCV4 is in.**
+
+Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
 ![](doc/origami.jpg)
 
