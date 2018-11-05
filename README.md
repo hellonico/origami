@@ -76,7 +76,7 @@ You also would know you can also directly load, turn to gray, and change the siz
     (imwrite "cat.jpg"))
 ```
 
-<img src="doc/cat_in_bowl_bw.jpeg" width="50%" height="50%"/>
+<img src="doc/cat_in_bowl_bw.jpeg"  width="25%" height="25%"/>
 
 # Getting Started 
 
