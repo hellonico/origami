@@ -34,6 +34,49 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 <img src="
 https://images-na.ssl-images-amazon.com/images/I/51ZC5LMjvRL.jpg" width="50%" height="50%"/>
 
+# 2 minutes intro if you have clj installed
+
+
+If you already have the clojure CLI, clj, installed then you can be ready in 2 minutes.
+
+In a new folder, create the deps.edn file:
+```
+{:mvn/repos
+   {"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}}
+ :deps 
+   { origami {:mvn/version "4.0.0-beta6"}}
+```
+
+Start a repl, and require the two most used origami namespaces:
+
+```
+   (require
+    '[opencv4.utils :as u]
+    '[opencv4.core :refer :all])
+```
+
+And then use it to download an image from a url, resize it and download it to the local file system.
+
+```
+(-> "https://raw.githubusercontent.com/hellonico/origami/master/doc/cat_in_bowl.jpeg"
+    (u/mat-from-url)
+    (u/resize-by 0.3)
+    (imwrite "cat.jpg"))
+```
+
+You'll get a cat in your own bowl:
+
+<img src="doc/cat_in_bowl.jpeg" width="30%" height="30%"/>
+
+You also would know you can also directly load, turn to gray, and change the size with:
+
+```
+(-> "https://raw.githubusercontent.com/hellonico/origami/master/doc/cat_in_bowl.jpeg"
+    (u/mat-from-url IMREAD_REDUCED_GRAYSCALE_4)
+    (imwrite "cat.jpg"))
+```
+
+<img src="doc/cat_in_bowl_bw.jpeg" width="50%" height="50%"/>
 
 # Getting Started 
 
