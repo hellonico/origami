@@ -1,6 +1,6 @@
 ![](doc/new.png) 
 
-**Support for OpenCV4 is in.**
+**Support for OpenCV4-beta is in.**
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -8,7 +8,6 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 > After staring at origami directions long enough, you sort of become one with them and start understanding them from the inside.
 > Zooey Deschanel
-
 
 ```
 (require
@@ -28,7 +27,7 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 <img src="doc/canny-cat.jpg" width="50%" height="50%"/>
 
-## NEWS! Book is out!!
+# NEWS! Book is out!!
 
 [Java Image Processing Recipes: With OpenCV and JVM](http://a.co/3iImWz7) published by Apress will show you all the tricks to play and produce art and understand the underlying concepts of origami.
 
@@ -36,38 +35,41 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 https://images-na.ssl-images-amazon.com/images/I/51ZC5LMjvRL.jpg" width="50%" height="50%"/>
 
 
-### Getting Started 
+# Getting Started 
 
-#### Required Software to install
+## Required Software to install
 
 - install jdk 1.8
 - install [leiningen](https://leiningen.org/#install) (it is a simple script ...)
 - that's it ! (as in, no need to install anyother OpenCV thing ...)
 
-#### to use
+## to use
 
 Create a brand new origami based project using a Leiningen project template
 
 ```
 # install the sample
-lein new clj-opencv fun-with-opencv
+lein new clj-opencv hello-origami
+
+# change directory
+
+cd hello-origami
 
 # run the template simple example
-cd fun-with-opencv
 lein run
+# or ..
+clj -m opencv4.ok
+```
+You can also clone the origami samples project:
 
 ```
-
-or you can also clone the origami examples:
-
-```
-git clone https://github.com/hellonico/opencv-fun.git
+git clone https://github.com/hellonico/origami_samples.git
 ```
 
+# Running the samples
 
-#### some samples
 
-Examples are included in the project template.
+Some examples are included in the project template.
 
 Origami Setup Check (including OpenCV native dependencies check)
 ```
@@ -100,7 +102,32 @@ And two notebooks are included in the project template:
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
 
-#### experimental electron based IDE
+# more samples
+
+For many, many more examples, you can also clone and check the [https://github.com/hellonico/opencv-fun](opencv-fun) repository:
+
+```
+git clone https://github.com/hellonico/opencv-fun.git
+```
+
+# compatibility notes
+
+| Distribution | Version    | Status | Comments                                                    |
+| ------------ | ---------- | :----: | ----------------------------------------------------------- |
+| OSX          | Mojave     |   o    |                                                             |
+| Windows      | 10         |   o    |                                                             |
+| Ubuntu 18    | glibc 2.27 |   o    | Compiled with 2.27                                          |
+| Manjaro      | glibc 2.28 |   o    | Compiled with 2.27                                          |
+| Debian       | glibc 2.27 |   o    | Compiled with 2.27                                          |
+| Old Debian   | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
+
+Bonus link to see what is compatible. https://abi-laboratory.pro/?view=timeline&l=glibc
+
+To try the slightly old setup for linux, you can use this repository:
+
+https://github.com/hellonico/origami_samples_libc2_19
+
+# electron based IDE
 
 An experimental self-contained native application for windows and osx can be downloaded from the following project:
 
@@ -109,7 +136,6 @@ https://github.com/hellonico/origami-electron/releases
 <img src="doc/electron-osx.png" width="50%" height="50%"/>
 
 <img src="doc/electron-windows.png" width="50%" height="50%"/>
-
 
 @Copyright Nicolas Modrzyk - 2017-2018
 Eclipse Public License 
