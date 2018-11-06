@@ -31,6 +31,7 @@
   :dependencies [
   	[org.clojure/clojure "1.8.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
-    [opencv/opencv "4.0.0-beta"]
-    [opencv/opencv-native "4.0.0-beta"]
+    [opencv/opencv "4.0.0-beta1"]
+    [opencv/opencv-native "4.0.0-beta1"]
+    
     [gorilla-repl "0.4.0"]])
