@@ -159,9 +159,9 @@ git clone https://github.com/hellonico/opencv-fun.git
 | ------------ | ---------- | :----: | ----------------------------------------------------------- |
 | OSX          | Mojave     |   o    |                                                             |
 | Windows      | 10         |   o    |                                                             |
-| Ubuntu 18    | glibc 2.27 |   o    | Compiled with 2.27                                          |
-| Manjaro      | glibc 2.28 |   o    | Compiled with 2.27                                          |
-| Debian       | glibc 2.27 |   o    | Compiled with 2.27                                          |
+| Ubuntu 18    | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Manjaro      | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Debian       | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
 | Old Debian   | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
 
 Bonus link to see what is compatible. https://abi-laboratory.pro/?view=timeline&l=glibc

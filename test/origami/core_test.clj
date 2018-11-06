@@ -24,6 +24,7 @@
     (-> img imread (u/resize-by 0.25))
   avg-mat
     (new-mat (.rows source)  (.cols source)  CV_8UC3 (mean source))]
+  (imwrite target "target/average_cat.jpg")
   (vconcat [source avg-mat] target)
   (u/show target {:frame {:title "cat" :width 500 :height 700}})  ))
 
