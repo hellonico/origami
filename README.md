@@ -1,6 +1,30 @@
 ![](doc/new.png) 
 
-**Support for OpenCV4-beta is in.**
+# Lena in Clojure
+
+```
+(ns opencv4.lena
+	(:require [opencv4.core :refer :all]))
+
+(defn -main[& args]
+	(-> "resources/lena.png"
+		(imread)
+		(gaussian-blur! (new-size 17 17) 9 9)
+	  (imwrite "resources/blurred.png")))
+```
+
+Which turns:
+
+<img src="
+https://raw.githubusercontent.com/hellonico/origami_samples/master/resources/lena.png" width="50%" height="50%"/>
+
+into
+
+<img src="
+https://raw.githubusercontent.com/hellonico/origami_samples/master/resources/blurred.png" width="50%" height="50%"/>
+
+
+# Support for OpenCV4-beta is in.
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -86,7 +110,7 @@ You also would know you can also directly load, turn to gray, and change the siz
 - install [leiningen](https://leiningen.org/#install) (it is a simple script ...)
 - that's it ! (as in, no need to install anyother OpenCV thing ...)
 
-## to use
+## generate a project
 
 Create a brand new origami based project using a Leiningen project template
 
@@ -103,14 +127,8 @@ lein run
 # or ..
 clj -m opencv4.ok
 ```
-You can also clone the origami samples project:
 
-```
-git clone https://github.com/hellonico/origami_samples.git
-```
-
-# Running the samples
-
+## Running the samples
 
 Some examples are included in the project template.
 
@@ -145,7 +163,15 @@ And two notebooks are included in the project template:
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
 
-# more samples
+## samples git project 
+
+If you do not have Lein installed, you can also clone a checkout of the generated project.
+
+```
+git clone https://github.com/hellonico/origami_samples.git
+```
+
+# many more samples
 
 For many, many more examples, you can also clone and check the [https://github.com/hellonico/opencv-fun](opencv-fun) repository:
 
@@ -153,7 +179,7 @@ For many, many more examples, you can also clone and check the [https://github.c
 git clone https://github.com/hellonico/opencv-fun.git
 ```
 
-# compatibility notes
+# opencv compatibility notes
 
 | Distribution | Version    | Status | Comments                                                    |
 | ------------ | ---------- | :----: | ----------------------------------------------------------- |
