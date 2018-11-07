@@ -1,4 +1,4 @@
-![](doc/new.png) 
+
 
 # Lena in Clojure
 
@@ -15,14 +15,13 @@
 
 Which turns:
 
-<img src="
-https://raw.githubusercontent.com/hellonico/origami_samples/master/resources/lena.png" width="50%" height="50%"/>
+<img src="doc/lena.png" width="25%" height="25%"></img>
 
 into
 
-<img src="
-https://raw.githubusercontent.com/hellonico/origami_samples/master/resources/blurred.png" width="50%" height="50%"/>
+<img src="doc/blurred.png" width="25%" height="25%"/>
 
+![](doc/new.png) 
 
 # Support for OpenCV4-beta is in.
 
@@ -51,12 +50,12 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 <img src="doc/canny-cat.jpg" width="50%" height="50%"/>
 
-# NEWS! Book is out!!
+# Book on using Origami
 
 [Java Image Processing Recipes: With OpenCV and JVM](http://a.co/3iImWz7) published by Apress will show you all the tricks to play and produce art and understand the underlying concepts of origami.
 
-<img src="
-https://images-na.ssl-images-amazon.com/images/I/51ZC5LMjvRL.jpg" width="50%" height="50%"/>
+<img src="doc/book.jpg" width="25%" height="25%"/>
+
 
 # 2 minutes intro if you have clj installed
 
