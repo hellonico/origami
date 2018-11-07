@@ -68,7 +68,7 @@ In a new folder, create the deps.edn file:
 {:mvn/repos
    {"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}}
  :deps 
-   { origami {:mvn/version "4.0.0-beta6"}}
+   { origami {:mvn/version "4.0.0-beta7"}}
 ```
 
 Start a repl, and require the two most used origami namespaces:
