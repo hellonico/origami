@@ -2,11 +2,12 @@
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
+    [org.opencv.dnn Dnn]
     [org.opencv.calib3d Calib3d]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
-(org.scijava.nativelib.NativeLoader/loadLibrary Core.NATIVE_LIBRARY_NAME)
+(org.scijava.nativelib.NativeLoader/loadLibrary Core/NATIVE_LIBRARY_NAME (make-array String 0))
 
 ; NOT AUTO GENERATED YET
 
