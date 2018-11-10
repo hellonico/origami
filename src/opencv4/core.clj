@@ -95,6 +95,15 @@
   (let [ output (new-mat) ]
   (vconcat mats output)
   output))
+
+; DNN
+(defn read-net-from-caffee[protofile netfile]
+  (Dnn/readNetFromCaffe protofile netfile))
+(defn read-net-from-darknet[protofile netfile]
+  (Dnn/readNetFromDarknet protofile netfile))
+(defn read-net-from-tensorflow [protofiel netfile]
+  (Dnn/readNetFromTensorflow netfile))
+
 (defn new-size 
 ([array_d_0 ] 
   (new org.opencv.core.Size array_d_0 ))
