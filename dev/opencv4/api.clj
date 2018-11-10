@@ -3,6 +3,7 @@
   (:require [clojure.string :as str])
   (:import
     [java.util ArrayList]
+    [org.opencv.dnn Dnn]
     [org.opencv.photo Photo]
     [org.opencv.calib3d Calib3d]
     [org.opencv.objdetect CascadeClassifier]
@@ -219,6 +220,10 @@
     (println ";;; Calib3d")
     (print-cv-methods Calib3d)
     (print-fields Calib3d)
+
+    (println ";;; Dnn")
+    (print-fields Dnn)
+    (print-cv-methods Dnn)
 
     ))))
 
