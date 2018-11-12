@@ -6,8 +6,6 @@
 :repositories [
 ["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
 ]
-; :resource-paths ["rsc"]
-; :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)]
 :aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api" ]}
 :release-tasks [["vcs" "assert-committed"]
                 ["change" "version" "leiningen.release/bump-version" "release"]

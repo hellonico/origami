@@ -205,5 +205,15 @@ https://github.com/hellonico/origami-electron/releases
 
 <img src="doc/electron-windows.png" width="50%" height="50%"/>
 
-@Copyright Nicolas Modrzyk - 2017-2018
+
+
+# With Tensorflow and Caffee Neural Network
+
+There is now a [sibling project](https://github.com/hellonico/origami-dnn) showing how to use a caffee based network to identify object with origami.
+
+![](doc/detected.jpg) 
+
+
+
+Copyright @Nicolas Modrzyk - 2017-2018
 Eclipse Public License 
