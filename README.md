@@ -215,5 +215,25 @@ There is now a [sibling project](https://github.com/hellonico/origami-dnn) showi
 
 
 
+# Troubleshooting
+
+### video stream doesn't start
+
+Looks like some environment needs the extra libv4l development library. 
+
+```
+apt-get install libv4l-dev
+```
+
+or
+
+```
+pacman -S libv4l
+```
+
+
+
+
+
 Copyright @Nicolas Modrzyk - 2017-2018
 Eclipse Public License 

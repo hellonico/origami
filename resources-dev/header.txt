@@ -2,7 +2,6 @@
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
-    [org.opencv.dnn Dnn]
     [org.opencv.calib3d Calib3d]
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
@@ -95,14 +94,3 @@
   (let [ output (new-mat) ]
   (vconcat mats output)
   output))
-
-; DNN
-(defn read-net-from-caffee[protofile netfile]
-  (Dnn/readNetFromCaffe protofile netfile))
-(defn read-net-from-darknet[protofile netfile]
-  (Dnn/readNetFromDarknet protofile netfile))
-(defn read-net-from-tensorflow [protofiel netfile]
-  (Dnn/readNetFromTensorflow netfile))
-
-
-; END MANUAL
