@@ -3,7 +3,7 @@
 	(:import [org.opencv.dnn Dnn]))
 
 ; DNN
-(defn read-net-from-caffee[protofile netfile]
+(defn read-net-from-caffe[protofile netfile]
   (Dnn/readNetFromCaffe protofile netfile))
 (defn read-net-from-darknet[protofile netfile]
   (Dnn/readNetFromDarknet protofile netfile))
