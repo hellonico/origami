@@ -221,9 +221,9 @@
     (print-cv-methods Calib3d)
     (print-fields Calib3d)
 
-    (println ";;; Dnn")
-    (print-fields Dnn)
-    (print-cv-methods Dnn)
+    ; (println ";;; Dnn")
+    ; (print-fields Dnn)
+    ; (print-cv-methods Dnn)
 
     ))))
 
