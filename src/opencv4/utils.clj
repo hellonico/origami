@@ -326,7 +326,7 @@ matrix))
         (println ">> Starting: " (-> device-map :device) " << ")
         (let [ buffer (cv/new-mat) capture (vid/new-videocapture)]
         (doto capture
-          (.open (int (-> device-map :device)))
+          (.open (str (-> device-map :device)))
           (.set vid/CAP_PROP_FRAME_WIDTH (-> device-map :width))
           (.set vid/CAP_PROP_FRAME_HEIGHT (-> device-map :height)))
       (while (nil? (.getClientProperty window "quit"))
@@ -338,6 +338,7 @@ matrix))
 (defn cams-window[ _options ]
  (let [
    options        (merge-with merge {:frame {:color "00" :title "video"}} _options )
+   showing         (nil? (-> options :frame :hide))
    devices        (-> options :devices)
    devices-count  (count devices)
    buffer-atoms   (into [] (map (fn [_] (atom (cv/new-mat))) devices))
@@ -366,7 +367,7 @@ matrix))
             (do
             (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
             (let [ output (apply (-> options :video :fn) (into [] (map deref buffer-atoms))) ]
-             (re-show window output)
+             (if showing (re-show window output))
              (if (not (nil? recording))
               (.write outputVideo
                (->
