@@ -308,7 +308,7 @@ matrix))
     ]
 
     (doto capture
-      (.open (int (-> options :video :device)))
+      (.open (-> options :video :device))
       (.set vid/CAP_PROP_FRAME_WIDTH (-> options :video :width))
       (.set vid/CAP_PROP_FRAME_HEIGHT (-> options :video :height)))
 
