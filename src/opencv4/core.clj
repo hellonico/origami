@@ -1,4 +1,5 @@
   (ns opencv4.core
+  (:refer-clojure :exclude [min max compare merge sort reduce repeat])
   (:import
     [org.opencv.core MatOfInt MatOfKeyPoint MatOfPoint MatOfPoint2f MatOfRect Point Rect Mat Size Scalar Core CvType Mat MatOfByte]
     [org.opencv.photo Photo]
