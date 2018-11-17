@@ -8,7 +8,7 @@
 (defn read-net-from-darknet[protofile netfile]
   (Dnn/readNetFromDarknet protofile netfile))
 (defn read-net-from-tensorflow [protofiel netfile]
-  (Dnn/readNetFromTensorflow netfile))
+  (Dnn/readNetFromTensorflow protofiel netfile))
 
 (defn output-layers[net]
   (opencv4.core/new-arraylist (map #(nth (.getLayerNames net) (dec %))
