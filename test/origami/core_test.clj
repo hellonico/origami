@@ -2,7 +2,7 @@
   (:require
     [opencv4.utils :as u]
     [clojure.test :refer :all]
-    [opencv4.core :refer :all]))
+    [opencv4.core :refer [COLOR_RGB2GRAY imread vconcat! set-to! mean cvt-color! canny! bitwise-not! imwrite]]))
 
 (deftest a-test
   (testing "Cat in bowl."
