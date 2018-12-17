@@ -2,18 +2,19 @@
 # generate
 
 ```
-# lein repl
- (load-file "dev/api.clj")
- (-main)
-```
-or 
-```
 lein api
 ```
 
-# opencv4 (still!) manual fixes
+# opencv4 manual fixes
 
-## mean! : Can't have 2 overloads with same arity
+```
+; (defn rectify-3-collinear!
+; (defn norm!	
+```
+
+# opencv4-beta (still!) manual fixes
+
+## mean! : Can't have 2 overloads with same arity disappeared ??
 
 ; line 2486
 (defn mean!
@@ -23,7 +24,7 @@ lein api
 ;   (Core/mean org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
-## norm!
+## norm! 
 
 (defn norm!
 ([org_opencv_core_mat_0 int_2 ] 

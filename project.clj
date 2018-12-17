@@ -1,4 +1,4 @@
-(defproject origami "4.0.0-beta15-SNAPSHOT"
+(defproject origami "4.0.0-0-SNAPSHOT"
   :description "OpenCV Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
@@ -30,7 +30,7 @@
   	[org.clojure/clojure "1.8.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
     ; support for DNN and ML
-    [opencv/opencv "4.0.0-beta2"]
-    [opencv/opencv-native "4.0.0-beta2"]
+    [opencv/opencv "4.0.0-0"]
+    [opencv/opencv-native "4.0.0-0"]
     
     [gorilla-repl "0.4.0"]])
