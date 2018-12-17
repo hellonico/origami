@@ -23,7 +23,7 @@ into
 
 ![](doc/new.png) 
 
-# Support for OpenCV4-beta is in.
+# Support for OpenCV 4.0.0 is in!
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -67,7 +67,7 @@ In a new folder, create the deps.edn file:
 {:mvn/repos
    {"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}}
  :deps 
-   { origami {:mvn/version "4.0.0-beta7"}}
+   { origami {:mvn/version "4.0.0-0"}}
 ```
 
 Start a repl, and require the two most used origami namespaces:
