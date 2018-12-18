@@ -21,16 +21,11 @@
     :plugins [[quickie "0.4.1"]]
     :source-paths ["dev"]
     :dependencies [
-    ; used for proto repl
-    [org.clojure/tools.nrepl "0.2.11"]
-    [proto-repl "0.3.1"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
-  	[org.clojure/clojure "1.8.0"]
+  	[org.clojure/clojure "1.10.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
-    ; support for DNN and ML
     [opencv/opencv "4.0.0-0"]
     [opencv/opencv-native "4.0.0-0"]
-    
-    [gorilla-repl "0.4.0"]])
+    [hellonico/gorilla-repl "0.4.1"]])

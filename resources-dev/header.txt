@@ -29,15 +29,24 @@
        (apply str (interpose "\n" items)))]
      (println (lineify-seq seq))))
 
-(defn dump[ _mat ]
+(defn ->string [ _mat ]
   (-> 
   _mat
   (.dump)
   (clojure.string/replace  #";" "]")
   (clojure.string/replace  #"\n" "[")
   (#(str "[" % "]"))
-  (read-string)
-  (pr-seq)))
+  (read-string)))
+
+(defn dump[ _mat ]
+  (-> _mat ->string pr-seq))
+
+(defn merge!
+([java_util_list_0] 
+(let [ output (Mat.) ]
+ (Core/merge java_util_list_0 output )
+ output)))
+
 
 (defn set-to
   ([mat scalar] (.setTo mat scalar))
