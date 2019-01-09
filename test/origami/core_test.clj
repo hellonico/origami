@@ -27,11 +27,3 @@
 (deftest b-test
   (testing "average"
   (is (not (nil?  (show-average "doc/cat_in_bowl.jpeg"))))))
-
-(deftest merge-test
-  (let [
-    expected (new-mat 1 1 opencv4.core/CV_8UC3 (new-scalar 0 0 0))
-    one (new-matofbyte (byte-array [0]))
-    merged (merge! [one one one])
-    ]
-  (is (= (->string expected) (->string merged)))))

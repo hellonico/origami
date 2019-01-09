@@ -26,6 +26,27 @@
   (map #(ns-unmap *ns* %) (keys (ns-interns *ns*))))
 
 ;;;
+;;;
+
+(defn ->cv1 [bytes h w]
+  (let [u (cv/new-mat h w cv/CV_8U)]
+        (cv/>> u (byte-array bytes))))
+
+(defn split3! [org]
+  (let [splits (cv/split! org)
+        [r g b :as arrays] (reverse (map cv/->bytes splits))]
+    (byte-array (for [ar arrays i ar] i)))) 
+(def mat->flat-rgb-array split3!)
+
+(defn merge3! [mat bytes]
+  (let [h (.height mat)
+        w (.width mat)
+        spatial-size (* h w)
+        byte-arrays (reverse (partition spatial-size bytes))
+        mats (map #(->cv1 % h w) byte-arrays)]
+    (cv/merge! mats mat)))
+
+;;;
 ; MAT OPERATIONS
 ;;;
 (defn resize-by[ mat factor]
@@ -117,6 +138,18 @@ matrix))
   (let [bytes (byte-array (* (.total mat) (.channels mat))) ]
   (.get mat 0 0 bytes)
   bytes))
+
+(defn pixel-map!
+  "Applies a function to each pixel. Very slow."
+  [im fn_]
+  (let [buffer (cv/->bytes im)
+        pixels (partition 3 buffer)]
+    (->> pixels
+         (map fn_ )
+         (flatten)
+         (byte-array)
+         (.put im 0 0))
+    im))
 
 (defn center-of-rect [ rect ]
   (middle-of-two-points (.tl rect) (.br rect)))

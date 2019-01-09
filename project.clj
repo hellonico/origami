@@ -21,6 +21,8 @@
     :plugins [[quickie "0.4.1"]]
     :source-paths ["dev"]
     :dependencies [
+    ; testing
+    [org.apache.mxnet.contrib.clojure/clojure-mxnet "1.5.0-SNAPSHOT"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
