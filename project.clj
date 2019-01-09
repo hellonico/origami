@@ -1,4 +1,4 @@
-(defproject origami "4.0.0-2"
+(defproject origami "4.0.0-3-SNAPSHOT"
   :description "OpenCV Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License"
