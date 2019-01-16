@@ -180,14 +180,14 @@ git clone https://github.com/hellonico/opencv-fun.git
 
 # opencv compatibility notes
 
-| Distribution | Version    | Status | Comments                                                    |
-| ------------ | ---------- | :----: | ----------------------------------------------------------- |
-| OSX          | Mojave     |   o    |                                                             |
-| Windows      | 10         |   o    |                                                             |
-| Ubuntu 18    | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Manjaro      | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Debian       | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Old Debian   | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
+| Distribution | Version    | Status | Comments                         |
+| ------------ | ---------- | :----: | -------------------------------- |
+| OSX          | Mojave     |   o    | brew install libjpg libtiff webp |
+| Windows      | 10         |   o    |                                  |
+| Ubuntu 18    | glibc 2.19 |   o    | Compiled with 2.19               |
+| Manjaro      | glibc 2.19 |   o    | Compiled with 2.19               |
+| Debian       | glibc 2.19 |   o    | Compiled with 2.19               |
+| Old Debian   | glibc 2.19 |   o    | Compiled with 2.19               |
 
 Bonus link to see what is compatible. https://abi-laboratory.pro/?view=timeline&l=glibc
 
@@ -217,12 +217,12 @@ There is now a [sibling project](https://github.com/hellonico/origami-dnn) showi
 
 # Troubleshooting
 
-### video stream doesn't start
+### linux: video stream doesn't start
 
-Looks like some environment needs the extra libv4l development library. 
+To get the stream from the webcam running, you would need the extra libv4l library on your system.
 
 ```
-apt-get install libv4l-dev gstreamer1.0-x libgtk2.0-dev
+apt-get install libv4l-dev
 ```
 
 or
@@ -231,9 +231,15 @@ or
 pacman -S libv4l
 ```
 
+### Ubuntu 14
 
+... has a very outdated libstdc++, and the libopencv_java won't load. To install a newer libstdc++, you can try the following: (found on: [GLIBCXX_3.4.20 not found](https://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-to-fix-this-error/582910#582910)
 
-
+```
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+sudo apt-get install libstdc++6 
+```
 
 Copyright @Nicolas Modrzyk - 2017-2018
 Eclipse Public License 
