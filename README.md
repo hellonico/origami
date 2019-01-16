@@ -222,7 +222,7 @@ There is now a [sibling project](https://github.com/hellonico/origami-dnn) showi
 Looks like some environment needs the extra libv4l development library. 
 
 ```
-apt-get install libv4l-dev
+apt-get install libv4l-dev gstreamer1.0-x libgtk2.0-dev
 ```
 
 or
