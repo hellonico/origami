@@ -180,14 +180,14 @@ git clone https://github.com/hellonico/opencv-fun.git
 
 # opencv compatibility notes
 
-| Distribution | Version    | Status | Comments                         |
-| ------------ | ---------- | :----: | -------------------------------- |
-| OSX          | Mojave     |   o    | brew install libjpg libtiff webp |
-| Windows      | 10         |   o    |                                  |
-| Ubuntu 18    | glibc 2.19 |   o    | Compiled with 2.19               |
-| Manjaro      | glibc 2.19 |   o    | Compiled with 2.19               |
-| Debian       | glibc 2.19 |   o    | Compiled with 2.19               |
-| Old Debian   | glibc 2.19 |   o    | Compiled with 2.19               |
+| Distribution | Version    | Status | Comments                                                    |
+| ------------ | ---------- | :----: | ----------------------------------------------------------- |
+| OSX          | Mojave     |   o    |                                                             |
+| Windows      | 10         |   o    |                                                             |
+| Ubuntu 18    | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Manjaro      | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Debian       | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Old Debian   | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
 
 Bonus link to see what is compatible. https://abi-laboratory.pro/?view=timeline&l=glibc
 
@@ -233,7 +233,7 @@ pacman -S libv4l
 
 ### Ubuntu 14
 
-... has a very outdated libstdc++, and the libopencv_java won't load. To install a newer libstdc++, you can try the following: (found on: [GLIBCXX_3.4.20 not found](https://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-to-fix-this-error/582910#582910)
+... has a very outdated libstdc++, and the libopencv_java won't load. To install a newer libstdc++, you can try the following: (taken from: Stck
 
 ```
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -241,5 +241,5 @@ sudo apt update
 sudo apt-get install libstdc++6 
 ```
 
-Copyright @Nicolas Modrzyk - 2017-2018
+Copyright @Nicolas Modrzyk - 2017-2019
 Eclipse Public License 

@@ -1,23 +1,19 @@
 (defproject origami "4.0.0-4-SNAPSHOT"
-  :description "OpenCV Wrapper"
+  :description "OpenCV4 Wrapper"
   :url "https://github.com/hellonico/origami"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-:repositories [
-["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
-]
-:aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api" ]}
-:release-tasks [["vcs" "assert-committed"]
-                ["change" "version" "leiningen.release/bump-version" "release"]
-                ["vcs" "commit"]
-                ["vcs" "tag" "--no-sign"]
-                ["deploy" "vendredi"]
-                ["change" "version" "leiningen.release/bump-version"]
-                ["vcs" "commit"]
-                ["vcs" "push"]
-                ]
-
-:profiles {:dev {
+  :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :repositories [["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]]
+  :aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api" ]}
+  :release-tasks 
+    [["vcs" "assert-committed"]
+     ["change" "version" "leiningen.release/bump-version" "release"]
+     ["vcs" "commit"]
+     ["vcs" "tag" "--no-sign"]
+     ["deploy" "vendredi"]
+     ["change" "version" "leiningen.release/bump-version"]
+     ["vcs" "commit"]
+     ["vcs" "push"]]
+  :profiles {:dev {
     :plugins [[quickie "0.4.1"]]
     :source-paths ["dev"]
     :dependencies [
