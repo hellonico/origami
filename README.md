@@ -169,12 +169,18 @@ docker run -it my-origami-app lein run
 # official image and custom src folder using clj
 docker run -it -v <path_to_local_src>:/usr/src/app/src  my-origami-app clojure -m <your_custom_namespace>
 
+# start the notebook
+docker run -it -p10000:10000 hellonico/origami lein notebook
 ```
 
 ## Gorilla Based Notebook
 
 ```
 lein notebook
+
+# or with the docker image
+docker run -it -p10000:10000 hellonico/origami lein notebook
+
 ```
 
 And two notebooks are included in the project template:
