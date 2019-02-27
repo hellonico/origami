@@ -160,7 +160,18 @@ Webcam Sample
 lein run -m opencv4.videosample
 ```
 
-Gorilla Based Notebook
+## with the docker official images
+
+```
+# default run with lein
+docker run -it my-origami-app lein run
+
+# official image and custom src folder using clj
+docker run -it -v <path_to_local_src>:/usr/src/app/src  my-origami-app clojure -m <your_custom_namespace>
+
+```
+
+## Gorilla Based Notebook
 
 ```
 lein notebook
