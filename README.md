@@ -23,7 +23,7 @@ into
 
 ![](doc/new.png) 
 
-# Support for OpenCV 4.0.0 is in!
+# Support for OpenCV 4.0.1 is in!
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -67,10 +67,16 @@ In a new folder, create the deps.edn file:
 {:mvn/repos
    {"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}}
  :deps 
-   { origami {:mvn/version "4.0.0-0"}}
+   { origami {:mvn/version "4.0.0-3"}}
 ```
 
-Start a repl, and require the two most used origami namespaces:
+Start a repl:
+
+```
+clj 
+```
+
+and require the two most used origami namespaces:
 
 ```
    (require
@@ -78,7 +84,7 @@ Start a repl, and require the two most used origami namespaces:
     '[opencv4.core :refer :all])
 ```
 
-And then use it to download an image from a url, resize it and download it to the local file system.
+Finally, here is a short snippet to download an image from a url, resize it and store it to the local file system.
 
 ```
 (-> "https://raw.githubusercontent.com/hellonico/origami/master/doc/cat_in_bowl.jpeg"
@@ -123,8 +129,11 @@ cd hello-origami
 
 # run the template simple example
 lein run
-# or ..
+
+# or using clj 
 clj -m opencv4.ok
+# 
+clj -m opencv4.lena
 ```
 
 ## Running the samples
