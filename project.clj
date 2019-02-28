@@ -1,11 +1,11 @@
 (let [properties (select-keys (into {} (System/getProperties))
-                              ["os.arch" "os.name"])
-      platform (apply format "%s (%s)" (vals properties))
+                              ["os.name"])
+      platform (apply format "%s" (vals properties))
       
       ; https://stackoverflow.com/questions/4688336/what-is-an-elegant-way-to-set-up-a-leiningen-project-that-requires-different-dep
       mxnet (case platform
-      "Linux" '[org.apache.mxnet.contrib.clojure/clojure-mxnet-linux-cpu "1.4.0"]
-      '[org.apache.mxnet.contrib.clojure/clojure-mxnet-osx-cpu "1.4.0"]
+      "Mac OS X" '[org.apache.mxnet.contrib.clojure/clojure-mxnet-osx-cpu "1.4.0"]
+      '[org.apache.mxnet.contrib.clojure/clojure-mxnet-linux-cpu "1.4.0"]
       )
       _ (println (str platform mxnet))
       ]
