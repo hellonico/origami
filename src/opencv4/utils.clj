@@ -114,15 +114,16 @@ matrix))
     (java.io.ByteArrayInputStream. (.toArray matOfBytes)))))
 
 (defn buffered-image-to-mat[bi]
-  (let [mat (Mat. (.getHeight bi) (.getWidth bi) (CvType/CV_8UC3))
-  bytes
-  (-> bi
-    (.getRaster)
-    (.getDataBuffer)
-    (.getData)
-    )]
-    (.put mat 0 0 bytes)
-    mat))
+  ; (javax.imageio.ImageIO/write bi "jpg"  (clojure.java.io/file "target/debug.jpg")) 
+  (let [  
+          nbio (java.awt.image.BufferedImage. (.getWidth bi) (.getHeight bi) java.awt.image.BufferedImage/TYPE_3BYTE_BGR) 
+          _ (-> nbio (.getGraphics) (.drawImage bi 0 0 nil))
+          mat (org.opencv.core.Mat. (.getHeight bi) (.getWidth bi) (org.opencv.core.CvType/CV_8UC3))
+          ; buffer (cast java.awt.image.DataBufferByte (.getDataBuffer (.getRaster nbio)))
+          buffer (.getDataBuffer (.getRaster nbio))
+          bytes  (-> buffer (.getData))
+          ]
+      (cv/>> mat bytes)))
 
 ; points
 (defn middle-of-two-points [p1 p2]
