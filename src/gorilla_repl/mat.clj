@@ -1,3 +1,8 @@
+; AFAIK not used ... 笑
+; but would be nice to avoid converting to buffered image 
+; and use a mat
+; considering not much performance is required when just 
+; displaying in the web page priority is low
 (ns gorilla-repl.mat
   (:import [java.awt Image]
            [java.awt.image BufferedImage]

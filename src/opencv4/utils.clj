@@ -1,6 +1,5 @@
 
 (ns opencv4.utils
-  (:use [gorilla-repl.image])
   (:require
     [opencv4.core :as cv]
     [opencv4.video :as vid]
@@ -158,10 +157,6 @@ matrix))
 (defn distance-of-two-points [p1 p2]
   (let [ xd (- (.x p1) (.x p2)) yd (- (.y p1) (.y p2))]
   (Math/sqrt (+ (Math/pow xd 2) (Math/pow yd 2)))))
-
-; gorilla repl
-(defn mat-view[img]
-  	(image-view (mat-to-buffered-image img)))
 
 (defn image-from-url[url]
   (let[ connection (->  url

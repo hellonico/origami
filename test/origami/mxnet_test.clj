@@ -1,12 +1,10 @@
 (ns origami.mxnet-test
     (:require
      [opencv4.utils :as cvu]
+     [opencv4.mxnet :as cvn]
      [opencv4.colors.rgb :as rgb]
      [org.apache.clojure-mxnet.image :as mx-img]
-     [org.apache.clojure-mxnet.ndarray :as ndarray]
-     [org.apache.clojure-mxnet.shape :as mx-shape]
      [clojure.test :refer :all]
-     [org.apache.clojure-mxnet.shape :as mx-shape]
      [opencv4.core :as cv]))
 
 (deftest chouffe-test-failing
@@ -16,17 +14,8 @@
         cvu/buffered-image-to-mat ;; Fails to convert to `Mat`...
         (cv/imwrite "target/bookfailing.jpg")))
 
-(defn ndarray-to-mat [img]
-    (let [ 
-        shape (-> img (mx-shape/->vec)) 
-        [h w _ _] (mx-shape/->vec (ndarray/shape img))
-        bytes (byte-array shape)
-        mat (cv/new-mat h w cv/CV_8UC3)]
-    (.put mat 0 0 bytes)
-    mat))
-
 (deftest chouffe-test
     (-> "doc/book.jpg"
         (mx-img/read-image {:to-rgb false})
-        (ndarray-to-mat)
+        (cvn/ndarray-to-mat)
         (cv/imwrite "target/book.jpg")))

@@ -41,4 +41,5 @@
     [org.scijava/native-lib-loader "2.3.1"]                 
     [opencv/opencv "4.0.0-0"]
     [opencv/opencv-native "4.0.0-1"]
-    [hellonico/gorilla-repl "0.4.1"]]))
+    [hellonico/gorilla-repl "0.4.1" :scope "provided"]
+    ]))
