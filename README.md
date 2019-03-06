@@ -248,10 +248,15 @@ https://github.com/hellonico/origami-electron/releases
 
 # With Tensorflow and Caffee Neural Network
 
-There is now a [sibling project](https://github.com/hellonico/origami-dnn) showing how to use a caffee based network to identify object with origami.
+There is now a [sibling project](https://github.com/hellonico/origami-dnn) showing how to use a caffee based network to identify object with origami and [mxnet](http://mxnet.incubator.apache.org/).
 
 ![](doc/detected.jpg) 
 
+# With MxNET
+
+There is a sample origami-mxnet project at https://github.com/hellonico/origami-mxnet, showing an integration of the two on a neural style network "image tranfer".
+
+![](doc/mxnet.png)
 
 
 # Troubleshooting
