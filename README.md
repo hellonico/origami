@@ -18,8 +18,8 @@
    * [With Tensorflow and Caffee Neural Network](#with-tensorflow-and-caffee-neural-network)
    * [With MxNET](#with-mxnet)
    * [Troubleshooting](#troubleshooting)
-         * [linux: video stream doesn't start](#linux-video-stream-doesnt-start)
-         * [Ubuntu 14](#ubuntu-14)
+       * [linux: video stream doesn't start](#linux-video-stream-doesnt-start)
+       * [Ubuntu 14](#ubuntu-14)
 
 # Lena in Clojure
 
