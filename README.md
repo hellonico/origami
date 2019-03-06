@@ -23,7 +23,7 @@ into
 
 ![](doc/new.png) 
 
-# Support for OpenCV 4.0.1 is in!
+# Support for OpenCV 4.0.0 is in!
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -113,18 +113,17 @@ You also would know you can also directly load, turn to gray, and change the siz
 
 - install jdk 1.8
 - install [leiningen](https://leiningen.org/#install) (it is a simple script ...)
-- that's it ! (as in, no need to install anyother OpenCV thing ...)
+- that's all … 
 
 ## generate a project
 
-Create a brand new origami based project using a Leiningen project template
+Create a brand new origami based project using the [clj-opencv](https://github.com/hellonico/clj-opencv) Leiningen project template
 
 ```
 # install the sample
 lein new clj-opencv hello-origami
 
 # change directory
-
 cd hello-origami
 
 # run the template simple example
@@ -160,43 +159,57 @@ Webcam Sample
 lein run -m opencv4.videosample
 ```
 
-## with the docker official images
+## Jupyter Notebook
 
+The lein-jupyter plugin is added to the project.clj, so i fyou have followed the installation steps for lein-jupyter, you should have an integrated working jupyter notebook.
 ```
-# default run with lein
-docker run -it my-origami-app lein run
-
-# official image and custom src folder using clj
-docker run -it -v <path_to_local_src>:/usr/src/app/src  my-origami-app clojure -m <your_custom_namespace>
-
-# start the notebook
-docker run -it -p10000:10000 hellonico/origami lein notebook
+lein jupyter notebook
 ```
+
+![](doc/jupyter.png)
+
+
+
 
 ## Gorilla Based Notebook
+
+The gorilla plugin is included in the project template. 
 
 ```
 lein notebook
 
-# or with the docker image
+# or without samples and just the docker image
 docker run -it -p10000:10000 hellonico/origami lein notebook
-
 ```
-
-And two notebooks are included in the project template:
+Two notebooks are included in the project template:
 
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/practice.clj)
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
 
+
 ## samples git project 
 
-If you do not have Lein installed, you can also clone a checkout of the generated project.
+A copy of the samples can also be cloned from a generated project.
 
 ```
 git clone https://github.com/hellonico/origami_samples.git
 ```
 
-# many more samples
+# Docker official image
+
+```
+# default run with lein
+docker run -it hellonico/origami lein run
+
+# official image and custom src folder using clj
+docker run -it -v <path_to_local_src>:/usr/src/app/src  hellonico/origami clojure -m <your_custom_namespace>
+
+# start the gorilla notebook
+docker run -it -p10000:10000 hellonico/origami lein notebook
+
+```
+
+# more samples
 
 For many, many more examples, you can also clone and check the [https://github.com/hellonico/opencv-fun](opencv-fun) repository:
 
