@@ -1,4 +1,25 @@
+# TOC
 
+   * [Lena in Clojure](#lena-in-clojure)
+   * [Support for OpenCV 4.0.0 is in!](#support-for-opencv-400-is-in)
+   * [Book on using Origami](#book-on-using-origami)
+   * [2 minutes intro if you have clj installed](#2-minutes-intro-if-you-have-clj-installed)
+   * [Getting Started](#getting-started)
+      * [Required Software to install](#required-software-to-install)
+      * [generate a project](#generate-a-project)
+      * [Running the samples](#running-the-samples)
+      * [Jupyter Notebook](#jupyter-notebook)
+      * [Gorilla Based Notebook](#gorilla-based-notebook)
+      * [samples git project](#samples-git-project)
+   * [Docker official image](#docker-official-image)
+   * [more samples](#more-samples)
+   * [opencv compatibility notes](#opencv-compatibility-notes)
+   * [electron based IDE](#electron-based-ide)
+   * [With Tensorflow and Caffee Neural Network](#with-tensorflow-and-caffee-neural-network)
+   * [With MxNET](#with-mxnet)
+   * [Troubleshooting](#troubleshooting)
+         * [linux: video stream doesn't start](#linux-video-stream-doesnt-start)
+         * [Ubuntu 14](#ubuntu-14)
 
 # Lena in Clojure
 
