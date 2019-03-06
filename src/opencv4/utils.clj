@@ -111,6 +111,7 @@ matrix))
   (Imgcodecs/imencode ".jpg" src matOfBytes)
   (ImageIO/read
     (java.io.ByteArrayInputStream. (.toArray matOfBytes)))))
+(def >>> mat-to-buffered-image)
 
 (defn buffered-image-to-mat[bi]
   ; (javax.imageio.ImageIO/write bi "jpg"  (clojure.java.io/file "target/debug.jpg")) 
@@ -123,6 +124,7 @@ matrix))
           bytes  (-> buffer (.getData))
           ]
       (cv/>> mat bytes)))
+(def <<< buffered-image-to-mat)
 
 ; points
 (defn middle-of-two-points [p1 p2]
