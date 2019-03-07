@@ -1,3 +1,5 @@
+Travis Status ![](https://travis-ci.org/hellonico/origami.svg?branch=master)
+
 # TOC
 
    * [Lena in Clojure](#lena-in-clojure)
