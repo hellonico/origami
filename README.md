@@ -1,4 +1,4 @@
-Travis Status ![](https://travis-ci.org/hellonico/origami.svg?branch=master)
+[Travis](https://travis-ci.org/hellonico/origami): ![](https://travis-ci.org/hellonico/origami.svg?branch=master)
 
 # TOC
 
