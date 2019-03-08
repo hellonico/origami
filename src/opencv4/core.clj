@@ -927,9 +927,11 @@
 
 (defn bilateral-filter!
 ([org_opencv_core_mat_0 int_2 double_3 double_4 ] 
-  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 ) org_opencv_core_mat_0 )
+  (let [out  (clone org_opencv_core_mat_0) ] 
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 out int_2 double_3 double_4 ) out ))
 ([org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ] 
-  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
+  (let [out  (clone org_opencv_core_mat_0) ] 
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 out int_2 double_3 double_4 int_5 ) out ))
 )
 
 (defn blur
@@ -2736,7 +2738,7 @@
 
 (defn lut!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
-  (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+  (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn pca-back-project
