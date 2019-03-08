@@ -1,6 +1,6 @@
 dist: xenial
 language: clojure
-jdk: 
-  - oraclejdk8
-  - oraclejdk9
-  - oraclejdk11
+jdk:
+ - openjdk8
+ - oraclejdk11
+ - openjdk11
