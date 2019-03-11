@@ -310,3 +310,14 @@ sudo apt-get install libstdc++6
 
 Copyright @Nicolas Modrzyk - 2017-2019
 Eclipse Public License 
+
+### Let's Encrypt Certificates
+
+We are using [let's encrypt](https://letsencrypt.org/) for certificates to host the depending binaries. Old JDK versions (for example 1.8.80) are missing the root letsencrypt certificate and so the java runtime cannot validate our certificate.
+To solve this, update to a recent version of the Java Development Kit.
+
+```
+Resolving javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed Error?
+```
+
+[Resolving javax.net.ssl.SSLHandshakeException](https://stackoverflow.com/questions/9619030/resolving-javax-net-ssl-sslhandshakeexception-sun-security-validator-validatore/47952835#47952835)
