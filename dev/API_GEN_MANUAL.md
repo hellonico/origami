@@ -14,15 +14,32 @@ lein api
 
 # opencv4-beta (still!) manual fixes
 
+## multiply! parameters is fucked
+
+```
+
+(defn multiply!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ] 
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ] 
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+)
+```
+
 ## lut! parameters are in wrong order
 
+```
 (defn lut!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
   (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
+```
 
 ## bilateral-filter! cannot reuse same mat (so clone it)
 
+```
 (defn bilateral-filter!
 ([org_opencv_core_mat_0 int_2 double_3 double_4 ] 
   (let [out  (clone org_opencv_core_mat_0) ] 
@@ -31,6 +48,7 @@ lein api
   (let [out  (clone org_opencv_core_mat_0) ] 
   (Imgproc/bilateralFilter org_opencv_core_mat_0 out int_2 double_3 double_4 int_5 ) out ))
 )
+```
 
 ## mean! : Can't have 2 overloads with same arity disappeared ??
 

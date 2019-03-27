@@ -99,3 +99,10 @@
     (is (= (cv/->string m)
         [[0 255 0 0 0 0]
          [0 0 0 0 0 0]]))))
+
+(deftest multiply
+	(let [m (cv/new-mat 2 2 cv/CV_8UC3 (cv/new-scalar 10 20 30))]
+	 (cv/multiply! m (u/matrix-to-mat-of-double [[1.0 0.0 0.0]]))
+	 (is (= (cv/->string m)
+        [[10 0 0 10 0 0]
+         [10 0 0 10 0 0]]))))

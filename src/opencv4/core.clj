@@ -3344,11 +3344,11 @@
 
 (defn multiply!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ] 
-  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 int_4 ) org_opencv_core_mat_0 )
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ] 
-  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ) org_opencv_core_mat_0 )
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 double_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
-  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn magnitude
