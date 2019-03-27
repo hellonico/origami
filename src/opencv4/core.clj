@@ -2419,6 +2419,16 @@
   (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 int_4 ))
 )
 
+
+(defn divide!
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 ) org_opencv_core_mat_0)
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 double_3 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 double_3 ) org_opencv_core_mat_0)
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 double_3 int_4 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 double_3 int_4 ) org_opencv_core_mat_0)
+)
+
 (defn sort
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ] 
   (Core/sort org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))

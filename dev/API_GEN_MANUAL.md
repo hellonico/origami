@@ -14,6 +14,19 @@ lein api
 
 # opencv4-beta (still!) manual fixes
 
+## divide!  missing because parameters are just crazy
+
+```
+(defn divide!
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 ) org_opencv_core_mat_0)
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 double_3 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 double_3 ) org_opencv_core_mat_0)
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 double_3 int_4 ] 
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0 double_3 int_4 ) org_opencv_core_mat_0)
+)
+```
+
 ## multiply! parameters is fucked
 
 ```
