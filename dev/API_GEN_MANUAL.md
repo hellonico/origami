@@ -14,6 +14,20 @@ lein api
 
 # opencv4-beta (still!) manual fixes
 
+## remove copy / copy-to line 2489
+
+```
+(defn copy-to
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ] 
+  (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+)
+
+(defn copy-to!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
+  (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+)
+```
+
 ## divide!  missing because parameters are just crazy
 
 ```

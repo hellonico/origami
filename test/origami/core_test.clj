@@ -2,7 +2,7 @@
   (:require
     [opencv4.utils :as u]
     [clojure.test :refer :all]
-    [opencv4.core :refer [->string new-mat new-scalar merge! new-matofbyte COLOR_RGB2GRAY imread vconcat! set-to! mean cvt-color! canny! bitwise-not! imwrite]]))
+    [opencv4.core :refer [->bytes copy-to ->string new-mat new-scalar merge! new-matofbyte COLOR_RGB2GRAY imread vconcat! set-to! mean cvt-color! canny! bitwise-not! imwrite]]))
 
 (deftest a-test
   (testing "Cat in bowl."
@@ -27,3 +27,8 @@
 (deftest b-test
   (testing "average"
   (is (not (nil?  (show-average "doc/cat_in_bowl.jpeg"))))))
+
+(deftest copying-to
+		(let [a (imread "doc/cat_in_bowl.jpeg") b (new-mat)]
+		(copy-to a b)
+		(is (= (seq (->bytes  a)) (seq (->bytes b))))))

@@ -124,7 +124,7 @@
 (defn >> [mat b]
   (.put mat 0 0 b) mat)
 (defn << [mat]
-  (->bytes mat) mat)
+  (->bytes mat))
 
 ; ここ？
 
@@ -2486,15 +2486,15 @@
   (Core/mean org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
-(defn copy-to
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ] 
-  (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-)
+; (defn copy-to
+; ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ] 
+;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+; )
 
-(defn copy-to!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
-  (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
-)
+; (defn copy-to!
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
+;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+; )
 
 (defn sum-elems
 ([org_opencv_core_mat_0 ] 
