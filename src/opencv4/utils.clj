@@ -357,7 +357,7 @@ matrix))
         (println ">> Starting: " (-> device-map :device) " << ")
         (let [ buffer (cv/new-mat) capture (vid/new-videocapture)]
         (doto capture
-          (.open (str (-> device-map :device)))
+          (.open  (-> device-map :device))
           (.set vid/CAP_PROP_FRAME_WIDTH (-> device-map :width))
           (.set vid/CAP_PROP_FRAME_HEIGHT (-> device-map :height)))
       (while (nil? (.getClientProperty window "quit"))
