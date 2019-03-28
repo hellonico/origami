@@ -298,6 +298,14 @@ or
 pacman -S libv4l
 ```
 
+### OSX
+
+You may be missing some extra libries. Those won't be required in the future by default, but for now, please use:
+
+```
+brew install tbb webp libtiff 
+```
+
 ### Ubuntu 14
 
 ... has a very outdated libstdc++, and the libopencv_java won't load. To install a newer libstdc++, you can try the following: (taken from: Stck
