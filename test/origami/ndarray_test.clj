@@ -54,7 +54,7 @@
 
 (deftest myeyesareblurred
   (let [size 50
-        test (cv/new-mat size size cv/CV_8UC3 rgb/red-1-) ; 255
+        test (cv/new-mat size size cv/CV_8UC3 rgb/red-1) ; 255
         org (cv/new-mat size size cv/CV_8SC3 (cv/new-scalar 0 0 127)) ;max is 127
         cvimg (cv/clone org)
         ndarray (ndarray/array (cv/->bytes cvimg) [1 3 size size])]
