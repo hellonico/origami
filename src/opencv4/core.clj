@@ -3484,20 +3484,20 @@
   (Photo/createTonemapDrago float_0 float_1 float_2 ))
 )
 
-(defn create-tonemap-durand
-([float_0 ] 
-  (Photo/createTonemapDurand float_0 ))
-([float_0 float_1 ] 
-  (Photo/createTonemapDurand float_0 float_1 ))
-([] 
-  (Photo/createTonemapDurand ))
-([float_0 float_1 float_2 float_3 float_4 ] 
-  (Photo/createTonemapDurand float_0 float_1 float_2 float_3 float_4 ))
-([float_0 float_1 float_2 float_3 ] 
-  (Photo/createTonemapDurand float_0 float_1 float_2 float_3 ))
-([float_0 float_1 float_2 ] 
-  (Photo/createTonemapDurand float_0 float_1 float_2 ))
-)
+; (defn create-tonemap-durand
+; ([float_0 ] 
+;   (Photo/createTonemapDurand float_0 ))
+; ([float_0 float_1 ] 
+;   (Photo/createTonemapDurand float_0 float_1 ))
+; ([] 
+;   (Photo/createTonemapDurand ))
+; ([float_0 float_1 float_2 float_3 float_4 ] 
+;   (Photo/createTonemapDurand float_0 float_1 float_2 float_3 float_4 ))
+; ([float_0 float_1 float_2 float_3 ] 
+;   (Photo/createTonemapDurand float_0 float_1 float_2 float_3 ))
+; ([float_0 float_1 float_2 ] 
+;   (Photo/createTonemapDurand float_0 float_1 float_2 ))
+; )
 
 (defn create-tonemap-mantiuk
 ([] 
