@@ -80,7 +80,7 @@
      (do)
      (print (str (param-name (nth params i)) "_" (str i) " "))))
 
-  (print "] ")
+  (print "]")
   (print (str "\n  (" klass "/" sname " "))
 
   (doseq [i (range 0 count-params)]

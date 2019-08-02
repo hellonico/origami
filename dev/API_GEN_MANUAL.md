@@ -5,13 +5,6 @@
 lein api
 ```
 
-# opencv4 manual fixes
-
-```
-; (defn rectify-3-collinear!
-; (defn norm!	
-```
-
 # opencv4-beta (still!) manual fixes
 
 ## remove copy / copy-to line 2489

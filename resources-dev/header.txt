@@ -19,7 +19,13 @@
   (Imgcodecs/imwrite string mat)
   mat)
 
+(declare put-text)
+(declare hconcat)
+(declare new-mat)
+(declare vconcat)
+(declare add)
 (declare new-arraylist)
+
 (def new-list new-arraylist)
 
 (defn clone[mat] (.clone mat))
@@ -38,15 +44,30 @@
   (#(str "[" % "]"))
   (read-string)))
 
+(defn ->bytes [mat]
+  (let [bytes (byte-array (* (.total mat) (.channels mat)))]
+    (.get mat 0 0 bytes)
+    bytes))
+
 (defn dump[ _mat ]
   (-> _mat ->string pr-seq))
 
 (defn merge!
-([java_util_list_0] 
-(let [ output (Mat.) ]
+([java_util_list_0] (merge! java_util_list_0 (Mat.)))
+([java_util_list_0 output] 
  (Core/merge java_util_list_0 output )
- output)))
+ output))
 
+(defn add!
+  [org_opencv_core_mat_0 org_opencv_core_scalar_1]
+    (add org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_0)
+    org_opencv_core_mat_0)
+
+(defn split!
+  [org_opencv_core_mat_0]
+   (let [java_util_list_1 (new-arraylist)]
+     (Core/split org_opencv_core_mat_0 java_util_list_1)
+     java_util_list_1))
 
 (defn set-to
   ([mat scalar] (.setTo mat scalar))
@@ -77,12 +98,6 @@
   ([mat a1]
   (.convertTo mat mat a1) mat))
 
-
-(declare put-text)
-(declare hconcat)
-(declare new-mat)
-(declare vconcat)
-
 (defn put-text!
 ([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ]
   (put-text org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 )
@@ -104,3 +119,9 @@
   (let [ output (new-mat) ]
   (vconcat mats output)
   output))
+
+
+(defn >> [mat b]
+  (.put mat 0 0 b) mat)
+(defn << [mat]
+  (->bytes mat))
