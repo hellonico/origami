@@ -28,6 +28,7 @@
      ["change" "version" "leiningen.release/bump-version"]
      ["vcs" "commit"]
      ["vcs" "push"]]
+  :java-source-paths ["java"]     
   :profiles {:dev {
     :plugins [[jonase/eastwood "0.3.5"][quickie "0.4.1"]]
     :source-paths ["dev"]
