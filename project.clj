@@ -10,7 +10,7 @@
       _ (println (str platform mxnet))
       ]
 
-(defproject origami "4.1.2-SNAPSHOT"
+(defproject origami "4.1.1.4-SNAPSHOT"
   :description "OpenCV4 Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -44,4 +44,5 @@
     [opencv/opencv "4.1.1-1"]
     [opencv/opencv-native "4.1.1-1"]
     [hellonico/gorilla-repl "0.4.1" :scope "provided"]
+    [org.slf4j/slf4j-nop "1.7.28"]
     ]))
