@@ -331,11 +331,12 @@ matrix))
   ([_options myvideofn]
 
   (let [
-    options (merge-with merge {:frame {:color "00" :title "video"} :video {:device 0 :width 200 :height 220}} _options )
+    options (merge-with merge {:frame {:fps false :color "00" :title "video"} :video {:device 0 :width 200 :height 220}} _options )
     capture (vid/new-videocapture)
     window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)
-
+    start (System/currentTimeMillis)
+    c (atom 0)
     ]
 
     (doto capture
@@ -346,9 +347,19 @@ matrix))
     (.start (Thread.
       (fn []
       (while (nil? (.getClientProperty window "quit"))
+       (if (-> options :frame :fps) (swap! c inc))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
-         (re-show window (myvideofn (cv/clone buffer))))))
+         (re-show window 
+          (-> buffer 
+            cv/clone
+            myvideofn
+            ((fn[mat] 
+              (if (-> options :frame :fps)
+                (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")   (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2)
+                mat
+                )))
+            )))))
        (.release capture)))))))
 
 (defn start-cam-thread [ window device-map buffer-atom]
