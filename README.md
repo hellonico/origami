@@ -23,6 +23,12 @@
        * [linux: video stream doesn't start](#linux-video-stream-doesnt-start)
        * [Ubuntu 14](#ubuntu-14)
 
+## Setup
+
+Add the following the to your `project.clj`:
+
+[![Clojars Project](https://clojars.org/origami/latest-version.svg)
+
 # Lena in Clojure
 
 ```
