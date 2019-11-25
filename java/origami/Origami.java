@@ -20,6 +20,9 @@ import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.scijava.nativelib.NativeLoader;
 
+import org.opencv.videoio.VideoCapture;
+import org.scijava.nativelib.NativeLoader;
+
 public class Origami {
 
     public static BufferedImage matToBufferedImage(Mat frame) {
@@ -58,13 +61,37 @@ public class Origami {
     }
 
     public static Mat urlToMat(String url) throws IOException {
+        return urlToMat(url, Imgcodecs.IMREAD_UNCHANGED);
+    }
+
+    public static Mat urlToMat(String url, int flag) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try (InputStream in = new URL(url).openStream()) {
             copy(in, byteArrayOutputStream);
         }
         byteArrayOutputStream.flush();
-        return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), Imgcodecs.IMREAD_UNCHANGED);
+        return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), flag);
     }
+
+
+    public static void init() {
+        try {
+            NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+            System.out.println("Loaded:" + Core.NATIVE_LIBRARY_NAME);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Mat grabOne() {
+        VideoCapture vc = new VideoCapture(0);
+        Mat img1 = new Mat();
+        vc.read(img1);
+        vc.read(img1);
+        vc.release();
+        return img1;
+    }
+
     /**
      * Usage:
      * <pre>
