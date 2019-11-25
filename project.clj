@@ -10,7 +10,7 @@
       _ (println (str platform mxnet))
       ]
 
-(defproject origami "4.1.1-7-SNAPSHOT"
+(defproject origami "4.1.1-7"
   :description "OpenCV4 Wrapper"
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
