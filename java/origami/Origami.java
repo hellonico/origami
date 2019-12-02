@@ -16,12 +16,13 @@ import javax.imageio.ImageIO;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.scijava.nativelib.NativeLoader;
 
 import org.opencv.videoio.VideoCapture;
-import org.scijava.nativelib.NativeLoader;
 
 public class Origami {
 
@@ -83,13 +84,22 @@ public class Origami {
         }
     }
 
-    public static Mat grabOne() {
-        VideoCapture vc = new VideoCapture(0);
+    public static Mat grabOne(int camId) {
+        VideoCapture vc = new VideoCapture(camId);
         Mat img1 = new Mat();
-        vc.read(img1);
+        try {Thread.sleep(500);} catch (Exception e) {}
         vc.read(img1);
         vc.release();
         return img1;
+    }
+    public static Mat grabOne() {
+        return grabOne(0);
+    }
+
+    public static Mat resize(Mat marcel, int resizeFactor) {
+        Mat smallMarcel = new Mat();
+        Imgproc.resize(marcel, smallMarcel, new Size(marcel.width()/resizeFactor, marcel.height()/resizeFactor));
+        return smallMarcel;
     }
 
     /**
