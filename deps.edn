@@ -4,10 +4,10 @@
  }
  :deps { 
  	org.clojure/clojure {:mvn/version "1.10.0"}
- 	origami {:mvn/version "4.1.1-1"}
+ 	origami {:mvn/version "4.1.2"}
  	org.scijava/native-lib-loader {:mvn/version "2.3.1"}
- 	opencv/opencv {:mvn/version "4.1.1-1"} 
- 	opencv/opencv-native {:mvn/version "4.1.1-1"} 
+ 	opencv/opencv {:mvn/version "4.1.2"} 
+ 	opencv/opencv-native {:mvn/version "4.1.2"} 
  	org.slf4j/slf4j-nop {:mvn/version "1.7.28"}
   hellonico/gorilla-repl {:mvn/version  "0.4.1"}
 
