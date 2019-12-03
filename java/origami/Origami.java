@@ -4,25 +4,22 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.core.MatOfByte;
+import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.scijava.nativelib.NativeLoader;
-
 import org.opencv.videoio.VideoCapture;
+import org.opencv.videoio.Videoio;
+import org.scijava.nativelib.NativeLoader;
 
 public class Origami {
 
@@ -74,7 +71,6 @@ public class Origami {
         return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), flag);
     }
 
-
     public static void init() {
         try {
             NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -87,23 +83,41 @@ public class Origami {
     public static Mat grabOne(int camId) {
         VideoCapture vc = new VideoCapture(camId);
         Mat img1 = new Mat();
-        try {Thread.sleep(500);} catch (Exception e) {}
+        try {
+            Thread.sleep(500);
+        } catch (Exception e) {
+        }
         vc.read(img1);
         vc.release();
         return img1;
     }
+
     public static Mat grabOne() {
         return grabOne(0);
     }
 
     public static Mat resize(Mat marcel, int resizeFactor) {
         Mat smallMarcel = new Mat();
-        Imgproc.resize(marcel, smallMarcel, new Size(marcel.width()/resizeFactor, marcel.height()/resizeFactor));
+        Imgproc.resize(marcel, smallMarcel, new Size(marcel.width() / resizeFactor, marcel.height() / resizeFactor));
         return smallMarcel;
+    }
+
+    static void cameraSettings(VideoCapture cap) {
+        String settings = String.format(
+                "Name:\t\t%s\nWidth:\t\t%s\nHeight:\t\t%s\nFPS:\t\t%s\nAperture:\t%s\nAutofocus:\t%s\nGain:\t\t%s\nGamma:\t\t%s\nBrightness:\t%s\nBackend:\t%s\nBacklight:\t%s\nContrast:\t%s\nSaturation:\t%s\nSharpness:\t%s\nZoom:\t\t%s\nBuffersize:\t%s\n",
+                "", cap.get(Videoio.CAP_PROP_FRAME_WIDTH), cap.get(Videoio.CAP_PROP_FRAME_HEIGHT),
+                cap.get(Videoio.CAP_PROP_FPS), cap.get(Videoio.CAP_PROP_APERTURE), cap.get(Videoio.CAP_PROP_AUTOFOCUS),
+                cap.get(Videoio.CAP_PROP_GAIN), cap.get(Videoio.CAP_PROP_GAMMA), cap.get(Videoio.CAP_PROP_BRIGHTNESS),
+                cap.get(Videoio.CAP_PROP_BACKEND), cap.get(Videoio.CAP_PROP_BACKLIGHT),
+                cap.get(Videoio.CAP_PROP_CONTRAST), cap.get(Videoio.CAP_PROP_SATURATION),
+                cap.get(Videoio.CAP_PROP_SHARPNESS), cap.get(Videoio.CAP_PROP_ZOOM),
+                cap.get(Videoio.CAP_PROP_BUFFERSIZE));
+        System.out.println(settings);
     }
 
     /**
      * Usage:
+     * 
      * <pre>
      * public static void main(String[] args) throws IOException {
      *     NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
