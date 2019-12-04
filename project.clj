@@ -41,8 +41,8 @@
   :dependencies [
   	[org.clojure/clojure "1.10.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
-    [opencv/opencv "4.1.2-0"]
-    [opencv/opencv-native "4.1.2-0"]
+    [opencv/opencv "4.1.2-1"]
+    [opencv/opencv-native "4.1.2-1"]
     [hellonico/gorilla-repl "0.4.1" :scope "provided"]
     [org.slf4j/slf4j-nop "1.7.28"]
     ]))
