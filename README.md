@@ -3,7 +3,7 @@
 # TOC
 
    * [Lena in Clojure](#lena-in-clojure)
-   * [Support for OpenCV 4.1.1 is in!](#support-for-opencv-411-is-in)
+   * [Support for OpenCV 4.1.2 is in!](#support-for-opencv-412-is-in)
    * [Book on using Origami](#book-on-using-origami)
    * [2 minutes intro if you have clj installed](#2-minutes-intro-if-you-have-clj-installed)
    * [Getting Started](#getting-started)
@@ -52,7 +52,7 @@ into
 
 ![](doc/new.png) 
 
-# Support for OpenCV 4.1.1 is in!
+# Support for OpenCV 4.1.2 is in!
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
