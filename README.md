@@ -27,7 +27,7 @@
 
 Add the following the to your `project.clj`:
 
-[![Clojars Project](https://clojars.org/origami/latest-version.svg)
+![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
 # Lena in Clojure
 
@@ -78,6 +78,11 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 <img src="doc/cat_in_bowl.jpeg" width="50%" height="50%"/>
 
 <img src="doc/canny-cat.jpg" width="50%" height="50%"/>
+
+# The origami ecosystem
+
+
+<img src="doc/origami-layout.svg"/>
 
 # Book on using Origami
 
