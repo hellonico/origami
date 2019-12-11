@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="47 93 652 382" width="652" height="382">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="HanziPen TC" font-size="24" panose-1="3 0 3 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HanziPenTC-W3"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.12.1 
+    <dc:date>2019-12-11 05:49:03 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <rect fill="white" x="47" y="93" width="652" height="382"/>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_3">
+        <title>Rounded square</title>
+        <a xl:href="https://github.com/hellonico/origami">
+          <path d="M 397.62236 212.65613 L 259.01924 211.15246 C 247.8813 209.42207 239.66815 200.99283 239.857 189.45204 M 241.21086 191.40174 L 238.58593 187.6216 C 239.1705 178.15302 250.47424 168.6072 260.66602 169.357 M 258.29892 169.31977 L 400.1271 171.5502 C 409.3126 171.84506 417.70763 180.52338 417.222 192.54796 M 417.222 191.47897 C 417.222 192.54796 417.222 192.54796 417.222 194.69914 M 417.75204 191.7706 L 416.0751 194.23005 C 416.23313 204.1201 407.0781 213.40305 396.413 212.643 M 396.413 213.4227 L 396.413 211.35629 M 397.93395 212.42707 L 260.97116 210.99328 C 248.5063 208.79707 240.29315 200.36783 240.482 188.82704 M 241.35086 191.20903 L 239.0905 188.08267 C 239.7955 177.52802 251.09924 167.9822 261.29102 168.732 M 258.61603 168.71401 L 398.5763 171.17625 C 409.9376 171.22006 418.33263 179.89838 417.847 191.92296 M 417.222 191.47897 C 417.847 191.92296 417.847 191.92296 417.847 194.07414 M 418.2636 191.59383 L 417.2995 193.10402 C 416.85813 203.4951 407.7031 212.77805 397.038 212.018 M 396.48093 213.1102 L 396.54815 212.3305" stroke="#ff9300" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <text transform="translate(245.0172 180.3167) rotate(1)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="38.36002" y="15">origami-core</tspan>
+          </text>
+        </a>
+      </g>
+      <g id="Graphic_4">
+        <title>Rounded square</title>
+        <a xl:href="https://github.com/hellonico/opencv4_java_tutorial/">
+          <path d="M 644.6319 382.6547 L 506.2185 380.40543 C 496.56285 380.89466 486.8893 370.1369 487.357 359.45204 M 488.4192 360.10856 L 484.75236 357.84224 C 488.2038 347.38393 495.92034 338.73705 508.166 339.357 M 506.8088 339.3328 L 644.35044 341.78523 C 657.0517 342.88117 665.4729 351.96706 664.722 362.54796 M 666.2151 362.22453 L 662.519 363.02517 C 664.2818 373.93427 654.1717 381.98737 643.913 382.643 M 644.9407 382.5711 L 508.14634 380.32223 C 497.18785 380.26966 487.5143 369.5119 487.982 358.82704 M 488.6535 359.9226 L 486.5396 358.5455 C 488.8288 346.75893 496.54534 338.11205 508.791 338.732 M 507.122 338.98244 L 643.99406 341.3095 C 657.6767 342.25617 666.0979 351.34206 665.347 361.92296 M 666.5716 362.11524 L 663.851 362.72027 C 664.9068 373.30927 654.7967 381.36237 644.538 382.018" stroke="#ff9300" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <text transform="translate(492.5172 350.3167) rotate(1)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="13.760022" y="15">origami-jvm-tutorial</tspan>
+          </text>
+        </a>
+      </g>
+      <g id="Graphic_5">
+        <title>Rounded square</title>
+        <a xl:href="https://github.com/hellonico/origami-dnn">
+          <path d="M 245.0161 275.6885 L 104.91783 272.6587 C 94.40482 273.01188 85.6105 264.54042 86.35699 252.45204 M 84.36853 252.6551 L 88.48875 252.23434 C 86.65087 241.78442 95.12587 231.8669 107.16602 232.357 M 104.944 232.31337 L 244.44852 235.0522 C 256.06853 234.50224 264.7381 244.15132 263.722 255.54796 M 263.722 253.4631 C 263.722 255.54796 263.722 255.54796 263.722 256.9217 M 262.72393 255.22614 L 265.5622 256.1413 C 264.54488 267.0995 253.1138 276.9638 242.91298 275.643 M 245.32727 275.43787 L 106.82079 272.65116 C 95.02982 272.38688 86.2355 263.91542 86.98199 251.82704 M 84.67215 252.25558 L 87.82817 251.8137 C 87.27587 241.15942 95.75087 231.2419 107.79102 231.732 M 105.25836 231.90596 L 243.41225 234.44274 C 256.69353 233.87724 265.3631 243.52632 264.347 254.92296 M 263.722 253.4631 C 264.347 254.92296 264.347 254.92296 264.347 256.2967 M 263.09952 254.71797 L 264.43386 255.319 C 265.16988 266.4745 253.7388 276.3388 243.53798 275.018" stroke="#ff9300" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <text transform="translate(91.51721 243.3167) rotate(1)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="40.42402" y="15">origami-dnn</tspan>
+          </text>
+        </a>
+      </g>
+      <g id="Graphic_6">
+        <title>Rounded square</title>
+        <a xl:href="https://github.com/hellonico/origami-fun">
+          <path d="M 395.04792 382.65703 L 255.13847 381.441 C 246.04454 379.17144 235.85347 370.6845 236.8788 359.45204 M 236.0833 359.09034 L 239.64253 360.7087 C 236.56545 347.9701 245.8532 338.99674 257.68782 339.357 M 256.4756 339.33102 L 396.06834 342.3216 C 404.3204 342.50076 415.5251 350.3356 414.2438 362.54796 M 413.8985 364.69687 L 414.54246 360.68934 C 414.22204 374.40933 405.56767 381.951 393.43478 382.643 M 395.3586 382.5519 L 257.02522 381.1677 C 246.66954 378.54644 236.47847 370.0595 237.5038 358.82704 M 236.40665 358.75397 L 238.1387 359.55747 C 237.19045 347.3451 246.4782 338.37174 258.31282 338.732 M 256.79137 338.86657 L 394.346 341.88843 C 404.9454 341.87576 416.1501 349.7106 414.8688 361.92296 M 414.07703 364.36284 L 414.4945 361.43565 C 414.84704 373.78433 406.19267 381.326 394.05978 382.018" stroke="#ff9300" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <text transform="translate(242.039 350.3167) rotate(1)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="42.80002" y="15">origami-fun</tspan>
+          </text>
+        </a>
+      </g>
+      <g id="Graphic_7">
+        <title>Rounded square</title>
+        <a xl:href="https://github.com/hellonico/optimized-image-enhanced">
+          <path d="M 645.0357 224.1588 L 505.3159 222.19434 C 495.4269 222.03704 486.05284 211.3286 487.357 200.95204 M 486.4067 199.63518 L 488.7466 202.87773 C 486.3807 188.57915 496.5369 180.62658 508.166 180.857 M 506.08906 180.8088 L 645.77 184.04994 C 654.8899 182.7268 664.0091 193.27927 664.722 204.04796 M 664.722 202.82223 C 664.722 204.04796 664.722 204.04796 664.722 206.51924 M 665.8091 204.44255 L 661.7156 202.9567 C 665.19824 215.5755 655.9089 223.76514 643.913 224.143 M 643.913 225.92746 L 643.913 222.13298 M 645.3476 223.88664 L 507.17934 221.99664 C 496.0519 221.41204 486.67784 210.7036 487.982 200.32704 M 486.9442 199.16033 L 488.4799 201.54142 C 487.0057 187.95415 497.1619 180.00158 508.791 180.232 M 506.4064 180.2873 L 645.2427 183.52169 C 655.5149 182.1018 664.6341 192.65427 665.347 203.42296 M 664.722 202.82223 C 665.347 203.42296 665.347 203.42296 665.347 205.89424 M 666.0635 204.2901 L 663.7503 203.37943 C 665.82324 214.9505 656.5339 223.14014 644.538 223.518 M 644.0773 225.61496 L 644.1326 223.8305" stroke="#ff9300" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <text transform="translate(492.6782 182.59411) rotate(1)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="8.720022" y="15">optimized-image-en</tspan>
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="57.16802" y="33.448">hanced</tspan>
+          </text>
+        </a>
+      </g>
+      <g id="Line_8">
+        <line x1="228.69644" y1="231.97793" x2="265.72393" y2="216.78099" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_9">
+        <line x1="325.9634" y1="338.04837" x2="327.964" y2="223.85012" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_10">
+        <line x1="576.0395" y1="225.45865" x2="576.0395" y2="328.14135" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_11">
+        <line x1="485.05346" y1="198.27237" x2="429.41487" y2="195.68714" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_12">
+        <line x1="541.74284" y1="337.4427" x2="370.9966" y2="220.16244" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_13">
+        <title>Square</title>
+        <rect x="557.5" y="390" width="117.079" height="34.5"/>
+        <path d="M 555.56977 389.9831 L 675.9766 391.03636 M 674.58755 389.89383 L 673.6323 425.40044 M 675.46526 424.3659 L 557.0949 425.0372 M 558.65374 427.3365 L 557.445 388.21923 M 555.8848 389.38243 L 674.8713 390.526 M 675.1563 389.58822 L 674.03755 424.06537 M 675.77895 424.26425 L 558.8965 424.99943 M 558.70695 427.032 L 557.6806 389.69158" stroke="#0da7a9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(562.5 398.026)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="17.547501" y="15">java filters</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <title>Square</title>
+        <rect x="458.5" y="390" width="84.5" height="34.5"/>
+        <path d="M 457.0601 389.9951 L 544.05247 390.29016 M 542.63714 389.38646 L 543.3363 424.277 M 544.29324 423.41763 L 457.0833 424.5516 M 458.05254 427.01785 L 458.5253 387.90685 M 457.373 389.56144 L 542.9685 389.72 M 543.0876 389.0712 L 543.76566 423.1151 M 544.60595 423.12124 L 458.39723 424.39703 M 458.0877 426.702 L 458.649 389.68552" stroke="#0da7a9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(463.5 398.026)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="6.73" y="15">webcam</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <title>Badge</title>
+        <path d="M 359.5 128.5 L 476.579 128.5 L 476.579 150.67857 L 421.12053 163 L 359.5 150.67857 Z"/>
+        <path d="M 357.16606 128.52396 L 476.9411 127.29449 M 475.4585 125.00065 L 477.00804 152.5797 M 478.03633 149.97461 L 418.34546 162.4465 M 421.0277 162.2275 L 356.3628 148.95994 M 358.62384 150.79724 L 359.5423 127.42301 M 357.47754 128.11184 L 475.8999 126.92048 M 475.9844 124.67616 L 477.4585 149.88949 M 478.4003 149.9084 L 420.56867 161.9993 M 421.29467 162.13697 L 358.97025 149.21799 M 358.91784 150.48401 L 359.7956 128.18684" stroke="#008f00" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(364.5 136.526)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="25.8355" y="15">imshow</tspan>
+        </text>
+      </g>
+      <g id="Graphic_18">
+        <title>Square</title>
+        <rect x="65.5" y="283.5" width="171.5" height="34.5"/>
+        <path d="M 64.146766 283.50132 L 239.1719 283.33005 M 237.8945 281.483 L 237.23922 320.15727 M 238.67147 318.14344 L 65.66144 318.5804 M 66.622556 319.8641 L 65.454795 282.03564 M 64.45919 283.11075 L 238.17547 282.80845 M 238.49642 281.1754 L 237.68165 317.8361 M 238.9844 318.0055 L 66.89544 318.3 M 66.89837 319.5527 L 65.52296 283.19644" stroke="#0da7a9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(70.5 282.302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="16.006" y="15">code to download </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="48.014" y="33.448">networks</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <title>Heart</title>
+        <path d="M 79.48176 318.45352 C 79.48176 318.45352 74.58701 303.35516 55.11236 313.17467 C 35.63771 322.9942 78.07829 349.5 78.07829 349.5 C 78.07829 349.5 119.1502 326.0213 106.62332 313.91285 C 94.09645 301.8044 79.48176 318.45352 79.48176 318.45352 Z"/>
+        <path d="M 80.68436 320.01087 C 79.48176 318.45352 73.00412 301.7274 55.11236 313.17467 C 36.57712 322.35225 78.07829 349.5 79.86944 350.9304 M 77.405 349.97038 C 78.07829 349.5 118.03675 326.12295 106.62332 313.91285 C 94.26192 302.3067 79.48176 318.45352 78.18663 319.41345 M 80.68436 320.01087 C 80.10676 317.82852 73.62912 301.1024 55.73736 312.54967 C 37.20212 321.72725 78.70329 348.875 80.49444 350.3054 M 77.405 349.97038 C 78.70329 348.875 118.66175 325.49795 107.24832 313.28785 C 94.88692 301.6817 80.10676 317.82852 78.81163 318.78845" stroke="#f3593b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(55 322.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="6.722" y="11">clojure</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <title>Heart</title>
+        <path d="M 239.48176 371.4535 C 239.48176 371.4535 234.587 356.35516 215.11236 366.17467 C 195.6377 375.9942 238.0783 402.5 238.0783 402.5 C 238.0783 402.5 279.1502 379.0213 266.62332 366.91285 C 254.09645 354.8044 239.48176 371.4535 239.48176 371.4535 Z"/>
+        <path d="M 240.5363 372.81914 C 239.48176 371.4535 236.07757 357.94854 215.11236 366.17467 C 194.2457 375.3007 238.0783 402.5 238.73178 402.9989 M 236.64355 403.50234 C 238.0783 402.5 280.20293 378.69294 266.62332 366.91285 C 252.94193 354.97623 239.48176 371.4535 237.90087 372.7172 M 240.5363 372.81914 C 240.10676 370.8285 236.70257 357.32354 215.73736 365.54967 C 194.8707 374.6757 238.7033 401.875 239.35678 402.3739 M 236.64355 403.50234 C 238.7033 401.875 280.82793 378.06794 267.24832 366.28785 C 253.56693 354.35123 240.10676 370.8285 238.52587 372.0922" stroke="#f3593b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(215 375.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="6.722" y="11">clojure</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <title>Heart</title>
+        <path d="M 253.98176 145.45352 C 253.98176 145.45352 249.087 130.35516 229.61236 140.17467 C 210.1377 149.99419 252.5783 176.5 252.5783 176.5 C 252.5783 176.5 293.6502 153.0213 281.12332 140.91285 C 268.59645 128.80441 253.98176 145.45352 253.98176 145.45352 Z"/>
+        <path d="M 254.88825 146.6274 C 253.98176 145.45352 249.28898 130.80763 229.61236 140.17467 C 210.77632 149.24918 252.5783 176.5 253.53845 177.26412 M 251.91916 176.96049 C 252.5783 176.5 293.38464 152.26293 281.12332 140.91285 C 269.6064 128.64577 253.98176 145.45352 252.0263 146.90564 M 254.88825 146.6274 C 254.60676 144.82852 249.91398 130.18263 230.23736 139.54967 C 211.40132 148.62418 253.2033 175.875 254.16345 176.63912 M 251.91916 176.96049 C 253.2033 175.875 294.00964 151.63793 281.74832 140.28785 C 270.2314 128.02077 254.60676 144.82852 252.6513 146.28064" stroke="#f3593b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(229.5 149.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="6.722" y="11">clojure</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <title>Circle</title>
+        <ellipse cx="668.548" cy="329.5" rx="24.5480392252956" ry="20.0000319580379"/>
+        <path d="M 685.906 315.35788 C 694.749 324.29482 694.4555 336.02317 685.906 343.6421 C 675.8386 352.07847 659.7534 351.86596 651.19 343.6421 C 640.4547 334.67472 641.02165 322.9332 651.19 315.35788 C 661.8482 308.16797 675.5656 307.40516 685.906 315.35788 M 685.906 315.35788 C 695.374 323.66982 695.0805 335.39817 686.531 343.0171 C 676.4636 351.45347 660.3784 351.24096 651.815 343.0171 C 641.0797 334.04972 641.64665 322.3082 651.815 314.73288 C 662.4732 307.54297 676.1906 306.78016 686.531 314.73288" stroke="#8ebd5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(653.9096 322.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="3.8624" y="11">java</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <title>Circle</title>
+        <ellipse cx="654.627" cy="230.5" rx="24.5480392252959" ry="20.0000319580379"/>
+        <path d="M 671.98504 216.35788 C 680.50844 224.56424 682.36076 235.70134 671.98504 244.64212 C 661.8884 253.6126 647.05756 251.9303 637.269 244.64212 C 628.7016 237.21097 626.8661 224.47635 637.269 216.35788 C 646.4434 208.6831 663.021 209.33696 671.98504 216.35788 M 671.98504 216.35788 C 681.13344 223.93924 682.98576 235.07634 672.61004 244.01712 C 662.5134 252.9876 647.68256 251.3053 637.894 244.01712 C 629.3266 236.58597 627.4911 223.85135 637.894 215.73288 C 647.0684 208.0581 663.646 208.71196 672.61004 215.73288" stroke="#8ebd5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(639.9886 223.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="3.8624" y="11">java</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <title>Circle</title>
+        <ellipse cx="319.0395" cy="156.5" rx="22.2500355533171" ry="20.0000319580379"/>
+        <path d="M 334.7726 142.35788 C 344.49204 149.85212 343.5962 162.85147 334.7726 170.64212 C 325.57393 177.71655 311.0073 179.41177 303.3064 170.64212 C 295.29187 162.30485 293.62438 150.97254 303.3064 142.35788 C 312.5409 134.2175 325.6355 133.8371 334.7726 142.35788 M 334.7726 142.35788 C 345.11704 149.22712 344.2212 162.22647 335.3976 170.01712 C 326.19893 177.09155 311.6323 178.78677 303.9314 170.01712 C 295.91687 161.67985 294.24938 150.34754 303.9314 141.73288 C 313.1659 133.5925 326.2605 133.2121 335.3976 141.73288" stroke="#8ebd5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(306.2395 149.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x="2.0240002" y="11">java</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <title>Display text</title>
+        <text transform="translate(585.5475 138.5)" fill="black">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="400" fill="black" x="0" y="25">filters</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <title>Display text</title>
+        <text transform="translate(257 98.5)" fill="black">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="400" fill="black" x="0" y="25">core</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <title>Display text</title>
+        <text transform="translate(97 201)" fill="black">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="400" fill="black" x="0" y="25">dnn</tspan>
+        </text>
+      </g>
+      <g id="Graphic_29">
+        <title>Circle</title>
+        <ellipse cx="610.127" cy="329.5" rx="24.5480392252959" ry="20.0000319580379"/>
+        <path d="M 627.48504 315.35788 C 636.88395 322.38445 637.0996 335.51154 627.48504 343.6421 C 617.2423 350.33692 601.2641 351.19824 592.76896 343.6421 C 582.6756 336.47285 583.6665 323.71892 592.76896 315.35788 C 601.9438 307.7319 617.98386 308.0497 627.48504 315.35788 M 627.48504 315.35788 C 637.50895 321.75945 637.7246 334.88654 628.11004 343.0171 C 617.8673 349.71192 601.8891 350.57324 593.39396 343.0171 C 583.3006 335.84785 584.2915 323.09392 593.39396 314.73288 C 602.5688 307.1069 618.60886 307.4247 628.11004 314.73288" stroke="#8ebd5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(595.4886 322.332)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" x=".19040008" y="11">kotlin</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <title>Display text</title>
+        <text transform="translate(274 381)" fill="black">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="400" fill="black" x="0" y="25">clojure samples</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <title>Display text</title>
+        <text transform="translate(527.3475 436.5)" fill="black">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="400" fill="black" x="0" y="25">jvm samples</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
