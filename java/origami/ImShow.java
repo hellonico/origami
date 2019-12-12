@@ -44,6 +44,19 @@ public class ImShow {
         setCloseOption(0);
     }
 
+    public ImShow(String title, boolean fullscreen) {
+        this(title);
+        if(fullscreen) {
+            java.awt.GraphicsDevice d = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+            d.setFullScreenWindow(Window);
+            Dimension di = d.getFullScreenWindow().getSize();
+            Height = di.height;
+            Width = di.width;
+            SizeCustom = true;
+        }
+    }
+
+
     public ImShow(String title, int width, int height) {
         SizeCustom = true;
         Height = height;

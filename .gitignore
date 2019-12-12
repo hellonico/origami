@@ -19,3 +19,5 @@ output.clj
 rgb.clj
 video.clj
 .eastwood
+.idea/
+origami.iml
