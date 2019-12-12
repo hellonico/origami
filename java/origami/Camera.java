@@ -1,6 +1,7 @@
 package origami;
 
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
 import java.util.function.Function;
@@ -26,6 +27,11 @@ public class Camera {
         return this;
     }
 
+    public Camera filter(Filter filter) {
+        this.filter = mat -> filter.apply(mat);
+        return this;
+    }
+
     public Camera device(Object o) {
         if (o instanceof String) {
             cap = new VideoCapture((String) o);
@@ -48,7 +54,7 @@ public class Camera {
     public static void main(String[] args) throws Exception {
         Origami.init();
         Filter p = mat -> {
-            cvtColor(mat,mat, COLOR_BGR2GRAY);
+            Imgproc.cvtColor(mat,mat, COLOR_BGR2GRAY);
             cvtColor(mat,mat, COLOR_GRAY2BGR);
             return mat;
         };
