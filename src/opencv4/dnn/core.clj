@@ -32,9 +32,10 @@
 (defn- load-labels [files]
   (let [l (find-first-file files "labels" )
         _labels (cond  (= "" l) (find-first-file files "names") :else l ) 
-        labels (cond  (= "" _labels) (find-first-file files "txt") :else l ) 
+        labels (cond  (= "" _labels) (find-first-file files "txt") :else _labels ) 
         ]
-    ; (println "Loading labels:" labels)
+      
+    (println "Loading labels:" labels)
     ; (println (map #(.getName %) files))
     (line-seq (io/reader labels))))
 

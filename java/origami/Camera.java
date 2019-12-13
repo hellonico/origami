@@ -11,7 +11,7 @@ import static org.opencv.imgproc.Imgproc.*;
 public class Camera {
     VideoCapture cap = new VideoCapture(0);
     ImShow ims = new ImShow("Origami");
-    Function<Mat,Mat> filter = mat -> mat;
+    Function<Mat, Mat> filter = mat -> mat;
 
     public Camera() {
 
@@ -22,7 +22,12 @@ public class Camera {
         return this;
     }
 
-    public Camera filter(Function<Mat,Mat> filter) {
+    public Camera size(int width, int height) {
+        ims = new ImShow("Origami", width,height);
+        return this;
+    }
+
+    public Camera filter(Function<Mat, Mat> filter) {
         this.filter = filter;
         return this;
     }
@@ -54,8 +59,8 @@ public class Camera {
     public static void main(String[] args) throws Exception {
         Origami.init();
         Filter p = mat -> {
-            Imgproc.cvtColor(mat,mat, COLOR_BGR2GRAY);
-            cvtColor(mat,mat, COLOR_GRAY2BGR);
+            Imgproc.cvtColor(mat, mat, COLOR_BGR2GRAY);
+            cvtColor(mat, mat, COLOR_GRAY2BGR);
             return mat;
         };
         new Camera().device(0).fullscreen().filter(p).run();
