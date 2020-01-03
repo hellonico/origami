@@ -9,12 +9,12 @@ import java.util.function.Function;
 import static org.opencv.imgproc.Imgproc.*;
 
 public class Camera {
-    VideoCapture cap = new VideoCapture(0);
+    VideoCapture cap;
     ImShow ims = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
     public Camera() {
-
+        
     }
 
     public Camera fullscreen() {
@@ -49,6 +49,9 @@ public class Camera {
     }
 
     public void run() {
+        if(cap==null) {
+            cap = new VideoCapture(0);
+        }
         Mat matFrame = new Mat();
         while (cap.grab()) {
             cap.retrieve(matFrame);
