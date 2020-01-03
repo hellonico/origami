@@ -40,7 +40,7 @@
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
-  	[org.clojure/clojure "1.10.0"]
+  	; [org.clojure/clojure "1.10.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
     [opencv/opencv "4.1.2-1"]
     [opencv/opencv-native "4.1.2-1"]
