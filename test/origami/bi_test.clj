@@ -2,13 +2,14 @@
   (:require
     [opencv4.utils :as u]
     [clojure.test :refer :all]
-    [opencv4.core :as cv]))
+    [opencv4.core :as cv])
+  (:import (org.opencv.core Mat)))
 
 (deftest a-test
   (testing "Cat in bowl."
   (let [
-  	img 	(-> "doc/cat_in_bowl.jpeg" (cv/imread))
-  	looped  (-> img (u/>>>) (u/<<<))
+  	img ^Mat (-> "doc/cat_in_bowl.jpeg" (cv/imread))
+  	looped ^Mat (-> img (u/>>>) (u/<<<))
   	]
   (is 
   	(= (.height img) (.height looped))

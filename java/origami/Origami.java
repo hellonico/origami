@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 
@@ -20,6 +21,8 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
 import org.scijava.nativelib.NativeLoader;
+
+import static org.opencv.core.Core.getNumberOfCPUs;
 
 public class Origami {
 
@@ -71,10 +74,22 @@ public class Origami {
         return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), flag);
     }
 
+    private static boolean isOpenCVLoaded() {
+        try {
+            return getNumberOfCPUs() != 0;
+        } catch (UnsatisfiedLinkError e) {
+            return false;
+        }
+
+    }
     public static void init() {
         try {
-            NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-            System.out.println("Loaded:" + Core.NATIVE_LIBRARY_NAME);
+            if(isOpenCVLoaded()) {
+                System.out.println("Already loaded:" + Core.NATIVE_LIBRARY_NAME);
+            } else {
+                NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+                System.out.println("Loaded:" + Core.NATIVE_LIBRARY_NAME);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

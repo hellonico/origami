@@ -7,7 +7,7 @@
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
-(org.scijava.nativelib.NativeLoader/loadLibrary Core/NATIVE_LIBRARY_NAME (make-array String 0))
+(origami.Origami/init)
 
 ; NOT AUTO GENERATED YET
 

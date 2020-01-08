@@ -1,8 +1,6 @@
 (ns origami.dnn-test
- (:require 
-    [opencv4.core :refer :all]
+ (:require
     [clojure.test :refer :all]
-    [opencv4.utils :as u]
     [opencv4.dnn.core :as origami-dnn]))
 
 (defn load-yolo []

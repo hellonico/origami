@@ -1,8 +1,9 @@
 (ns opencv4.dnn.core
   (:gen-class
+    :direct-linking true
+;    :disable-locals-clearing true
     :name origami.Dnn
-    :methods [
-              #^{:static true} [readNetFromSpec [String] java.util.List]])
+    :methods [#^{:static true} [readNetFromSpec [String] java.util.List]])
   (:require [opencv4.core :refer [min-max-loc new-size new-scalar imread imwrite]]
             [opencv4.dnn :as dnn]
             [clojure.java.io :as io]
