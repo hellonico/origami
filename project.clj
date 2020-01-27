@@ -10,7 +10,7 @@
       _ (println (str platform mxnet))
       ]
 
-(defproject origami "4.1.2-9-SNAPSHOT"
+(defproject origami "4.2.0-0-SNAPSHOT"
   :description "OpenCV4 Wrapper"
   :aot [opencv4.dnn.core]
   :url "https://github.com/hellonico/origami"
@@ -42,8 +42,8 @@
   :dependencies [
   	; [org.clojure/clojure "1.10.0"]
     [org.scijava/native-lib-loader "2.3.1"]                 
-    [opencv/opencv "4.1.2-1"]
-    [opencv/opencv-native "4.1.2-1"]
+    [opencv/opencv "4.2.0-0"]
+    [opencv/opencv-native "4.2.0-0"]
     [hellonico/gorilla-repl "0.4.1" :scope "provided"]
     [org.slf4j/slf4j-nop "1.7.28"]
     ]))

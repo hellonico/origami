@@ -7,7 +7,7 @@
     [org.opencv.imgcodecs Imgcodecs]
     [org.opencv.imgproc Imgproc]))
 
-(origami.Origami/init)
+(org.scijava.nativelib.NativeLoader/loadLibrary Core/NATIVE_LIBRARY_NAME (make-array String 0))
 
 ; NOT AUTO GENERATED YET
 
@@ -125,23 +125,6 @@
   (.put mat 0 0 b) mat)
 (defn << [mat]
   (->bytes mat))
-(defn new-matofdouble 
-([array_d_0 ] 
-  (new org.opencv.core.MatOfDouble array_d_0 ))
-([] 
-  (new org.opencv.core.MatOfDouble )))
-(defn new-size 
-([array_d_0 ] 
-  (new org.opencv.core.Size array_d_0 ))
-([] 
-  (new org.opencv.core.Size ))
-([double_0 double_1 ] 
-  (new org.opencv.core.Size double_0 double_1 )))
-(defn new-matofpoint2f 
-([array_lorg_opencv_core_point_0 ] 
-  (new org.opencv.core.MatOfPoint2f array_lorg_opencv_core_point_0 ))
-([] 
-  (new org.opencv.core.MatOfPoint2f )))
 (defn new-rect 
 ([array_d_0 ] 
   (new org.opencv.core.Rect array_d_0 ))
@@ -151,11 +134,6 @@
   (new org.opencv.core.Rect ))
 ([int_0 int_1 int_2 int_3 ] 
   (new org.opencv.core.Rect int_0 int_1 int_2 int_3 )))
-(defn new-matofpoint 
-([array_lorg_opencv_core_point_0 ] 
-  (new org.opencv.core.MatOfPoint array_lorg_opencv_core_point_0 ))
-([] 
-  (new org.opencv.core.MatOfPoint )))
 (defn new-point 
 ([array_d_0 ] 
   (new org.opencv.core.Point array_d_0 ))
@@ -163,13 +141,11 @@
   (new org.opencv.core.Point ))
 ([double_0 double_1 ] 
   (new org.opencv.core.Point double_0 double_1 )))
-(defn new-videocapture 
-([java_lang_string_0 ] 
-  (new org.opencv.videoio.VideoCapture java_lang_string_0 ))
-([int_0 int_1 ] 
-  (new org.opencv.videoio.VideoCapture int_0 int_1 ))
+(defn new-arraylist 
+([java_util_collection_0 ] 
+  (new java.util.ArrayList java_util_collection_0 ))
 ([] 
-  (new org.opencv.videoio.VideoCapture )))
+  (new java.util.ArrayList )))
 (defn new-matofbyte 
 ([int_0 int_1 array_b_2 ] 
   (new org.opencv.core.MatOfByte int_0 int_1 array_b_2 ))
@@ -177,6 +153,31 @@
   (new org.opencv.core.MatOfByte array_b_0 ))
 ([] 
   (new org.opencv.core.MatOfByte )))
+(defn new-cascadeclassifier 
+([] 
+  (new org.opencv.objdetect.CascadeClassifier ))
+([java_lang_string_0 ] 
+  (new org.opencv.objdetect.CascadeClassifier java_lang_string_0 )))
+(defn new-matofdouble 
+([array_d_0 ] 
+  (new org.opencv.core.MatOfDouble array_d_0 ))
+([] 
+  (new org.opencv.core.MatOfDouble )))
+(defn new-matofpoint 
+([array_lorg_opencv_core_point_0 ] 
+  (new org.opencv.core.MatOfPoint array_lorg_opencv_core_point_0 ))
+([] 
+  (new org.opencv.core.MatOfPoint )))
+(defn new-matofint 
+([array_i_0 ] 
+  (new org.opencv.core.MatOfInt array_i_0 ))
+([] 
+  (new org.opencv.core.MatOfInt )))
+(defn new-matofpoint2f 
+([array_lorg_opencv_core_point_0 ] 
+  (new org.opencv.core.MatOfPoint2f array_lorg_opencv_core_point_0 ))
+([] 
+  (new org.opencv.core.MatOfPoint2f )))
 (defn new-mat 
 ([org_opencv_core_mat_0 org_opencv_core_range_1 org_opencv_core_range_2 ] 
   (new org.opencv.core.Mat org_opencv_core_mat_0 org_opencv_core_range_1 org_opencv_core_range_2 ))
@@ -184,30 +185,12 @@
   (new org.opencv.core.Mat int_0 int_1 int_2 org_opencv_core_scalar_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_range_1 ] 
   (new org.opencv.core.Mat org_opencv_core_mat_0 org_opencv_core_range_1 ))
+([] 
+  (new org.opencv.core.Mat ))
 ([long_0 ] 
   (new org.opencv.core.Mat long_0 ))
-([] 
-  (new org.opencv.core.Mat )))
-(defn new-arraylist 
-([java_util_collection_0 ] 
-  (new java.util.ArrayList java_util_collection_0 ))
-([] 
-  (new java.util.ArrayList )))
-(defn new-cascadeclassifier 
-([] 
-  (new org.opencv.objdetect.CascadeClassifier ))
-([java_lang_string_0 ] 
-  (new org.opencv.objdetect.CascadeClassifier java_lang_string_0 )))
-(defn new-matoffloat 
-([array_f_0 ] 
-  (new org.opencv.core.MatOfFloat array_f_0 ))
-([] 
-  (new org.opencv.core.MatOfFloat )))
-(defn new-matofint 
-([array_i_0 ] 
-  (new org.opencv.core.MatOfInt array_i_0 ))
-([] 
-  (new org.opencv.core.MatOfInt )))
+([int_0 int_1 int_2 java_nio_bytebuffer_3 long_4 ] 
+  (new org.opencv.core.Mat int_0 int_1 int_2 java_nio_bytebuffer_3 long_4 )))
 (defn new-rotatedrect 
 ([array_d_0 ] 
   (new org.opencv.core.RotatedRect array_d_0 ))
@@ -215,11 +198,11 @@
   (new org.opencv.core.RotatedRect org_opencv_core_point_0 org_opencv_core_size_1 double_2 ))
 ([] 
   (new org.opencv.core.RotatedRect )))
-(defn new-matofrect 
-([array_lorg_opencv_core_rect_0 ] 
-  (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
+(defn new-matoffloat 
+([array_f_0 ] 
+  (new org.opencv.core.MatOfFloat array_f_0 ))
 ([] 
-  (new org.opencv.core.MatOfRect )))
+  (new org.opencv.core.MatOfFloat )))
 (defn new-scalar 
 ([array_d_0 ] 
   (new org.opencv.core.Scalar array_d_0 ))
@@ -229,6 +212,25 @@
   (new org.opencv.core.Scalar double_0 double_1 double_2 ))
 ([double_0 double_1 double_2 double_3 ] 
   (new org.opencv.core.Scalar double_0 double_1 double_2 double_3 )))
+(defn new-size 
+([array_d_0 ] 
+  (new org.opencv.core.Size array_d_0 ))
+([] 
+  (new org.opencv.core.Size ))
+([double_0 double_1 ] 
+  (new org.opencv.core.Size double_0 double_1 )))
+(defn new-videocapture 
+([java_lang_string_0 ] 
+  (new org.opencv.videoio.VideoCapture java_lang_string_0 ))
+([int_0 int_1 ] 
+  (new org.opencv.videoio.VideoCapture int_0 int_1 ))
+([] 
+  (new org.opencv.videoio.VideoCapture )))
+(defn new-matofrect 
+([array_lorg_opencv_core_rect_0 ] 
+  (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
+([] 
+  (new org.opencv.core.MatOfRect )))
 ;;; Imgcodecs
 (def IMWRITE_JPEG_QUALITY Imgcodecs/IMWRITE_JPEG_QUALITY)
 (def IMWRITE_JPEG_PROGRESSIVE Imgcodecs/IMWRITE_JPEG_PROGRESSIVE)
@@ -288,23 +290,57 @@
 (defn resize
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 ]
+  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 int_5 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 ))
 )
 
 (defn resize!
 ([org_opencv_core_mat_0 org_opencv_core_size_2 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ]
+  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ]
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ) org_opencv_core_mat_0 )
+)
+
+(defn line
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ]
+  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
+  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ]
+  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
+)
+
+(defn remap
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ))
+)
+
+(defn remap!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
+)
+
+(defn bounding-rect
+([org_opencv_core_mat_0 ]
+  (Imgproc/boundingRect org_opencv_core_mat_0 ))
 )
 
 (defn get-affine-transform
@@ -313,19 +349,19 @@
 )
 
 (defn get-gabor-kernel
-([org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 ]
-  (Imgproc/getGaborKernel org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 ))
 ([org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 int_6 ]
   (Imgproc/getGaborKernel org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 int_6 ))
+([org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 ]
+  (Imgproc/getGaborKernel org_opencv_core_size_0 double_1 double_2 double_3 double_4 double_5 ))
 ([org_opencv_core_size_0 double_1 double_2 double_3 double_4 ]
   (Imgproc/getGaborKernel org_opencv_core_size_0 double_1 double_2 double_3 double_4 ))
 )
 
 (defn get-gaussian-kernel
-([int_0 double_1 int_2 ]
-  (Imgproc/getGaussianKernel int_0 double_1 int_2 ))
 ([int_0 double_1 ]
   (Imgproc/getGaussianKernel int_0 double_1 ))
+([int_0 double_1 int_2 ]
+  (Imgproc/getGaussianKernel int_0 double_1 int_2 ))
 )
 
 (defn get-perspective-transform
@@ -355,28 +391,28 @@
 )
 
 (defn moments
-([org_opencv_core_mat_0 boolean_1 ]
-  (Imgproc/moments org_opencv_core_mat_0 boolean_1 ))
 ([org_opencv_core_mat_0 ]
   (Imgproc/moments org_opencv_core_mat_0 ))
+([org_opencv_core_mat_0 boolean_1 ]
+  (Imgproc/moments org_opencv_core_mat_0 boolean_1 ))
 )
 
 (defn phase-correlate
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 array_d_3 ]
   (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 array_d_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
 (defn phase-correlate!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 array_d_3 ]
   (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 array_d_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 ]
-  (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Imgproc/phaseCorrelate org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn create-clahe
@@ -399,22 +435,22 @@
 )
 
 (defn create-line-segment-detector
-([int_0 ]
-  (Imgproc/createLineSegmentDetector int_0 ))
-([]
-  (Imgproc/createLineSegmentDetector ))
-([int_0 double_1 double_2 double_3 double_4 ]
-  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 ))
-([int_0 double_1 double_2 double_3 double_4 double_5 double_6 int_7 ]
-  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 double_5 double_6 int_7 ))
-([int_0 double_1 double_2 double_3 ]
-  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 ))
 ([int_0 double_1 double_2 double_3 double_4 double_5 ]
   (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 double_5 ))
+([int_0 double_1 double_2 double_3 double_4 double_5 double_6 int_7 ]
+  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 double_5 double_6 int_7 ))
+([int_0 double_1 double_2 double_3 double_4 ]
+  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 ))
+([int_0 double_1 double_2 double_3 ]
+  (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 ))
 ([int_0 double_1 double_2 double_3 double_4 double_5 double_6 ]
   (Imgproc/createLineSegmentDetector int_0 double_1 double_2 double_3 double_4 double_5 double_6 ))
 ([int_0 double_1 ]
   (Imgproc/createLineSegmentDetector int_0 double_1 ))
+([int_0 ]
+  (Imgproc/createLineSegmentDetector int_0 ))
+([]
+  (Imgproc/createLineSegmentDetector ))
 ([int_0 double_1 double_2 ]
   (Imgproc/createLineSegmentDetector int_0 double_1 double_2 ))
 )
@@ -465,17 +501,17 @@
 )
 
 (defn contour-area
-([org_opencv_core_mat_0 boolean_1 ]
-  (Imgproc/contourArea org_opencv_core_mat_0 boolean_1 ))
 ([org_opencv_core_mat_0 ]
   (Imgproc/contourArea org_opencv_core_mat_0 ))
+([org_opencv_core_mat_0 boolean_1 ]
+  (Imgproc/contourArea org_opencv_core_mat_0 boolean_1 ))
 )
 
 (defn get-font-scale-from-height
-([int_0 int_1 ]
-  (Imgproc/getFontScaleFromHeight int_0 int_1 ))
 ([int_0 int_1 int_2 ]
   (Imgproc/getFontScaleFromHeight int_0 int_1 int_2 ))
+([int_0 int_1 ]
+  (Imgproc/getFontScaleFromHeight int_0 int_1 ))
 )
 
 (defn match-shapes
@@ -546,21 +582,21 @@
 )
 
 (defn connected-components
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_1 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 )
 
 (defn connected-components!
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Imgproc/connectedComponents org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn connected-components-with-stats-with-algorithm
@@ -576,45 +612,45 @@
 (defn connected-components-with-stats
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
-  (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
+  (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ))
 )
 
 (defn connected-components-with-stats!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
-  (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
+  (Imgproc/connectedComponentsWithStats org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ) org_opencv_core_mat_0 )
 )
 
 (defn flood-fill
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
-  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
 )
 
 (defn flood-fill!
 ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 int_7 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
-  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 ]
   (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 org_opencv_core_rect_4 org_opencv_core_scalar_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+  (Imgproc/floodFill org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_point_2 org_opencv_core_scalar_3 ) org_opencv_core_mat_0 )
 )
 
 (defn rotated-rectangle-intersection
@@ -623,21 +659,21 @@
 )
 
 (defn canny
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 ]
+  (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
   (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 boolean_5 ]
   (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 boolean_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 ]
-  (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 double_4 ))
 )
 
 (defn canny!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 ]
+  (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 ]
   (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 boolean_5 ]
   (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 boolean_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 ]
-  (Imgproc/Canny org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 double_4 ) org_opencv_core_mat_0 )
 )
 
 (defn gaussian-blur
@@ -659,73 +695,73 @@
 )
 
 (defn hough-circles
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 ]
+  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ]
+  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 ]
-  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ]
-  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ))
 )
 
 (defn hough-circles!
+([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 ]
+  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ]
+  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 double_3 double_4 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 ]
   (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 ]
-  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ]
-  (Imgproc/HoughCircles org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 double_3 double_4 double_5 double_6 int_7 int_8 ) org_opencv_core_mat_0 )
 )
 
 (defn hough-lines
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 double_8 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 double_8 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
-  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 ]
-  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 ]
+  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 double_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
+  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
 )
 
 (defn hough-lines!
 ([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 double_8 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 double_8 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 int_4 ]
-  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 ]
-  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 ]
   (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 ]
+  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 double_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 ]
+  (Imgproc/HoughLines org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn hough-lines-p
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 ]
   (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 double_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
-  (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 ]
   (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 double_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
+  (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
 )
 
 (defn hough-lines-p!
 ([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 ]
   (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 double_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 int_4 ]
-  (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 int_4 double_5 ]
   (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 double_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 ]
+  (Imgproc/HoughLinesP org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn hough-lines-point-set
@@ -743,92 +779,92 @@
   (Imgproc/HuMoments org_opencv_imgproc_moments_0 org_opencv_core_mat_1 ))
 )
 
-(defn laplacian
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 int_6 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 int_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
-)
-
-(defn laplacian!
-([org_opencv_core_mat_0 int_2 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 double_4 double_5 int_6 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 double_5 int_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 double_4 double_5 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 double_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 double_4 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
-)
-
 (defn scharr
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 int_7 ]
   (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 int_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 double_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 double_5 ))
 )
 
 (defn scharr!
-([org_opencv_core_mat_0 int_2 int_3 int_4 double_5 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 double_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 int_4 ]
-  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 int_7 ]
   (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 int_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 double_5 double_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 double_5 ]
+  (Imgproc/Scharr org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 double_5 ) org_opencv_core_mat_0 )
+)
+
+(defn laplacian
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 int_6 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 double_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 double_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+)
+
+(defn laplacian!
+([org_opencv_core_mat_0 int_2 int_3 double_4 double_5 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 double_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 double_4 double_5 int_6 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 double_5 int_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 double_4 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 double_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 ]
+  (Imgproc/Laplacian org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 )
 
 (defn sobel
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 double_7 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 double_7 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
-  (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 double_7 int_8 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 double_7 int_8 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 double_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
+  (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 )
 
 (defn sobel!
 ([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 double_7 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 double_7 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 int_3 int_4 ]
-  (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 double_7 int_8 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 double_7 int_8 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 double_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 ]
   (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 ]
+  (Imgproc/Sobel org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn accumulate
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn accumulate!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Imgproc/accumulate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 )
 
 (defn accumulate-product
@@ -846,31 +882,31 @@
 )
 
 (defn accumulate-square
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
 (defn accumulate-square!
-([org_opencv_core_mat_0 ]
-  (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Imgproc/accumulateSquare org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn accumulate-weighted
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
-  (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_mat_3 ]
   (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
+  (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
 )
 
 (defn accumulate-weighted!
-([org_opencv_core_mat_0 double_2 ]
-  (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 org_opencv_core_mat_3 ]
   (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 ]
+  (Imgproc/accumulateWeighted org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
 )
 
 (defn adaptive-threshold
@@ -899,23 +935,23 @@
 )
 
 (defn arrowed-line
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 double_7 ]
-  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 double_7 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ]
-  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
-  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ]
   (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ]
+  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
   (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
+  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 double_7 ]
+  (Imgproc/arrowedLine org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 double_7 ))
 )
 
 (defn bilateral-filter
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ]
-  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 int_5 ]
   (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ]
+  (Imgproc/bilateralFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 double_3 double_4 ))
 )
 
 (defn bilateral-filter!
@@ -930,41 +966,41 @@
 (defn blur
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 int_4 ]
   (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 ]
-  (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
   (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 ]
+  (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 org_opencv_core_point_3 ))
 )
 
 (defn blur!
 ([org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 int_4 ]
   (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 int_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 ]
-  (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_size_2 ]
   (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 ]
+  (Imgproc/blur org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 org_opencv_core_point_3 ) org_opencv_core_mat_0 )
 )
 
 (defn box-filter
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
-  (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
+  (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ))
 )
 
 (defn box-filter!
 ([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
-  (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ]
   (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
+  (Imgproc/boxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ) org_opencv_core_mat_0 )
 )
 
 (defn box-points
@@ -987,10 +1023,10 @@
 (defn circle
 ([org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
   (Imgproc/circle org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ]
-  (Imgproc/circle org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 ]
   (Imgproc/circle org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ]
+  (Imgproc/circle org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 ]
   (Imgproc/circle org_opencv_core_mat_0 org_opencv_core_point_1 int_2 org_opencv_core_scalar_3 ))
 )
@@ -1050,21 +1086,21 @@
 )
 
 (defn corner-min-eigen-val
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
-  (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
   (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
+  (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 )
 
 (defn corner-min-eigen-val!
-([org_opencv_core_mat_0 int_2 int_3 int_4 ]
-  (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 ]
   (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 ]
+  (Imgproc/cornerMinEigenVal org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn corner-sub-pix
@@ -1083,17 +1119,17 @@
 )
 
 (defn cvt-color
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 )
 
 (defn cvt-color!
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Imgproc/cvtColor org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn cvt-color-two-plane
@@ -1107,116 +1143,116 @@
 )
 
 (defn demosaicing
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 )
 
 (defn demosaicing!
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Imgproc/demosaicing org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn dilate
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
+  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
+  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
-  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
-  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ))
 )
 
 (defn dilate!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
+  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
+  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
-  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
-  (Imgproc/dilate org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn distance-transform-with-labels
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ]
-  (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 int_5 ]
   (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ]
+  (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ))
 )
 
 (defn distance-transform-with-labels!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ]
-  (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 int_5 ]
   (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ]
+  (Imgproc/distanceTransformWithLabels org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn distance-transform
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
   (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 )
 
 (defn distance-transform!
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 ]
   (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Imgproc/distanceTransform org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn draw-contours
+([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 ]
+  (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 ))
 ([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ]
   (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 ]
   (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 ))
+([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 org_opencv_core_point_8 ]
+  (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 org_opencv_core_point_8 ))
 ([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 ]
   (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 ))
 ([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 ]
   (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 ))
-([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 org_opencv_core_point_8 ]
-  (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 int_5 org_opencv_core_mat_6 int_7 org_opencv_core_point_8 ))
-([org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 ]
-  (Imgproc/drawContours org_opencv_core_mat_0 java_util_list_1 int_2 org_opencv_core_scalar_3 int_4 ))
 )
 
 (defn draw-marker
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 ]
-  (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ]
-  (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 int_6 ]
   (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 ]
   (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 ]
+  (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ]
+  (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 ]
   (Imgproc/drawMarker org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_scalar_2 ))
 )
 
 (defn ellipse
-([org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 ]
-  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 int_3 ]
   (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 int_3 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 ]
-  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 int_9 ]
-  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 int_9 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 ]
-  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 ]
-  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 ))
+([org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 ]
+  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 int_3 int_4 ]
   (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_rotatedrect_1 org_opencv_core_scalar_2 int_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 ]
+  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 ]
+  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 ]
+  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 int_9 ]
+  (Imgproc/ellipse org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_size_2 double_3 double_4 double_5 org_opencv_core_scalar_6 int_7 int_8 int_9 ))
 )
 
 (defn ellipse-2-poly
@@ -1235,56 +1271,56 @@
 )
 
 (defn erode
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ))
 )
 
 (defn erode!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 ]
   (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/erode org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_point_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
 )
 
 (defn fill-convex-poly
+([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 ]
+  (Imgproc/fillConvexPoly org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 int_4 ]
   (Imgproc/fillConvexPoly org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 ]
   (Imgproc/fillConvexPoly org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 ))
-([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 ]
-  (Imgproc/fillConvexPoly org_opencv_core_mat_0 org_opencv_core_matofpoint_1 org_opencv_core_scalar_2 int_3 ))
 )
 
 (defn fill-poly
-([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 org_opencv_core_point_5 ]
-  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 org_opencv_core_point_5 ))
-([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 ]
-  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 ))
-([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 ]
-  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 ))
 ([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 ]
   (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 ))
+([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 ]
+  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 ))
+([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 ]
+  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 ))
+([org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 org_opencv_core_point_5 ]
+  (Imgproc/fillPoly org_opencv_core_mat_0 java_util_list_1 org_opencv_core_scalar_2 int_3 int_4 org_opencv_core_point_5 ))
 )
 
 (defn filter-2-d
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
-  (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 int_6 ]
   (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
+  (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 ]
   (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ]
@@ -1292,10 +1328,10 @@
 )
 
 (defn filter-2-d!
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
-  (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 int_6 ]
   (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 int_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
+  (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 ]
   (Imgproc/filter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 double_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 ]
@@ -1320,19 +1356,19 @@
 )
 
 (defn get-deriv-kernels
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 int_6 ]
-  (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 ]
   (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 int_6 ]
+  (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 boolean_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
   (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
 )
 
 (defn get-deriv-kernels!
-([org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 int_6 ]
-  (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 int_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 ]
   (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 int_6 ]
+  (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 boolean_5 int_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 ]
   (Imgproc/getDerivKernels org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
 )
@@ -1345,50 +1381,50 @@
 )
 
 (defn good-features-to-track
-([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 ]
-  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 ))
-([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 ]
-  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 ))
+([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 ]
+  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 ))
+([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 ]
+  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 boolean_8 ]
   (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 boolean_8 ))
 ([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 boolean_8 double_9 ]
   (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 int_7 boolean_8 double_9 ))
-([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 boolean_7 ]
-  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 boolean_7 ))
-([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 ]
-  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 ]
+  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 org_opencv_core_mat_5 ))
+([org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 ]
+  (Imgproc/goodFeaturesToTrack org_opencv_core_mat_0 org_opencv_core_matofpoint_1 int_2 double_3 double_4 ))
 )
 
 (defn grab-cut
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ]
-  (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 ]
   (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ]
+  (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ))
 )
 
 (defn grab-cut!
-([org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ]
-  (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 ]
   (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ]
+  (Imgproc/grabCut org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_rect_2 org_opencv_core_mat_3 org_opencv_core_mat_4 int_5 int_6 ) org_opencv_core_mat_0 )
 )
 
 (defn integral-3
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
   (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
-  (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+  (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
 )
 
 (defn integral-3!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
   (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
-  (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+  (Imgproc/integral3 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn integral-2
@@ -1410,17 +1446,17 @@
 )
 
 (defn integral
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
 (defn integral!
-([org_opencv_core_mat_0 ]
-  (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Imgproc/integral org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn invert-affine-transform
@@ -1483,238 +1519,238 @@
 )
 
 (defn morphology-ex
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 ]
   (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ]
   (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ))
 )
 
 (defn morphology-ex!
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 ]
   (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 ]
   (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ]
-  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 int_5 int_6 org_opencv_core_scalar_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ]
+  (Imgproc/morphologyEx org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
 )
 
 (defn polylines
 ([org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 ]
   (Imgproc/polylines org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 ))
-([org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 ]
-  (Imgproc/polylines org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 ]
   (Imgproc/polylines org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 ))
 ([org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
   (Imgproc/polylines org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
+([org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 ]
+  (Imgproc/polylines org_opencv_core_mat_0 java_util_list_1 boolean_2 org_opencv_core_scalar_3 int_4 int_5 ))
 )
 
 (defn pre-corner-detect
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
-  (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
   (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
+  (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 )
 
 (defn pre-corner-detect!
-([org_opencv_core_mat_0 int_2 ]
-  (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 ]
   (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 ]
+  (Imgproc/preCornerDetect org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 )
 
 (defn put-text
-([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ]
-  (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ))
-([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 ]
-  (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 ))
 ([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8 ]
   (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 boolean_8 ))
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ]
+  (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 ))
 ([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 ]
   (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 ))
+([org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 ]
+  (Imgproc/putText org_opencv_core_mat_0 java_lang_string_1 org_opencv_core_point_2 int_3 double_4 org_opencv_core_scalar_5 int_6 int_7 ))
 )
 
 (defn pyr-down
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ]
-  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
-  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
+  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ]
+  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ))
 )
 
 (defn pyr-down!
-([org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ]
-  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 ]
-  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 ]
+  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ]
+  (Imgproc/pyrDown org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn pyr-mean-shift-filtering
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
-  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
-  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 org_opencv_core_termcriteria_5 ]
   (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 org_opencv_core_termcriteria_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
+  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
+  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
 )
 
 (defn pyr-mean-shift-filtering!
-([org_opencv_core_mat_0 double_2 double_3 int_4 ]
-  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 ]
-  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 int_4 org_opencv_core_termcriteria_5 ]
   (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 org_opencv_core_termcriteria_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 ]
+  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 ]
+  (Imgproc/pyrMeanShiftFiltering org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn pyr-up
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_1 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
-  (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ]
   (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ]
+  (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 ))
 )
 
 (defn pyr-up!
 ([org_opencv_core_mat_0 ]
   (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 ]
-  (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ]
   (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_size_2 ]
+  (Imgproc/pyrUp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
 )
 
 (defn rectangle
-([org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 int_3 int_4 ]
-  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 int_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ]
-  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 int_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
-  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 ]
   (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_rect_1 org_opencv_core_scalar_2 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
+  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ]
+  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ]
+  (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
   (Imgproc/rectangle org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
 )
 
 (defn sep-filter-2-d
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
   (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ))
 )
 
 (defn sep-filter-2-d!
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ]
-  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ]
   (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ]
+  (Imgproc/sepFilter2D org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_point_5 double_6 int_7 ) org_opencv_core_mat_0 )
 )
 
 (defn spatial-gradient
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ]
   (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ]
   (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 int_4 ))
 )
 
 (defn spatial-gradient!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ]
   (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ]
   (Imgproc/spatialGradient org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 int_4 ) org_opencv_core_mat_0 )
 )
 
 (defn sqr-box-filter
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
-  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 ]
   (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
-  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ]
   (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
+  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
+  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ))
 )
 
 (defn sqr-box-filter!
-([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
-  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 ]
   (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
-  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ]
   (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ]
+  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ]
+  (Imgproc/sqrBoxFilter org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_size_3 org_opencv_core_point_4 boolean_5 int_6 ) org_opencv_core_mat_0 )
 )
 
 (defn warp-affine
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
-  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ]
   (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ]
   (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
+  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ))
 )
 
 (defn warp-affine!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
-  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ]
   (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ]
   (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
+  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/warpAffine org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
 )
 
 (defn warp-perspective
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ]
   (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ))
 )
 
 (defn warp-perspective!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ]
-  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ]
   (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ]
+  (Imgproc/warpPerspective org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_size_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
 )
 
 (defn warp-polar
@@ -1742,40 +1778,6 @@
   (Imgproc/getTextSize java_lang_string_0 int_1 double_2 int_3 array_i_4 ))
 )
 
-(defn bounding-rect
-([org_opencv_core_mat_0 ]
-  (Imgproc/boundingRect org_opencv_core_mat_0 ))
-)
-
-(defn line
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ]
-  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ]
-  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ]
-  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ]
-  (Imgproc/line org_opencv_core_mat_0 org_opencv_core_point_1 org_opencv_core_point_2 org_opencv_core_scalar_3 int_4 int_5 int_6 ))
-)
-
-(defn remap
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ))
-)
-
-(defn remap!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ]
-  (Imgproc/remap org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 org_opencv_core_scalar_6 ) org_opencv_core_mat_0 )
-)
-
 (def FONT_HERSHEY_SIMPLEX Imgproc/FONT_HERSHEY_SIMPLEX)
 (def FONT_HERSHEY_PLAIN Imgproc/FONT_HERSHEY_PLAIN)
 (def FONT_HERSHEY_DUPLEX Imgproc/FONT_HERSHEY_DUPLEX)
@@ -1785,6 +1787,46 @@
 (def FONT_HERSHEY_SCRIPT_SIMPLEX Imgproc/FONT_HERSHEY_SCRIPT_SIMPLEX)
 (def FONT_HERSHEY_SCRIPT_COMPLEX Imgproc/FONT_HERSHEY_SCRIPT_COMPLEX)
 (def FONT_ITALIC Imgproc/FONT_ITALIC)
+(def CV_GAUSSIAN_5x5 Imgproc/CV_GAUSSIAN_5x5)
+(def CV_SCHARR Imgproc/CV_SCHARR)
+(def CV_MAX_SOBEL_KSIZE Imgproc/CV_MAX_SOBEL_KSIZE)
+(def CV_RGBA2mRGBA Imgproc/CV_RGBA2mRGBA)
+(def CV_mRGBA2RGBA Imgproc/CV_mRGBA2RGBA)
+(def CV_WARP_FILL_OUTLIERS Imgproc/CV_WARP_FILL_OUTLIERS)
+(def CV_WARP_INVERSE_MAP Imgproc/CV_WARP_INVERSE_MAP)
+(def CV_CHAIN_CODE Imgproc/CV_CHAIN_CODE)
+(def CV_LINK_RUNS Imgproc/CV_LINK_RUNS)
+(def CV_POLY_APPROX_DP Imgproc/CV_POLY_APPROX_DP)
+(def CV_CONTOURS_MATCH_I1 Imgproc/CV_CONTOURS_MATCH_I1)
+(def CV_CONTOURS_MATCH_I2 Imgproc/CV_CONTOURS_MATCH_I2)
+(def CV_CONTOURS_MATCH_I3 Imgproc/CV_CONTOURS_MATCH_I3)
+(def CV_CLOCKWISE Imgproc/CV_CLOCKWISE)
+(def CV_COUNTER_CLOCKWISE Imgproc/CV_COUNTER_CLOCKWISE)
+(def CV_COMP_CORREL Imgproc/CV_COMP_CORREL)
+(def CV_COMP_CHISQR Imgproc/CV_COMP_CHISQR)
+(def CV_COMP_INTERSECT Imgproc/CV_COMP_INTERSECT)
+(def CV_COMP_BHATTACHARYYA Imgproc/CV_COMP_BHATTACHARYYA)
+(def CV_COMP_HELLINGER Imgproc/CV_COMP_HELLINGER)
+(def CV_COMP_CHISQR_ALT Imgproc/CV_COMP_CHISQR_ALT)
+(def CV_COMP_KL_DIV Imgproc/CV_COMP_KL_DIV)
+(def CV_DIST_MASK_3 Imgproc/CV_DIST_MASK_3)
+(def CV_DIST_MASK_5 Imgproc/CV_DIST_MASK_5)
+(def CV_DIST_MASK_PRECISE Imgproc/CV_DIST_MASK_PRECISE)
+(def CV_DIST_LABEL_CCOMP Imgproc/CV_DIST_LABEL_CCOMP)
+(def CV_DIST_LABEL_PIXEL Imgproc/CV_DIST_LABEL_PIXEL)
+(def CV_DIST_USER Imgproc/CV_DIST_USER)
+(def CV_DIST_L1 Imgproc/CV_DIST_L1)
+(def CV_DIST_L2 Imgproc/CV_DIST_L2)
+(def CV_DIST_C Imgproc/CV_DIST_C)
+(def CV_DIST_L12 Imgproc/CV_DIST_L12)
+(def CV_DIST_FAIR Imgproc/CV_DIST_FAIR)
+(def CV_DIST_WELSCH Imgproc/CV_DIST_WELSCH)
+(def CV_DIST_HUBER Imgproc/CV_DIST_HUBER)
+(def CV_CANNY_L2_GRADIENT Imgproc/CV_CANNY_L2_GRADIENT)
+(def CV_HOUGH_STANDARD Imgproc/CV_HOUGH_STANDARD)
+(def CV_HOUGH_PROBABILISTIC Imgproc/CV_HOUGH_PROBABILISTIC)
+(def CV_HOUGH_MULTI_SCALE Imgproc/CV_HOUGH_MULTI_SCALE)
+(def CV_HOUGH_GRADIENT Imgproc/CV_HOUGH_GRADIENT)
 (def INTER_BITS Imgproc/INTER_BITS)
 (def INTER_BITS2 Imgproc/INTER_BITS2)
 (def INTER_TAB_SIZE Imgproc/INTER_TAB_SIZE)
@@ -1835,6 +1877,7 @@
 (def COLORMAP_CIVIDIS Imgproc/COLORMAP_CIVIDIS)
 (def COLORMAP_TWILIGHT Imgproc/COLORMAP_TWILIGHT)
 (def COLORMAP_TWILIGHT_SHIFTED Imgproc/COLORMAP_TWILIGHT_SHIFTED)
+(def COLORMAP_TURBO Imgproc/COLORMAP_TURBO)
 (def HISTCMP_CORREL Imgproc/HISTCMP_CORREL)
 (def HISTCMP_CHISQR Imgproc/HISTCMP_CHISQR)
 (def HISTCMP_INTERSECT Imgproc/HISTCMP_INTERSECT)
@@ -2114,46 +2157,6 @@
 (def TM_CCORR_NORMED Imgproc/TM_CCORR_NORMED)
 (def TM_CCOEFF Imgproc/TM_CCOEFF)
 (def TM_CCOEFF_NORMED Imgproc/TM_CCOEFF_NORMED)
-(def CV_GAUSSIAN_5x5 Imgproc/CV_GAUSSIAN_5x5)
-(def CV_SCHARR Imgproc/CV_SCHARR)
-(def CV_MAX_SOBEL_KSIZE Imgproc/CV_MAX_SOBEL_KSIZE)
-(def CV_RGBA2mRGBA Imgproc/CV_RGBA2mRGBA)
-(def CV_mRGBA2RGBA Imgproc/CV_mRGBA2RGBA)
-(def CV_WARP_FILL_OUTLIERS Imgproc/CV_WARP_FILL_OUTLIERS)
-(def CV_WARP_INVERSE_MAP Imgproc/CV_WARP_INVERSE_MAP)
-(def CV_CHAIN_CODE Imgproc/CV_CHAIN_CODE)
-(def CV_LINK_RUNS Imgproc/CV_LINK_RUNS)
-(def CV_POLY_APPROX_DP Imgproc/CV_POLY_APPROX_DP)
-(def CV_CONTOURS_MATCH_I1 Imgproc/CV_CONTOURS_MATCH_I1)
-(def CV_CONTOURS_MATCH_I2 Imgproc/CV_CONTOURS_MATCH_I2)
-(def CV_CONTOURS_MATCH_I3 Imgproc/CV_CONTOURS_MATCH_I3)
-(def CV_CLOCKWISE Imgproc/CV_CLOCKWISE)
-(def CV_COUNTER_CLOCKWISE Imgproc/CV_COUNTER_CLOCKWISE)
-(def CV_COMP_CORREL Imgproc/CV_COMP_CORREL)
-(def CV_COMP_CHISQR Imgproc/CV_COMP_CHISQR)
-(def CV_COMP_INTERSECT Imgproc/CV_COMP_INTERSECT)
-(def CV_COMP_BHATTACHARYYA Imgproc/CV_COMP_BHATTACHARYYA)
-(def CV_COMP_HELLINGER Imgproc/CV_COMP_HELLINGER)
-(def CV_COMP_CHISQR_ALT Imgproc/CV_COMP_CHISQR_ALT)
-(def CV_COMP_KL_DIV Imgproc/CV_COMP_KL_DIV)
-(def CV_DIST_MASK_3 Imgproc/CV_DIST_MASK_3)
-(def CV_DIST_MASK_5 Imgproc/CV_DIST_MASK_5)
-(def CV_DIST_MASK_PRECISE Imgproc/CV_DIST_MASK_PRECISE)
-(def CV_DIST_LABEL_CCOMP Imgproc/CV_DIST_LABEL_CCOMP)
-(def CV_DIST_LABEL_PIXEL Imgproc/CV_DIST_LABEL_PIXEL)
-(def CV_DIST_USER Imgproc/CV_DIST_USER)
-(def CV_DIST_L1 Imgproc/CV_DIST_L1)
-(def CV_DIST_L2 Imgproc/CV_DIST_L2)
-(def CV_DIST_C Imgproc/CV_DIST_C)
-(def CV_DIST_L12 Imgproc/CV_DIST_L12)
-(def CV_DIST_FAIR Imgproc/CV_DIST_FAIR)
-(def CV_DIST_WELSCH Imgproc/CV_DIST_WELSCH)
-(def CV_DIST_HUBER Imgproc/CV_DIST_HUBER)
-(def CV_CANNY_L2_GRADIENT Imgproc/CV_CANNY_L2_GRADIENT)
-(def CV_HOUGH_STANDARD Imgproc/CV_HOUGH_STANDARD)
-(def CV_HOUGH_PROBABILISTIC Imgproc/CV_HOUGH_PROBABILISTIC)
-(def CV_HOUGH_MULTI_SCALE Imgproc/CV_HOUGH_MULTI_SCALE)
-(def CV_HOUGH_GRADIENT Imgproc/CV_HOUGH_GRADIENT)
 (def DIST_MASK_3 Imgproc/DIST_MASK_3)
 (def DIST_MASK_5 Imgproc/DIST_MASK_5)
 (def DIST_MASK_PRECISE Imgproc/DIST_MASK_PRECISE)
@@ -2188,6 +2191,16 @@
 (def DECOMP_CHOLESKY Core/DECOMP_CHOLESKY)
 (def DECOMP_QR Core/DECOMP_QR)
 (def DECOMP_NORMAL Core/DECOMP_NORMAL)
+(def SVD_MODIFY_A Core/SVD_MODIFY_A)
+(def SVD_NO_UV Core/SVD_NO_UV)
+(def SVD_FULL_UV Core/SVD_FULL_UV)
+(def FILLED Core/FILLED)
+(def REDUCE_SUM Core/REDUCE_SUM)
+(def REDUCE_AVG Core/REDUCE_AVG)
+(def REDUCE_MAX Core/REDUCE_MAX)
+(def REDUCE_MIN Core/REDUCE_MIN)
+(def RNG_UNIFORM Core/RNG_UNIFORM)
+(def RNG_NORMAL Core/RNG_NORMAL)
 (def BORDER_CONSTANT Core/BORDER_CONSTANT)
 (def BORDER_REPLICATE Core/BORDER_REPLICATE)
 (def BORDER_REFLECT Core/BORDER_REFLECT)
@@ -2209,9 +2222,9 @@
 (def CMP_LT Core/CMP_LT)
 (def CMP_LE Core/CMP_LE)
 (def CMP_NE Core/CMP_NE)
-(def FLAGS_NONE Core/FLAGS_NONE)
-(def FLAGS_MAPPING Core/FLAGS_MAPPING)
-(def FLAGS_EXPAND_SAME_NAMES Core/FLAGS_EXPAND_SAME_NAMES)
+(def PCA_DATA_AS_ROW Core/PCA_DATA_AS_ROW)
+(def PCA_DATA_AS_COL Core/PCA_DATA_AS_COL)
+(def PCA_USE_AVG Core/PCA_USE_AVG)
 (def DFT_INVERSE Core/DFT_INVERSE)
 (def DFT_SCALE Core/DFT_SCALE)
 (def DFT_ROWS Core/DFT_ROWS)
@@ -2220,42 +2233,22 @@
 (def DFT_COMPLEX_INPUT Core/DFT_COMPLEX_INPUT)
 (def DCT_INVERSE Core/DCT_INVERSE)
 (def DCT_ROWS Core/DCT_ROWS)
-(def SORT_EVERY_ROW Core/SORT_EVERY_ROW)
-(def SORT_EVERY_COLUMN Core/SORT_EVERY_COLUMN)
-(def SORT_ASCENDING Core/SORT_ASCENDING)
-(def SORT_DESCENDING Core/SORT_DESCENDING)
-(def IMPL_PLAIN Core/IMPL_PLAIN)
-(def IMPL_IPP Core/IMPL_IPP)
-(def IMPL_OPENCL Core/IMPL_OPENCL)
-(def SVD_MODIFY_A Core/SVD_MODIFY_A)
-(def SVD_NO_UV Core/SVD_NO_UV)
-(def SVD_FULL_UV Core/SVD_FULL_UV)
-(def FILLED Core/FILLED)
-(def REDUCE_SUM Core/REDUCE_SUM)
-(def REDUCE_AVG Core/REDUCE_AVG)
-(def REDUCE_MAX Core/REDUCE_MAX)
-(def REDUCE_MIN Core/REDUCE_MIN)
-(def RNG_UNIFORM Core/RNG_UNIFORM)
-(def RNG_NORMAL Core/RNG_NORMAL)
-(def TYPE_GENERAL Core/TYPE_GENERAL)
-(def TYPE_MARKER Core/TYPE_MARKER)
-(def TYPE_WRAPPER Core/TYPE_WRAPPER)
-(def TYPE_FUN Core/TYPE_FUN)
-(def Formatter_FMT_DEFAULT Core/Formatter_FMT_DEFAULT)
-(def Formatter_FMT_MATLAB Core/Formatter_FMT_MATLAB)
-(def Formatter_FMT_CSV Core/Formatter_FMT_CSV)
-(def Formatter_FMT_PYTHON Core/Formatter_FMT_PYTHON)
-(def Formatter_FMT_NUMPY Core/Formatter_FMT_NUMPY)
-(def Formatter_FMT_C Core/Formatter_FMT_C)
-(def PCA_DATA_AS_ROW Core/PCA_DATA_AS_ROW)
-(def PCA_DATA_AS_COL Core/PCA_DATA_AS_COL)
-(def PCA_USE_AVG Core/PCA_USE_AVG)
 (def COVAR_SCRAMBLED Core/COVAR_SCRAMBLED)
 (def COVAR_NORMAL Core/COVAR_NORMAL)
 (def COVAR_USE_AVG Core/COVAR_USE_AVG)
 (def COVAR_SCALE Core/COVAR_SCALE)
 (def COVAR_ROWS Core/COVAR_ROWS)
 (def COVAR_COLS Core/COVAR_COLS)
+(def SORT_EVERY_ROW Core/SORT_EVERY_ROW)
+(def SORT_EVERY_COLUMN Core/SORT_EVERY_COLUMN)
+(def SORT_ASCENDING Core/SORT_ASCENDING)
+(def SORT_DESCENDING Core/SORT_DESCENDING)
+(def Formatter_FMT_DEFAULT Core/Formatter_FMT_DEFAULT)
+(def Formatter_FMT_MATLAB Core/Formatter_FMT_MATLAB)
+(def Formatter_FMT_CSV Core/Formatter_FMT_CSV)
+(def Formatter_FMT_PYTHON Core/Formatter_FMT_PYTHON)
+(def Formatter_FMT_NUMPY Core/Formatter_FMT_NUMPY)
+(def Formatter_FMT_C Core/Formatter_FMT_C)
 (def Param_INT Core/Param_INT)
 (def Param_BOOLEAN Core/Param_BOOLEAN)
 (def Param_REAL Core/Param_REAL)
@@ -2336,12 +2329,12 @@
 (def OpenCLInitError Core/OpenCLInitError)
 (def OpenCLNoAMDBlasFft Core/OpenCLNoAMDBlasFft)
 (defn add
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
+  (Core/add org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Core/add org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Core/add org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/add org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn sqrt
@@ -2380,23 +2373,13 @@
 )
 
 (defn min
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/min org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-)
-
-(defn min!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/min org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
+  (Core/min org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
 )
 
 (defn max
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/max org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-)
-
-(defn max!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/max org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
+  (Core/max org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
 )
 
 (defn split
@@ -2417,31 +2400,31 @@
 (defn normalize
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ]
   (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
   (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 int_4 int_5 ))
 )
 
 (defn normalize!
 ([org_opencv_core_mat_0 double_2 double_3 int_4 ]
   (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 int_4 int_5 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 ]
-  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 double_3 ]
   (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 int_5 org_opencv_core_mat_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 double_3 int_4 int_5 ]
+  (Core/normalize org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 int_4 int_5 ) org_opencv_core_mat_0 )
 )
 
 (defn flip
@@ -2457,10 +2440,10 @@
 (defn divide
 ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 ]
   (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ]
-  (Core/divide org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ))
-([double_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/divide double_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 int_4 ]
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Core/divide org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn divide!
@@ -2493,33 +2476,28 @@
 )
 
 (defn check-range
+([org_opencv_core_mat_0 ]
+  (Core/checkRange org_opencv_core_mat_0 ))
 ([org_opencv_core_mat_0 boolean_1 double_2 double_3 ]
   (Core/checkRange org_opencv_core_mat_0 boolean_1 double_2 double_3 ))
 ([org_opencv_core_mat_0 boolean_1 double_2 ]
   (Core/checkRange org_opencv_core_mat_0 boolean_1 double_2 ))
-([org_opencv_core_mat_0 ]
-  (Core/checkRange org_opencv_core_mat_0 ))
 ([org_opencv_core_mat_0 boolean_1 ]
   (Core/checkRange org_opencv_core_mat_0 boolean_1 ))
 )
 
 (defn reduce
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
-  (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ]
   (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
+  (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 )
 
 (defn reduce!
-([org_opencv_core_mat_0 int_2 int_3 ]
-  (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 ]
   (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 ) org_opencv_core_mat_0 )
-)
-
-(defn repeat
-([org_opencv_core_mat_0 int_1 int_2 org_opencv_core_mat_3 ]
-  (Core/repeat org_opencv_core_mat_0 int_1 int_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 int_2 int_3 ]
+  (Core/reduce org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 )
 
 (defn mean
@@ -2530,10 +2508,26 @@
 )
 
 (defn mean!
-; ([org_opencv_core_mat_0 ]
-;   (Core/mean org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
-  (Core/mean org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+  (Core/mean org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 ]
+;   (Core/mean org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+)
+
+
+; (defn copy-to
+; ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+; )
+
+; (defn copy-to!
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+; )
+
+(defn repeat
+([org_opencv_core_mat_0 int_1 int_2 org_opencv_core_mat_3 ]
+  (Core/repeat org_opencv_core_mat_0 int_1 int_2 org_opencv_core_mat_3 ))
 )
 
 (defn sum-elems
@@ -2562,12 +2556,12 @@
 )
 
 (defn find-file
+([java_lang_string_0 boolean_1 boolean_2 ]
+  (Core/findFile java_lang_string_0 boolean_1 boolean_2 ))
 ([java_lang_string_0 ]
   (Core/findFile java_lang_string_0 ))
 ([java_lang_string_0 boolean_1 ]
   (Core/findFile java_lang_string_0 boolean_1 ))
-([java_lang_string_0 boolean_1 boolean_2 ]
-  (Core/findFile java_lang_string_0 boolean_1 boolean_2 ))
 )
 
 (defn find-file-or-keep
@@ -2578,31 +2572,31 @@
 )
 
 (defn eigen
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn eigen!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Core/eigen org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 )
 
 (defn solve
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ]
   (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn solve!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ]
   (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Core/solve org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 )
 
 (defn use-ipp
@@ -2626,17 +2620,17 @@
 )
 
 (defn psnr
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
-  (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_1 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
+  (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
 )
 
 (defn psnr!
-([org_opencv_core_mat_0 double_2 ]
-  (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 double_2 ]
+  (Core/PSNR org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
 )
 
 (defn determinant
@@ -2671,14 +2665,25 @@
 )
 
 (defn norm
-([org_opencv_core_mat_0 int_1 org_opencv_core_mat_2 ]
-  (Core/norm org_opencv_core_mat_0 int_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
+  (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ]
+  (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 ]
   (Core/norm org_opencv_core_mat_0 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ]
-  (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 org_opencv_core_mat_3 ))
+)
+
+(defn norm!
+([org_opencv_core_mat_0 int_2 ] 
+  (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 ] 
+;   (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ] 
+  (Core/norm org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 ] 
+  (Core/norm org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn solve-poly
@@ -2775,6 +2780,10 @@
   (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
+; (defn lut!
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+;   (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+; )
 (defn lut!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ] 
   (Core/LUT org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
@@ -2791,29 +2800,29 @@
 )
 
 (defn pca-compute-2
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ]
   (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 )
 
 (defn pca-compute-2!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ]
   (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 double_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/PCACompute2 org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn pca-compute
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ]
-  (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 ]
+  (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn pca-compute!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ]
-  (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ]
+  (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 double_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Core/PCACompute org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 )
@@ -2839,27 +2848,22 @@
 )
 
 (defn sv-decomp
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 )
 
 (defn sv-decomp!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/SVDecomp org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn absdiff
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/absdiff org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-)
-
-(defn absdiff!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/absdiff org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
+  (Core/absdiff org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
 )
 
 (defn add-weighted
@@ -2870,33 +2874,33 @@
 )
 
 (defn batch-distance
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ))
 )
 
 (defn batch-distance!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ]
+  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 ]
   (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 boolean_9 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ]
-  (Core/batchDistance org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 int_3 org_opencv_core_mat_4 int_5 int_6 org_opencv_core_mat_7 int_8 ) org_opencv_core_mat_0 )
 )
 
 (defn bitwise-and
@@ -2914,17 +2918,17 @@
 )
 
 (defn bitwise-not
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
 (defn bitwise-not!
-([org_opencv_core_mat_0 ]
-  (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Core/bitwise_not org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn bitwise-or
@@ -2942,17 +2946,17 @@
 )
 
 (defn bitwise-xor
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
   (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 )
 
 (defn bitwise-xor!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/bitwise_xor org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn calc-covar-matrix
@@ -2970,24 +2974,24 @@
 )
 
 (defn cart-to-polar
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 boolean_4 ]
   (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 boolean_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
 )
 
 (defn cart-to-polar!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 boolean_4 ]
   (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 boolean_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/cartToPolar org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn complete-symm
-([org_opencv_core_mat_0 boolean_1 ]
-  (Core/completeSymm org_opencv_core_mat_0 boolean_1 ))
 ([org_opencv_core_mat_0 ]
   (Core/completeSymm org_opencv_core_mat_0 ))
+([org_opencv_core_mat_0 boolean_1 ]
+  (Core/completeSymm org_opencv_core_mat_0 boolean_1 ))
 )
 
 (defn convert-fp-16
@@ -3001,67 +3005,67 @@
 )
 
 (defn convert-scale-abs
+([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
+  (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ]
   (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_1 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ]
-  (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_1 double_2 double_3 ))
 )
 
 (defn convert-scale-abs!
+([org_opencv_core_mat_0 double_2 double_3 ]
+  (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 double_2 ]
   (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 double_2 double_3 ]
-  (Core/convertScaleAbs org_opencv_core_mat_0 org_opencv_core_mat_0 double_2 double_3 ) org_opencv_core_mat_0 )
 )
 
 (defn copy-make-border
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ]
-  (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 ]
   (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ]
+  (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ))
 )
 
 (defn copy-make-border!
-([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ]
-  (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 ]
   (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ]
+  (Core/copyMakeBorder org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 int_4 int_5 int_6 org_opencv_core_scalar_7 ) org_opencv_core_mat_0 )
 )
 
 (defn dct
-([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
-  (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
   (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
+  (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
 (defn dct!
-([org_opencv_core_mat_0 ]
-  (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 ]
   (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 ]
+  (Core/dct org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 )
 
 (defn dft
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
-  (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
   (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
+  (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 )
 
 (defn dft!
-([org_opencv_core_mat_0 int_2 ]
-  (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 ]
   (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 int_2 ]
+  (Core/dft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 )
 
 (defn eigen-non-symmetric
@@ -3128,21 +3132,21 @@
 )
 
 (defn idft
+([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
+  (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ]
   (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 int_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 ]
   (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_1 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ]
-  (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_1 int_2 ))
 )
 
 (defn idft!
+([org_opencv_core_mat_0 int_2 ]
+  (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 int_2 int_3 ]
   (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 int_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 ]
   (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_0 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 int_2 ]
-  (Core/idft org_opencv_core_mat_0 org_opencv_core_mat_0 int_2 ) org_opencv_core_mat_0 )
 )
 
 (defn insert-channel
@@ -3156,10 +3160,10 @@
 )
 
 (defn mean-std-dev
-([org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 org_opencv_core_mat_3 ]
-  (Core/meanStdDev org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 ]
   (Core/meanStdDev org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 ))
+([org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 org_opencv_core_mat_3 ]
+  (Core/meanStdDev org_opencv_core_mat_0 org_opencv_core_matofdouble_1 org_opencv_core_matofdouble_2 org_opencv_core_mat_3 ))
 )
 
 (defn mix-channels
@@ -3182,32 +3186,32 @@
 )
 
 (defn mul-transposed
-([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 int_5 ]
-  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 int_5 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 ]
   (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 ]
-  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 ))
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 ]
   (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 int_5 ]
+  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 double_4 int_5 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 ]
+  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_1 boolean_2 org_opencv_core_mat_3 ))
 )
 
 (defn mul-transposed!
-([org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 int_5 ]
-  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 int_5 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 ]
   (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 ]
-  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 boolean_2 ]
   (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 int_5 ]
+  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 double_4 int_5 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 ]
+  (Core/mulTransposed org_opencv_core_mat_0 org_opencv_core_mat_0 boolean_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 )
 
 (defn patch-na-ns
-([org_opencv_core_mat_0 ]
-  (Core/patchNaNs org_opencv_core_mat_0 ))
 ([org_opencv_core_mat_0 double_1 ]
   (Core/patchNaNs org_opencv_core_mat_0 double_1 ))
+([org_opencv_core_mat_0 ]
+  (Core/patchNaNs org_opencv_core_mat_0 ))
 )
 
 (defn perspective-transform
@@ -3218,6 +3222,20 @@
 (defn perspective-transform!
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
   (Core/perspectiveTransform org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+)
+
+(defn phase
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ]
+  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ))
+)
+
+(defn phase!
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ]
+  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ) org_opencv_core_mat_0 )
 )
 
 (defn polar-to-cart
@@ -3262,10 +3280,10 @@
 )
 
 (defn set-identity
-([org_opencv_core_mat_0 org_opencv_core_scalar_1 ]
-  (Core/setIdentity org_opencv_core_mat_0 org_opencv_core_scalar_1 ))
 ([org_opencv_core_mat_0 ]
   (Core/setIdentity org_opencv_core_mat_0 ))
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 ]
+  (Core/setIdentity org_opencv_core_mat_0 org_opencv_core_scalar_1 ))
 )
 
 (defn set-num-threads
@@ -3340,60 +3358,31 @@
   (Core/minMaxLoc org_opencv_core_mat_0 org_opencv_core_mat_1 ))
 )
 
-(defn phase
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ]
-  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 boolean_3 ))
-)
-
-(defn phase!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ]
-  (Core/phase org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 boolean_3 ) org_opencv_core_mat_0 )
-)
-
-; (defn copy-to
-; ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-; )
-
-; (defn copy-to!
-; ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-;   (Core/copyTo org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
-; )
-
-(defn trace
-([org_opencv_core_mat_0 ]
-  (Core/trace org_opencv_core_mat_0 ))
-)
-
 (defn subtract
-([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
-  (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
-([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
-  (Core/subtract org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
-([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
-  (Core/subtract org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+  (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+  (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ))
+([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
+  (Core/subtract org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
 )
 
 (defn subtract!
-([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
-  (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
   (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
 ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
   (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
+([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+  (Core/subtract org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
 )
 
 (defn multiply
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ]
   (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 int_4 ))
-([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ]
-  (Core/multiply org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 ))
-([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 ]
-  (Core/multiply org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_mat_2 double_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 ]
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 double_3 ))
+([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ]
+  (Core/multiply org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 ))
 )
 
 (defn multiply!
@@ -3418,6 +3407,11 @@
 (defn in-range
 ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_3 ]
   (Core/inRange org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_3 ))
+)
+
+(defn trace
+([org_opencv_core_mat_0 ]
+  (Core/trace org_opencv_core_mat_0 ))
 )
 
 ;;; CvType 
@@ -4729,22 +4723,6 @@
   (Calib3d/fisheye_undistortPoints org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 org_opencv_core_mat_4 org_opencv_core_mat_5 ) org_opencv_core_mat_0 )
 )
 
-(def PROJ_SPHERICAL_ORTHO Calib3d/PROJ_SPHERICAL_ORTHO)
-(def PROJ_SPHERICAL_EQRECT Calib3d/PROJ_SPHERICAL_EQRECT)
-(def SOLVEPNP_ITERATIVE Calib3d/SOLVEPNP_ITERATIVE)
-(def SOLVEPNP_EPNP Calib3d/SOLVEPNP_EPNP)
-(def SOLVEPNP_P3P Calib3d/SOLVEPNP_P3P)
-(def SOLVEPNP_DLS Calib3d/SOLVEPNP_DLS)
-(def SOLVEPNP_UPNP Calib3d/SOLVEPNP_UPNP)
-(def SOLVEPNP_AP3P Calib3d/SOLVEPNP_AP3P)
-(def SOLVEPNP_IPPE Calib3d/SOLVEPNP_IPPE)
-(def SOLVEPNP_IPPE_SQUARE Calib3d/SOLVEPNP_IPPE_SQUARE)
-(def SOLVEPNP_MAX_COUNT Calib3d/SOLVEPNP_MAX_COUNT)
-(def CALIB_HAND_EYE_TSAI Calib3d/CALIB_HAND_EYE_TSAI)
-(def CALIB_HAND_EYE_PARK Calib3d/CALIB_HAND_EYE_PARK)
-(def CALIB_HAND_EYE_HORAUD Calib3d/CALIB_HAND_EYE_HORAUD)
-(def CALIB_HAND_EYE_ANDREFF Calib3d/CALIB_HAND_EYE_ANDREFF)
-(def CALIB_HAND_EYE_DANIILIDIS Calib3d/CALIB_HAND_EYE_DANIILIDIS)
 (def CV_ITERATIVE Calib3d/CV_ITERATIVE)
 (def CV_EPNP Calib3d/CV_EPNP)
 (def CV_P3P Calib3d/CV_P3P)
@@ -4803,5 +4781,21 @@
 (def fisheye_CALIB_FIX_K4 Calib3d/fisheye_CALIB_FIX_K4)
 (def fisheye_CALIB_FIX_INTRINSIC Calib3d/fisheye_CALIB_FIX_INTRINSIC)
 (def fisheye_CALIB_FIX_PRINCIPAL_POINT Calib3d/fisheye_CALIB_FIX_PRINCIPAL_POINT)
+(def PROJ_SPHERICAL_ORTHO Calib3d/PROJ_SPHERICAL_ORTHO)
+(def PROJ_SPHERICAL_EQRECT Calib3d/PROJ_SPHERICAL_EQRECT)
+(def SOLVEPNP_ITERATIVE Calib3d/SOLVEPNP_ITERATIVE)
+(def SOLVEPNP_EPNP Calib3d/SOLVEPNP_EPNP)
+(def SOLVEPNP_P3P Calib3d/SOLVEPNP_P3P)
+(def SOLVEPNP_DLS Calib3d/SOLVEPNP_DLS)
+(def SOLVEPNP_UPNP Calib3d/SOLVEPNP_UPNP)
+(def SOLVEPNP_AP3P Calib3d/SOLVEPNP_AP3P)
+(def SOLVEPNP_IPPE Calib3d/SOLVEPNP_IPPE)
+(def SOLVEPNP_IPPE_SQUARE Calib3d/SOLVEPNP_IPPE_SQUARE)
+(def SOLVEPNP_MAX_COUNT Calib3d/SOLVEPNP_MAX_COUNT)
+(def CALIB_HAND_EYE_TSAI Calib3d/CALIB_HAND_EYE_TSAI)
+(def CALIB_HAND_EYE_PARK Calib3d/CALIB_HAND_EYE_PARK)
+(def CALIB_HAND_EYE_HORAUD Calib3d/CALIB_HAND_EYE_HORAUD)
+(def CALIB_HAND_EYE_ANDREFF Calib3d/CALIB_HAND_EYE_ANDREFF)
+(def CALIB_HAND_EYE_DANIILIDIS Calib3d/CALIB_HAND_EYE_DANIILIDIS)
 (def CirclesGridFinderParameters_SYMMETRIC_GRID Calib3d/CirclesGridFinderParameters_SYMMETRIC_GRID)
 (def CirclesGridFinderParameters_ASYMMETRIC_GRID Calib3d/CirclesGridFinderParameters_ASYMMETRIC_GRID)
