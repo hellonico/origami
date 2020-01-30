@@ -30,13 +30,17 @@
      ["change" "version" "leiningen.release/bump-version"]
      ["vcs" "commit"]
      ["vcs" "push"]]
-  :java-source-paths ["java"]     
+  :java-source-paths ["java" "test-java"]     
+  :junit ["test-java"]
+  :junit-formatter :plain
+  :junit-results-dir "target/junit"
   :profiles {:dev {
-    :plugins [[jonase/eastwood "0.3.5"][quickie "0.4.1"]]
+    :plugins [[lein-junit "1.1.9"][jonase/eastwood "0.3.5"][quickie "0.4.1"]]
     :source-paths ["dev"]
     :dependencies [
     ; testing
     ~mxnet
+    [junit/junit "4.13"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
