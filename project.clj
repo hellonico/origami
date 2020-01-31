@@ -9,7 +9,7 @@
       ; _ (println (str platform mxnet))
       ]
 
-(defproject origami "4.2.0-1"
+(defproject origami "4.2.0-1-SNAPSHOT"
   :description "OpenCV4 Wrapper"
   :aot [opencv4.dnn.core]
   :url "https://github.com/hellonico/origami"
@@ -39,7 +39,6 @@
     :dependencies [
     ; testing
     ; ~mxnet
-    [junit/junit "4.13"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
@@ -49,4 +48,5 @@
     [opencv/opencv-native "4.2.0-0"]
     [hellonico/gorilla-repl "0.4.1" :scope "provided"]
     [org.slf4j/slf4j-nop "1.7.28"]
+    [junit/junit "4.13" :scope "test"]
     ]))
