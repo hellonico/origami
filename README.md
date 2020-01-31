@@ -1,33 +1,44 @@
-[Travis](https://travis-ci.org/hellonico/origami): ![](https://travis-ci.org/hellonico/origami.svg?branch=master)
+
 
 # TOC
 
-   * [Lena in Clojure](#lena-in-clojure)
-   * [Support for OpenCV 4.1.2 is in!](#support-for-opencv-412-is-in)
-   * [Book on using Origami](#book-on-using-origami)
-   * [2 minutes intro if you have clj installed](#2-minutes-intro-if-you-have-clj-installed)
-   * [Getting Started](#getting-started)
-      * [Required Software to install](#required-software-to-install)
-      * [generate a project](#generate-a-project)
-      * [Running the samples](#running-the-samples)
-      * [Jupyter Notebook](#jupyter-notebook)
-      * [Gorilla Based Notebook](#gorilla-based-notebook)
-      * [samples git project](#samples-git-project)
-   * [Docker official image](#docker-official-image)
-   * [more samples](#more-samples)
-   * [opencv compatibility notes](#opencv-compatibility-notes)
-   * [electron based IDE](#electron-based-ide)
-   * [With Tensorflow and Caffee Neural Network](#with-tensorflow-and-caffee-neural-network)
-   * [With MxNET](#with-mxnet)
-   * [Troubleshooting](#troubleshooting)
-       * [linux: video stream doesn't start](#linux-video-stream-doesnt-start)
-       * [Ubuntu 14](#ubuntu-14)
+- [Simple Setup](#simple-setup)
+- [Lena in Clojure](#lena-in-clojure)
+- [Support for OpenCV 4.2 is in!](#support-for-opencv-42-is-in-)
+- [The origami ecosystem](#the-origami-ecosystem)
+- [Books on using Origami](#books-on-using-origami)
+- [2 minutes intro if you have clj installed](#2-minutes-intro-if-you-have-clj-installed)
+- [Getting Started](#getting-started)
+  * [Required Software to install](#required-software-to-install)
+  * [generate a project](#generate-a-project)
+  * [Running the samples](#running-the-samples)
+  * [Jupyter Notebook](#jupyter-notebook)
+  * [Gorilla Based Notebook](#gorilla-based-notebook)
+  * [a sample origami in clojure project](#a-sample-origami-in-clojure-project)
+  * [a sample opencv in java project](#a-sample-opencv-in-java-project)
+- [Docker official image](#docker-official-image)
+- [more samples](#more-samples)
+  * [in clojure ...](#in-clojure-)
+  * [in java ...](#in-java-)
+- [opencv compatibility notes](#opencv-compatibility-notes)
+- [electron based IDE](#electron-based-ide)
+- [With Tensorflow and Caffee Neural Network](#with-tensorflow-and-caffee-neural-network)
+- [With MxNET](#with-mxnet)
+- [Troubleshooting](#troubleshooting)
+    + [linux: video stream doesn't start](#linux--video-stream-doesn-t-start)
+    + [OSX [ deprecated]](#osx---deprecated-)
+    + [Ubuntu 14](#ubuntu-14)
+    + [Let's Encrypt Certificates](#let-s-encrypt-certificates)
 
-## Setup
+# Simple Setup
 
 Add the following the to your `project.clj`:
 
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
+
+Current Status: 
+
+[Travis](https://travis-ci.org/hellonico/origami): ![](https://travis-ci.org/hellonico/origami.svg?branch=master)
 
 # Lena in Clojure
 
@@ -52,7 +63,7 @@ into
 
 ![](doc/new.png) 
 
-# Support for OpenCV 4.1.2 is in!
+# Support for OpenCV 4.2 is in!
 
 Origami is an opencv generated wrapper for Clojure which allows some of the opencv code to be written in a concise way, by putting emphasis on processing pipelines.
 
@@ -84,12 +95,16 @@ Origami is an opencv generated wrapper for Clojure which allows some of the open
 
 <img src="doc/origami-layout.svg"/>
 
-# Book on using Origami
+# Books on using Origami
 
 [Java Image Processing Recipes: With OpenCV and JVM](http://a.co/3iImWz7) published by Apress will show you all the tricks to play and produce art and understand the underlying concepts of origami.
 
 <img src="doc/book.jpg" width="25%" height="25%"/>
 
+
+[Real-Time IoT Imaging with Deep Neural Networks: Using Java on the Raspberry Pi 4 ](https://www.amazon.com/Real-Time-Imaging-Deep-Neural-Networks/dp/1484257219/ref=sr_1_1)
+
+<img src="doc/book2.jpg" width="25%" height="25%"/>
 
 # 2 minutes intro if you have clj installed
 
@@ -101,7 +116,7 @@ In a new folder, create the deps.edn file:
 {:mvn/repos
    {"vendredi" {:url "https://repository.hellonico.info/repository/hellonico/"}}
  :deps 
-   { origami {:mvn/version "4.0.0-3"}}
+   { origami {:mvn/version "4.2.0-1"}}
 ```
 
 Start a repl:
@@ -145,7 +160,7 @@ You also would know you can also directly load, turn to gray, and change the siz
 
 ## Required Software to install
 
-- install jdk 1.8
+- install jdk >1.8
 - install [leiningen](https://leiningen.org/#install) (it is a simple script ...)
 - that's all … 
 
@@ -195,7 +210,7 @@ lein run -m opencv4.videosample
 
 ## Jupyter Notebook
 
-The lein-jupyter plugin is added to the project.clj, so i fyou have followed the installation steps for lein-jupyter, you should have an integrated working jupyter notebook.
+The lein-jupyter plugin is added to the project.clj, so if you have followed the installation steps for lein-jupyter, you should have an integrated working jupyter notebook.
 ```
 lein jupyter notebook
 ```
@@ -204,8 +219,9 @@ lein jupyter notebook
 
 
 
-
 ## Gorilla Based Notebook
+
+> This is about to be deprecated in favor of jupyter notebooks ...
 
 The gorilla plugin is included in the project template. 
 
@@ -221,13 +237,20 @@ Two notebooks are included in the project template:
 - [http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj](http://0.0.0.0:10000/worksheet.html?filename=notes/empty.clj)
 
 
-## samples git project 
+## a sample origami in clojure project
 
 A copy of the samples can also be cloned from a generated project.
 
 ```
 git clone https://github.com/hellonico/origami_samples.git
 ```
+
+## a sample opencv in java project
+
+```
+git clone https://github.com/hellonico/opencv-java-template.git
+```
+
 
 # Docker official image
 
@@ -245,24 +268,33 @@ docker run -it -p10000:10000 hellonico/origami lein notebook
 
 # more samples
 
+## in clojure ...
+
 For many, many more examples, you can also clone and check the [https://github.com/hellonico/opencv-fun](opencv-fun) repository:
 
 ```
 git clone https://github.com/hellonico/opencv-fun.git
 ```
 
+## in java ...
+
+```
+git clone https://github.com/hellonico/opencv4_java_tutorial.git
+```
+
+
 # opencv compatibility notes
 
-| Distribution | Version    | Status | Comments                                                    |
-| ------------ | ---------- | :----: | ----------------------------------------------------------- |
-| OSX          | Mojave     |   o    |                                                             |
-| Windows      | 10         |   o    |                                                             |
-| Ubuntu 18    | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Manjaro      | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Debian       | glibc 2.23 |   o    | Compiled with 2.23 no ffmpeg                                |
-| Old Debian   | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
+| Distribution    | Version    | Status | Comments                                                    |
+| --------------- | ---------- | :----: | ----------------------------------------------------------- |
+| OSX             | Mojave     |   o    |                                                             |
+| Windows         | 10         |   o    |                                                             |
+| Linux           | glibc 2.19 |   o    | Compiled with 2.23 no ffmpeg                                |
+| Arm / Raspberry |            |   o    | No extra opencv modules                                     |
+| Arm64           |            |   o    | No extra opencv modules                                     |
+| Old Debian      | glibc 2.19 |   △    | Compiled with 2.19<br />Needs a different opencv native jar |
 
-Bonus link to see what is compatible. https://abi-laboratory.pro/?view=timeline&l=glibc
+
 
 To try the slightly old setup for linux, you can use this repository:
 
@@ -309,9 +341,9 @@ or
 pacman -S libv4l
 ```
 
-### OSX
+### OSX [ deprecated]
 
-You may be missing some extra libries. Those won't be required in the future by default, but for now, please use:
+You may be missing some extra libraries. 
 
 ```
 brew install tbb webp libtiff 
