@@ -1,5 +1,4 @@
-(let [properties (select-keys (into {} (System/getProperties))
-                              ["os.name"])
+(let [properties (select-keys (into {} (System/getProperties)) ["os.name"])
       platform (apply format "%s" (vals properties))
       
       ; https://stackoverflow.com/questions/4688336/what-is-an-elegant-way-to-set-up-a-leiningen-project-that-requires-different-dep
@@ -7,7 +6,7 @@
       "Mac OS X" '[org.apache.mxnet.contrib.clojure/clojure-mxnet-osx-cpu "1.4.0"]
       '[org.apache.mxnet.contrib.clojure/clojure-mxnet-linux-cpu "1.4.0"]
       )
-      _ (println (str platform mxnet))
+      ; _ (println (str platform mxnet))
       ]
 
 (defproject origami "4.2.0-1-SNAPSHOT"
@@ -39,7 +38,7 @@
     :source-paths ["dev"]
     :dependencies [
     ; testing
-    ~mxnet
+    ; ~mxnet
     [junit/junit "4.13"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
@@ -50,5 +49,4 @@
     [opencv/opencv-native "4.2.0-0"]
     [hellonico/gorilla-repl "0.4.1" :scope "provided"]
     [org.slf4j/slf4j-nop "1.7.28"]
-    [junit/junit "4.13" :scope "test"]
     ]))
