@@ -4,7 +4,7 @@
  }
  :deps { 
  	org.clojure/clojure {:mvn/version "1.10.0"}
- 	origami {:mvn/version "4.1.2"}
+ 	origami {:mvn/version "4.2.0-0"}
  	org.scijava/native-lib-loader {:mvn/version "2.3.1"}
  	opencv/opencv {:mvn/version "4.1.2-1"} 
  	opencv/opencv-native {:mvn/version "4.1.2-1"} 
