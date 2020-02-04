@@ -6,4 +6,4 @@ Origami Project Goal
 
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
-(Better!) Documentation has moved .. [here](origamidocs.hellonico.info/).
+(Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
