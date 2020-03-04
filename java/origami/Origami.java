@@ -1,17 +1,5 @@
 package origami;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.HashSet;
-
-import javax.imageio.ImageIO;
-
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -22,10 +10,23 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
 import org.scijava.nativelib.NativeLoader;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+
 import static org.opencv.core.Core.getNumberOfCPUs;
 
 public class Origami {
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static BufferedImage matToBufferedImage(Mat frame) {
         int type = 0;
         if (frame.channels() == 1) {
@@ -41,6 +42,9 @@ public class Origami {
         return image;
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat bufferedImagetoMat(BufferedImage image) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", byteArrayOutputStream);
@@ -61,10 +65,16 @@ public class Origami {
         return nread;
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat urlToMat(String url) throws IOException {
         return urlToMat(url, Imgcodecs.IMREAD_UNCHANGED);
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat urlToMat(String url, int flag) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try (InputStream in = new URL(url).openStream()) {
@@ -80,7 +90,6 @@ public class Origami {
         } catch (UnsatisfiedLinkError e) {
             return false;
         }
-
     }
     public static void init() {
         try {
@@ -95,6 +104,9 @@ public class Origami {
         }
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat grabOne(int camId) {
         VideoCapture vc = new VideoCapture(camId);
         Mat img1 = new Mat();
@@ -107,16 +119,25 @@ public class Origami {
         return img1;
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat grabOne() {
         return grabOne(0);
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     public static Mat resize(Mat marcel, int resizeFactor) {
         Mat smallMarcel = new Mat();
         Imgproc.resize(marcel, smallMarcel, new Size(marcel.width() / resizeFactor, marcel.height() / resizeFactor));
         return smallMarcel;
     }
 
+    /**
+     * TODO: Should be calling the clojure function
+     */
     static void cameraSettings(VideoCapture cap) {
         String settings = String.format(
                 "Name:\t\t%s\nWidth:\t\t%s\nHeight:\t\t%s\nFPS:\t\t%s\nAperture:\t%s\nAutofocus:\t%s\nGain:\t\t%s\nGamma:\t\t%s\nBrightness:\t%s\nBackend:\t%s\nBacklight:\t%s\nContrast:\t%s\nSaturation:\t%s\nSharpness:\t%s\nZoom:\t\t%s\nBuffersize:\t%s\n",
@@ -130,17 +151,6 @@ public class Origami {
         System.out.println(settings);
     }
 
-    /**
-     * Usage:
-     * 
-     * <pre>
-     * public static void main(String[] args) throws IOException {
-     *     NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-     *     Mat mat1 = urlToMat("https://raw.githubusercontent.com/hellonico/origami/master/doc/origami.jpg");
-     *     BufferedImage bi = matToBufferedImage(mat1);
-     *     Mat mat2 = bufferedImagetoMat(bi);
-     *     Imgcodecs.imwrite("origami.jpg", mat2);
-     * }
-     * </pre>
-     **/
+    
+
 }
