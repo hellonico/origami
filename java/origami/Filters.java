@@ -43,13 +43,13 @@ public class Filters implements Filter {
 
     static final IFn sToF = Clojure.var("opencv4.utils", "s->filter");
 
-    public Filter StringToFilter(String s) {
+    public static Filter StringToFilter(String s) {
         return (Filter) sToF.invoke(s);
     }
 
     static final IFn fToS = Clojure.var("opencv4.utils", "filter->s");
 
-    public String FilterToString(Filter f) {
+    public static String FilterToString(Filter f) {
         return (String) fToS.invoke(f);
     }
 }
