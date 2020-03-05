@@ -36,6 +36,7 @@
   :profiles {:dev {
     :plugins [[lein-junit "1.1.9"][jonase/eastwood "0.3.5"][quickie "0.4.1"]]
     :source-paths ["dev"]
+    :resource-paths ["resources-dev"]
     :dependencies [
     ; testing
     ; ~mxnet
