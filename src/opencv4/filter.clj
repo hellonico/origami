@@ -19,13 +19,11 @@
   ([values]
    (cond
      (string? values)
-     (filter->s (read-string values))
+       (filter->s (read-string values))
      (coll? values)
-     (apply str (map bean values))
-     (map? values)
-     (str (bean values))
-     :else
-     nil))
+       (apply str (map bean values))
+       :else
+     (str (bean values))))
   ([values filename]
    (spit filename filter->s values)))
 

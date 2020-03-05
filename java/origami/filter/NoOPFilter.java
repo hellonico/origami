@@ -1,4 +1,4 @@
-package coffee;
+package origami.filter;
 
 import org.opencv.core.Mat;
 import origami.Filter;
