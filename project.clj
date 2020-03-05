@@ -11,7 +11,7 @@
 
 (defproject origami "4.2.0-3-SNAPSHOT"
   :description "OpenCV4 Wrapper"
-  :aot [opencv4.dnn.core]
+  :aot [opencv4.dnn.core opencv4.filter]
   :url "https://github.com/hellonico/origami"
   :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories [

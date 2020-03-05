@@ -1,5 +1,8 @@
 package origami;
 
+import clojure.java.api.Clojure;
+import clojure.lang.IFn;
+import clojure.lang.Symbol;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -151,6 +154,26 @@ public class Origami {
         System.out.println(settings);
     }
 
+
+    static {
+        Symbol cvu = (Symbol) Clojure.var("clojure.core", "symbol").invoke("opencv4.filter");
+        Clojure.var("clojure.core", "require").invoke(cvu);
+    }
+    static final IFn sToF = Clojure.var("opencv4.filter", "s->filter");
+
+    public static Filter StringToFilter(Object s) {
+        Object o = sToF.invoke(s);
+        if(o instanceof Filter)
+            return (Filter) o;
+        else
+            return new Filters((Filter[]) o);
+    }
+
+    static final IFn fToS = Clojure.var("opencv4.filter", "filter->s");
+
+    public static String FilterToString(Object f) {
+        return (String) fToS.invoke(f);
+    }
     
 
 }

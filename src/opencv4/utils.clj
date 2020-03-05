@@ -2,7 +2,6 @@
 (ns opencv4.utils
   (:require
     [opencv4.core :as cv]
-    [clojure.java.data :as j]
     [opencv4.video :as vid])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
@@ -419,15 +418,3 @@ matrix))
                    (cv/new-size (get-in recording [:width] 400) (get-in recording [:height] 300)))))))))))
 
             (.release outputVideo))))))
-
-;; WIP
-(defn s->filter 
-		([values] 
-  		(let [ r (read-string values) ] (s->filter (:class r) r)))
-		([klass values]
-  		(j/to-java (eval klass) values)))  		
-(defn filter->s [filter]
-		(str (bean filter)))
-(defn s->fn-filter [values]
-    (let [_fn (s->filter values)]
-      (fn [mat] (.apply _fn mat)) ))
