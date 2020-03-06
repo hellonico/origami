@@ -24,6 +24,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 import static org.opencv.core.Core.getNumberOfCPUs;
+import static org.opencv.imgcodecs.Imgcodecs.imencode;
 
 public class Origami {
 
@@ -152,6 +153,12 @@ public class Origami {
                 cap.get(Videoio.CAP_PROP_SHARPNESS), cap.get(Videoio.CAP_PROP_ZOOM),
                 cap.get(Videoio.CAP_PROP_BUFFERSIZE));
         System.out.println(settings);
+    }
+
+    public static byte[] matToBytes(Mat frame) {
+        MatOfByte matOfByte = new MatOfByte();
+        imencode(".jpg", frame, matOfByte);
+        return matOfByte.toArray();
     }
 
 

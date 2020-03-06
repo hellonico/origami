@@ -4,6 +4,7 @@ import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
+import java.awt.*;
 import java.util.function.Function;
 
 import static org.opencv.imgproc.Imgproc.*;
@@ -13,12 +14,37 @@ public class Camera {
     ImShow ims = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
+    static boolean stop = false;
+    static {
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            stop = true;
+            return true;
+        });
+    }
+
+    private boolean fullscreen = false;
+
+
     public Camera() {
         
     }
 
+    private void exitFullScreen() {
+        this.ims.Window.setVisible(false);
+//        this.ims.Window.dispose();
+        GraphicsDevice var3 = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        var3.setFullScreenWindow(null);
+    }
+
+
+    public Camera cap(VideoCapture _cap) {
+        this.cap = _cap;
+        return this;
+    }
+
     public Camera fullscreen() {
         ims = new ImShow("Origami", true);
+        this.fullscreen = true;
         return this;
     }
 
@@ -49,14 +75,22 @@ public class Camera {
     }
 
     public void run() {
-        if(cap==null) {
-            cap = new VideoCapture(0);
+        stop = false;
+        if (this.cap == null) {
+            this.cap = new VideoCapture(0);
         }
-        Mat matFrame = new Mat();
-        while (cap.grab()) {
-            cap.retrieve(matFrame);
-            ims.showImage(filter.apply(matFrame));
+
+        Mat var1 = new Mat();
+
+        while (!stop && this.cap.grab()) {
+            this.cap.retrieve(var1);
+            this.ims.showImage((Mat) this.filter.apply(var1));
         }
+
+        this.cap.release();
+
+        if(this.fullscreen)
+            exitFullScreen();
     }
 
     public static void main(String[] args) throws Exception {

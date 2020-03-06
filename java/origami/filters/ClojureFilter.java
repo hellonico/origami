@@ -1,13 +1,10 @@
-package origami.filter;
+package origami.filters;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
-import clojure.lang.PersistentList;
 import clojure.lang.Symbol;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
 import origami.Filter;
-import origami.Origami;
 
 import static clojure.java.api.Clojure.var;
 
