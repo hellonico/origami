@@ -95,9 +95,10 @@ public class Origami {
             return false;
         }
     }
+
     public static void init() {
         try {
-            if(isOpenCVLoaded()) {
+            if (isOpenCVLoaded()) {
                 System.out.println("Already loaded:" + Core.NATIVE_LIBRARY_NAME);
             } else {
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -161,7 +162,6 @@ public class Origami {
         return matOfByte.toArray();
     }
 
-
     static {
         Symbol cvu = (Symbol) Clojure.var("clojure.core", "symbol").invoke("opencv4.filter");
         Clojure.var("clojure.core", "require").invoke(cvu);
@@ -170,7 +170,7 @@ public class Origami {
 
     public static Filter StringToFilter(Object s) {
         Object o = sToF.invoke(s);
-        if(o instanceof Filter)
+        if (o instanceof Filter)
             return (Filter) o;
         else
             return new Filters((Filter[]) o);
@@ -181,6 +181,15 @@ public class Origami {
     public static String FilterToString(Object f) {
         return (String) fToS.invoke(f);
     }
-    
+
+    static {
+        Symbol cvu = (Symbol) Clojure.var("clojure.core", "symbol").invoke("opencv4.video");
+        Clojure.var("clojure.core", "require").invoke(cvu);
+    }
+    static final IFn captureDeviceFn = Clojure.var("opencv4.video", "capture-device");
+
+    public static VideoCapture CaptureDevice(Object f) {
+        return (VideoCapture) captureDeviceFn.invoke(f);
+    }
 
 }

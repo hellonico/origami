@@ -324,24 +324,17 @@ matrix))
       pane)))
 (def imshow show)
 
-
 (defn simple-cam-window
   ([myvideofn] (simple-cam-window {} myvideofn ))
   ([_options myvideofn]
-
   (let [
     options (merge-with merge {:frame {:fps false :color "00" :title "video"} :video {:device 0 :width 200 :height 220}} _options )
-    capture (vid/new-videocapture)
+    capture (vid/capture-device (-> options :video))
     window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)
     start (System/currentTimeMillis)
     c (atom 0)
     ]
-
-    (doto capture
-      (.open (-> options :video :device))
-      (.set vid/CAP_PROP_FRAME_WIDTH (-> options :video :width))
-      (.set vid/CAP_PROP_FRAME_HEIGHT (-> options :video :height)))
 
     (.start (Thread.
       (fn []
@@ -365,11 +358,7 @@ matrix))
     (.start (Thread.
       (fn []
         (println ">> Starting: " (-> device-map :device) " << ")
-        (let [ buffer (cv/new-mat) capture (vid/new-videocapture)]
-        (doto capture
-          (.open  (-> device-map :device))
-          (.set vid/CAP_PROP_FRAME_WIDTH (-> device-map :width))
-          (.set vid/CAP_PROP_FRAME_HEIGHT (-> device-map :height)))
+        (let [ buffer (cv/new-mat) capture (vid/capture-device device-map) ]
       (while (nil? (.getClientProperty window "quit"))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))

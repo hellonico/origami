@@ -4,6 +4,41 @@
     [org.opencv.videoio Videoio VideoCapture]
     [org.opencv.video Video]))
 
+
+(declare new-videocapture)
+(declare debug-device)
+
+(defn- key-to-prop-s [k]
+    (let [ks (name k) prop (str "CAP_PROP_" (clojure.string/upper-case (clojure.string/replace ks  "-" "_")))]
+    (str "org.opencv.videoio.Videoio/" prop)))
+
+(defn- key-to-prop [k]
+  (eval (read-string (key-to-prop-s k))))
+
+(defn capture-device [ video ]
+  (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
+      (let [debug? (dissoc video-map :debug) settings (keys (dissoc video-map :debug :device)) ]
+        (doseq [s settings]
+            (.set capture (key-to-prop s) (-> video-map s)))
+      (.open capture (-> video-map :device))
+      (if debug? (debug-device capture))
+  capture)))
+
+(defn debug-device [capture]
+(let[ cam-keys 
+    (->> (ns-map 'opencv4.video)
+    (keys)
+    (map str)
+    (filter #(clojure.string/includes? % "CAP_PROP_") )
+    (map #(second (clojure.string/split % #"CAP_PROP_")))
+    (map #(clojure.string/lower-case %))
+    (map #(clojure.string/replace %  "_" "-"))
+    (map keyword))] 
+    (doseq [k cam-keys]
+    (let [v (.get capture (key-to-prop k))]
+      (if (not (= 0.0 v))
+      (println k  ":" v))))))
+
 (defn new-videowriter 
 ([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ] 
   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ))
@@ -358,3 +393,4 @@
 (def CAP_OPENCV_MJPEG Videoio/CAP_OPENCV_MJPEG)
 (def CAP_INTEL_MFX Videoio/CAP_INTEL_MFX)
 (def CAP_XINE Videoio/CAP_XINE)
+
