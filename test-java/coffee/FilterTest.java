@@ -31,7 +31,7 @@ public class FilterTest {
         Assert.assertTrue(f.getClass().equals(Filters.class));
     }
 
-    String NOOP_FILTER = "{:class origami.filter.NoOPFilter}";
+    String NOOP_FILTER = "{:class origami.filters.NoOPFilter}";
 
     @Test
     public void label() {
