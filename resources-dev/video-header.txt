@@ -24,7 +24,7 @@
       (if debug? (debug-device capture))
   capture))
 
-(defn debug-device [capture]
+(defn debug-device [capture video-map]
 (let[ cam-keys 
     (->> (ns-map 'opencv4.video)
     (keys)
@@ -33,8 +33,14 @@
     (map #(second (clojure.string/split % #"CAP_PROP_")))
     (map #(clojure.string/lower-case %))
     (map #(clojure.string/replace %  "_" "-"))
-    (map keyword))] 
+    (map keyword))
+    ;in (keys video-map)
+    ] 
+    (println "- - - - - - [" (:device video-map) "] - - - - - -")
     (doseq [k cam-keys]
     (let [v (.get capture (key-to-prop k))]
-      (if (not (= 0.0 v))
-      (println k  ":" v))))))
+      (if (not (and (= 0.0 v) (= -1.0 v)))
+        (println 
+          (if (contains? video-map k) "* " "  ") 
+            k  ":" v 
+          (if (contains? video-map k) (str " [" (video-map k) "]" )) ))))))

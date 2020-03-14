@@ -23,6 +23,7 @@ public class Camera {
     }
 
     private boolean fullscreen = false;
+    private Runnable exitTask;
 
 
     public Camera() {
@@ -91,6 +92,15 @@ public class Camera {
 
         if(this.fullscreen)
             exitFullScreen();
+
+        if(this.exitTask!=null) {
+            Thread t = new Thread(exitTask);
+            t.start();
+        }
+    }
+    public Camera exitTask(Runnable r) {
+        this.exitTask = r ;
+        return this;
     }
 
     public static void main(String[] args) throws Exception {
