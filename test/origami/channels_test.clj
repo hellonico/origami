@@ -16,7 +16,7 @@
 
 (deftest divide
 	(let [m (cv/new-mat 2 2 cv/CV_8UC3 (cv/new-scalar 10 20 30))]
-	 (cv/multiply! m (u/matrix-to-mat-of-double [[1/5 1/10 1/30]]))
+	 (cv/divide! m (u/matrix-to-mat-of-double [[5 10 30]]))
 	 (is (= (cv/->string m)
         [[2 2 1 2 2 1]
          [2 2 1 2 2 1]]))))

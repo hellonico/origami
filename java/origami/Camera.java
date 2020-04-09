@@ -66,9 +66,11 @@ public class Camera {
 
     public Camera device(Object o) {
         if (o instanceof String) {
-            cap = new VideoCapture((String) o);
+            cap = new VideoCapture();
+            cap.open((String) o);
         } else if (o instanceof Integer) {
-            cap = new VideoCapture((Integer) o);
+            cap = new VideoCapture();
+            cap.open((Integer) o);
         } else {
             throw new RuntimeException("Invalid value for device");
         }
@@ -78,7 +80,8 @@ public class Camera {
     public void run() {
         stop = false;
         if (this.cap == null) {
-            this.cap = new VideoCapture(0);
+            this.cap = new VideoCapture();
+            this.cap.open(0);
         }
 
         Mat var1 = new Mat();

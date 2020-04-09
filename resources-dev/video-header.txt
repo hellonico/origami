@@ -17,12 +17,12 @@
 
 (defn capture-device [ video ]
   (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
-      (let [debug? (dissoc video-map :debug) settings (keys (dissoc video-map :device)) ]
+      (let [debug? (dissoc video-map :debug) settings (keys (dissoc video-map :debug :device)) ]
         (doseq [s settings]
-            (.set capture (key-to-prop s) (-> video-map s))))
+            (.set capture (key-to-prop s) (-> video-map s)))
       (.open capture (-> video-map :device))
       (if debug? (debug-device capture))
-  capture))
+  capture)))
 
 (defn debug-device [capture video-map]
 (let[ cam-keys 
