@@ -98,6 +98,7 @@ public class Origami {
 
     public static void init() {
         try {
+            System.out.println("Loading:" + Core.NATIVE_LIBRARY_NAME);
             if (isOpenCVLoaded()) {
                 System.out.println("Already loaded:" + Core.NATIVE_LIBRARY_NAME);
             } else {
@@ -113,7 +114,8 @@ public class Origami {
      * TODO: Should be calling the clojure function
      */
     public static Mat grabOne(int camId) {
-        VideoCapture vc = new VideoCapture(camId);
+        VideoCapture vc = new VideoCapture();
+        vc.open(camId);
         Mat img1 = new Mat();
         try {
             Thread.sleep(500);
