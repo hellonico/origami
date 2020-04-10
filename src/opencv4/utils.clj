@@ -328,9 +328,9 @@ matrix))
   ([myvideofn] (simple-cam-window {} myvideofn ))
   ([_options myvideofn]
   (let [
-    options (merge-with merge {:frame {:fps false :color "00" :title "video"} :video {:device 0 :width 200 :height 220}} _options )
+    options (merge-with merge {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}} _options )
     capture (vid/capture-device (-> options :video))
-    window (show (cv/new-mat (-> options :video :width) (-> options :video :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
+    window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)
     start (System/currentTimeMillis)
     c (atom 0)
@@ -342,7 +342,7 @@ matrix))
        (if (-> options :frame :fps) (swap! c inc))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
-         (re-show window 
+         (re-show window
           (-> buffer 
             cv/clone
             myvideofn

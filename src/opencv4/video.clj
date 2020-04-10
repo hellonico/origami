@@ -36,7 +36,7 @@
     (map keyword))] 
     (doseq [k cam-keys]
     (let [v (.get capture (key-to-prop k))]
-      (if (not (= 0.0 v))
+      (if (and (not (= 0.0 v)) (not (= -1.0 v)))
       (println k  ":" v))))))
 
 (defn new-videowriter 
