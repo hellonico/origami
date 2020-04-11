@@ -33,13 +33,15 @@
   :junit ["test-java"]
   :junit-formatter :plain
   :junit-results-dir "target/junit"
+  :codox {:source-paths ["src"]}
   :profiles {:dev {
-    :plugins [[lein-junit "1.1.9"][jonase/eastwood "0.3.5"][quickie "0.4.1"]]
+    :plugins [[lein-codox "0.10.7"][lein-junit "1.1.9"][jonase/eastwood "0.3.5"][quickie "0.4.1"]]
     :source-paths ["dev"]
     :resource-paths ["resources-dev"]
     :dependencies [
     ; testing
     ; ~mxnet
+    [org.clojure/clojure "1.10.0"]
     ; used for api code only
     [camel-snake-kebab "0.4.0"]]}}
   :dependencies [
