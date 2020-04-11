@@ -7,3 +7,5 @@ Origami Project Goal
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
 (Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
+
+And [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
