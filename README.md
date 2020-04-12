@@ -1,4 +1,4 @@
-Origami Project Goal
+Origami Project Goals
 
 - Lowest barrier of entry to Image Processing, Computer Vision and Neural Networks on the JVM
   - by using OpenCV (and when possible Clojure)
@@ -6,6 +6,8 @@ Origami Project Goal
 
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
-(Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
+# news
 
-And [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
+- (Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
+- [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
+- Supports for [OpenCV 4.3](https://github.com/opencv/opencv/wiki/ChangeLog#version430) 
