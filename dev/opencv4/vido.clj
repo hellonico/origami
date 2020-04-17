@@ -17,7 +17,7 @@
 
 
 (defn capture-device [ video ]
-  (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
+  (let [capture (vid/new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
       (let [settings (keys (dissoc video-map :device)) ]
         (doseq [s settings]
             (.set capture (eval (symbol (key-to-prop s))) (-> video-map s))))

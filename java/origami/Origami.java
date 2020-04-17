@@ -98,12 +98,12 @@ public class Origami {
 
     public static void init() {
         try {
-            System.out.println("Loading:" + Core.NATIVE_LIBRARY_NAME);
+            System.out.printf("Loading: %s", Core.NATIVE_LIBRARY_NAME);
             if (isOpenCVLoaded()) {
-                System.out.println("Already loaded:" + Core.NATIVE_LIBRARY_NAME);
+                System.out.printf("Already loaded: %s", Core.NATIVE_LIBRARY_NAME);
             } else {
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-                System.out.println("Loaded:" + Core.NATIVE_LIBRARY_NAME);
+                System.out.printf("Loaded: %s", Core.NATIVE_LIBRARY_NAME);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

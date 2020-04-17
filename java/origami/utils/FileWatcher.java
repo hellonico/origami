@@ -29,10 +29,11 @@ public abstract class FileWatcher extends Thread {
     public void run() {
         try (WatchService watcher = FileSystems.getDefault().newWatchService()) {
             Path path = file.getAbsoluteFile().getParentFile().toPath();
-//            path.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY);
+            // path.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY);
             // https://stackoverflow.com/questions/9588737/is-java-7-watchservice-slow-for-anyone-else
-            path.register(watcher, new WatchEvent.Kind[]{StandardWatchEventKinds.ENTRY_MODIFY}, SensitivityWatchEventModifier.HIGH);
-            System.out.println("Started:"+path.getFileName());
+            path.register(watcher, new WatchEvent.Kind[] { StandardWatchEventKinds.ENTRY_MODIFY },
+                    SensitivityWatchEventModifier.HIGH);
+            System.out.printf("Started: %s", path.getFileName());
             while (!isStopped()) {
                 WatchKey key;
                 try {
@@ -66,7 +67,7 @@ public abstract class FileWatcher extends Thread {
                 }
                 Thread.yield();
             }
-        } catch (Throwable e) {
+        } catch (Exception e) {
             // Log or rethrow the error
             e.printStackTrace();
         }

@@ -151,6 +151,11 @@
   (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
 ([] 
   (new org.opencv.core.MatOfRect )))
+(defn new-matofrect2d 
+([array_lorg_opencv_core_rect2d_0 ] 
+  (new org.opencv.core.MatOfRect2d array_lorg_opencv_core_rect2d_0 ))
+([] 
+  (new org.opencv.core.MatOfRect2d )))
 (defn new-rotatedrect 
 ([array_d_0 ] 
   (new org.opencv.core.RotatedRect array_d_0 ))

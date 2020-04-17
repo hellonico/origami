@@ -13,6 +13,7 @@ package origami;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,8 +22,6 @@ import javax.swing.WindowConstants;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-
-import origami.Origami;
 
 public class ImShow {
 
@@ -46,8 +45,9 @@ public class ImShow {
 
     public ImShow(String title, boolean fullscreen) {
         this(title);
-        if(fullscreen) {
-            java.awt.GraphicsDevice d = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        if (fullscreen) {
+            java.awt.GraphicsDevice d = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
+                    .getDefaultScreenDevice();
             d.setFullScreenWindow(Window);
             Dimension di = d.getFullScreenWindow().getSize();
             Height = di.height;
@@ -55,7 +55,6 @@ public class ImShow {
             SizeCustom = true;
         }
     }
-
 
     public ImShow(String title, int width, int height) {
         SizeCustom = true;
@@ -92,14 +91,14 @@ public class ImShow {
     public void setCloseOption(int option) {
 
         switch (option) {
-        case 0:
-            Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            break;
-        case 1:
-            Window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-            break;
-        default:
-            Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            case 0:
+                Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                break;
+            case 1:
+                Window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+                break;
+            default:
+                Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
 
     }
