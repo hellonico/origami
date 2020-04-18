@@ -9,15 +9,15 @@
 
 (deftest video-test
 
-(.delete (clojure.java.io/as-file "target/hello.mp4"))
+(.delete (clojure.java.io/as-file "target/hello.avi"))
 (let [ outputVideo (VideoWriter.) ]
 
-(.open
+ (is  (.open
   outputVideo
-  "target/hello.mp4"
+  "target/hello.avi"
    (VideoWriter/fourcc \M \J \P \G)
   12
-  (new-size 300 400))
+  (new-size 300 400)))
 
 (doseq [_ (range 0 120)] 
 (.write outputVideo (new-mat 400 300 CV_8UC3 (new-scalar 0 0 255))))
@@ -28,7 +28,7 @@
 )
 
 (let [v (new-videocapture) buffer (new-mat) ]
- (.open v "target/hello.mp4")
+ (.open v "target/hello.avi")
  (.read v buffer)
  (imwrite buffer "target/red.png"))
 
