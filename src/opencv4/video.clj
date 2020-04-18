@@ -1,4 +1,5 @@
 (ns opencv4.video
+  (:require [clojure.set])
   (:import
     [org.opencv.core Mat Core CvType]
     [org.opencv.videoio Videoio VideoCapture]
@@ -17,7 +18,10 @@
 
 (defn capture-device [ video ]
   (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
-      (let [debug? (dissoc video-map :debug) settings (keys (dissoc video-map :debug :device)) ]
+      (let [debug? (dissoc video-map :debug) 
+       settings  (keys 
+
+       (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
             (.set capture (key-to-prop s) (-> video-map s)))
       (.open capture (-> video-map :device))

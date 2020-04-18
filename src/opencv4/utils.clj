@@ -358,11 +358,11 @@ matrix))
     (.start (Thread.
       (fn []
         (println ">> Starting: " (-> device-map :device) " << ")
-        (let [ buffer (cv/new-mat) capture (vid/capture-device device-map) ]
+        (let [ buffer (cv/new-mat) capture (vid/capture-device device-map) _fn (or (-> device-map :fn) identity) ] 
       (while (nil? (.getClientProperty window "quit"))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
-         (reset! buffer-atom ((-> device-map :fn) (cv/clone buffer))))))
+         (reset! buffer-atom (_fn (cv/clone buffer))))))
        (.release capture))))))
 
 (defn cams-window[ _options ]
