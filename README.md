@@ -13,4 +13,5 @@ Origami Project Goals
 - Supports for [OpenCV 4.3](https://github.com/opencv/opencv/wiki/ChangeLog#version430) 
 - Ready to use jupyter [notebooks](https://github.com/hellonico/origami-fun/tree/master/jupyter)
 - Deep Neural Networks with [origami-dnn](https://github.com/hellonico/origami-dnn)
+- Run on [AWS Lambdas](https://github.com/hellonico/origami-aws-lambdas)
 - Real-time Streaming Server [App](https://github.com/hellonico/opencv-live-video-stream-over-http) 
