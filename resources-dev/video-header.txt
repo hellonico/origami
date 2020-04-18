@@ -1,4 +1,5 @@
 (ns opencv4.video
+  (:require [clojure.set])
   (:import
     [org.opencv.core Mat Core CvType]
     [org.opencv.videoio Videoio VideoCapture]
@@ -17,14 +18,17 @@
 
 (defn capture-device [ video ]
   (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
-      (let [debug? (dissoc video-map :debug) settings (keys (dissoc video-map :debug :device)) ]
+      (let [debug? (dissoc video-map :debug) 
+       settings  (keys 
+
+       (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
             (.set capture (key-to-prop s) (-> video-map s)))
       (.open capture (-> video-map :device))
       (if debug? (debug-device capture))
   capture)))
 
-(defn debug-device [capture video-map]
+(defn debug-device [capture]
 (let[ cam-keys 
     (->> (ns-map 'opencv4.video)
     (keys)
@@ -33,14 +37,8 @@
     (map #(second (clojure.string/split % #"CAP_PROP_")))
     (map #(clojure.string/lower-case %))
     (map #(clojure.string/replace %  "_" "-"))
-    (map keyword))
-    ;in (keys video-map)
-    ] 
-    (println "- - - - - - [" (:device video-map) "] - - - - - -")
+    (map keyword))] 
     (doseq [k cam-keys]
     (let [v (.get capture (key-to-prop k))]
-      (if (not (and (= 0.0 v) (= -1.0 v)))
-        (println 
-          (if (contains? video-map k) "* " "  ") 
-            k  ":" v 
-          (if (contains? video-map k) (str " [" (video-map k) "]" )) ))))))
+      (if (and (not (= 0.0 v)) (not (= -1.0 v)))
+      (println k  ":" v))))))
