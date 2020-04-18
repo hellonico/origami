@@ -151,6 +151,15 @@
   (new org.opencv.core.MatOfRect array_lorg_opencv_core_rect_0 ))
 ([] 
   (new org.opencv.core.MatOfRect )))
+(defn new-rect2d 
+([array_d_0 ] 
+  (new org.opencv.core.Rect2d array_d_0 ))
+([org_opencv_core_point_0 org_opencv_core_size_1 ] 
+  (new org.opencv.core.Rect2d org_opencv_core_point_0 org_opencv_core_size_1 ))
+([] 
+  (new org.opencv.core.Rect2d ))
+([double_0 double_1 double_2 double_3 ] 
+  (new org.opencv.core.Rect2d double_0 double_1 double_2 double_3 )))
 (defn new-matofrect2d 
 ([array_lorg_opencv_core_rect2d_0 ] 
   (new org.opencv.core.MatOfRect2d array_lorg_opencv_core_rect2d_0 ))
