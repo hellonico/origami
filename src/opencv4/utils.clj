@@ -295,6 +295,7 @@ matrix))
              70  (let [ dsd   (->
                       (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
                       (.getDefaultScreenDevice)) ]
+                    ; pane size is ok (println (.getSize pane))
                     (if (.getClientProperty pane "fullscreen")
                     (do
                       (.putClientProperty pane "fullscreen" nil)
@@ -343,13 +344,15 @@ matrix))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
          (re-show window
-          (-> buffer 
-            cv/clone
+          (-> buffer
+            ;cv/clone
             myvideofn
-            ((fn[mat] 
+            ((fn[mat]
               (if (-> options :frame :fps)
                 (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")   (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2)
-                mat
+                ;(if (.getClientProperty window "fullscreen")
+                (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
+                ; mat)
                 )))
             )))))
        (.release capture)))))))
