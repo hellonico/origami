@@ -243,6 +243,18 @@ matrix))
 ;;;
 ; SWING
 ;;;
+(defn- toggle-fs [frame]
+(let [ pane (.getContentPane frame)
+									dsd   (->
+                      (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
+                      (.getDefaultScreenDevice)) ]
+                    (if (.getClientProperty pane "fullscreen")
+                    (do
+                      (.putClientProperty pane "fullscreen" nil)
+                      (.setFullScreenWindow dsd nil))
+                    (do
+                      (.putClientProperty pane "fullscreen" true)
+                      (.setFullScreenWindow dsd frame)))))
 
 (defn re-show[pane mat]
   (let[image (.getIcon (first (.getComponents pane)))]
@@ -292,17 +304,7 @@ matrix))
              83 (ImageIO/write
                  (.getImage (.getIcon label))
                  "png" (clojure.java.io/as-file (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png")))
-             70  (let [ dsd   (->
-                      (java.awt.GraphicsEnvironment/getLocalGraphicsEnvironment)
-                      (.getDefaultScreenDevice)) ]
-                    ; pane size is ok (println (.getSize pane))
-                    (if (.getClientProperty pane "fullscreen")
-                    (do
-                      (.putClientProperty pane "fullscreen" nil)
-                      (.setFullScreenWindow dsd nil))
-                    (do
-                      (.putClientProperty pane "fullscreen" true)
-                      (.setFullScreenWindow dsd frame))))
+             70  (toggle-fs frame)
              81  (do
                (.putClientProperty pane "quit" true)
                (.dispose frame))
@@ -322,6 +324,7 @@ matrix))
       (.setVisible true)
       (.pack)
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE))
+    	 (if (-> options :frame :fullscreen)  (toggle-fs frame))
       pane)))
 (def imshow show)
 
