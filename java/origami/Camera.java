@@ -65,6 +65,8 @@ public class Camera {
     }
 
     public Camera device(Object o) {
+        cap = Origami.CaptureDevice(o);
+        /*
         if (o instanceof String) {
             cap = new VideoCapture();
             cap.open((String) o);
@@ -73,7 +75,7 @@ public class Camera {
             cap.open((Integer) o);
         } else {
             throw new RuntimeException("Invalid value for device");
-        }
+        }*/
         return this;
     }
 
