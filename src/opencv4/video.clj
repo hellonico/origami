@@ -1,10 +1,6 @@
 (ns opencv4.video
   (:require [clojure.set])
-  (:import
-    [org.opencv.core Mat Core CvType]
-    [org.opencv.videoio Videoio VideoCapture]
-    [org.opencv.video Video]))
-
+  (:import  [org.opencv.videoio Videoio]))
 
 (declare new-videocapture)
 (declare debug-device)
