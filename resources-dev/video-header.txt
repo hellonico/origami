@@ -1,10 +1,6 @@
 (ns opencv4.video
   (:require [clojure.set])
-  (:import
-    [org.opencv.core Mat Core CvType]
-    [org.opencv.videoio Videoio VideoCapture]
-    [org.opencv.video Video]))
-
+  (:import  [org.opencv.videoio Videoio]))
 
 (declare new-videocapture)
 (declare debug-device)
@@ -17,16 +13,22 @@
   (eval (read-string (key-to-prop-s k))))
 
 (defn capture-device [ video ]
-  (let [capture (new-videocapture) video-map (if (map? video) video (read-string (slurp video))) ]
-      (let [debug? (dissoc video-map :debug) 
-       settings  (keys 
-
-       (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
+  (let [capture (new-videocapture)
+        is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
+        video-map (cond
+                    (map? video) video
+                    is-setting-file? (read-string (slurp video))
+                    :else {})
+        device (if  (= video-map {}) video (-> video-map :device))
+        debug? (dissoc video-map :debug)
+        settings
+         (keys
+          (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
             (.set capture (key-to-prop s) (-> video-map s)))
-      (.open capture (-> video-map :device))
+      (.open capture device)
       (if debug? (debug-device capture))
-  capture)))
+  capture))
 
 (defn debug-device [capture]
 (let[ cam-keys 
