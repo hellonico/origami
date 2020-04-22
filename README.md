@@ -2,7 +2,7 @@ Origami Project Goals
 
 - Lowest barrier of entry to Image Processing, Computer Vision and Neural Networks on the JVM
   - by using OpenCV (and when possible Clojure)
-- Works out of the box on your device
+- Works out of the box on your device (OSX, Windows, Linux, Raspberry ..) and in your language (Clojure, Java, Kotlin, Scala, Binary)
 
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
