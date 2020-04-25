@@ -352,12 +352,14 @@ matrix))
             myvideofn
             ((fn[mat]
               (if (-> options :frame :fps)
-                (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")   (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2)
+                (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")   
+                (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2))
                 ;(if (.getClientProperty window "fullscreen")
-                (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
-                ; mat)
-                )))
-            )))))
+                ; (if (not (nil? mat))
+                ;   (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window)))))
+                ; (println mat)
+                mat
+                )))))))
        (.release capture)))))))
 
 (defn start-cam-thread [ window device-map buffer-atom]
@@ -368,10 +370,14 @@ matrix))
       (while (nil? (.getClientProperty window "quit"))
        (if (.read capture buffer)
         (if (not (.getClientProperty window "paused"))
-         (reset! buffer-atom (_fn (cv/clone buffer))))))
+         (reset! buffer-atom 
+             (_fn (cv/clone buffer)) 
+             ; (_fn buffer)
+             )
+             )))
        (.release capture))))))
 
-(defn cams-window[ _options ]
+(defn cams-window [ _options ]
  (let [
    options        (merge-with merge {:frame {:color "00" :title "video"}} _options )
    showing         (nil? (-> options :frame :hide))
@@ -384,7 +390,7 @@ matrix))
    recording       (-> options :video :recording)
    ]
    (doall
-     (map #(start-cam-thread window %2 (get buffer-atoms %1)) (range) devices))
+     (map #(start-cam-thread window %2 (get buffer-atoms %1))  (range) devices))
 
      (if (not (nil? recording))
        (do
@@ -403,7 +409,11 @@ matrix))
             (do
             (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
             (let [ output (apply (-> options :video :fn) (into [] (map deref buffer-atoms))) ]
-             (if showing (re-show window output))
+             (if showing (re-show window 
+             (if (.getClientProperty window "fullscreen")
+                 (cv/resize! output (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
+             					output)
+             ))
              (if (not (nil? recording))
               (.write outputVideo
                (->

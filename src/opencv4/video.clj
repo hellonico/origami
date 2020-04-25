@@ -13,19 +13,23 @@
   (eval (read-string (key-to-prop-s k))))
 
 (defn capture-device [ video ]
+  (println "Video Device >" video)
   (let [capture (new-videocapture)
         is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
-        video-map (cond
+        _video-map (cond
                     (map? video) video
                     is-setting-file? (read-string (slurp video))
                     :else {})
-        device (if  (= video-map {}) video (-> video-map :device))
+        device (if  (= _video-map {}) video (-> _video-map :device))
+        video-map 
+          (clojure.set/rename-keys 
+        		 (dissoc _video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) 
         debug? (dissoc video-map :debug)
-        settings
-         (keys
-          (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
+        settings (keys video-map)  ]
         (doseq [s settings]
+            (println "<> " s ":" (-> video-map s))
             (.set capture (key-to-prop s) (-> video-map s)))
+      (println "Opening >" device)
       (.open capture device)
       (if debug? (debug-device capture))
   capture))
@@ -40,6 +44,7 @@
     (map #(clojure.string/lower-case %))
     (map #(clojure.string/replace %  "_" "-"))
     (map keyword))] 
+    (println ":backend" (try (.getBackendName capture) (catch Exception e))) ; broken
     (doseq [k cam-keys]
     (let [v (.get capture (key-to-prop k))]
       (if (and (not (= 0.0 v)) (not (= -1.0 v)))

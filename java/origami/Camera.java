@@ -17,8 +17,12 @@ public class Camera {
     static boolean stop = false;
     static {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            stop = true;
-            return true;
+            if(e.getKeyCode() == 13) {
+                stop = true;
+                return true;
+            } else {
+                return false;
+            }
         });
     }
 
