@@ -4,16 +4,12 @@
  }
  :deps { 
  	org.clojure/clojure {:mvn/version "1.10.0"}
- 	origami {:mvn/version "4.2.0-1"}
+ 	; check if origami needed or not here, but probably not
+ 	; origami {:mvn/version "4.2.0-1"}
  	org.scijava/native-lib-loader {:mvn/version "2.3.1"}
- 	opencv/opencv {:mvn/version "4.2.0-0"} 
- 	opencv/opencv-native {:mvn/version "4.2.0-0"} 
+ 	opencv/opencv {:mvn/version "4.3.0-0"} 
+ 	opencv/opencv-native {:mvn/version "4.3.0-1"} 
  	org.slf4j/slf4j-nop {:mvn/version "1.7.28"}
   hellonico/gorilla-repl {:mvn/version  "0.4.1"}
-
- 	; origami {:mvn/version "4.0.0-beta7" :exclusions [opencv/opencv-native]}
- 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "osx_64"}
- 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "limux_64"}
- 	; opencv/opencv-native {:mvn/version "4.0.0-beta1" :classifier "windows_64"}
  }
 }
