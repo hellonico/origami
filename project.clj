@@ -9,7 +9,7 @@
       ; _ (println (str platform mxnet))
       ]
 
-(defproject origami "4.3.0-5-SNAPSHOT"
+(defproject origami "4.3.0-6-SNAPSHOT"
   :description "OpenCV4 Wrapper"
   :aot [opencv4.dnn.core opencv4.filter opencv4.video]
   :url "https://github.com/hellonico/origami"
@@ -48,7 +48,7 @@
   	 ; [org.clojure/clojure "1.10.0"]
     [org.scijava/native-lib-loader "2.3.1" :exclusions [org.slf4j/slf4j-api]]
     [opencv/opencv "4.3.0-0"]
-    [opencv/opencv-native "4.3.0-0"]
+    [opencv/opencv-native "4.3.0-1"]
     [org.clojure/java.data "1.0.64"]
     [org.slf4j/slf4j-nop "1.7.28"]
     [junit/junit "4.13" :scope "test"]
