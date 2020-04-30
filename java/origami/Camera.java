@@ -14,12 +14,13 @@ public class Camera {
     ImShow ims = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
+    private static KeyEventDispatcher ked = e -> {
+        stop = true;
+        return true;
+    };
     static boolean stop = false;
     static {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            stop = true;
-            return true;
-        });
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
     }
 
     private boolean fullscreen = false;
@@ -66,16 +67,6 @@ public class Camera {
 
     public Camera device(Object o) {
         cap = Origami.CaptureDevice(o);
-        /*
-        if (o instanceof String) {
-            cap = new VideoCapture();
-            cap.open((String) o);
-        } else if (o instanceof Integer) {
-            cap = new VideoCapture();
-            cap.open((Integer) o);
-        } else {
-            throw new RuntimeException("Invalid value for device");
-        }*/
         return this;
     }
 
@@ -103,6 +94,11 @@ public class Camera {
             t.start();
         }
     }
+    public Camera keyHandler(KeyEventDispatcher ked) {
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
+        return this;
+    }
     public Camera exitTask(Runnable r) {
         this.exitTask = r ;
         return this;
@@ -115,7 +111,12 @@ public class Camera {
             cvtColor(mat, mat, COLOR_GRAY2BGR);
             return mat;
         };
-        new Camera().device(0).fullscreen().filter(p).run();
+        new Camera().device(0).keyHandler(e-> {
+            System.out.println(e.getKeyCode());
+          return true;
+        })
+                //.fullscreen()
+                .filter(p).run();
     }
 
 }
