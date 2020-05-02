@@ -2,6 +2,7 @@
 (ns opencv4.utils
   (:require
     [opencv4.core :as cv]
+    [opencv4.filter :as f]
     [opencv4.video :as vid])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
     [org.opencv.imgcodecs Imgcodecs]
@@ -299,8 +300,8 @@ matrix))
              (re-show pane (handler (get-src))))
            (condp = c
              32 (if (.getClientProperty pane "paused")
-                  (.putClientProperty pane "paused" false)
-                  (.putClientProperty pane "paused" true))
+                    (.putClientProperty pane "paused" false)
+                    (.putClientProperty pane "paused" true))
              83 (ImageIO/write
                  (.getImage (.getIcon label))
                  "png" (clojure.java.io/as-file (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png")))
@@ -330,14 +331,16 @@ matrix))
 
 (defn simple-cam-window
   ([myvideofn] (simple-cam-window {} myvideofn ))
-  ([_options myvideofn]
+  ([_options _myvideofn]
   (let [
-    options (merge-with merge {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}} _options )
+    __options (if (string? _options) (read-string (slurp _options)))
+    options (merge-with merge {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}} __options )
     capture (vid/capture-device (-> options :video))
     window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
     buffer (cv/new-mat)
     start (System/currentTimeMillis)
     c (atom 0)
+    myvideofn (if (string? _myvideofn) (f/s->fn-filter _myvideofn) _myvideofn)
     ]
 
     (.start (Thread.
@@ -352,12 +355,9 @@ matrix))
             myvideofn
             ((fn[mat]
               (if (-> options :frame :fps)
-                (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")   (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2)
-                ;(if (.getClientProperty window "fullscreen")
-                (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
-                ; mat)
-                )))
-            )))))
+                (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")
+                              (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2))
+                (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window)))))))))))
        (.release capture)))))))
 
 (defn start-cam-thread [ window device-map buffer-atom]
