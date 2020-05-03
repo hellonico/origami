@@ -5,8 +5,12 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.util.Date;
 import java.util.function.Function;
 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 import static org.opencv.imgproc.Imgproc.*;
 
 public class Camera {
@@ -14,30 +18,46 @@ public class Camera {
     ImShow ims = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
-    private static KeyEventDispatcher ked = e -> {
-        stop = true;
+    boolean stop = false;
+    private boolean pause;
+
+    KeyEventDispatcher ked = e -> {
+        char key = e.getKeyChar();
+        switch (key) {
+            case ' ':
+                this.pause = !this.pause;
+                break;
+            case 'q':
+                this.stop = true;
+                break;
+            case 'f':
+                this.fullscreen();
+                break;
+            case 'p':
+                this.skipFilter = !this.skipFilter;
+                break;
+            case 'r':
+                this.device(this.device);
+                this.pause = false;
+                break;
+            case 's':
+                imwrite("origami_screenshot_"+new Date().toString().toLowerCase()+".jpg", this.buffer);
+            default:
+                ;
+        }
+
         return true;
     };
-    static boolean stop = false;
-    static {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
-    }
 
     private boolean fullscreen = false;
     private Runnable exitTask;
+    private Object device;
+    private boolean skipFilter = false;
 
 
     public Camera() {
-        
+        this.keyHandler(ked);
     }
-
-    private void exitFullScreen() {
-        this.ims.Window.setVisible(false);
-//        this.ims.Window.dispose();
-        GraphicsDevice var3 = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        var3.setFullScreenWindow(null);
-    }
-
 
     public Camera cap(VideoCapture _cap) {
         this.cap = _cap;
@@ -45,13 +65,19 @@ public class Camera {
     }
 
     public Camera fullscreen() {
-        ims = new ImShow("Origami", true);
-        this.fullscreen = true;
+        this.fullscreen = !this.fullscreen;
+        // ims.Window.dispose();
+
+        if(fullscreen)
+            ims.enterFullScreen();
+        else
+            ims.exitFullScreen();
+
         return this;
     }
 
     public Camera size(int width, int height) {
-        ims = new ImShow("Origami", width,height);
+        ims = new ImShow("Origami", width, height);
         return this;
     }
 
@@ -66,10 +92,13 @@ public class Camera {
     }
 
     public Camera device(Object o) {
+        this.device = o;
         cap = Origami.CaptureDevice(o);
         return this;
     }
 
+
+    Mat buffer = new Mat();
     public void run() {
         stop = false;
         if (this.cap == null) {
@@ -77,44 +106,75 @@ public class Camera {
             this.cap.open(0);
         }
 
-        Mat var1 = new Mat();
 
-        while (!stop && this.cap.grab()) {
-            this.cap.retrieve(var1);
-            this.ims.showImage((Mat) this.filter.apply(var1));
+        while (!stop) {
+            if(pause) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    // e.printStackTrace();
+                }
+                continue;
+            }
+            try {
+                this.cap.grab();
+                this.cap.retrieve(buffer);
+                if (skipFilter)
+                    this.ims.showImage(buffer);
+                else
+                    this.ims.showImage(this.filter.apply(buffer));
+
+            } catch (Exception e) {
+                System.out.printf("Reading error ... %s\n", e.getMessage());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
         }
 
         this.cap.release();
 
-        if(this.fullscreen)
-            exitFullScreen();
+        if (this.fullscreen)
+            this.ims.exitFullScreen();
 
-        if(this.exitTask!=null) {
+        if (this.exitTask != null) {
             Thread t = new Thread(exitTask);
             t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                // e.printStackTrace();
+            }
         }
+        ims.Window.dispatchEvent(new WindowEvent(ims.Window, WindowEvent.WINDOW_CLOSING));
     }
+
     public Camera keyHandler(KeyEventDispatcher ked) {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
+//        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
         return this;
     }
+
     public Camera exitTask(Runnable r) {
-        this.exitTask = r ;
+        this.exitTask = r;
         return this;
     }
 
     public static void main(String[] args) throws Exception {
         Origami.init();
         Filter p = mat -> {
-            Imgproc.cvtColor(mat, mat, COLOR_BGR2GRAY);
+            cvtColor(mat, mat, COLOR_BGR2GRAY);
             cvtColor(mat, mat, COLOR_GRAY2BGR);
             return mat;
         };
-        new Camera().device(0).keyHandler(e-> {
-            System.out.println(e.getKeyCode());
-          return true;
-        })
+
+        Camera c = new Camera();
+        c.size(400,300);
+        c.device(0)
+                //.keyHandler(ked)
                 //.fullscreen()
                 .filter(p).run();
     }

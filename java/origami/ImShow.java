@@ -11,7 +11,9 @@ package origami;
  * Check Example for usage with Webcam Live Video Feed
  */
 
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
@@ -30,6 +32,7 @@ public class ImShow {
     private JLabel label;
     private Boolean SizeCustom;
     private int Height, Width;
+    private int orgHeight,orgWidth;
 
     public ImShow(String title) {
         Window = new JFrame();
@@ -46,14 +49,33 @@ public class ImShow {
     public ImShow(String title, boolean fullscreen) {
         this(title);
         if (fullscreen) {
-            java.awt.GraphicsDevice d = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
-                    .getDefaultScreenDevice();
-            d.setFullScreenWindow(Window);
-            Dimension di = d.getFullScreenWindow().getSize();
-            Height = di.height;
-            Width = di.width;
-            SizeCustom = true;
+            enterFullScreen();
         }
+    }
+
+    public void enterFullScreen() {
+        this.orgHeight=Window.getHeight();
+        this.orgWidth=Window.getWidth();
+        System.out.println(orgHeight+"x"+orgWidth);
+
+        GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
+                .getDefaultScreenDevice();
+        d.setFullScreenWindow(Window);
+        Dimension di = d.getFullScreenWindow().getSize();
+        Height = di.height;
+        Width = di.width;
+        SizeCustom = true;
+    }
+
+
+    public void exitFullScreen() {
+//        this.ims.Window.setVisible(false);
+//        this.ims.Window.dispose();
+        GraphicsDevice var3 = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        var3.setFullScreenWindow(null);
+        System.out.println(orgHeight+"x"+orgWidth);
+        this.Height = orgHeight;
+        this.Width = orgWidth;
     }
 
     public ImShow(String title, int width, int height) {
@@ -66,7 +88,16 @@ public class ImShow {
         label = new JLabel();
         label.setIcon(image);
         Window.getContentPane().add(label);
-        Window.setResizable(false);
+        Window.setResizable(true);
+
+//        Window.addComponentListener(new ComponentAdapter() {
+//            public void componentResized(ComponentEvent e) {
+//                System.out.println(e.getSource());
+//                ImShow.this.Height=e.getComponent().getHeight();
+//                ImShow.this.Width=e.getComponent().getWidth();
+//            }
+//        });
+
         Window.setTitle(title);
         setCloseOption(0);
 
