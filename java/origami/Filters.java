@@ -32,7 +32,8 @@ public class Filters implements Filter {
 
     @Override
     public Mat apply(Mat in) {
-        Mat dst = in.clone();
+        Mat dst = in;
+
         for (Filter f : filters) {
             dst = f.apply(dst);
         }

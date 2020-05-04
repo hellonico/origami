@@ -294,23 +294,20 @@ matrix))
         (keyTyped [event])
         (keyReleased [event])
         (keyPressed [event]
-          (let [c (.getKeyCode event) handler (-> options :handlers (get c))]
+          (let [c (.getKeyChar event) handler (-> options :handlers (get c))]
           ;(println c ">" handler)
           (if (not (nil? handler))
              (re-show pane (handler (get-src))))
-           (condp = c
-             32 (if (.getClientProperty pane "paused")
+           (condp = (str c)
+             " " (if (.getClientProperty pane "paused")
                     (.putClientProperty pane "paused" false)
                     (.putClientProperty pane "paused" true))
-             83 (ImageIO/write
+             "s" (ImageIO/write
                  (.getImage (.getIcon label))
                  "png" (clojure.java.io/as-file (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png")))
-             70  (toggle-fs frame)
-             81  (do
-               (.putClientProperty pane "quit" true)
-               (.dispose frame))
-             (do)
-             )))))
+             "f"  (toggle-fs frame)
+             "q"  (do (.putClientProperty pane "quit" true) (.dispose frame))
+             (do))))))
     (.addMouseListener label
       (proxy [MouseAdapter] []
        (mousePressed [event])))
@@ -333,7 +330,7 @@ matrix))
   ([myvideofn] (simple-cam-window {} myvideofn ))
   ([_options _myvideofn]
   (let [
-    __options (if (string? _options) (read-string (slurp _options)))
+    __options (if (string? _options) (read-string (slurp _options)) _options )
     options (merge-with merge {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}} __options )
     capture (vid/capture-device (-> options :video))
     window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)

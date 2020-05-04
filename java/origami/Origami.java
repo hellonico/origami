@@ -10,18 +10,18 @@ import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
-import org.opencv.videoio.Videoio;
 import org.scijava.nativelib.NativeLoader;
+import origami.video.VideoHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.HashMap;
 
 import static org.opencv.core.Core.getNumberOfCPUs;
 import static org.opencv.imgcodecs.Imgcodecs.imencode;
@@ -45,6 +45,15 @@ public class Origami {
         frame.get(0, 0, data);
         return image;
     }
+
+    private static HashMap<String, VideoHandler> handlers = new HashMap<>();
+    public static void registerVideoHandler(String prefix, VideoHandler handler) {
+        handlers.put(prefix, handler);
+    }
+    public static VideoHandler getVideoHandler(String prefix) {
+        return handlers.get(prefix);
+    }
+
 
     /**
      * TODO: Should be calling the clojure function

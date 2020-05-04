@@ -3,8 +3,11 @@ package origami;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
+import origami.utils.Downloader;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.function.Function;
@@ -15,39 +18,73 @@ import static org.opencv.imgproc.Imgproc.*;
 
 public class Camera {
     VideoCapture cap;
-    ImShow ims = new ImShow("Origami");
+    ImShow ims; //  = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
     boolean stop = false;
     private boolean pause;
+    int skipFrames = 0;
 
-    KeyEventDispatcher ked = e -> {
-        char key = e.getKeyChar();
-        switch (key) {
-            case ' ':
-                this.pause = !this.pause;
-                break;
-            case 'q':
-                this.stop = true;
-                break;
-            case 'f':
-                this.fullscreen();
-                break;
-            case 'p':
-                this.skipFilter = !this.skipFilter;
-                break;
-            case 'r':
-                this.device(this.device);
-                this.pause = false;
-                break;
-            case 's':
-                imwrite("origami_screenshot_"+new Date().toString().toLowerCase()+".jpg", this.buffer);
-            default:
-                ;
+    public int getSkipFrames() {
+        return skipFrames;
+    }
+
+    public void setSkipFrames(int skipFrames) {
+        this.skipFrames = skipFrames;
+    }
+
+    KeyListener kl = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
         }
 
-        return true;
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+            char key = e.getKeyChar();
+            switch (key) {
+                case '+':
+                    skipFrames++;
+//                System.out.printf(":skip:%d\n", skipFrames);
+                    break;
+                case '-':
+                    if(skipFrames>0) skipFrames--;
+//                System.out.printf(":skip:%d\n", skipFrames);
+                    break;
+                case 'd':
+                    Downloader.debug();
+                    break;
+                case ' ':
+                    Camera.this.pause = !Camera.this.pause;
+                    break;
+                case 'q':
+                    Camera.this.stop = true;
+                    break;
+                case 'f':
+                    Camera.this.fullscreen();
+                    break;
+                case 'p':
+                    Camera.this.skipFilter = !Camera.this.skipFilter;
+                    break;
+                case 'r':
+                    Camera.this.device(Camera.this.device);
+                    Camera.this.pause = false;
+                    break;
+                case 's':
+                    imwrite("origami_screenshot_"+new Date().toString().toLowerCase()+".jpg", Camera.this.buffer);
+                default:
+                    ;
+            }
+            e.consume();
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
     };
+
 
     private boolean fullscreen = false;
     private Runnable exitTask;
@@ -56,7 +93,12 @@ public class Camera {
 
 
     public Camera() {
-        this.keyHandler(ked);
+//        GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
+//                .getDefaultScreenDevice();
+//        Dimension di = d.getFullScreenWindow().getSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.ims = new ImShow("Origami", screenSize.width/2, screenSize.height/2);
+        this.ims.Window.addKeyListener(kl);
     }
 
     public Camera cap(VideoCapture _cap) {
@@ -66,7 +108,6 @@ public class Camera {
 
     public Camera fullscreen() {
         this.fullscreen = !this.fullscreen;
-        // ims.Window.dispose();
 
         if(fullscreen)
             ims.enterFullScreen();
@@ -77,7 +118,9 @@ public class Camera {
     }
 
     public Camera size(int width, int height) {
-        ims = new ImShow("Origami", width, height);
+        ims.Width = width;
+        ims.Height = height; //= new ImShow("Origami", width, height);
+//        this.ims.Window.addKeyListener(kl);
         return this;
     }
 
@@ -101,14 +144,23 @@ public class Camera {
     Mat buffer = new Mat();
     public void run() {
         stop = false;
+        int skip = 0;
+
         if (this.cap == null) {
             this.cap = new VideoCapture();
             this.cap.open(0);
         }
 
-
         while (!stop) {
-            if(pause) {
+            if(skipFrames<0) {
+                skip++;
+                if(skipFrames>-skip) {
+                    continue;
+                } else
+                    skip=0;
+            }
+
+            if(pause || !this.cap.grab()) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -116,9 +168,20 @@ public class Camera {
                 }
                 continue;
             }
+
+            if(skipFrames>0) {
+                skip++;
+                if(skipFrames>skip)
+                    continue;
+                else
+                    skip=0;
+            }
+
+
             try {
-                this.cap.grab();
-                this.cap.retrieve(buffer);
+                this.cap.read(buffer);
+                if(buffer.size().height==0 && buffer.size().width==0)
+                    throw new Exception("Empty image ...");
                 if (skipFilter)
                     this.ims.showImage(buffer);
                 else
@@ -129,7 +192,7 @@ public class Camera {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+                    // ex.printStackTrace();
                 }
             }
 
@@ -155,6 +218,7 @@ public class Camera {
     public Camera keyHandler(KeyEventDispatcher ked) {
 //        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
+
         return this;
     }
 
@@ -171,12 +235,11 @@ public class Camera {
             return mat;
         };
 
-        Camera c = new Camera();
-        c.size(400,300);
-        c.device(0)
+//        Camera c = ;
+//        new Camera().size(400,300).device(0).filter(p).run();
+        new Camera().device(0).filter(p).run();
                 //.keyHandler(ked)
                 //.fullscreen()
-                .filter(p).run();
     }
 
 }

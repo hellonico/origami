@@ -31,19 +31,20 @@ public class ImShow {
     private ImageIcon image;
     private JLabel label;
     private Boolean SizeCustom;
-    private int Height, Width;
+    public int Height, Width;
     private int orgHeight,orgWidth;
 
     public ImShow(String title) {
-        Window = new JFrame();
-        image = new ImageIcon();
-        label = new JLabel();
-        label.setIcon(image);
-        Window.getContentPane().add(label);
-        Window.setResizable(false);
-        Window.setTitle(title);
-        SizeCustom = false;
-        setCloseOption(0);
+//        Window = new JFrame();
+//        image = new ImageIcon();
+//        label = new JLabel();
+//        label.setIcon(image);
+//        Window.getContentPane().add(label);
+//        Window.setResizable(false);
+//        Window.setTitle(title);
+//        SizeCustom = false;
+//        setCloseOption(0);
+        this(title, 800,600);
     }
 
     public ImShow(String title, boolean fullscreen) {
@@ -56,7 +57,6 @@ public class ImShow {
     public void enterFullScreen() {
         this.orgHeight=Window.getHeight();
         this.orgWidth=Window.getWidth();
-        System.out.println(orgHeight+"x"+orgWidth);
 
         GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
                 .getDefaultScreenDevice();
@@ -69,17 +69,15 @@ public class ImShow {
 
 
     public void exitFullScreen() {
-//        this.ims.Window.setVisible(false);
-//        this.ims.Window.dispose();
         GraphicsDevice var3 = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         var3.setFullScreenWindow(null);
-        System.out.println(orgHeight+"x"+orgWidth);
         this.Height = orgHeight;
         this.Width = orgWidth;
     }
 
     public ImShow(String title, int width, int height) {
         SizeCustom = true;
+
         Height = height;
         Width = width;
 
@@ -89,24 +87,16 @@ public class ImShow {
         label.setIcon(image);
         Window.getContentPane().add(label);
         Window.setResizable(true);
-
-//        Window.addComponentListener(new ComponentAdapter() {
-//            public void componentResized(ComponentEvent e) {
-//                System.out.println(e.getSource());
-//                ImShow.this.Height=e.getComponent().getHeight();
-//                ImShow.this.Width=e.getComponent().getWidth();
-//            }
-//        });
-
         Window.setTitle(title);
         setCloseOption(0);
 
     }
 
     public void showImage(Mat img) {
-        if (SizeCustom) {
+        // TODO: check this: removed after setting Height and Width Public
+        //        if (SizeCustom) {
             Imgproc.resize(img, img, new Size(Width, Height));
-        }
+        //        }
         BufferedImage bufImage = null;
         try {
             bufImage = Origami.matToBufferedImage(img);
