@@ -309,16 +309,30 @@
   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_size_2 double_3 double_4 int_5 ))
 )
 
+;; (defn resize!
+;; ([org_opencv_core_mat_0 org_opencv_core_size_2 ]
+;;   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
+;; ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ]
+;;   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ) org_opencv_core_mat_0 )
+;; ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ]
+;;   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ) org_opencv_core_mat_0 )
+;; ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ]
+;;   (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
+;; )
+
 (defn resize!
-([org_opencv_core_mat_0 org_opencv_core_size_2 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 ) org_opencv_core_mat_0 )
-([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ]
-  (Imgproc/resize org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5 ) org_opencv_core_mat_0 )
-)
+  ([org_opencv_core_mat_0 org_opencv_core_size_2]
+   (let [res (new-mat)]
+   (Imgproc/resize org_opencv_core_mat_0 res org_opencv_core_size_2) res))
+  ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3]
+   (let [res (new-mat)]
+   (Imgproc/resize org_opencv_core_mat_0 res org_opencv_core_size_2 double_3) res))
+  ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4]
+   (let [res (new-mat)]
+   (Imgproc/resize org_opencv_core_mat_0 res org_opencv_core_size_2 double_3 double_4) res))
+  ([org_opencv_core_mat_0 org_opencv_core_size_2 double_3 double_4 int_5]
+   (let [res (new-mat)]
+   (Imgproc/resize org_opencv_core_mat_0 res org_opencv_core_size_2 double_3 double_4 int_5) res)))
 
 (defn remap
 ([org_opencv_core_mat_0 org_opencv_core_mat_1 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 int_5 ]

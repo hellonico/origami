@@ -1,34 +1,37 @@
 (ns opencv4.process
-    (:require
-      [clojure.java.io :as io] 
-      [clojure.string :as s]))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.string :as s]))
 
-(defn parallel 
-    ([folder out myfn] (parallel folder out myfn "jpg"))
-    ([folder out myfn ext] 
-    (let [_myfn (partial myfn out)]
-    (.mkdirs (io/as-file out))
+(defn list-folder [ext folder]
+  (->>   folder
+         (io/as-file)
+         (.listFiles)
+         (filter #(s/includes? (s/lower-case (.getName %)) ext))))
 
-    (->> folder
-        (io/as-file)
-        (.listFiles)
-        (filter #(s/includes? (s/lower-case (.getName %)) ext))
-        (pmap #(.getAbsolutePath %))
-        (pmap _myfn)
-        (doall))
+(defn parallel
+  ([folder myfn] (parallel folder "." (fn [_ in] (myfn in))))
+  ([folder out myfn] (parallel folder out myfn "jpg"))
+  ([folder out myfn ext]
+   (let [_myfn (partial myfn out)]
+     (.mkdirs (io/as-file out))
 
-    (shutdown-agents))))
+     (->> (list-folder ext folder)
+          (pmap #(.getAbsolutePath %))
+          (pmap _myfn)
+          (doall))
 
-(defn sequential 
-    ([folder out myfn] (sequential folder out myfn "jpg"))
-    ([folder out myfn ext] 
-    (let [_myfn (partial myfn out)]
-    (.mkdirs (io/as-file out))
+    ;(shutdown-agents)
+     )))
 
-    (->> folder
-        (io/as-file)
-        (.listFiles)
-        (filter #(s/includes? (s/lower-case (.getName %)) ext))
-        (map #(.getAbsolutePath %))
-        (map _myfn)
-        (doall)))))
+(defn sequential
+  ([folder myfn] (sequential folder "." (fn [_ in] (myfn in))))
+  ([folder out myfn] (sequential folder out myfn "jpg"))
+  ([folder out myfn ext]
+   (let [_myfn (partial myfn out)]
+     (.mkdirs (io/as-file out))
+
+     (->> (list-folder ext folder)
+          (map #(.getAbsolutePath %))
+          (map _myfn)
+          (doall)))))
