@@ -17,3 +17,7 @@ Origami Project Goals
 - Deep Neural Networks with [origami-dnn](https://github.com/hellonico/origami-dnn)
 - Run on [AWS Lambdas](https://github.com/hellonico/origami-aws-lambdas)
 - Real-time Streaming Server [App](https://github.com/hellonico/opencv-live-video-stream-over-http) 
+- With [origami-sources](https://github.com/hellonico/origami-sources/)
+  - use various sources (folders, zip files, dropbox, webcam, flickr etc..) to lazily load OpenCV Mat objects
+  - use various handlers (You Tube, HTTPS etc...) to load VideoCapture objects
+
