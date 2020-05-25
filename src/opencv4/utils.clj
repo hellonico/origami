@@ -1,4 +1,3 @@
-
 (ns opencv4.utils
   (:require
    [opencv4.core :as cv]
@@ -231,6 +230,30 @@
                           (cv/new-scalar 127 50 0))
                         -1)))
   img)
+;;;
+;;; SIZING
+;;;
+(defn resize-keep-ratio! [mat w h]
+  (if (or (zero? w) (zero? h))
+    mat
+    (let [mh (.height mat)
+          mw (.width mat)
+          fh (double (/ h mh))
+          fw (double (/ w mw))
+          ff (Math/min fh fw)
+          nw (* ff mw)
+          nh (* ff mh)]
+      (cv/resize! mat (cv/new-size nw nh)))))
+
+(defn resize-to-fullscreen!
+  ([mat] (resize-to-fullscreen! mat true))
+  ([mat keep-ratio]
+   (let [screen-size (.getScreenSize (java.awt.Toolkit/getDefaultToolkit))
+         h (.height screen-size)
+         w (.width screen-size)]
+     (if keep-ratio
+       (resize-keep-ratio! mat w h)
+       (cv/resize! mat (cv/new-size w h))))))
 
 ;;;
 ; SWING
@@ -319,27 +342,6 @@
      pane)))
 (def imshow show)
 
-(defn resize-keep-ratio! [mat w h]
-  (if (or (zero? w) (zero? h))
-    mat
-    (let [mh (.height mat)
-          mw (.width mat)
-          fh (double (/ h mh))
-          fw (double (/ w mw))
-          ff (Math/min fh fw)
-          nw (* ff mw)
-          nh (* ff mh)]
-      (cv/resize! mat (cv/new-size nw nh)))))
-
-(defn resize-to-fullscreen!
-  ([mat] (resize-to-fullscreen! mat true))
-  ([mat keep-ratio]
-   (let [screen-size (.getScreenSize (java.awt.Toolkit/getDefaultToolkit))
-         h (.height screen-size)
-         w (.width screen-size)]
-     (if keep-ratio
-       (resize-keep-ratio! mat w h)
-       (cv/resize! mat (cv/new-size w h))))))
 
 (defn simple-cam-window
   ([myvideofn] (simple-cam-window {} myvideofn))
@@ -360,7 +362,7 @@
                   (if (.read capture buffer)
                     (if (not (.getClientProperty window "paused"))
                       (re-show (-> buffer
-            ;cv/clone
+                                   ;cv/clone
                                    myvideofn
                                    ((fn [mat]
                                       (if (-> options :frame :fps)
@@ -385,10 +387,10 @@
   (let [options        (merge-with merge {:frame {:color "00" :title "video"}} _options)
         showing         (nil? (-> options :frame :hide))
         devices        (-> options :devices)
-        devices-count  (count devices)
+        ; devices-count  (count devices)
         buffer-atoms   (into [] (map (fn [_] (atom (cv/new-mat))) devices))
         window         (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
-        output         (cv/new-mat)
+        ; output         (cv/new-mat)
         outputVideo     (vid/new-videowriter)
         recording       (-> options :video :recording)]
     (doall

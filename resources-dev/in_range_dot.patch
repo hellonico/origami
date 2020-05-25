@@ -1,0 +1,18 @@
+diff --git a/src/opencv4/core.clj b/src/opencv4/core.clj
+index b0e121c..0d77971 100644
+--- a/src/opencv4/core.clj
++++ b/src/opencv4/core.clj
+@@ -3432,8 +3432,11 @@
+ 
+ (defn in-range
+ ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_3 ]
+-  (Core/inRange org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_3 ))
+-)
++  (Core/inRange org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_3 )))
++
++(defn in-range!
++  ([org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2]
++   (in-range org_opencv_core_mat_0 org_opencv_core_scalar_1 org_opencv_core_scalar_2 org_opencv_core_mat_0) org_opencv_core_mat_0))
+ 
+ (defn trace
+ ([org_opencv_core_mat_0 ]
