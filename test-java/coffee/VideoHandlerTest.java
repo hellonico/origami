@@ -20,7 +20,7 @@ public class VideoHandlerTest {
 //        new Camera().device("http://mirrors.standaloneinstaller.com/video-sample/star_trails.mov").run();
 
         String targetFile = "target/starts.mov";
-        Downloader.transfer("http://mirrors.standaloneinstaller.com/video-sample/star_trails.mov", targetFile);
+        Downloader.transfer("https://github.com/hellonico/origami-dnn/blob/master/resources/vids/Marcel2.m4v?raw=true", targetFile);
         Assert.assertTrue(new File(targetFile).exists());
     }
 }
