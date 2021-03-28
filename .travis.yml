@@ -4,9 +4,21 @@ os:
 dist: xenial
 language: clojure
 jdk:
- - openjdk8
+#  - openjdk8
  - oraclejdk11
  - openjdk11
  - openjdk14
  - openjdk17
  - openjdk-ea
+
+matrix:
+  include:
+  - os: linux
+    jdk: openjdk8
+  # allow_failures:
+  # - os: osx
+  #   jdk: oraclejdk-ea
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update           ; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install leiningen; fi
