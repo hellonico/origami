@@ -16,7 +16,6 @@
     :repositories [["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
                    ["mxnet" {:url "https://repository.apache.org/content/repositories/staging/"}]]
     :aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api"]}
-    :jvm-opts ["-Djava.library.path=natives"]
     :release-tasks
     [["vcs" "assert-committed"]
      ["change" "version" "leiningen.release/bump-version" "release"]
