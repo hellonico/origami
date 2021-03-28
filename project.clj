@@ -8,7 +8,7 @@
       ; _ (println (str platform mxnet))
       ]
 
-  (defproject origami "4.5.0-1-SNAPSHOT"
+  (defproject origami "4.5.1-0-SNAPSHOT"
     :description "OpenCV4 Wrapper"
     :aot [opencv4.dnn.core]
     :url "https://github.com/hellonico/origami"
@@ -16,6 +16,7 @@
     :repositories [["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
                    ["mxnet" {:url "https://repository.apache.org/content/repositories/staging/"}]]
     :aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api"]}
+    :jvm-opts ["-Djava.library.path=natives"]
     :release-tasks
     [["vcs" "assert-committed"]
      ["change" "version" "leiningen.release/bump-version" "release"]
@@ -42,8 +43,8 @@
                                     [camel-snake-kebab "0.4.0"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
                    [org.scijava/native-lib-loader "2.3.5" :exclusions [org.slf4j/slf4j-api]]
-                   [opencv/opencv "4.5.0-0"]
-                   [opencv/opencv-native "4.5.0-0"]
+                   [opencv/opencv "4.5.1-0"]
+                   [opencv/opencv-native "4.5.1-0"]
                    [org.clojure/java.data "1.0.64"]
                    [org.slf4j/slf4j-nop "1.7.28"]
                    [junit/junit "4.13" :scope "provided"]]))
