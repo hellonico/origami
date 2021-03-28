@@ -4,6 +4,6 @@ jdk:
  - openjdk8
  - oraclejdk11
  - openjdk11
- - openjdk12
  - openjdk14
+ - openjdk17
  - openjdk-ea
