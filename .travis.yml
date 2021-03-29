@@ -2,6 +2,7 @@ os:
   - linux
   - osx
 dist: xenial
+osx_image: xcode12.2
 language: clojure
 jdk:
 #  - openjdk8
@@ -15,10 +16,10 @@ matrix:
   include:
   - os: linux
     jdk: openjdk8
-  # allow_failures:
-  # - os: osx
+  allow_failures:
+  - os: osx
   #   jdk: oraclejdk-ea
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update           ; fi
+  #- if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update           ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install leiningen; fi
