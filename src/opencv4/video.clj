@@ -53,13 +53,15 @@
   (new org.opencv.videoio.VideoWriter ))
 ([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ] 
   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 )))
+
 (defn new-videocapture 
-([java_lang_string_0 ] 
-  (new org.opencv.videoio.VideoCapture java_lang_string_0 ))
-([int_0 int_1 ] 
-  (new org.opencv.videoio.VideoCapture int_0 int_1 ))
+;; ([java_lang_string_0 ] 
+;;   (new origami.video.VideoCapture java_lang_string_0 ))
+;; ([int_0 int_1 ] 
+;;   (new origami.video.VideoCapture int_0 int_1 ))
 ([] 
-  (new org.opencv.videoio.VideoCapture )))
+  (new origami.video.VideoCapture )))
+
 (def VIDEOWRITER_PROP_QUALITY Videoio/VIDEOWRITER_PROP_QUALITY)
 (def VIDEOWRITER_PROP_FRAMEBYTES Videoio/VIDEOWRITER_PROP_FRAMEBYTES)
 (def VIDEOWRITER_PROP_NSTRIPES Videoio/VIDEOWRITER_PROP_NSTRIPES)

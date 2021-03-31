@@ -8,10 +8,6 @@ import java.io.FileOutputStream;
 import java.net.URL;
 
 public class HttpVideoHandler implements VideoHandler {
-    static {
-        Origami.registerVideoHandler("http", new HttpVideoHandler());
-        Origami.registerVideoHandler("https", new HttpVideoHandler());
-    }
 
     long bufferTime = 1000;
 

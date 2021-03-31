@@ -344,6 +344,7 @@
 
 
 (defn simple-cam-window
+  ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
   ([_options _myvideofn]
    (let [__options (if (string? _options) (read-string (slurp _options)) _options)
@@ -353,7 +354,7 @@
          buffer (cv/new-mat)
          start (System/currentTimeMillis)
          c (atom 0)
-         myvideofn (if (string? _myvideofn) (f/s->fn-filter _myvideofn) _myvideofn)]
+         myvideofn (if (or (string? _myvideofn) (not (fn? _myvideofn))) (f/s->fn-filter _myvideofn) _myvideofn)]
 
      (.start (Thread.
               (fn []
@@ -362,8 +363,8 @@
                   (if (.read capture buffer)
                     (if (not (.getClientProperty window "paused"))
                       (re-show (-> buffer
-                                   ;cv/clone
-                                   myvideofn
+                                  ;;  cv/clone
+                                   (myvideofn)
                                    ((fn [mat]
                                       (if (-> options :frame :fps)
                                         (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")

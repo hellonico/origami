@@ -3,6 +3,11 @@ package origami.video;
 import origami.Origami;
 
 public class VideoCapture extends org.opencv.videoio.VideoCapture {
+    static {
+        Origami.registerVideoHandler("http", new HttpVideoHandler());
+        Origami.registerVideoHandler("https", new HttpVideoHandler());
+    }
+
 
     @Override
     public boolean open(String filename, int apiPreference) {

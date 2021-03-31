@@ -8,7 +8,7 @@
     (instance? java.io.File values)
     (s->filter (slurp values))
     (string? values)
-    (try 
+    (try
       (if (.exists (clojure.java.io/as-file values))
       (s->filter (clojure.java.io/as-file values))
       (let [ r (read-string values) ] (s->filter r)))
