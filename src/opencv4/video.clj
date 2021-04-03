@@ -12,15 +12,27 @@
 (defn- key-to-prop [k]
   (eval (read-string (key-to-prop-s k))))
 
-(defn capture-device [ video ]
-  (let [capture (new-videocapture)
-        is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
-        video-map (cond
+; TODO: test me
+(defn prepare-video-map[ video]
+  (let [is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))]
+        (cond
                     (integer? video) {:device video}
                     is-setting-file? (read-string (slurp video))
-                    (string? video) (let [m (read-string video)] (if (integer? m) {:device m} m))
+                    (string? video)
+                    (try
+                      (let [m (read-string video)]
+                        (cond
+                          (map? m) m
+                          (integer? m) {:device m}
+                          :else {:device m}))
+                      (catch Exception e {:device video}))
                     (map? video) video
-                    :else {:device 0})
+                    :else {:device 0})))
+
+(defn capture-device [ video ]
+  (let [capture (new-videocapture)
+        video-map (prepare-video-map video)
+;        _ (println video-map)
         device (if  (= video-map {}) video (-> video-map :device))
         debug? (dissoc video-map :debug)
         settings
@@ -29,7 +41,7 @@
         (doseq [s settings]
             (.set capture (key-to-prop s) (-> video-map s)))
       (if debug? (debug-device capture))
-      (debug-device capture)
+;      (debug-device capture)
       (.open capture device)
   capture))
 
