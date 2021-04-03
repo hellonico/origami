@@ -16,9 +16,11 @@
   (let [capture (new-videocapture)
         is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
         video-map (cond
-                    (map? video) video
+                    (integer? video) {:device video}
                     is-setting-file? (read-string (slurp video))
-                    :else {})
+                    (string? video) (let [m (read-string video)] (if (integer? m) {:device m} m))
+                    (map? video) video
+                    :else {:device 0})
         device (if  (= video-map {}) video (-> video-map :device))
         debug? (dissoc video-map :debug)
         settings
@@ -26,8 +28,9 @@
           (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
             (.set capture (key-to-prop s) (-> video-map s)))
-      (.open capture device)
       (if debug? (debug-device capture))
+      (debug-device capture)
+      (.open capture device)
   capture))
 
 (defn debug-device [capture]
