@@ -22,6 +22,9 @@
 (defn filter->s
   ([values]
    (cond
+     (instance? origami.Filters  values)
+     (do (println "filters ... ")
+       (apply str "[" (doall (map bean (.getFilters values))) "]"))
      (string? values)
        (filter->s (read-string values))
      (coll? values)

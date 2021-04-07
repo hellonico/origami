@@ -30,6 +30,18 @@ public class Filters implements Filter {
         this.filters = (List) Arrays.asList(__filters);
     }
 
+    public Filters(List<Filter> filters) {
+        this.filters = filters;
+    }
+
+    public List<Filter> getFilters() {
+        return filters;
+    }
+
+    public void setFilters(List<Filter> filters) {
+        this.filters = filters;
+    }
+
     @Override
     public Mat apply(Mat in) {
         Mat dst = in;
