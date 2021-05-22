@@ -5,6 +5,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 import origami.utils.Downloader;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.function.Function;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import static javax.swing.WindowConstants.*;
 import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 import static org.opencv.imgproc.Imgproc.*;
 
@@ -91,6 +93,12 @@ public class Camera {
     private Object device;
     private boolean skipFilter = false;
 
+    public Mat getBuffer() {
+        return buffer.clone();
+    }
+
+    private Mat buffer = new Mat();
+
 
     public Camera() {
 //        GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
@@ -103,6 +111,16 @@ public class Camera {
 
     public Camera cap(VideoCapture _cap) {
         this.cap = _cap;
+        return this;
+    }
+
+    public Camera hideOnClose() {
+        this.ims.setCloseOption(DISPOSE_ON_CLOSE);
+        return this;
+    }
+    
+    public Camera exitOnClose() {
+        this.ims.setCloseOption(EXIT_ON_CLOSE);
         return this;
     }
 
@@ -141,7 +159,7 @@ public class Camera {
     }
 
 
-    Mat buffer = new Mat();
+
     public void run() {
         stop = false;
         int skip = 0;

@@ -273,6 +273,36 @@
 
   ))
 
+(defn generate-rgb-mappings-java
+
+      ([] (generate-rgb-mappings-java "java/origami/RGB.java"))
+      ([output-file]
+       (with-open [w (-> output-file clojure.java.io/writer)]
+                  (binding [*out* w]
+
+                           (println "
+package origami;
+import org.opencv.core.Scalar;
+
+public class Colors {
+
+  ")
+
+                           (with-open [rdr (clojure.java.io/reader "resources-dev/colors.csv")]
+                                      (doseq[ l (rest (line-seq rdr))]
+                                            (let [
+                                                  fields (str/split l #",")
+                                                  fname  (str/replace (first fields) #" " "_")
+                                                  ffname (str/replace fname #"[(].*[)]" "") ]
+                                                 (println "public static final Scalar " ffname " = new Scalar(" (nth fields  2) "," (nth fields  3) "," (nth fields  4) ");")
+                                                 )))
+
+                           (println "}")
+
+                           ))
+
+       ))
+
 (defn -main[]
   
   (generate-api)
