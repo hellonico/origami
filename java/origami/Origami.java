@@ -185,6 +185,10 @@ public class Origami {
     }
     static final IFn sToF = Clojure.var("opencv4.filter", "s->filter");
 
+    /**
+     *
+     * @see <a href="http://origamidocs.hellonico.info/#/units/filters">http://origamidocs.hellonico.info/#/units/filters</a>
+     */
     public static Filter StringToFilter(Object s) {
         Object o = sToF.invoke(s);
         if (o instanceof Filter)
