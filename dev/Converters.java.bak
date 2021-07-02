@@ -1,0 +1,15 @@
+import org.jetbrains.skija.Image;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
+
+public class Converters {
+
+    public static Image toCompose(Mat image) {
+        MatOfByte bytes = new MatOfByte();
+        Imgcodecs.imencode(".jpg", image, bytes);
+        byte[] byteArray = new byte[(int) (image.total() * image.channels())];
+        bytes.get(0, 0, byteArray);
+        return Image.makeFromEncoded(byteArray);
+    }
+}
