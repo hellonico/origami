@@ -14,6 +14,12 @@
     (let [fop (f/s->fn-filter "[{:class origami.filters.NoOPFilter}{:class origami.filters.NoOPFilter}]")]
       (is (not (nil? (fop img))))))
 
+
+(deftest from-string-no-class-fails-with-message
+    (is
+      (thrown-with-msg? Exception #"Missing :class in map.*"
+      (f/s->fn-filter "{:clasz origami.filters.NoOPFilter}"))))
+
 (deftest from-clojure-map
     (let [fop (f/s->fn-filter {:class origami.filters.NoOPFilter})]
       (is (not (nil? (fop img))))))

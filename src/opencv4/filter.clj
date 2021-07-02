@@ -14,7 +14,7 @@
       (let [ r (read-string values) ] (s->filter r)))
       (catch Exception e (let [ r (read-string values) ] (s->filter r))))
     (map? values)
-    (j/to-java (eval (:class values)) values)
+    (if (nil? (:class values)) (throw (Exception. (str "Missing :class in map " values))) (j/to-java (eval (:class values)) values))
     (coll? values)
      (into-array origami.Filter (map s->filter values))
      :else (do (println values) nil)))
