@@ -25,6 +25,17 @@ public class Camera {
 
     boolean stop = false;
     private boolean pause;
+    private boolean headless=false;
+
+    public Camera headless() {
+        this.headless = !this.headless;
+        return this;
+    }
+
+    public boolean isHeadless() {
+        return headless;
+    }
+
     int skipFrames = 0;
 
     public int getSkipFrames() {
@@ -104,9 +115,15 @@ public class Camera {
 //        GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
 //                .getDefaultScreenDevice();
 //        Dimension di = d.getFullScreenWindow().getSize();
+        setupFrame();
+    }
+
+    private void setupFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.ims = new ImShow("Origami", screenSize.width/2, screenSize.height/2);
-        this.ims.Window.addKeyListener(kl);
+        if(this.ims==null) {
+            this.ims = new ImShow("Origami", screenSize.width/2, screenSize.height/2);
+            this.ims.Window.addKeyListener(kl);
+        }
     }
 
     public Camera cap(VideoCapture _cap) {
@@ -158,11 +175,17 @@ public class Camera {
         return this;
     }
 
-
+    public Camera stop() {
+        this.stop = stop;
+        return this;
+    }
 
     public void run() {
         stop = false;
         int skip = 0;
+
+        if(!headless)
+            setupFrame();
 
         if (this.cap == null) {
             this.cap = new VideoCapture();
@@ -200,10 +223,12 @@ public class Camera {
                 this.cap.read(buffer);
                 if(buffer.size().height==0 && buffer.size().width==0)
                     throw new Exception("Empty image ...");
-                if (skipFilter)
-                    this.ims.showImage(buffer);
-                else
-                    this.ims.showImage(this.filter.apply(buffer));
+                if(!headless) {
+                    if (skipFilter)
+                        this.ims.showImage(buffer);
+                    else
+                        this.ims.showImage(this.filter.apply(buffer));
+                }
 
             } catch (Exception e) {
                 System.out.printf("Reading error ... %s\n", e.getMessage());
@@ -255,9 +280,21 @@ public class Camera {
 
 //        Camera c = ;
 //        new Camera().size(400,300).device(0).filter(p).run();
-        new Camera().device(0).filter(p).run();
-                //.keyHandler(ked)
-                //.fullscreen()
+        //.keyHandler(ked)
+        //.fullscreen()
+
+
+        Camera c = new Camera().headless().device(0).filter(p);
+        Thread t = new Thread(c::run);
+
+        System.out.println("starting");
+        t.start();
+        Thread.sleep(5000);
+        System.out.println("stopping");
+        c.stop();
+        Mat b = c.getBuffer();
+        imwrite("headless_after_5_seconds.png",b );
+
     }
 
 }
