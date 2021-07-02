@@ -4,24 +4,8 @@
 ;    :disable-locals-clearing true
     :name origami.Dnn
     :methods [#^{:static true} [readNetFromSpec [String] java.util.List]])
-  (:require [opencv4.core :refer [min-max-loc new-size new-scalar imread imwrite]]
-            [opencv4.dnn :as dnn]
-            [clojure.java.io :as io]
-            [clojure.string :as s])
-  (:import (java.io File)))
-
-(defn- find-first-file [files ext]
-  (let [f (->> files
-               (filter #(= ext (last (s/split (.getName %) #"\."))))
-               (first)
-               (str))]
-    ;  (println "Found: [" ext " ] > " f " < ")
-    f))
-
-(defn- folder-contains[files_ ext]
-  (not
-    (empty? (->> files_
-                 (filter #(s/includes?  (.getName %) ext ))))))
+  (:require [opencv4.core :refer [min-max-loc new-size new-scalar]]
+            [opencv4.dnn :as dnn][opencv4.fetcher :refer :all][clojure.java.io :as io]))
 
 (defn- guess-network-type [files]
   (cond
@@ -32,10 +16,10 @@
 
 (defn- load-labels [files]
   (let [l (find-first-file files "labels" )
-        _labels (cond  (= "" l) (find-first-file files "names") :else l ) 
-        labels (cond  (= "" _labels) (find-first-file files "txt") :else _labels ) 
+        _labels (cond  (= "" l) (find-first-file files "names") :else l )
+        labels (cond  (= "" _labels) (find-first-file files "txt") :else _labels )
         ]
-      
+
     (println "Loading labels:" labels)
     ; (println (map #(.getName %) files))
     (line-seq (io/reader labels))))
@@ -43,7 +27,7 @@
 ; [ net opts names]
 (defn- read-net-from-files [files]
   (let [
-  						; _ (println files)
+        ; _ (println files)
         _type (guess-network-type files)
         net (condp = _type
               :caffe  (dnn/read-net-from-caffe (find-first-file files "prototxt") (find-first-file files "caffemodel"))
@@ -63,29 +47,6 @@
   (let [files (file-seq (io/file folder))]
     (read-net-from-files files)))
 
-(defn get-tmp-folder [uri]
-  (str
-    (or (System/getProperty "networks.local") (str (System/getProperty "user.home") File/separator ".origami"))
-    "/" (last (s/split uri #"/"))  ))
-
-(defn fetch [uri]
-  (let [folder (get-tmp-folder uri)]
-    (if (not (.exists (io/as-file folder)))
-      (with-open [in (java.util.zip.ZipInputStream. (io/input-stream uri))]
-        (println "Extracting [" uri "] > " [folder])
-        (loop [entry (.getNextEntry in)]
-          (if (not (nil? entry))
-            (let [
-                  path (str folder "/" (.getName entry))
-                  f (io/file path)
-                  parent (.getParentFile f)
-                  ]
-              (println ">" (.getName entry))
-              (.mkdirs parent)
-              (if (not (.isDirectory entry)) (io/copy in f))
-              (recur (.getNextEntry in)))))))
-    folder))
-
 (defn read-net-from-uri
   [uri]
   (let [ folder (fetch uri)]
@@ -94,16 +55,10 @@
 ; spec is something like
 ; networks.caffe:mobilenet:1.0.0
 (defn read-net-from-repo [ spec ]
-  (let [repo (or (System/getProperty "networks.repo") "https://repository.hellonico.info/repository/hellonico/")
-        [group art version] (clojure.string/split spec #":")
-        type_ (second (clojure.string/split group #"\."))
-        uri (str repo "networks/" type_ "/" art "/" version "/" art "-" version ".zip")
-        ]
-    (println "Loading network: [" type_ "]:" spec )
-    (read-net-from-uri uri)))
+  (let [folder (fetch-from-spec spec)]
+    (println "Loading network:" spec )
+    (read-net-from-folder folder)))
+(def read-net-from-spec read-net-from-repo)
 
 (defn -readNetFromSpec [ spec]
   (read-net-from-repo spec))
-;
-;(defn -main[ & args]
-;  (println (slurp "README.md")))

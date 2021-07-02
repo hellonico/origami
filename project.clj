@@ -10,7 +10,7 @@
 
   (defproject origami "4.5.1-4-SNAPSHOT"
     :description "OpenCV4 Wrapper"
-    :aot [opencv4.dnn.core]
+    :aot [opencv4.dnn.core opencv4.fetcher]
     :url "https://github.com/hellonico/origami"
     :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
     :repositories [["vendredi" {:url "https://repository.hellonico.info/repository/hellonico/" :creds :gpg}]
