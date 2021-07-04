@@ -12,7 +12,7 @@ public interface Detect {
 
     default List<Mat> detectMats(Mat input) {
         List<Rect> faces = detectROI(input);
-        return faces.stream().map(rect -> input.submat(new Rect(new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height)))).collect(Collectors.toList());
+        return faces.stream().map(rect -> input.submat(new Rect(new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height))).clone()).collect(Collectors.toList());
     }
 
     default boolean detected(Mat input) {
