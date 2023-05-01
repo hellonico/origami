@@ -14,11 +14,10 @@
 
 (defn capture-device [ video ]
   (let [capture (new-videocapture)
-        is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
-        ;_ (println (read-string video))
         video-map (cond
+                    (map? video) video
                     (map? (read-string video)) (read-string video)
-                    is-setting-file? (read-string (slurp video))
+                    (and (string? video) (clojure.string/ends-with? video ".edn")) (read-string (slurp video))
                     :else {})
         device (if  (= video-map {}) video (-> video-map :device))
         debug? (dissoc video-map :debug)
