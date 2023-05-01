@@ -42,7 +42,7 @@
                                     [camel-snake-kebab "0.4.0"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
                    [org.scijava/native-lib-loader "2.3.5" :exclusions [org.slf4j/slf4j-api]]
-                   [opencv/opencv "4.7.0-0"]
+                   [opencv/opencv "4.7.0-1"]
                    [opencv/opencv-native "4.7.0-0"]
                    [org.clojure/java.data "1.0.64"]
                    [org.slf4j/slf4j-nop "1.7.28"]
