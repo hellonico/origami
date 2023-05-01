@@ -12,7 +12,7 @@ Origami Project Goals
 
 - (Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
 - [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
-- Supports for [OpenCV 4.5.1](https://github.com/opencv/opencv/wiki/ChangeLog#version451) 
+- Supports for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) 
 - Ready to use jupyter [notebooks](https://github.com/hellonico/origami-fun/tree/master/jupyter)
 - Deep Neural Networks with [origami-dnn](https://github.com/hellonico/origami-dnn)
 - Run on [AWS Lambdas](https://github.com/hellonico/origami-aws-lambdas)
