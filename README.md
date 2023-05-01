@@ -10,7 +10,7 @@ Origami Project Goals
 
 # news
 
-- On-going support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) 
+- On-going support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) with [CircleCI Passing](https://app.circleci.com/pipelines/github/hellonico/origami)
 - (Better!) Documentation has moved .. [here](http://origamidocs.hellonico.info/).
 - [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
 - Ready to use jupyter [notebooks](https://github.com/hellonico/origami-fun/tree/master/jupyter)
