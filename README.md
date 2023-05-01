@@ -20,3 +20,19 @@ Origami Project Goals
 - With [origami-sources](https://github.com/hellonico/origami-sources/)
   - use various sources (folders, zip files, dropbox, webcam, flickr etc..) to lazily load OpenCV Mat objects
   - use various handlers (You Tube, HTTPS etc...) to load VideoCapture objects
+
+# Developped with
+
+# Developed with
+
+<a href="https://www.jetbrains.com/idea/">
+<img title="idea" width="64" height="64" src="doc/idea.png"/>
+</a>
+
+<a href="https://cursive-ide.com/">
+<img title="cursive" width="64" height="64" src="doc/cursive.png"/>
+</a>
+
+<a href="https://ko-fi.com/hellonico">
+<img title="cursive" width="140" height="64" src="doc/ko-fi.webp"/>
+</a>
