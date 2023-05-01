@@ -22,13 +22,13 @@ public class FilterTest {
     @Test
     public void loadOne() {
         Filter f = Origami.StringToFilter(NOOP_FILTER);
-        Assert.assertTrue(f.getClass().equals(NoOPFilter.class));
+        Assert.assertEquals(f.getClass(), NoOPFilter.class);
     }
 
     @Test
     public void loadMany() {
         Filter f = Origami.StringToFilter("[" + NOOP_FILTER + " " + NOOP_FILTER + "]");
-        Assert.assertTrue(f.getClass().equals(Filters.class));
+        Assert.assertEquals(f.getClass(), Filters.class);
     }
 
     String NOOP_FILTER = "{:class origami.filters.NoOPFilter}";
