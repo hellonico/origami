@@ -7,25 +7,25 @@
 
 (def img (cv/imread "doc/lena.png"))
 (deftest from-string-with-map
-    (let [fop (f/s->fn-filter "{:class origami.filters.NoOPFilter}")]
-      (is (not (nil? (fop img))))))
+  (let [fop (f/s->fn-filter "{:class origami.filters.NoOPFilter}")]
+    (is (not (nil? (fop img))))))
 
 (deftest from-string-with-array
-    (let [fop (f/s->fn-filter "[{:class origami.filters.NoOPFilter}{:class origami.filters.NoOPFilter}]")]
-      (is (not (nil? (fop img))))))
+  (let [fop (f/s->fn-filter "[{:class origami.filters.NoOPFilter}{:class origami.filters.NoOPFilter}]")]
+    (is (not (nil? (fop img))))))
 
 
 (deftest from-string-no-class-fails-with-message
-    (is
-      (thrown-with-msg? Exception #"Missing :class in map.*"
-      (f/s->fn-filter "{:clasz origami.filters.NoOPFilter}"))))
+  (is
+    (thrown-with-msg? Exception #"Missing :class in map.*"
+                      (f/s->fn-filter "{:clasz origami.filters.NoOPFilter}"))))
 
 (deftest from-clojure-map
-    (let [fop (f/s->fn-filter {:class origami.filters.NoOPFilter})]
-      (is (not (nil? (fop img))))))
+  (let [fop (f/s->fn-filter {:class origami.filters.NoOPFilter})]
+    (is (not (nil? (fop img))))))
 
 (deftest from-clojure-array
-  (let [fop (f/s->fn-filter [{:class origami.filters.NoOPFilter}{:class origami.filters.NoOPFilter}])]
+  (let [fop (f/s->fn-filter [{:class origami.filters.NoOPFilter} {:class origami.filters.NoOPFilter}])]
     (is (not (nil? (fop img))))))
 
 (deftest from-file-with-map

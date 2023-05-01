@@ -14,11 +14,14 @@ class Dnn2 {
         IFn require = Clojure.var("clojure.core", "require");
         require.invoke(Clojure.read("opencv4.dnn.core"));
     }
+
     static IFn plus = Clojure.var("opencv4.dnn.core", "read-net-from-repo");
+
     public static java.util.List readNetFromSpec(String spec) {
         return (List) plus.invoke(spec);
     }
 }
+
 public class DnnTest {
     @Test
     public void simpleLoad() {

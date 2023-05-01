@@ -7,13 +7,13 @@
 
 (deftest buffered-image-round-trip
   (testing "Cat in bowl."
-  (let [
-  	img ^Mat (-> "doc/cat_in_bowl.jpeg" (cv/imread))
-  	looped ^Mat (-> img (u/>>>) (u/<<<))
-  	]
-  (is 
-  	(= (.height img) (.height looped))
-  	(= (.width img) (.width looped))))))
+    (let [
+          img ^Mat (-> "doc/cat_in_bowl.jpeg" (cv/imread))
+          looped ^Mat (-> img (u/>>>) (u/<<<))
+          ]
+      (is
+        (= (.height img) (.height looped))
+        (= (.width img) (.width looped))))))
 
 (deftest bytes-round-trip
   (testing "Cat in bowl."

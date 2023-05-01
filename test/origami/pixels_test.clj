@@ -7,32 +7,32 @@
     [opencv4.core :as cv]))
 
 (deftest blue-signed
-	(let [m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
+  (let [m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
     (is (= [[127 0 0]] (cv/->string m)))))
 
 (deftest blue-signed-map!
-    (let [myt (fn [[b g r]] [(- b 100) g r])
-    	  m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
-          (is (= 
-          	[[27 0 0]] 
-          	(cv/->string (u/pixel-map! m myt))))))
+  (let [myt (fn [[b g r]] [(- b 100) g r])
+        m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
+    (is (=
+          [[27 0 0]]
+          (cv/->string (u/pixel-map! m myt))))))
 
 (deftest blue-signed-map!
-    (let [myt (fn [[b g r]] [(max -127 (- b 300)) g r])
-    	  m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
-          (is (= 
-          	[[-127 0 0]] 
-          	(cv/->string (u/pixel-map! m myt))))))
+  (let [myt (fn [[b g r]] [(max -127 (- b 300)) g r])
+        m (cv/new-mat 1 1 cv/CV_8SC3 rgb/blue)]
+    (is (=
+          [[-127 0 0]]
+          (cv/->string (u/pixel-map! m myt))))))
 
 (deftest blue-unsigned-map!
-	(let [myt (fn [[b g r]] [(max 0 (- b 300)) g r])
-		  m (cv/new-mat 1 1 cv/CV_8UC3 rgb/blue)]
-    (is (= 
-    	[[0 0 0]] 
-    	(cv/->string (u/pixel-map! m myt))))))
+  (let [myt (fn [[b g r]] [(max 0 (- b 300)) g r])
+        m (cv/new-mat 1 1 cv/CV_8UC3 rgb/blue)]
+    (is (=
+          [[0 0 0]]
+          (cv/->string (u/pixel-map! m myt))))))
 
 (deftest blue-unsigned
-	(let [m (cv/new-mat 1 1 cv/CV_8UC3 rgb/blue)]
+  (let [m (cv/new-mat 1 1 cv/CV_8UC3 rgb/blue)]
     (is (= [[255 0 0]] (cv/->string m)))))
 
 (deftest splitting
@@ -44,8 +44,8 @@
     (is (= [[0]] (cv/->string (second splitted))))
     (is (= [[0]] (cv/->string (last splitted))))
     (is (=
-         (cv/->string (cv/merge! splitted))
-         (cv/->string m)))))
+          (cv/->string (cv/merge! splitted))
+          (cv/->string m)))))
 
 (deftest blue-and-add-unsigned
   (let [m (cv/new-mat 1 1 cv/CV_8UC3 rgb/blue)]
@@ -70,8 +70,8 @@
                (cv/->string))))))
 
 (deftest blue-picture
-  (-> "doc/lena.png" 
-      (cv/imread) 
+  (-> "doc/lena.png"
+      (cv/imread)
       (cv/add! (cv/new-scalar 100 0 0))
       (cv/imwrite "target/bluelena.png")))
 
@@ -83,7 +83,7 @@
 
 (deftest flipping-test
   (let [m (cv/new-mat 2 2 cv/CV_8UC3 rgb/black)]
-    (.put  m 0 0 (byte-array [0 255 0]))
+    (.put m 0 0 (byte-array [0 255 0]))
     (is (= (cv/->string m)
            [[0 255 0 0 0 0]
             [0 0 0 0 0 0]]))
@@ -97,5 +97,5 @@
             [0 255 0 0 0 0]]))
     (cv/flip! m 0)
     (is (= (cv/->string m)
-        [[0 255 0 0 0 0]
-         [0 0 0 0 0 0]]))))
+           [[0 255 0 0 0 0]
+            [0 0 0 0 0 0]]))))

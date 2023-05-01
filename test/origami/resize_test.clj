@@ -1,8 +1,8 @@
 (ns origami.resize-test
   (:require
-   [opencv4.utils :as u]
-   [clojure.test :refer :all]
-   [opencv4.core :as cv]))
+    [opencv4.utils :as u]
+    [clojure.test :refer :all]
+    [opencv4.core :as cv]))
 
 (def img (cv/imread "doc/lena.png"))
 (def _size (cv/size img))
