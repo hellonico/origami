@@ -10,6 +10,17 @@ lein api
 
 # opencv4-beta (still!) manual fixes
 
+## remove generated add!
+
+; (defn add!
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ]
+;   (Core/add org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ]
+;   (Core/add org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 org_opencv_core_mat_3 int_4 ) org_opencv_core_mat_0 )
+; ([org_opencv_core_mat_0 org_opencv_core_mat_2 ]
+;   (Core/add org_opencv_core_mat_0 org_opencv_core_mat_0 org_opencv_core_mat_2 ) org_opencv_core_mat_0 )
+;
+
 ## remove copy / copy-to line 2489
 
 ```
