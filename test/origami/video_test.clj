@@ -6,14 +6,10 @@
   (:import
     [org.opencv.videoio VideoWriter]))
 
-(deftest simple-cam-test
-
-  (u/simple-cam-window
+(deftest ^:x11 simple-cam-test
+  (is (nil? (u/simple-cam-window
     {:frame {:fps true} :video {:device  0}}
-    (fn [buffer] buffer))
-
-  ; (Thread/sleep 10000)
-  )
+    (fn [buffer] buffer)))))
 
 (deftest video-test
 

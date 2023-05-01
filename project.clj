@@ -32,6 +32,10 @@
     :junit-results-dir "target/junit"
     :javac-options ["-target" "1.8" "-source" "1.8" "-Xlint:-options" "-nowarn"]
     :codox {:source-paths ["src"]}
+    :test-selectors {:default (complement :x11)
+                     :x11 :x11
+                     :all (constantly true)}
+
     :profiles {:dev {:plugins [[lein-codox "0.10.7"] [lein-junit "1.1.9"] [jonase/eastwood "0.3.5"] [quickie "0.4.1"]]
                      :source-paths ["dev"]
                      :resource-paths ["resources-dev"]
