@@ -37,9 +37,9 @@
                      :resource-paths ["resources-dev"]
                      :dependencies [; testing
     ; ~mxnet
-                                    [org.clojure/clojure "1.10.0" :scope "provided"]
+                                    [org.clojure/clojure "1.11.1" :scope "provided"]
     ; used for api code only
-                                    [camel-snake-kebab "0.4.0"]]}}
+                                    [camel-snake-kebab "0.4.3"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
                    [org.scijava/native-lib-loader "2.3.5" :exclusions [org.slf4j/slf4j-api]]
                    [opencv/opencv "4.7.0-1"]
