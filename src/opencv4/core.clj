@@ -11,7 +11,23 @@
 
 ; NOT AUTO GENERATED YET
 
-(defn imread
+(defn info
+  ([out] (info out "mat" false))
+  ([out debug-name] (info out debug-name false))
+  ([out debug-name debug]
+  (clojure.pprint/print-table
+    [
+     {:header "name" :value debug-name}
+     {:header "class" :value (.getName (.getClass out))}
+     {:header "dims" :value (.dims ^Mat out)}
+     {:header "chans" :value (.channels out)}
+     {:header "height" :value (int (.-height (.size out)))}
+     {:header "width" :value (int (.-width (.size out)))}
+     {:header "type" :value (.type out)}
+     {:header "submat?" :value (.isSubmatrix out)}
+     ])))
+
+  (defn imread
   ([string] (Imgcodecs/imread string))
   ([string type] (Imgcodecs/imread string type)))
 
