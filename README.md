@@ -10,8 +10,9 @@ Origami Project Goals
 
 # news of the world
 
-- <img style="height:16px;width:16px" src="doc/doc.png" alt=""/>  <a href="http://origamidocs.hellonico.info/">Origami Docs</a>
 - On-going support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) with [CircleCI Passing](https://app.circleci.com/pipelines/github/hellonico/origami)
+- On-going support for [Yolo v6](https://github.com/meituan/YOLOv6) <img style="height:16px;width:16px" src="doc/yolo.png" alt=""/>
+- <img style="height:16px;width:16px" src="doc/doc.png" alt=""/>  <a href="http://origamidocs.hellonico.info/">Origami Docs</a>
 - [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
 - Ready to use jupyter [notebooks](https://github.com/hellonico/origami-fun/tree/master/jupyter)
 - Deep Neural Networks with [origami-dnn](https://github.com/hellonico/origami-dnn)
