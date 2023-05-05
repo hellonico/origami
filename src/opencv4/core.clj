@@ -26,12 +26,12 @@
 (defn infos [outs]
   (clojure.pprint/print-table
     (map #(info1 (first %) (second %)) outs)))
-(defn info
-  ([out] (info out "mat" false))
-  ([out debug-name] (info out debug-name false))
-  ([out debug-name _]
-  (clojure.pprint/print-table
-    [(info1 out debug-name)])))
+;(defn info
+;  ([out] (info out "mat" false))
+;  ([out debug-name] (info out debug-name false))
+;  ([out debug-name _]
+;  (clojure.pprint/print-table
+;    [(info1 out debug-name)])))
 
   (defn imread
   ([string] (Imgcodecs/imread string))
