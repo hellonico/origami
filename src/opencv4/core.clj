@@ -11,21 +11,27 @@
 
 ; NOT AUTO GENERATED YET
 
+(defrecord InfoM [name class dims channels width height type submatrix])
+
+(defn- info1[debug-name out]
+  (->InfoM debug-name
+   (.getSimpleName (.getClass out))
+   (.dims out)
+   (.channels out)
+   (int (.-height (.size out)))
+   (int (.-width (.size out)))
+   (.type out)
+   (.isSubmatrix out)))
+
+(defn infos [outs]
+  (clojure.pprint/print-table
+    (map #(info1 (first %) (second %)) outs)))
 (defn info
   ([out] (info out "mat" false))
   ([out debug-name] (info out debug-name false))
-  ([out debug-name debug]
+  ([out debug-name _]
   (clojure.pprint/print-table
-    [
-     {:header "name" :value debug-name}
-     {:header "class" :value (.getName (.getClass out))}
-     {:header "dims" :value (.dims ^Mat out)}
-     {:header "chans" :value (.channels out)}
-     {:header "height" :value (int (.-height (.size out)))}
-     {:header "width" :value (int (.-width (.size out)))}
-     {:header "type" :value (.type out)}
-     {:header "submat?" :value (.isSubmatrix out)}
-     ])))
+    [(info1 out debug-name)])))
 
   (defn imread
   ([string] (Imgcodecs/imread string))
