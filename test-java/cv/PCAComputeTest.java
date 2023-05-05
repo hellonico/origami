@@ -1,4 +1,4 @@
-package coffee;
+package cv;
 
 import org.junit.Test;
 import org.opencv.core.Core;
@@ -40,6 +40,6 @@ public class PCAComputeTest {
         Mat eigenVectors = new Mat();
         Mat mean = new Mat();
         Core.PCACompute(mat, mean, eigenVectors);
-        System.out.println(eigenVectors);
+        System.out.println(eigenVectors.dump());
     }
 }
