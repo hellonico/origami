@@ -4,11 +4,11 @@
 
 ; DNN
 (defn read-net-from-caffe[protofile netfile]
-  (Dnn/readNetFromCaffe protofile netfile))
+  (Dnn/readNetFromCaffe ^String protofile ^String netfile))
 (defn read-net-from-darknet[protofile netfile]
-  (Dnn/readNetFromDarknet protofile netfile))
+  (Dnn/readNetFromDarknet ^String  protofile ^String netfile))
 (defn read-net-from-tensorflow [protofiel netfile]
-  (Dnn/readNetFromTensorflow protofiel netfile))
+  (Dnn/readNetFromTensorflow ^String protofiel ^String  netfile))
 
 (defn output-layers[net]
   (opencv4.core/new-arraylist (map #(nth (.getLayerNames net) (dec %))
@@ -71,9 +71,9 @@
 
 (defn read-net
 ([java_lang_string_0 java_lang_string_1 java_lang_string_2 ] 
-  (Dnn/readNet java_lang_string_0 java_lang_string_1 java_lang_string_2 ))
+  (Dnn/readNet ^String java_lang_string_0 ^String java_lang_string_1 ^String java_lang_string_2 ))
 ([java_lang_string_0 java_lang_string_1 ] 
-  (Dnn/readNet java_lang_string_0 java_lang_string_1 ))
+  (Dnn/readNet ^String java_lang_string_0 ^String java_lang_string_1 ))
 ([java_lang_string_0 ] 
   (Dnn/readNet java_lang_string_0 ))
 )
@@ -94,12 +94,12 @@
 
 (defn read-net-from-model-optimizer
 ([java_lang_string_0 java_lang_string_1 ] 
-  (Dnn/readNetFromModelOptimizer java_lang_string_0 java_lang_string_1 ))
+  (Dnn/readNetFromModelOptimizer ^String java_lang_string_0 ^String java_lang_string_1 ))
 )
 
 (defn read-net-from-onnx
 ([java_lang_string_0 ] 
-  (Dnn/readNetFromONNX java_lang_string_0 ))
+  (Dnn/readNetFromONNX ^String java_lang_string_0 ))
 )
 
 ; (defn read-net-from-tensorflow

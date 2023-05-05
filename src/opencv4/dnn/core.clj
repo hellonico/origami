@@ -12,6 +12,7 @@
     (folder-contains files "caffemodel") :caffe
     (folder-contains files "pbtxt")      :tensorflow
     (folder-contains files "weights")    :yolo
+    (folder-contains files "onnx")    :onnx
     :else :unknown ))
 
 (defn- load-labels [files]
@@ -32,6 +33,7 @@
         net (condp = _type
               :caffe  (dnn/read-net-from-caffe (find-first-file files "prototxt") (find-first-file files "caffemodel"))
               :yolo (dnn/read-net-from-darknet (find-first-file files "cfg") (find-first-file files "weights"))
+              :onnx (dnn/read-net-from-onnx (find-first-file files "onnx"))
               :tensorflow (dnn/read-net-from-tensorflow  (find-first-file files "pb" ) (find-first-file files "pbtxt"))
               nil)
         ]
