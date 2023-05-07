@@ -10,8 +10,10 @@ Origami Project Goals
 
 # news of the world
 
-- On-going support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) with [CircleCI Passing](https://app.circleci.com/pipelines/github/hellonico/origami)
+- Full support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) 
+  - [CircleCI Passing](https://app.circleci.com/pipelines/github/hellonico/origami)
   - Cuda Enabled NVidia Support included
+  - [Architecture support matrix](http://origamidocs.hellonico.info/#/units/compatibility?id=origami-470-compatibility-matrix)
 - On-going support for [Yolo v6](https://github.com/meituan/YOLOv6) <img style="height:20px;width:20px" src="doc/yolo.png" alt=""/>
 - <img style="height:16px;width:16px" src="doc/doc.png" alt=""/>  <a href="http://origamidocs.hellonico.info/">Origami Docs</a>
 - [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
