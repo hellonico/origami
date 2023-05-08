@@ -4,7 +4,7 @@
     [opencv4.dnn.core :as origami-dnn]))
 
 (defn load-yolo []
-  (let [[net opts labels] (origami-dnn/read-net-from-repo "networks.yolo:yolov6A:1.0")]))
+  (let [[net opts labels] (origami-dnn/read-net-from-repo "networks.yolo:yolov6n:3.0")]))
 
 (deftest a-test
   (testing "Loading Yolo."

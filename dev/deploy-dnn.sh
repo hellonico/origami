@@ -15,10 +15,8 @@ TEMPFILE=deploy.zip
 rm $DIR/**/.DS_Store
 
 echo "Preparing: $NETWORK $VERSION from $FILE located in $PARENT"
-echo "Waiting 5 seconds ..."
-sleep 5
-
-
+#echo "Waiting 5 seconds ..."
+#sleep 5
 
 (cd $PARENT && zip -r - $FILE) >$TEMPFILE
 

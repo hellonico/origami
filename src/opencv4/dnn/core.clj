@@ -33,7 +33,6 @@
 
         files (extra-downloads files)
          ;_ (println files)
-
         _type (guess-network-type files)
         net (condp = _type
               :caffe  (dnn/read-net-from-caffe (find-first-file files "prototxt") (find-first-file files "caffemodel"))

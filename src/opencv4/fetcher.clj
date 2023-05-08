@@ -24,9 +24,11 @@
 
 (defn extra-download [_url]
   (let [folder (.getParent _url)
-        uri (slurp _url)
-        target-local-file (str folder "/" (subs uri (s/last-index-of uri "/")))]
-    (doall (print "Extra Download:" uri))
+        uri (s/trim (slurp _url))
+        target-local-file (str folder "/" (subs uri (inc (s/last-index-of uri "/"))))]
+    (println "Extra Download:" uri)
+    (println "From:" uri )
+    (println "To:" target-local-file)
     (copy-uri-to-file uri target-local-file)
     (println " [done]")
     (.delete _url)
