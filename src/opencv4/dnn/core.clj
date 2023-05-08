@@ -4,8 +4,11 @@
 ;    :disable-locals-clearing true
     :name origami.Dnn
     :methods [#^{:static true} [readNetFromSpec [String] java.util.List]])
-  (:require [opencv4.core :refer [min-max-loc new-size new-scalar]]
-            [opencv4.dnn :as dnn][opencv4.fetcher :refer :all][clojure.java.io :as io]))
+  (:require [clojure.string :as str]
+            [opencv4.core :refer [min-max-loc new-size new-scalar]]
+            [opencv4.dnn :as dnn]
+            [opencv4.fetcher :refer :all]
+            [clojure.java.io :as io]))
 
 (defn- guess-network-type [files]
   (cond
@@ -20,7 +23,6 @@
         _labels (cond  (= "" l) (find-first-file files "names") :else l )
         labels (cond  (= "" _labels) (find-first-file files "txt") :else _labels )
         ]
-
     (println "Loading labels:" labels)
     ; (println (map #(.getName %) files))
     (line-seq (io/reader labels))))
@@ -28,7 +30,10 @@
 ; [ net opts names]
 (defn- read-net-from-files [files]
   (let [
-        ; _ (println files)
+
+        files (extra-downloads files)
+         ;_ (println files)
+
         _type (guess-network-type files)
         net (condp = _type
               :caffe  (dnn/read-net-from-caffe (find-first-file files "prototxt") (find-first-file files "caffemodel"))

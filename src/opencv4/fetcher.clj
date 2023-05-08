@@ -17,6 +17,26 @@
     ;  (println "Found: [" ext " ] > " f " < ")
     f))
 
+(defn copy-uri-to-file [uri file]
+  (with-open [in (clojure.java.io/input-stream uri)
+              out (clojure.java.io/output-stream file)]
+    (clojure.java.io/copy in out)))
+
+(defn extra-download [_url]
+  (let [folder (.getParent _url)
+        uri (slurp _url)
+        target-local-file (str folder "/" (subs uri (s/last-index-of uri "/")))]
+    (doall (print "Extra Download:" uri))
+    (copy-uri-to-file uri target-local-file)
+    (println " [done]")
+    (.delete _url)
+    (io/as-file target-local-file)))
+
+(defn extra-downloads [files]
+  (let [filtered (filter #(s/includes? (.getName %) "url") files)]
+    (apply conj files (map extra-download filtered) )))
+
+
 (defn folder-contains[files_ ext]
   (not
     (empty? (->> files_
