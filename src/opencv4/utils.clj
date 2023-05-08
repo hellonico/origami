@@ -2,6 +2,7 @@
   (:require
    [opencv4.core :as cv]
    [opencv4.filter :as f]
+   [opencv4.colors.rgb :as rgb]
    [opencv4.video :as vid])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
            [org.opencv.imgcodecs Imgcodecs]
@@ -368,7 +369,7 @@
                                    ((fn [mat]
                                       (if (-> options :frame :fps)
                                         (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")
-                                                      (cv/new-point 30 30) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 255 255) 2))
+                                                      (cv/new-point 30 50) cv/FONT_HERSHEY_PLAIN 3 rgb/ghostwhite 3))
                                       (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window)))))))
                                window))))
                 (.release capture)))))))

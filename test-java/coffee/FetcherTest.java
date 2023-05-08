@@ -29,6 +29,6 @@ public class FetcherTest {
     @Test
     public void simpleLoad() {
         Origami.init();
-        assertNotNull(Fetcher2.fetchFromSpec("networks.yolo:yolov6A:1.0"));
+        assertNotNull(Fetcher2.fetchFromSpec("networks.yolo:yolov6n:3.0"));
     }
 }
