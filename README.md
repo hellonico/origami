@@ -15,7 +15,7 @@ Origami Project Goals
   - Cuda Enabled NVidia Support included
   - [Architecture support matrix](http://origamidocs.hellonico.info/#/units/compatibility?id=origami-470-compatibility-matrix)
 - On-going support for [Yolo v6](https://github.com/meituan/YOLOv6) <img style="height:20px;width:20px" src="doc/yolo.png" alt=""/>
-- <img style="height:16px;width:16px" src="doc/doc.png" alt=""/>  <a href="http://origamidocs.hellonico.info/">Origami Docs</a>
+- <img style="height:16px;width:16px" src="doc/doc.png" alt=""/>  <a href="https://hellonico.github.io/origami-docs/#/">Origami Docs</a>
 - [codox](https://github.com/weavejester/codox) generated API is [here](http://origamidocs.hellonico.info/codox/index.html)
 - Ready to use jupyter [notebooks](https://github.com/hellonico/origami-fun/tree/master/jupyter)
 - Deep Neural Networks with [origami-dnn](https://github.com/hellonico/origami-dnn)
