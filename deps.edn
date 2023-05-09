@@ -7,7 +7,7 @@
  	; origami {:mvn/version "4.2.0-1"}
         org.scijava/native-lib-loader {:mvn/version "2.3.5"}
         opencv/opencv {:mvn/version "4.7.0-1"}
-        opencv/opencv-native {:mvn/version "4.7.0-2"}
+        opencv/opencv-native {:mvn/version "4.7.0-3"}
         org.slf4j/slf4j-nop {:mvn/version "1.7.28"}
         hellonico/gorilla-repl {:mvn/version  "0.4.1"}}
 }
