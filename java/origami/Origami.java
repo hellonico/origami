@@ -19,8 +19,6 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.io.*;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.HashMap;
 
 import static org.opencv.core.Core.getNumberOfCPUs;
@@ -110,10 +108,11 @@ public class Origami {
 
     public static void init() {
         try {
-            System.out.printf("Loading: %s\n", Core.NATIVE_LIBRARY_NAME);
-            if (isOpenCVLoaded()) {
+            // System.out.printf("Loading: %s\n", Core.NATIVE_LIBRARY_NAME);
+            if(isOpenCVLoaded()) {
                 System.out.printf("Already loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
             } else {
+                NativeLoader.setJniExtractor(new OrigamiJniExtractor((Class)null));
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
                 System.out.printf("Loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
             }
