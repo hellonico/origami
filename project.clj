@@ -8,7 +8,7 @@
       ; _ (println (str platform mxnet))
       ]
 
-  (defproject origami "4.7.0-6"
+  (defproject origami "4.7.0-7-SNAPSHOT"
     :description "OpenCV4 Wrapper"
     :aot [opencv4.dnn.core opencv4.fetcher]
     :url "https://github.com/hellonico/origami"
