@@ -25,13 +25,12 @@ Origami Project Goals
   - use various sources (folders, zip files, dropbox, webcam, flickr etc..) to lazily load OpenCV Mat objects
   - use various handlers (You Tube, HTTPS etc...) to load VideoCapture objects
 
-# APPS
+# ORIGAMI APPS
 
 - [Booth](https://github.com/hellonico/opencv-javafx-camera)
-- [Yololi]()
-- [Streamer]()
-- [Viewer]()
-- []
+- [Yololi](https://github.com/hellonico/yololi)
+- [Streamer](https://github.com/hellonico/opencv-live-video-stream-over-http)
+- [Viewer](https://github.com/hellonico/origami-viewer)
 
 # Developed with
 
