@@ -189,11 +189,17 @@ public class Origami {
      * @see <a href="http://origamidocs.hellonico.info/#/units/filters">http://origamidocs.hellonico.info/#/units/filters</a>
      */
     public static Filter StringToFilter(Object s) {
-        Object o = sToF.invoke(s);
-        if (o instanceof Filter)
-            return (Filter) o;
-        else
-            return new Filters((Filter[]) o);
+        try {
+            Object o = sToF.invoke(s);
+            if (o instanceof Filter)
+                return (Filter) o;
+            else
+                return new Filters((Filter[]) o);
+        } catch (Exception e) {
+            System.out.println("Cannot load filter from:"+s);
+            // e.printStackTrace();
+            return new Filters.NoOP();
+        }
     }
 
     static final IFn fToS = Clojure.var("opencv4.filter", "filter->s");
