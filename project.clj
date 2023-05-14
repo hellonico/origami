@@ -51,5 +51,6 @@
                    [opencv/opencv-native "4.7.0-5"]
                    [org.clojure/java.data "1.0.64"]
                    ; do not move to :dev profile or javac cannot find it
+                    [org.openjfx/javafx-controls "11" :scope "provided"]
                    [junit/junit "4.13" :scope "provided"]
                    [org.slf4j/slf4j-nop "1.7.28"]]))
