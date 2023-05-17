@@ -1,6 +1,7 @@
 (ns opencv4.video
   (:require [clojure.set])
-  (:import  [org.opencv.videoio Videoio]))
+  (:import [org.opencv.videoio Videoio]
+           (origami.video VideoCapture)))
 
 (declare new-videocapture)
 (declare debug-device)
@@ -13,7 +14,7 @@
   (eval (read-string (key-to-prop-s k))))
 
 (defn capture-device [ video ]
-  (let [capture (new-videocapture)
+  (let [capture (VideoCapture.)
         video-map (if (integer? video)
                     {}
                     (cond

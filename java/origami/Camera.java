@@ -1,11 +1,9 @@
 package origami;
 
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 import origami.utils.Downloader;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -31,6 +29,11 @@ public class Camera {
         this.headless = !this.headless;
         return this;
     }
+
+    public VideoCapture VC() {
+        return this.cap;
+    }
+
 
     public boolean isHeadless() {
         return headless;
@@ -180,6 +183,17 @@ public class Camera {
         return this;
     }
 
+    int slow = 0;
+
+    public int getSlow() {
+        return slow;
+    }
+
+    public Camera slowDown(int slow) {
+        this.slow = slow;
+        return this;
+    }
+
     public void run() {
         stop = false;
         int skip = 0;
@@ -192,13 +206,19 @@ public class Camera {
             this.cap.open(0);
         }
 
-        while (!stop) {
+        myLoop:while (!stop) {
+            if(slow!=0) {
+                try {
+                    Thread.sleep(slow);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             if(skipFrames<0) {
                 skip++;
-                if(skipFrames>-skip) {
-                    continue;
-                } else
-                    skip=0;
+                if(skip<-1*skipFrames) {
+                    continue myLoop;
+                }
             }
 
             if(pause || !this.cap.grab()) {
@@ -213,11 +233,8 @@ public class Camera {
             if(skipFrames>0) {
                 skip++;
                 if(skipFrames>skip)
-                    continue;
-                else
-                    skip=0;
+                    continue myLoop;
             }
-
 
             try {
                 this.cap.read(buffer);
@@ -261,6 +278,7 @@ public class Camera {
     public Camera keyHandler(KeyEventDispatcher ked) {
 //        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
+
 
         return this;
     }

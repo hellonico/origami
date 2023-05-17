@@ -8,10 +8,13 @@ public class VideoCapture extends org.opencv.videoio.VideoCapture {
         Origami.registerVideoHandler("https", new HttpVideoHandler());
     }
 
+    private String _filename;
+    private String filename;
 
     @Override
     public boolean open(String filename, int apiPreference) {
-        String _filename = getFilename(filename);
+        this._filename = filename;
+        _filename = getFilename(filename);
         return super.open(_filename, apiPreference);
     }
 
@@ -33,7 +36,8 @@ public class VideoCapture extends org.opencv.videoio.VideoCapture {
 
     @Override
     public boolean open(String filename) {
-        String _filename = getFilename(filename);
+        this._filename = filename;
+        this._filename = getFilename(filename);
         return super.open(_filename);
     }
 
