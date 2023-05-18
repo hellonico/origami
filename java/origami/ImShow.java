@@ -31,7 +31,7 @@ public class ImShow {
     private ImageIcon image;
     private JLabel label;
     private Boolean SizeCustom;
-    public int Height, Width;
+    public int Height = 800, Width = 600;
     private int orgHeight,orgWidth;
 
     public ImShow(String title) {

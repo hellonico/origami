@@ -7,28 +7,38 @@ import origami.utils.Downloader;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.function.Function;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import static javax.swing.WindowConstants.*;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 import static org.opencv.imgproc.Imgproc.*;
 
 public class Camera {
     VideoCapture cap;
-    ImShow ims; //  = new ImShow("Origami");
+    public ImShow ims; //  = new ImShow("Origami");
     Function<Mat, Mat> filter = mat -> mat;
 
     boolean stop = false;
     private boolean pause;
-    private boolean headless=false;
+    private boolean headless = false;
 
     public Camera headless() {
         this.headless = !this.headless;
         return this;
     }
+
+    public CameraFn getFn() {
+        return fn;
+    }
+
+    public Camera setFn(CameraFn fn) {
+        this.fn = fn;
+        return this;
+    }
+
+    CameraFn fn = new DefaultCameraFn();
 
     public VideoCapture VC() {
         return this.cap;
@@ -65,7 +75,7 @@ public class Camera {
 //                System.out.printf(":skip:%d\n", skipFrames);
                     break;
                 case '-':
-                    if(skipFrames>0) skipFrames--;
+                    if (skipFrames > 0) skipFrames--;
 //                System.out.printf(":skip:%d\n", skipFrames);
                     break;
                 case 'd':
@@ -76,6 +86,7 @@ public class Camera {
                     break;
                 case 'q':
                     Camera.this.stop = true;
+                    // Camera.this.ims.Window.ex
                     break;
                 case 'f':
                     Camera.this.fullscreen();
@@ -84,11 +95,12 @@ public class Camera {
                     Camera.this.skipFilter = !Camera.this.skipFilter;
                     break;
                 case 'r':
-                    Camera.this.device(Camera.this.device);
                     Camera.this.pause = false;
+                    Camera.this.stop = false;
+                    Camera.this.device(Camera.this.device);
                     break;
                 case 's':
-                    imwrite("origami_screenshot_"+new Date().toString().toLowerCase()+".jpg", Camera.this.buffer);
+                    imwrite("origami_screenshot_" + new Date().toString().toLowerCase() + ".jpg", Camera.this.buffer);
                 default:
                     ;
             }
@@ -107,6 +119,15 @@ public class Camera {
     private Object device;
     private boolean skipFilter = false;
 
+    public boolean isSkipFilter() {
+        return skipFilter;
+    }
+
+    public Camera skipFilter(boolean skipFilter) {
+        this.skipFilter = skipFilter;
+        return this;
+    }
+
     public Mat getBuffer() {
         return buffer.clone();
     }
@@ -123,8 +144,9 @@ public class Camera {
 
     private void setupFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        if(this.ims==null) {
-            this.ims = new ImShow("Origami", screenSize.width/2, screenSize.height/2);
+        if (this.ims == null) {
+            this.ims = new ImShow("Origami", screenSize.width / 2, screenSize.height / 2);
+            this.ims.setResizable(true);
             this.ims.Window.addKeyListener(kl);
         }
     }
@@ -138,7 +160,7 @@ public class Camera {
         this.ims.setCloseOption(DISPOSE_ON_CLOSE);
         return this;
     }
-    
+
     public Camera exitOnClose() {
         this.ims.setCloseOption(EXIT_ON_CLOSE);
         return this;
@@ -147,7 +169,7 @@ public class Camera {
     public Camera fullscreen() {
         this.fullscreen = !this.fullscreen;
 
-        if(fullscreen)
+        if (fullscreen)
             ims.enterFullScreen();
         else
             ims.exitFullScreen();
@@ -179,7 +201,7 @@ public class Camera {
     }
 
     public Camera stop() {
-        this.stop = stop;
+        this.stop = true;
         return this;
     }
 
@@ -198,7 +220,7 @@ public class Camera {
         stop = false;
         int skip = 0;
 
-        if(!headless)
+        if (!headless)
             setupFrame();
 
         if (this.cap == null) {
@@ -206,22 +228,28 @@ public class Camera {
             this.cap.open(0);
         }
 
-        myLoop:while (!stop) {
-            if(slow!=0) {
+        if(!this.cap.isOpened()) {
+            this.device(device);
+        }
+
+
+        myLoop:
+        while (!stop) {
+            if (slow != 0) {
                 try {
                     Thread.sleep(slow);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
-            if(skipFrames<0) {
+            if (skipFrames < 0) {
                 skip++;
-                if(skip<-1*skipFrames) {
+                if (skip < -1 * skipFrames) {
                     continue myLoop;
                 }
             }
 
-            if(pause || !this.cap.grab()) {
+            if (pause || !this.cap.grab()) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -230,23 +258,18 @@ public class Camera {
                 continue;
             }
 
-            if(skipFrames>0) {
+            if (skipFrames > 0) {
                 skip++;
-                if(skipFrames>skip)
+                if (skipFrames > skip)
                     continue myLoop;
             }
 
             try {
                 this.cap.read(buffer);
-                if(buffer.size().height==0 && buffer.size().width==0)
+                if (buffer.size().height == 0 && buffer.size().width == 0)
                     throw new Exception("Empty image ...");
-                if(!headless) {
-                    if (skipFilter)
-                        this.ims.showImage(buffer);
-                    else
-                        this.ims.showImage(this.filter.apply(buffer));
-                }
-
+                Mat filtered = skipFilter ? buffer : this.filter.apply(buffer);
+                fn.read(this, filtered);
             } catch (Exception e) {
                 System.out.printf("Reading error ... %s\n", e.getMessage());
                 try {
@@ -257,7 +280,12 @@ public class Camera {
             }
 
         }
+        onVideoStop();
 
+
+    }
+
+    public void onVideoStop() {
         this.cap.release();
 
         if (this.fullscreen)
@@ -272,7 +300,9 @@ public class Camera {
                 // e.printStackTrace();
             }
         }
-        ims.Window.dispatchEvent(new WindowEvent(ims.Window, WindowEvent.WINDOW_CLOSING));
+
+        // TODO: check
+        //    ims.Window.dispatchEvent(new WindowEvent(ims.Window, WindowEvent.WINDOW_CLOSING));
     }
 
     public Camera keyHandler(KeyEventDispatcher ked) {
@@ -302,16 +332,23 @@ public class Camera {
         //.fullscreen()
 
 
-        Camera c = new Camera().headless().device(0).filter(p);
+        //Camera c = new Camera().headless().device(0).filter(p);
+        Camera c = new Camera().device(0).filter(p);
+//        .fullscreen();
+        //.fullscreen();
         Thread t = new Thread(c::run);
 
         System.out.println("starting");
         t.start();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
+        c.fullscreen();
+        Thread.sleep(1000);
+        c.fullscreen();
+        Thread.sleep(10000);
         System.out.println("stopping");
         c.stop();
         Mat b = c.getBuffer();
-        imwrite("headless_after_5_seconds.png",b );
+        imwrite("headless_after_5_seconds.png", b);
 
     }
 

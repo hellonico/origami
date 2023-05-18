@@ -10,7 +10,7 @@
     (opencv4.core/new-scalar (hex->num b) (hex->num g) (hex->num r))))
 
 (defn- num->hex [s]
-  (.toUpperCase (Integer/toHexString (int s))))
+  (.toUpperCase (format "%02d" (Integer/toHexString (int s)))))
 
 (defn ->html [#^Scalar s]
   (println s)
