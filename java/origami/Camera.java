@@ -280,15 +280,7 @@ public class Camera {
 //            }
 
             try {
-                if(this.cap !=null && this.cap.isOpened())
-                    this.cap.read(buffer);
-
-                boolean check = buffer.size().height == 0 && buffer.size().width == 0;
-                if(!check) {
-                    Mat filtered = skipFilter ? buffer : this.filter.apply(buffer);
-                    last = fn.read(this, filtered);
-                }
-
+                step();
             } catch (Exception e) {
                 System.out.printf("Reading error ... %s\n", e.getMessage());
             }
@@ -297,6 +289,17 @@ public class Camera {
         onVideoStop();
 
 
+    }
+
+    public void step() {
+        if(this.cap !=null && this.cap.isOpened())
+            this.cap.read(buffer);
+
+        boolean check = buffer.size().height == 0 && buffer.size().width == 0;
+        if(!check) {
+            Mat filtered = skipFilter ? buffer : this.filter.apply(buffer);
+            last = fn.read(this, filtered);
+        }
     }
 
     public void onVideoStop() {
