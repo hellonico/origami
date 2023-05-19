@@ -5,5 +5,6 @@
 
 (deftest bytes-round-trip
   (testing "Colors"
-    (let [c "#F51515" sc  (html/->scalar c)]
-      (is (= (html/->html sc) c)))))
+    (doseq [c ["#F51515" "#F51510" "#F51501" ]]
+    (let [sc (html/->scalar c)]
+      (is (= (html/->html sc) c))))))

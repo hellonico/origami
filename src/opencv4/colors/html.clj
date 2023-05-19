@@ -10,9 +10,8 @@
     (opencv4.core/new-scalar (hex->num b) (hex->num g) (hex->num r))))
 
 (defn- num->hex [s]
-  (.toUpperCase (format "%02d" (Integer/toHexString (int s)))))
+  (.toUpperCase (clojure.string/replace (format "%2s" (Integer/toHexString (int s))) #"\s" "0")))
 
 (defn ->html [#^Scalar s]
-  (println s)
   (let [aa (.-val s) [b g r _] aa]
     (str "#" (num->hex r) (num->hex g) (num->hex b))))

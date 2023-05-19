@@ -2,6 +2,7 @@ package origami;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
+import clojure.lang.PersistentArrayMap;
 import clojure.lang.Symbol;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -14,6 +15,7 @@ import org.scijava.nativelib.NativeLoader;
 import origami.video.VideoHandler;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
@@ -216,6 +218,11 @@ public class Origami {
 
     public static VideoCapture CaptureDevice(Object f) {
         return (VideoCapture) captureDeviceFn.invoke(f);
+    }
+    static final IFn readDeviceFn = Clojure.var("opencv4.video", "load-edn");
+
+    public static CameraConfigMap ReadConfigMap(Object o) {
+        return new CameraConfigMap(o);
     }
 
 }

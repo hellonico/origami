@@ -8,13 +8,33 @@ import origami.Filter;
 import origami.Filters;
 import origami.Origami;
 
+import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.opencv.imgcodecs.Imgcodecs.IMREAD_REDUCED_COLOR_2;
+import static org.opencv.imgcodecs.Imgcodecs.IMREAD_REDUCED_COLOR_8;
 
 public class OrigamiFX {
+
+
+    public static void setIcon(String iconPath) {
+        try {
+            URL imageResource = Origami.class.getClassLoader().getResource(iconPath);
+            Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
+            java.awt.Image image = defaultToolkit.getImage(imageResource);
+            Taskbar taskbar = Taskbar.getTaskbar();
+            //set icon for mac os (and other systems which do support this method)
+            taskbar.setIconImage(image);
+        } catch (RuntimeException e) {
+            System.out.println("The os does not support: 'taskbar.setIconImage'");
+        }
+    }
 
     public static Image file2FXImage(File imageFile) {
         String fileLocation = imageFile.toURI().toString();
@@ -23,12 +43,12 @@ public class OrigamiFX {
 
     public static Image toFXImage(Mat mat) {
         MatOfByte buffer = new MatOfByte();
-        Imgcodecs.imencode(".png", mat, buffer);
+        Imgcodecs.imencode(".jpg", mat, buffer);
         return new Image(new ByteArrayInputStream(buffer.toArray()));
     }
 
     public static Image magic(String path, Filter f) {
-        Mat m = Imgcodecs.imread(path, IMREAD_REDUCED_COLOR_2);
+        Mat m = Imgcodecs.imread(path, IMREAD_REDUCED_COLOR_8);
         Mat out = f.apply(m);
         return toFXImage(out);
     }
@@ -66,5 +86,16 @@ public class OrigamiFX {
         File input = new File(path).getParentFile();
         String outputDir = input.getAbsolutePath()+"/origami";
         exportAll(path,filter,format,outputDir);
+    }
+
+    static final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static void desktopOpenFile(String path) {
+        executorService.execute(() -> {
+            try {
+                Desktop.getDesktop().open(new File(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

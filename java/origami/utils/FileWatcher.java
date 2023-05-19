@@ -3,17 +3,32 @@ package origami.utils;
 import com.sun.nio.file.SensitivityWatchEventModifier;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class FileWatcher extends Thread {
-    protected final File file;
+    protected File file;
+
+    public File getFile() {
+        return file;
+    }
+    public void setFile(File _file) {
+        if(this.file != _file) {
+            this.file = _file;
+            this.stopThread();
+            this.start();
+        }
+    }
+
     private AtomicBoolean stop = new AtomicBoolean(false);
 
     public FileWatcher(File file) {
         this.file = file;
     }
+
 
     public boolean isStopped() {
         return stop.get();
@@ -23,7 +38,20 @@ public abstract class FileWatcher extends Thread {
         stop.set(true);
     }
 
-    public abstract void doOnChange();
+    public void doOnChange() {
+        try {
+
+            List<String> list = Files.readAllLines(Paths.get(file.getAbsolutePath()));
+            String content = String.join(System.lineSeparator(), list);
+            doOnChangeContent(content);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void doOnChangeContent(String content) {
+
+    }
+
 
     @Override
     public void run() {

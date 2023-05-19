@@ -1,12 +1,17 @@
 package origami;
 
+import clojure.lang.Keyword;
+import clojure.lang.PersistentArrayMap;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
+import org.opencv.videoio.VideoWriter;
 import origami.utils.Downloader;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.StringReader;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.function.Function;
 
@@ -23,6 +28,9 @@ public class Camera {
     boolean stop = false;
     private boolean pause;
     private boolean headless = false;
+    private boolean recording;
+    private Mat last;
+    private CameraConfigMap configMap;
 
     public Camera headless() {
         this.headless = !this.headless;
@@ -195,8 +203,13 @@ public class Camera {
     }
 
     public Camera device(Object o) {
+        configMap = null;
         this.device = o;
-        cap = Origami.CaptureDevice(o);
+        // that's opening the stream so not here
+        // cap = Origami.CaptureDevice(o);
+        configMap = new CameraConfigMap(o);
+        this.slowDown(configMap.getLong("slow", 0));
+
         return this;
     }
 
@@ -205,33 +218,34 @@ public class Camera {
         return this;
     }
 
-    int slow = 0;
+    long slow = 0;
 
-    public int getSlow() {
+    public long getSlow() {
         return slow;
     }
 
-    public Camera slowDown(int slow) {
+    public Camera slowDown(long slow) {
         this.slow = slow;
         return this;
     }
 
     public void run() {
         stop = false;
-        int skip = 0;
 
         if (!headless)
             setupFrame();
 
         if (this.cap == null) {
-            this.cap = new VideoCapture();
-            this.cap.open(0);
+            if (this.configMap == null) {
+                device("{:device 0}");
+            }
+            this.cap = configMap.openVideoCapture();
+        } else {
+            if (this.cap.isOpened()) {
+                this.cap.release();
+                this.cap = configMap.openVideoCapture();
+            }
         }
-
-        if(!this.cap.isOpened()) {
-            this.device(device);
-        }
-
 
         myLoop:
         while (!stop) {
@@ -242,15 +256,16 @@ public class Camera {
                     throw new RuntimeException(e);
                 }
             }
-            if (skipFrames < 0) {
-                skip++;
-                if (skip < -1 * skipFrames) {
-                    continue myLoop;
-                }
-            }
+//            if (skipFrames < 0) {
+//                skip++;
+//                if (skip < -1 * skipFrames) {
+//                    continue myLoop;
+//                }
+//            }
 
             if (pause || !this.cap.grab()) {
                 try {
+                    // pausing
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
@@ -258,25 +273,24 @@ public class Camera {
                 continue;
             }
 
-            if (skipFrames > 0) {
-                skip++;
-                if (skipFrames > skip)
-                    continue myLoop;
-            }
+//            if (skipFrames > 0) {
+//                skip++;
+//                if (skipFrames > skip)
+//                    continue myLoop;
+//            }
 
             try {
-                this.cap.read(buffer);
-                if (buffer.size().height == 0 && buffer.size().width == 0)
-                    throw new Exception("Empty image ...");
-                Mat filtered = skipFilter ? buffer : this.filter.apply(buffer);
-                fn.read(this, filtered);
+                if(this.cap !=null && this.cap.isOpened())
+                    this.cap.read(buffer);
+
+                boolean check = buffer.size().height == 0 && buffer.size().width == 0;
+                if(!check) {
+                    Mat filtered = skipFilter ? buffer : this.filter.apply(buffer);
+                    last = fn.read(this, filtered);
+                }
+
             } catch (Exception e) {
                 System.out.printf("Reading error ... %s\n", e.getMessage());
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ex) {
-                    // ex.printStackTrace();
-                }
             }
 
         }
@@ -287,6 +301,7 @@ public class Camera {
 
     public void onVideoStop() {
         this.cap.release();
+        this.cap = null;
 
         if (this.fullscreen)
             this.ims.exitFullScreen();
@@ -305,11 +320,53 @@ public class Camera {
         //    ims.Window.dispatchEvent(new WindowEvent(ims.Window, WindowEvent.WINDOW_CLOSING));
     }
 
+    public Mat last() {
+        return last;
+    }
+
+    public void record() {
+        recording = !recording;
+        if (!recording) {
+            return;
+        }
+
+        new Thread(() -> {
+
+            VideoWriter vw = new VideoWriter();
+
+            String code = configMap.getString("recordingFormat", "mjpg");
+            long recordingSlow = configMap.getLong("recordingSlow", 1);
+            String filename = configMap.getString("recordingFile", "stream_" + LocalDateTime.now() + ".mp4");
+
+            // https://softron.zendesk.com/hc/en-us/articles/207695697-List-of-FourCC-codes-for-video-codecs
+            // slow but compatible ?
+            // fast but only for osx
+            // TODO: should in settings
+            // String code = "avc1";
+            int fourcc = VideoWriter.fourcc(code.charAt(0), code.charAt(1), code.charAt(2), code.charAt(3));
+
+            vw.open(filename, fourcc, 240, last.size());
+
+            while (recording) {
+                if (!stop) {
+                    vw.write(last);
+                    try {
+                        Thread.sleep(recordingSlow);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            vw.release();
+            System.out.println("recording saved:" + filename);
+        }).start();
+
+    }
+
     public Camera keyHandler(KeyEventDispatcher ked) {
 //        KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(ked);
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(ked);
-
-
         return this;
     }
 
@@ -333,17 +390,18 @@ public class Camera {
 
 
         //Camera c = new Camera().headless().device(0).filter(p);
-        Camera c = new Camera().device(0).filter(p);
-//        .fullscreen();
-        //.fullscreen();
+        Camera c = new Camera().device("{:device 0 :slow 0}").filter(p);
         Thread t = new Thread(c::run);
 
         System.out.println("starting");
         t.start();
-        Thread.sleep(1000);
+
+        Thread.sleep(3000);
+        // enter
         c.fullscreen();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         c.fullscreen();
+
         Thread.sleep(10000);
         System.out.println("stopping");
         c.stop();

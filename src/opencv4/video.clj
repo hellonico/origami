@@ -1,6 +1,9 @@
 (ns opencv4.video
-  (:require [clojure.set])
-  (:import [org.opencv.videoio Videoio]
+  (:require [clojure.edn :as edn]
+            [clojure.java.io :as io]
+            [clojure.set])
+  (:import (java.io IOException PushbackReader)
+           [org.opencv.videoio Videoio]
            (origami.video VideoCapture)))
 
 (declare new-videocapture)
@@ -12,6 +15,18 @@
 
 (defn- key-to-prop [k]
   (eval (read-string (key-to-prop-s k))))
+
+
+(defn load-edn
+  "Load edn from an io/reader source (filename or io/resource)."
+  [source]
+  (try
+    (with-open [r (io/reader source)]
+      (edn/read (PushbackReader. r)))
+    (catch IOException e
+      (printf "Couldn't open '%s': %s\n" source (.getMessage e)))
+    (catch RuntimeException e
+      (printf "Error parsing edn file '%s': %s\n" source (.getMessage e)))))
 
 (defn capture-device [ video ]
   (let [capture (VideoCapture.)
@@ -28,7 +43,7 @@
          (keys
           (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
-            (.set capture (key-to-prop s) (-> video-map s)))
+          (try (.set capture (key-to-prop s) (-> video-map s)) (catch Exception _)))
       (.open capture device)
       (if debug? (debug-device capture))
   capture))

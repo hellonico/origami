@@ -1,9 +1,11 @@
 (ns opencv4.utils
   (:require
-   [opencv4.core :as cv]
-   [opencv4.filter :as f]
-   [opencv4.colors.rgb :as rgb]
-   [opencv4.video :as vid])
+    [clojure.edn :as edn]
+    [clojure.java.io :as io]
+    [opencv4.core :as cv]
+    [opencv4.filter :as f]
+    [opencv4.colors.rgb :as rgb]
+    [opencv4.video :as vid])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
            [org.opencv.imgcodecs Imgcodecs]
            [org.opencv.videoio VideoCapture]
@@ -11,7 +13,7 @@
 
            [java.net URL]
            [java.nio.channels ReadableByteChannel Channels]
-           [java.io File FileOutputStream]
+           [java.io File FileOutputStream IOException PushbackReader]
 
            [javax.imageio ImageIO]
            [javax.swing ImageIcon JFrame JLabel]
