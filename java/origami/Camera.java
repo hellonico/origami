@@ -235,17 +235,7 @@ public class Camera {
         if (!headless)
             setupFrame();
 
-        if (this.cap == null) {
-            if (this.configMap == null) {
-                device("{:device 0}");
-            }
-            this.cap = configMap.openVideoCapture();
-        } else {
-            if (this.cap.isOpened()) {
-                this.cap.release();
-                this.cap = configMap.openVideoCapture();
-            }
-        }
+        prepareStream();
 
         myLoop:
         while (!stop) {
@@ -289,6 +279,20 @@ public class Camera {
         onVideoStop();
 
 
+    }
+
+    public void prepareStream() {
+        if (this.cap == null) {
+            if (this.configMap == null) {
+                device("{:device 0}");
+            }
+            this.cap = configMap.openVideoCapture();
+        } else {
+            if (this.cap.isOpened()) {
+                this.cap.release();
+                this.cap = configMap.openVideoCapture();
+            }
+        }
     }
 
     public void step() {

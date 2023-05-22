@@ -1,11 +1,8 @@
-
-
-   (ns opencv4.colors.rgb
-     (:require [opencv4.core :only [new-scalar]])
-     )
+(ns opencv4.colors.rgb
+  (:import (org.opencv.core Scalar)))
 
    (defn rgb [r g b]
-     (new-scalar b g r))
+     (Scalar. (double b) (double g) (double r)))
   
 (def  indian-red  (rgb  176 23 31 ))
 (def  crimson  (rgb  220 20 60 ))

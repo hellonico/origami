@@ -29,7 +29,7 @@ public class VideoConfigTest {
         init();
         CameraConfigMap conf = ReadConfigMap("{:device 0 :slow 100}");
         for(Object c : conf.keySet()) {
-            System.out.println(c+":"+conf.getString((String) c));
+            System.out.println(c);
         }
         // System.out.println(conf.get(Keyword.intern("slow")));
     }
