@@ -28,6 +28,7 @@
      ["vcs" "push"]]
     :java-source-paths ["java" "test-java"]
     :junit ["test-java"]
+    ;:resource-paths ["resources"]
     :junit-formatter :plain
     :junit-results-dir "target/junit"
     :javac-options ["-target" "1.8" "-source" "1.8" "-Xlint:-options" "-nowarn"]
