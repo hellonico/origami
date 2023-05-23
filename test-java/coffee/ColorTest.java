@@ -16,6 +16,11 @@ public class ColorTest {
     }
 
     @Test
+    public void noSharpColorTest() {
+        Assert.assertNotNull(HTML.toScalar("f61515"));
+    }
+
+    @Test
     public void paletteTest() {
         String paletteName = "sunrise2";
         Assert.assertEquals(6,Palette.get("sunrise2", true).size());
