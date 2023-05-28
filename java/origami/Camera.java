@@ -1,7 +1,5 @@
 package origami;
 
-import clojure.lang.Keyword;
-import clojure.lang.PersistentArrayMap;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.VideoWriter;
@@ -10,10 +8,8 @@ import origami.utils.Downloader;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.StringReader;
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.function.Function;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -23,7 +19,8 @@ import static org.opencv.imgproc.Imgproc.*;
 public class Camera {
     VideoCapture cap;
     public ImShow ims; //  = new ImShow("Origami");
-    Function<Mat, Mat> filter = mat -> mat;
+    //Function<Mat, Mat> filter = mat -> mat;
+    Filter filter = mat -> mat;
 
     boolean stop = false;
     private boolean pause;
@@ -35,6 +32,10 @@ public class Camera {
     public Camera headless() {
         this.headless = !this.headless;
         return this;
+    }
+
+    public Filter getFilter() {
+        return filter;
     }
 
     public CameraFn getFn() {
@@ -192,13 +193,8 @@ public class Camera {
         return this;
     }
 
-    public Camera filter(Function<Mat, Mat> filter) {
-        this.filter = filter;
-        return this;
-    }
-
     public Camera filter(Filter filter) {
-        this.filter = mat -> filter.apply(mat);
+        this.filter = filter;
         return this;
     }
 

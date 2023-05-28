@@ -13,7 +13,10 @@ public class HTML {
     static final IFn toScalarFn = Clojure.var("opencv4.colors.html", "->scalar");
 
     public static Scalar toScalar(String f) {
-        return (Scalar) toScalarFn.invoke(f);
+        if(f.startsWith("#"))
+            return (Scalar) toScalarFn.invoke(f);
+        else
+            return RGB.toScalar(f);
     }
 
     static final IFn toHtmlFn = Clojure.var("opencv4.colors.html", "->html");

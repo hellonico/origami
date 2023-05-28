@@ -8,6 +8,14 @@ public class RGB {
         return new Scalar(b, g, r);
     }
 
+    public static Scalar toScalar(String colorName) {
+        try {
+            return (Scalar) RGB.class.getField(colorName).get(null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static final Scalar indian_red = toScalar(176, 23, 31);
     public static final Scalar crimson = toScalar(220, 20, 60);
     public static final Scalar lightpink = toScalar(255, 182, 193);

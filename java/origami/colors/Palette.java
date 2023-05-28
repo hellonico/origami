@@ -1,6 +1,7 @@
 package origami.colors;
 
 import org.opencv.core.Scalar;
+import origami.utils.Resourcer;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -14,13 +15,8 @@ public class Palette {
 
     public static List<String> get(String name, boolean reversed) {
         try {
-            InputStream is = Objects.requireNonNull(Palette.class.getClassLoader().getResourceAsStream("palette.txt"));
-            Set<String> lines = linesFromInputStream(is);
-
-            File customPalette = new File(System.getProperty("user.home")+"/.origami/palette.txt");
-            if(customPalette.exists()) {
-                lines.addAll(linesFromInputStream(Files.newInputStream(customPalette.toPath())));
-            }
+            String content =  Resourcer.linesFromResourceAndCustomization("palette.txt");
+            String[] lines = content.split("\n");
 
             for(String line : lines) {
                 if(line.startsWith(name)) {
@@ -38,13 +34,6 @@ public class Palette {
         }
     }
 
-    private static Set<String> linesFromInputStream(InputStream is) {
-        InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader =  new BufferedReader(isr);
-        Set<String> lines = reader.lines().collect(Collectors.toSet());
-        return lines;
-    }
-
     List<String> paletteList = List.of();
     public Palette(String _name, boolean _reverse) {
         name = _name;
@@ -56,9 +45,6 @@ public class Palette {
         int randomElement = (int) (paletteList.size() * p);
         return HTML.toScalar(paletteList.get(randomElement));
     }
-//
-//    public Scalar randomElement() {
-//
-//    }
+
 
 }
