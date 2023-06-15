@@ -23,7 +23,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        restore-keys: |
+          v1-dependencies-{{ checksum "project.clj" }}
     - name: Install dependencies
       run: lein deps
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: v1-dependencies-{{ checksum "project.clj" }}
     - name: Run tests
       run: lein test
