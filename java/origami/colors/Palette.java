@@ -34,7 +34,7 @@ public class Palette {
         }
     }
 
-    List<String> paletteList = List.of();
+    List<String> paletteList = new ArrayList<String>();
     public Palette(String _name, boolean _reverse) {
         name = _name;
         reverse = _reverse;
