@@ -393,7 +393,7 @@ public class Camera {
 
 
         //Camera c = new Camera().headless().device(0).filter(p);
-        Camera c = new Camera().device("{:device 0 :slow 0}").filter(p);
+        Camera c = new Camera().device("{:device \"nico.mp4\" :slow 0}").filter(p);
         Thread t = new Thread(c::run);
 
         System.out.println("starting");

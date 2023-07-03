@@ -12,6 +12,9 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 import org.scijava.nativelib.NativeLoader;
+import origami.tween.NoTween;
+import origami.tween.Tween;
+import origami.tween.Tweens;
 import origami.video.VideoHandler;
 
 import javax.imageio.ImageIO;
@@ -203,10 +206,32 @@ public class Origami {
             return new Filters.NoOP();
         }
     }
+    static final IFn sToT = Clojure.var("opencv4.filter", "s->tween");
+    public static Tween StringToTween(Object s) {
+        try {
+            Object o = sToT.invoke(s);
+            if (o instanceof Tween)
+                return (Tween) o;
+            else
+                return new Tweens((Tween[]) o);
+        } catch (Exception e) {
+            System.out.println("Cannot load tween from:"+s);
+            // e.printStackTrace();
+            return new NoTween();
+        }
+    }
 
     static final IFn fToS = Clojure.var("opencv4.filter", "filter->s");
+    static final IFn tToS = Clojure.var("opencv4.filter", "tween->s");
 
     public static String FilterToString(Object f) {
+        return (String) fToS.invoke(f);
+    }
+    public static String TweenToString(Object f) {
+        return (String) tToS.invoke(f);
+    }
+
+    public static String ObjectToString(Object f) {
         return (String) fToS.invoke(f);
     }
 
