@@ -7,6 +7,7 @@ Origami Project Goals
 ![Clojars Project](https://clojars.org/origami/latest-version.svg)
 
 ![image](https://circleci.com/gh/hellonico/origami.svg?style=svg)
+![github](https://github.com/hellonico/origami/actions/workflows/clojure.yml/badge.svg)
 
 # AT A GLANCE
 
