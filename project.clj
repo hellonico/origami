@@ -43,7 +43,7 @@
                      :dependencies   [; testing
                                       ; ~mxnet
 
-                                      [org.clojure/clojure "1.11.1" :scope "provided"]
+                                      [org.clojure/clojure "1.11.3" :scope "provided"]
                                       ; used for api code only
                                       [camel-snake-kebab "0.4.3"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
