@@ -41,10 +41,10 @@ public abstract class Tween implements Runnable {
     }
 
     private Object getTarget() {
-        if(target instanceof Filters) {
+        if(target instanceof Tweens) {
             String sindex = this.fieldName.contains(".") ? this.fieldName.substring(0,this.fieldName.indexOf(".")) : this.fieldName;
             int index = Integer.parseInt(sindex);
-            return ((Filters) target).getFilters().get(index);
+            return ((Tweens) target).getTweens().get(index);
         } else {
             return target;
         }

@@ -1,16 +1,13 @@
 package origami.tween;
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.media.AudioEqualizer;
 import javafx.scene.media.EqualizerBand;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
-import javafx.util.Duration;
 import org.opencv.core.RotatedRect;
 import org.opencv.core.Size;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.List;
 
