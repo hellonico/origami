@@ -1,0 +1,3 @@
+[submodule "modules/opencv4-native"]
+	path = modules/opencv4-native
+	url = https://github.com/hellonico/opencv4-native.git
