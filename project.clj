@@ -51,7 +51,8 @@
                    [org.scijava/native-lib-loader "2.5.0" :exclusions [org.slf4j/slf4j-api]]
                    [opencv/opencv "4.7.0-1"]
                    [opencv/opencv-native "4.7.0-5"]
-                   [org.clojure/java.data "1.2.107"]
+                   ; java.data breaking with newer versions
+                   [org.clojure/java.data "1.0.64"]
                    [org.openjfx/javafx-controls "17" :scope "provided"]
                    [org.openjfx/javafx-base "17" :scope "provided"]
                    [org.openjfx/javafx-media "17" :scope "provided"]
