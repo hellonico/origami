@@ -4,3 +4,6 @@
 [submodule "modules/origami-scripting"]
 	path = modules/origami-scripting
 	url = https://github.com/hellonico/origami-scripting.git
+[submodule "modules/origami-filters"]
+	path = modules/origami-filters
+	url = https://github.com/hellonico/origami-filters.git
