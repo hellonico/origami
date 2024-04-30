@@ -11,7 +11,7 @@ Origami Project Goals
 
 # AT A GLANCE
 
-- Full support for [OpenCV 4.7.0](https://github.com/opencv/opencv/wiki/ChangeLog#version470) 
+- Full support for [OpenCV 4.9.0](https://github.com/opencv/opencv/wiki/ChangeLog#version490) 
   - [CircleCI Passing](https://app.circleci.com/pipelines/github/hellonico/origami)
   - [Cuda Enabled NVidia Support](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) included
   - [Architecture support matrix](http://origamidocs.hellonico.info/#/units/compatibility?id=origami-470-compatibility-matrix)
