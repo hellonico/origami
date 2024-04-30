@@ -50,7 +50,7 @@
     :dependencies [; [org.clojure/clojure "1.10.0"]
                    [org.scijava/native-lib-loader "2.5.0" :exclusions [org.slf4j/slf4j-api]]
                    [opencv/opencv "4.9.0-0"]
-                   [opencv/opencv-native "4.9.0-0"]
+                   [opencv/opencv-native "4.9.0-1"]
                    ; java.data breaking with newer versions
                    [org.clojure/java.data "1.0.64"]
                    [org.openjfx/javafx-controls "17" :scope "provided"]
