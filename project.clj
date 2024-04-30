@@ -48,13 +48,13 @@
                                       ; used for api code only
                                       [camel-snake-kebab "0.4.3"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
-                   [org.scijava/native-lib-loader "2.4.0" :exclusions [org.slf4j/slf4j-api]]
+                   [org.scijava/native-lib-loader "2.5.0" :exclusions [org.slf4j/slf4j-api]]
                    [opencv/opencv "4.7.0-1"]
                    [opencv/opencv-native "4.7.0-5"]
-                   [org.clojure/java.data "1.0.64"]
-                   [org.openjfx/javafx-controls "17" :scope "provided"]
-                   [org.openjfx/javafx-base "17" :scope "provided"]
-                   [org.openjfx/javafx-media "17" :scope "provided"]
+                   [org.clojure/java.data "1.2.107"]
+                   [org.openjfx/javafx-controls "22.0.1" :scope "provided"]
+                   [org.openjfx/javafx-base "22.0.1" :scope "provided"]
+                   [org.openjfx/javafx-media "22.0.1" :scope "provided"]
                    ; do not move to :dev profile or javac cannot find it
-                   [junit/junit "4.13" :scope "provided"]
-                   [org.slf4j/slf4j-nop "1.7.28"]]))
+                   [junit/junit "4.13.2" :scope "provided"]
+                   [org.slf4j/slf4j-nop "2.0.13"]]))
