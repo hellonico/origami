@@ -1,6 +1,8 @@
 name: Clojure CI
 
 on:
+  workflow_dispatch:
+    branches: [ master topic/4_9]
   push:
     branches: [ master topic/4_9]
   pull_request:
