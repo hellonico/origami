@@ -2,7 +2,7 @@ name: Clojure CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master topic/4_9]
   pull_request:
     branches: [ master ]
 
