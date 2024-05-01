@@ -43,12 +43,11 @@
                      :dependencies   [; testing
                                       ; ~mxnet
 
-                                      [org.clojure/clojure "1.11.3" :scope "provided"]
-
                                       ; used for api code only
                                       [camel-snake-kebab "0.4.3"]]}}
     :dependencies [; [org.clojure/clojure "1.10.0"]
                    [org.scijava/native-lib-loader "2.5.0" :exclusions [org.slf4j/slf4j-api]]
+                   [org.clojure/clojure "1.11.3" :scope "provided"]
                    [opencv/opencv "4.9.0-0"]
                    [opencv/opencv-native "4.9.0-1"]
                    ; java.data breaking with newer versions
