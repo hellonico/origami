@@ -10,3 +10,6 @@
 [submodule "modules/kotlin-samples"]
 	path = modules/kotlin-samples
 	url = https://github.com/hellonico/origami-kotlin-samples.git
+[submodule "modules/jetbrains-compose-webcam"]
+	path = modules/jetbrains-compose-webcam
+	url = https://github.com/hellonico/origami-compose-article.git
