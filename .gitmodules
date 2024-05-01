@@ -7,3 +7,6 @@
 [submodule "modules/origami-filters"]
 	path = modules/origami-filters
 	url = https://github.com/hellonico/origami-filters.git
+[submodule "modules/kotlin-samples"]
+	path = modules/kotlin-samples
+	url = https://github.com/hellonico/origami-kotlin-samples.git
