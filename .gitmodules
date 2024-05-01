@@ -13,3 +13,6 @@
 [submodule "modules/jetbrains-compose-webcam"]
 	path = modules/jetbrains-compose-webcam
 	url = https://github.com/hellonico/origami-compose-article.git
+[submodule "modules/clojure-cli-samples"]
+	path = modules/clojure-cli-samples
+	url = https://github.com/hellonico/origami-clojure-cli-samples.git
