@@ -16,3 +16,6 @@
 [submodule "modules/clojure-cli-samples"]
 	path = modules/clojure-cli-samples
 	url = https://github.com/hellonico/origami-clojure-cli-samples.git
+[submodule "modules/llamaclj-on-cam"]
+	path = modules/llamaclj-on-cam
+	url = https://github.com/hellonico/origami-llamaclj.git
