@@ -346,6 +346,10 @@
 (def imshow show)
 
 
+(defn java-filter [klass]
+  (let [fi (.newInstance klass)]
+    (fn [mat] (.apply fi mat))))
+
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
@@ -357,7 +361,10 @@
          buffer (cv/new-mat)
          start (System/currentTimeMillis)
          c (atom 0)
-         myvideofn (if (or (string? _myvideofn) (not (fn? _myvideofn))) (f/s->fn-filter _myvideofn) _myvideofn)]
+         myvideofn
+         (if (or (string? _myvideofn) (not (fn? _myvideofn)))
+           (f/s->fn-filter _myvideofn)
+           _myvideofn)]
 
      (.start (Thread.
               (fn []
