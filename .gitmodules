@@ -19,3 +19,6 @@
 [submodule "modules/llamaclj-on-cam"]
 	path = modules/llamaclj-on-cam
 	url = https://github.com/hellonico/origami-llamaclj.git
+[submodule "modules/starter-scala"]
+	path = modules/starter-scala
+	url = https://github.com/hellonico/origami-starter-scala.g8.git
