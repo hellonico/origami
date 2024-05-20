@@ -61,6 +61,7 @@ public class ImShow {
         GraphicsDevice d = GraphicsEnvironment.getLocalGraphicsEnvironment()
                 .getDefaultScreenDevice();
         d.setFullScreenWindow(Window);
+//        Window.setVisible(true);
         Dimension di = d.getFullScreenWindow().getSize();
         Height = di.height;
         Width = di.width;

@@ -276,14 +276,18 @@
          (.setFullScreenWindow dsd nil))
        (do
          (.putClientProperty pane "fullscreen" true)
-         (.setFullScreenWindow dsd frame))))))
+         (.setFullScreenWindow dsd frame)
+         (.setVisible frame true)
+         )))))
 
 (defn re-show [mat pane]
   (let [image (.getIcon (first (.getComponents pane)))]
+    ;(println image)
     (.setImage image (mat-to-buffered-image mat))
     (doto pane
       (.revalidate)
       (.repaint))))
+
 (defn show
   ([src] (show src {}))
   ([src _options]
@@ -344,11 +348,11 @@
      (if (-> options :frame :fullscreen)  (toggle-fs frame))
      pane)))
 (def imshow show)
-
-
-(defn java-filter [klass]
-  (let [fi (.newInstance klass)]
-    (fn [mat] (.apply fi mat))))
+;
+;; TODO: already in opencv4.filter
+;(defn java-filter [filter]
+;  ;(let [fi (.newInstance klass)]
+;    (fn [mat] (.apply filter mat)))
 
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
@@ -361,10 +365,16 @@
          buffer (cv/new-mat)
          start (System/currentTimeMillis)
          c (atom 0)
-         myvideofn
-         (if (or (string? _myvideofn) (not (fn? _myvideofn)))
-           (f/s->fn-filter _myvideofn)
-           _myvideofn)]
+         myvideofn (cond
+                     (string? _myvideofn) (f/s->fn-filter _myvideofn)
+                     ;(instance? origami.Filter _myvideofn) (java-filter _myvideofn)
+                     (fn? _myvideofn) _myvideofn
+                     (vector? _myvideofn) (apply comp (into [] _myvideofn))
+                     :else
+                     ; try anyway
+                     _myvideofn
+                     )
+         ]
 
      (.start (Thread.
               (fn []
@@ -424,6 +434,8 @@
                    (do
                      (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
                        (let [output (apply (-> options :video :fn) (into [] (map deref buffer-atoms)))]
+                         ; TODO: check an option before resizing ?
+                         (cv/resize! output (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
                          (if showing (re-show output window))
                          (if (not (nil? recording))
                            (.write outputVideo

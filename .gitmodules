@@ -22,3 +22,9 @@
 [submodule "modules/starter-scala"]
 	path = modules/starter-scala
 	url = https://github.com/hellonico/origami-starter-scala.g8.git
+[submodule "modules/web-docs"]
+	path = modules/web-docs
+	url = https://github.com/hellonico/origami-docs.git
+[submodule "modules/jbangs"]
+	path = modules/jbangs
+	url = https://github.com/hellonico/origami-jbang.git
