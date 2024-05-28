@@ -353,6 +353,8 @@
 ;(defn java-filter [filter]
 ;  ;(let [fi (.newInstance klass)]
 ;    (fn [mat] (.apply filter mat)))
+(defn on-shutdown[fn]
+  (.addShutdownHook (Runtime/getRuntime) (Thread. fn)))
 
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
