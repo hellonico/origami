@@ -356,12 +356,17 @@
 (defn on-shutdown[fn]
   (.addShutdownHook (Runtime/getRuntime) (Thread. fn)))
 
+(def DEFAULTS {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}})
+
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
   ([_options _myvideofn]
    (let [__options (if (string? _options) (read-string (slurp _options)) _options)
-         options (merge-with merge {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}} __options)
+         options (if
+                   (contains? __options :video)
+                   (merge-with merge DEFAULTS __options)
+                   (merge-with merge DEFAULTS {:video __options}))
          capture (vid/capture-device (-> options :video))
          window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
          buffer (cv/new-mat)
@@ -386,12 +391,14 @@
                     (if (not (.getClientProperty window "paused"))
                       (re-show (-> buffer
                                   ;;  cv/clone
-                                   (myvideofn)
+
                                    ((fn [mat]
-                                      (if (-> options :frame :fps)
-                                        (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")
-                                                      (cv/new-point 30 50) cv/FONT_HERSHEY_PLAIN 3 rgb/ghostwhite 3))
-                                      (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window)))))))
+                                      ;(if (-> options :frame :fps)
+                                      ;  (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")
+                                      ;                (cv/new-point 30 50) cv/FONT_HERSHEY_PLAIN 3 rgb/ghostwhite 3))
+                                      (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))))
+                                   (myvideofn)
+                                   )
                                window))))
                 (.release capture)))))))
 

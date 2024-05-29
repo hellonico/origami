@@ -30,24 +30,27 @@
 
 (defn capture-device [ video ]
   (let [capture (VideoCapture.)
-        video-map (if (integer? video)
-                    {:device video}
-                    (cond
-                      (and (string? video) (integer? (read-string video))) {:device (read-string video)}
+        video-map (cond
+                      ; TODO: check string for file
                       (map? video) video
                       (map? (read-string video)) (read-string video)
+                      (integer? video) {:device video}
+                      (and (string? video) (integer? (read-string video))) {:device (read-string video)}
                       (and (string? video) (clojure.string/ends-with? video ".edn")) (read-string (slurp video))
-                      :else {}))
-        device (if  (= video-map {}) video (-> video-map :device))
-        debug? (dissoc video-map :debug)
+                      :else {:device 0})
+        device (-> video-map :device)
+        debug? (true? (dissoc video-map :debug))
         settings
          (keys
           (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
+        ; open the device before settings
+        (.open capture device)
         (doseq [s settings]
-          (try (.set capture (key-to-prop s) (-> video-map s)) (catch Exception _)))
+          (let [prop (key-to-prop s) v  (-> video-map s)]
+            (if debug? (println prop ">" v))
+          (try (.set capture  prop v) (catch Exception _))))
         (if debug? (debug-device capture))
         ;(debug-device capture)
-        (.open capture device)
   capture))
 
 (defn debug-device [capture]

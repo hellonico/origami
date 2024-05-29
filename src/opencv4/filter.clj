@@ -5,20 +5,22 @@
            (origami.tween Tween Tweens)))
 
 (defn s->obj [values klass]
+  ; (println "Loading")
   (cond
     (instance? java.io.File values)
-    (s->obj (slurp values) klass)
+      (s->obj (slurp values) klass)
     (string? values)
-    (try
-      (if (.exists (clojure.java.io/as-file values))
-        (s->obj (clojure.java.io/as-file values) klass)
-        (let [ r (read-string values) ] (s->obj r klass)))
-      (catch Exception e (let [ r (read-string values) ] (s->obj r klass))))
+      (try
+        ;(println "!" (.exists (clojure.java.io/as-file values)))
+        (if (.exists (clojure.java.io/as-file values))
+          (s->obj (clojure.java.io/as-file values) klass)
+          (let [ r (read-string values) ] (s->obj r klass)))
+        (catch Exception e (let [ r (read-string values) ] (s->obj r klass))))
     (map? values)
-    (if (nil? (:class values)) (throw (Exception. (str "Missing :class in map " values))) (j/to-java (eval (:class values)) values))
+      (if (nil? (:class values)) (throw (Exception. (str "Missing :class in map " values))) (j/to-java (eval (:class values)) values))
     (coll? values)
-    (into-array klass (map #(s->obj % klass) values))
-    :else (do (println values) nil)))
+      (into-array klass (map #(s->obj % klass) values))
+    :else (do (println "Cannot load:" klass values) nil)))
 
 (defn s->filter
   [values]
@@ -82,6 +84,7 @@
 
 (defn s->fn-filter [values]
   (let [_fn (s->filter values)]
+    ;(println ">> " _fn " << " values)
     (cond
       ; (coll? _fn) ; ??
       ; there should be a better way to do this
