@@ -5,6 +5,7 @@
     [opencv4.core :as cv]
     [opencv4.filter :as f]
     [opencv4.colors.rgb :as rgb]
+    [nextjournal.beholder :as beholder]
     [opencv4.video :as vid])
   (:import [org.opencv.core Size CvType Core Mat MatOfByte]
            [org.opencv.imgcodecs Imgcodecs]
@@ -189,9 +190,8 @@
    (mat-from-url2 url option)))
 
 (defn annotate! [mat text]
-  (cv/put-text mat
-               text (cv/new-point 100 100) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 0 0) 1)
-  mat)
+  (cv/put-text! mat
+               text (cv/new-point 100 100) cv/FONT_HERSHEY_PLAIN 1 (cv/new-scalar 255 0 0) 1))
 
 ;;;
 ; CONTOURS
@@ -233,6 +233,7 @@
                           (cv/new-scalar 127 50 0))
                         -1)))
   img)
+
 ;;;
 ;;; SIZING
 ;;;
@@ -277,8 +278,7 @@
        (do
          (.putClientProperty pane "fullscreen" true)
          (.setFullScreenWindow dsd frame)
-         (.setVisible frame true)
-         )))))
+         (.setVisible frame true) )))))
 
 (defn re-show [mat pane]
   (let [image (.getIcon (first (.getComponents pane)))]
@@ -358,6 +358,28 @@
 
 (def DEFAULTS {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}})
 
+(defn- load-video-fn[_myvideofn]
+  (cond
+    (string? _myvideofn) (f/s->fn-filter _myvideofn)
+    ;(instance? origami.Filter _myvideofn) (java-filter _myvideofn)
+    (fn? _myvideofn) _myvideofn
+    (vector? _myvideofn) (apply comp (into [] _myvideofn))
+    :else
+    ; try anyway
+    ;_myvideofn
+    identity
+    ))
+(defn- wrap-load-video-fn [_myvideofn]
+  (let [a (if (instance? clojure.lang.Atom _myvideofn)
+            _myvideofn
+            (atom (load-video-fn _myvideofn)))]
+    (let [___f (clojure.java.io/as-file _myvideofn) ___p (.getParent ___f)]
+      (if (and (string? _myvideofn) (.exists ___f ))
+        (do (println "Watching " ___p)
+            (beholder/watch #(do (println %) (reset! a (load-video-fn _myvideofn))) ___p))))
+    a
+    ))
+
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
@@ -371,42 +393,29 @@
          window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
          buffer (cv/new-mat)
          start (System/currentTimeMillis)
-         c (atom 0)
-         myvideofn (cond
-                     (string? _myvideofn) (f/s->fn-filter _myvideofn)
-                     ;(instance? origami.Filter _myvideofn) (java-filter _myvideofn)
-                     (fn? _myvideofn) _myvideofn
-                     (vector? _myvideofn) (apply comp (into [] _myvideofn))
-                     :else
-                     ; try anyway
-                     _myvideofn
-                     )
+         myvideofn (wrap-load-video-fn _myvideofn)
          ]
 
      (.start (Thread.
               (fn []
                 (while (nil? (.getClientProperty window "quit"))
-                  (if (-> options :frame :fps) (swap! c inc))
                   (if (.read capture buffer)
                     (if (not (.getClientProperty window "paused"))
                       (re-show (-> buffer
                                   ;;  cv/clone
-
                                    ((fn [mat]
-                                      ;(if (-> options :frame :fps)
-                                      ;  (cv/put-text! mat (str (int (/ @c (/ (- (System/currentTimeMillis) start) 1000))) " FPS")
-                                      ;                (cv/new-point 30 50) cv/FONT_HERSHEY_PLAIN 3 rgb/ghostwhite 3))
                                       (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))))
-                                   (myvideofn)
+                                   (@myvideofn)
                                    )
                                window))))
+                ; TODO: clean watcher
                 (.release capture)))))))
 
 (defn start-cam-thread [window device-map buffer-atom]
   (.start (Thread.
            (fn []
              (println ">> Starting: " (-> device-map :device) " << ")
-             (let [buffer (cv/new-mat) capture (vid/capture-device device-map) _fn (or (-> device-map :fn) identity)]
+             (let [buffer (cv/new-mat) capture (vid/capture-device device-map) _fn (load-video-fn (-> device-map :fn)) ]
                (while (nil? (.getClientProperty window "quit"))
                  (if (.read capture buffer)
                    (if (not (.getClientProperty window "paused"))
@@ -422,7 +431,9 @@
         window         (show (cv/new-mat 100 100 cv/CV_8UC3 (cv/new-scalar 0 0 0)) options)
         ; output         (cv/new-mat)
         outputVideo     (vid/new-videowriter)
-        recording       (-> options :video :recording)]
+        recording       (-> options :video :recording)
+        render-fn (f/s->render (-> options :video :fn))
+        ]
     (doall
      (map #(start-cam-thread window %2 (get buffer-atoms %1)) (range) devices))
 
@@ -442,7 +453,7 @@
                  (if (not (.getClientProperty window "paused"))
                    (do
                      (if (= (count (filter #(= % 0)  (map #(.cols (deref %)) buffer-atoms))) 0)
-                       (let [output (apply (-> options :video :fn) (into [] (map deref buffer-atoms)))]
+                       (let [output (.apply render-fn (into-array Mat (map deref buffer-atoms)))]
                          ; TODO: check an option before resizing ?
                          (cv/resize! output (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))
                          (if showing (re-show output window))

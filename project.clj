@@ -52,6 +52,7 @@
                    [opencv/opencv-native "4.9.0-1"]
                    ; java.data breaking with newer versions
                    [org.clojure/java.data "1.0.64" :exclusions [org.clojure/clojure]]
+                   [com.nextjournal/beholder "1.0.2"]
                    [org.openjfx/javafx-controls "17" :scope "provided"]
                    [org.openjfx/javafx-base "17" :scope "provided"]
                    [org.openjfx/javafx-media "17" :scope "provided"]

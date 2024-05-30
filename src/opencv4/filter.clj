@@ -2,6 +2,7 @@
   (:require
     [clojure.java.data :as j])
   (:import (origami Filter)
+           (origami.render Render)
            (origami.tween Tween Tweens)))
 
 (defn s->obj [values klass]
@@ -25,6 +26,10 @@
 (defn s->filter
   [values]
   (s->obj values Filter))
+
+(defn s->render
+  [values]
+  (s->obj values Render))
 
 (defn s->tween
   [values]
@@ -75,12 +80,6 @@
      (str (bean values))))
   ([values filename]
    (spit filename filter->s values)))
-
-; only in clojure world
-; TODO: fix
-
-;(defn- to-filter-fn[_fn]
-;  (fn [mat] (.apply _fn mat)))
 
 (defn s->fn-filter [values]
   (let [_fn (s->filter values)]

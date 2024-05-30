@@ -9,5 +9,6 @@
         opencv/opencv {:mvn/version "4.9.0-0"}
         opencv/opencv-native {:mvn/version "4.9.0-1"}
         org.slf4j/slf4j-nop {:mvn/version "1.7.28"}
+				com.nextjournal/beholder {:mvn/version "1.0.2"}
         hellonico/gorilla-repl {:mvn/version  "0.4.1"}}
 }

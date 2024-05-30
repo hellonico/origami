@@ -4,6 +4,7 @@ import clojure.java.api.Clojure;
 import clojure.lang.IFn;
 import clojure.lang.PersistentArrayMap;
 import clojure.lang.Symbol;
+import javafx.beans.property.Property;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -25,11 +26,16 @@ import java.awt.image.WritableRaster;
 import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
+import static java.lang.System.getProperties;
 import static org.opencv.core.Core.getNumberOfCPUs;
 import static org.opencv.imgcodecs.Imgcodecs.imencode;
 
 public class Origami {
+
+    public static boolean DEBUG = System.getenv().containsKey("ORIGAMI_DEBUG");
 
     /**
      * TODO: Should be calling the clojure function
@@ -112,14 +118,19 @@ public class Origami {
     }
 
     public static void init() {
+
         try {
             // System.out.printf("Loading: %s\n", Core.NATIVE_LIBRARY_NAME);
             if(isOpenCVLoaded()) {
-                System.out.printf("Already loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
+                if(DEBUG) {
+                    System.out.printf("Already loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
+                }
             } else {
                 NativeLoader.setJniExtractor(new OrigamiJniExtractor((Class)null));
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-                System.out.printf("Loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
+                if(DEBUG) {
+                    System.out.printf("Loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
