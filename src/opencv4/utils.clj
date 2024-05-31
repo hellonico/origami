@@ -282,11 +282,13 @@
 
 (defn re-show [mat pane]
   (let [image (.getIcon (first (.getComponents pane)))]
-    ;(println image)
-    (.setImage image (mat-to-buffered-image mat))
-    (doto pane
-      (.revalidate)
-      (.repaint))))
+    (if (not (nil? mat))
+      (do
+      (.setImage image (mat-to-buffered-image mat))
+      (doto pane
+        (.revalidate)
+        (.repaint))))))
+
 
 (defn show
   ([src] (show src {}))
@@ -359,6 +361,7 @@
 (def DEFAULTS {:frame {:fps false :color "00" :title "video" :width 400 :height 400} :video {:device 0}})
 
 (defn- load-video-fn[_myvideofn]
+  (try
   (cond
     (string? _myvideofn) (f/s->fn-filter _myvideofn)
     ;(instance? origami.Filter _myvideofn) (java-filter _myvideofn)
@@ -368,7 +371,11 @@
     ; try anyway
     ;_myvideofn
     identity
-    ))
+    )
+  (catch Exception e
+    (println "loading of video fn" _myvideofn " failed with:" e)
+    identity)))
+
 (defn- wrap-load-video-fn [_myvideofn]
   (let [a (if (instance? clojure.lang.Atom _myvideofn)
             _myvideofn
