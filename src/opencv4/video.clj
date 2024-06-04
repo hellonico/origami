@@ -33,8 +33,8 @@
         video-map (cond
                       ; TODO: check string for file
                       (map? video) video
-                      (map? (read-string video)) (read-string video)
                       (integer? video) {:device video}
+                      (map? (read-string video)) (read-string video)
                       (and (string? video) (integer? (read-string video))) {:device (read-string video)}
                       (and (string? video) (clojure.string/ends-with? video ".edn")) (read-string (slurp video))
                       :else {:device 0})
@@ -42,7 +42,9 @@
         debug? (true? (dissoc video-map :debug))
         settings
          (keys
-          (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
+          (clojure.set/rename-keys (dissoc video-map :lag :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
+        ; some lag before opening
+        (Thread/sleep (or (video-map :lag) 1))
         ; open the device before settings
         (.open capture device)
         (doseq [s settings]

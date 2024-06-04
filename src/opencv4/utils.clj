@@ -18,7 +18,7 @@
 
            [javax.imageio ImageIO]
            [javax.swing ImageIcon JFrame JLabel]
-           [java.awt.event KeyListener MouseAdapter]
+           [java.awt.event ComponentListener KeyListener MouseAdapter]
            [java.awt FlowLayout]))
 
 ;;;
@@ -289,6 +289,18 @@
         (.revalidate)
         (.repaint))))))
 
+(defn screenshot[label options]
+  (let [out (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png") file (io/as-file out)]
+  (ImageIO/write
+    (.getImage (.getIcon label))
+    "png" file )
+  (println "Written:" out)
+  ))
+
+(defn delayed-execution [f delay-ms]
+  (future
+    (Thread/sleep delay-ms)
+    (f)))
 
 (defn show
   ([src] (show src {}))
@@ -309,11 +321,12 @@
        (.setBackground (java.awt.Color/decode (-> options :frame :color)))
        (.setLayout (FlowLayout.))
        (.add label))
-    ; (.addComponentListener frame
-    ;   (proxy [java.awt.event.ComponentListener] []
-    ;     (componentMoved [event])
-    ;     (componentResized [event]
-    ;       (re-show pane (cv/resize! (get-src) (cv/new-size (.getWidth frame) (.getHeight frame)))))))
+     (.addComponentListener frame
+       (proxy [ComponentListener] []
+         (componentShown [event])
+         (componentMoved [event])
+         (componentResized [event]
+           (re-show (cv/resize! (-> src cv/clone) (cv/new-size (.getWidth frame) (.getHeight frame))) pane ))))
      (.addKeyListener frame
                       (proxy [KeyListener] []
                         (keyTyped [event])
@@ -327,11 +340,12 @@
                               " " (if (.getClientProperty pane "paused")
                                     (.putClientProperty pane "paused" false)
                                     (.putClientProperty pane "paused" true))
-                              "s" (ImageIO/write
-                                   (.getImage (.getIcon label))
-                                   "png" (clojure.java.io/as-file (str (-> options :frame :title) "_" (System/currentTimeMillis) ".png")))
-                              "f"  (toggle-fs frame)
-                              "q"  (do (.putClientProperty pane "quit" true) (.dispose frame))
+                              "b" (dotimes [i 10]
+                                    (delayed-execution #(screenshot label options) (* i 1000)))
+                              "s" (screenshot label options)
+                              "f" (toggle-fs frame)
+                              "t" (delayed-execution #(screenshot label options) 5000)
+                              "q" (do (.putClientProperty pane "quit" true) (.dispose frame))
                               (do))))))
      (.addMouseListener label
                         (proxy [MouseAdapter] []
@@ -350,6 +364,14 @@
      (if (-> options :frame :fullscreen)  (toggle-fs frame))
      pane)))
 (def imshow show)
+
+(defn take-one[cam output]
+  (let[ capture (vid/capture-device cam) target (cv/new-mat)]
+    (.read capture target)
+    (.release capture)
+    (cv/imwrite target output)
+    (println "Written:" output " > " target)))
+
 ;
 ;; TODO: already in opencv4.filter
 ;(defn java-filter [filter]
@@ -412,7 +434,7 @@
                                   ;;  cv/clone
                                    ((fn [mat]
                                       (cv/resize! mat (cv/new-size (.getWidth (.getSize window)) (.getHeight (.getSize window))))))
-                                   (@myvideofn)
+                                   ((fn[mat] (try (@myvideofn mat) (catch Exception e mat))))
                                    )
                                window))))
                 ; TODO: clean watcher

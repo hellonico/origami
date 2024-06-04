@@ -37,6 +37,32 @@ public class Origami {
 
     public static boolean DEBUG = System.getenv().containsKey("ORIGAMI_DEBUG");
 
+    public static Mat classPathFiletoMat(String path) {
+        try {
+            InputStream is = Origami.class.getResourceAsStream(path);
+            // Convert InputStream to byte array
+            assert is != null;
+            byte[] imageData = inputStreamToByteArray(is);
+
+            // Decode the image data to Mat
+            MatOfByte matOfByte = new MatOfByte(imageData);
+            return Imgcodecs.imdecode(matOfByte, Imgcodecs.IMREAD_COLOR);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static byte[] inputStreamToByteArray(InputStream is) throws IOException {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[16384];
+        while ((nRead = is.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+        buffer.flush();
+        return buffer.toByteArray();
+    }
+
     /**
      * TODO: Should be calling the clojure function
      */
@@ -121,14 +147,14 @@ public class Origami {
 
         try {
             // System.out.printf("Loading: %s\n", Core.NATIVE_LIBRARY_NAME);
-            if(isOpenCVLoaded()) {
-                if(DEBUG) {
+            if (isOpenCVLoaded()) {
+                if (DEBUG) {
                     System.out.printf("Already loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
                 }
             } else {
-                NativeLoader.setJniExtractor(new OrigamiJniExtractor((Class)null));
+                NativeLoader.setJniExtractor(new OrigamiJniExtractor((Class) null));
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-                if(DEBUG) {
+                if (DEBUG) {
                     System.out.printf("Loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
                 }
             }
@@ -198,10 +224,10 @@ public class Origami {
         Symbol cvu = (Symbol) Clojure.var("clojure.core", "symbol").invoke("opencv4.filter");
         Clojure.var("clojure.core", "require").invoke(cvu);
     }
+
     static final IFn sToF = Clojure.var("opencv4.filter", "s->filter");
 
     /**
-     *
      * @see <a href="http://origamidocs.hellonico.info/#/units/filters">http://origamidocs.hellonico.info/#/units/filters</a>
      */
     public static Filter StringToFilter(Object s) {
@@ -212,12 +238,14 @@ public class Origami {
             else
                 return new Filters((Filter[]) o);
         } catch (Exception e) {
-            System.out.println("Cannot load filter from:"+s);
+            System.out.println("Cannot load filter from:" + s);
             // e.printStackTrace();
             return new Filters.NoOP();
         }
     }
+
     static final IFn sToT = Clojure.var("opencv4.filter", "s->tween");
+
     public static Tween StringToTween(Object s) {
         try {
             Object o = sToT.invoke(s);
@@ -226,7 +254,7 @@ public class Origami {
             else
                 return new Tweens((Tween[]) o);
         } catch (Exception e) {
-            System.out.println("Cannot load tween from:"+s);
+            System.out.println("Cannot load tween from:" + s);
             // e.printStackTrace();
             return new NoTween();
         }
@@ -238,6 +266,7 @@ public class Origami {
     public static String FilterToString(Object f) {
         return (String) fToS.invoke(f);
     }
+
     public static String TweenToString(Object f) {
         return (String) tToS.invoke(f);
     }
@@ -250,11 +279,13 @@ public class Origami {
         Symbol cvu = (Symbol) Clojure.var("clojure.core", "symbol").invoke("opencv4.video");
         Clojure.var("clojure.core", "require").invoke(cvu);
     }
+
     static final IFn captureDeviceFn = Clojure.var("opencv4.video", "capture-device");
 
     public static VideoCapture CaptureDevice(Object f) {
         return (VideoCapture) captureDeviceFn.invoke(f);
     }
+
     static final IFn readDeviceFn = Clojure.var("opencv4.video", "load-edn");
 
     public static CameraConfigMap ReadConfigMap(Object o) {
