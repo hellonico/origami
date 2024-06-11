@@ -43,10 +43,10 @@
         settings
          (keys
           (clojure.set/rename-keys (dissoc video-map :lag :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
-        ; some lag before opening
-        (Thread/sleep (or (video-map :lag) 1))
         ; open the device before settings
         (.open capture device)
+        ; some lag after opening
+        (Thread/sleep (or (video-map :lag) 50))
         (doseq [s settings]
           (let [prop (key-to-prop s) v  (-> video-map s)]
             (if debug? (println prop ">" v))

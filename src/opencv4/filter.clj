@@ -12,7 +12,7 @@
       (s->obj (slurp values) klass)
     (string? values)
       (try
-        ;(println "!" (.exists (clojure.java.io/as-file values)))
+        ;(println "!" values "!" (.exists (clojure.java.io/as-file values)))
         (if (.exists (clojure.java.io/as-file values))
           (s->obj (clojure.java.io/as-file values) klass)
           (let [ r (read-string values) ] (s->obj r klass)))

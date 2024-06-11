@@ -1,6 +1,5 @@
 package origami.filters;
 
-import clojure.lang.ISeq;
 import org.opencv.core.Mat;
 import origami.Filter;
 

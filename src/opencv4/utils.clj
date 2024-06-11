@@ -2,6 +2,7 @@
   (:require
     [clojure.edn :as edn]
     [clojure.java.io :as io]
+    [clojure.string :as str]
     [opencv4.core :as cv]
     [opencv4.filter :as f]
     [opencv4.colors.rgb :as rgb]
@@ -370,13 +371,44 @@
     (.read capture target)
     (.release capture)
     (cv/imwrite target output)
-    (println "Written:" output " > " target)))
+    (println "One shot:" output " > " target)
+    target))
 
-;
-;; TODO: already in opencv4.filter
-;(defn java-filter [filter]
-;  ;(let [fi (.newInstance klass)]
-;    (fn [mat] (.apply filter mat)))
+(defn long-exposure[cam output frames lag]
+  (let[ capture (vid/capture-device cam) target (cv/new-mat) acc (atom nil)]
+    (dotimes [_ frames]
+      (.read capture target)
+      (if (nil? @acc)
+        (reset! acc (cv/new-mat (cv/size target) CvType/CV_32FC3)))
+      (cv/convert-to target target CvType/CV_32FC3)
+      (cv/add! @acc target)
+      (Thread/sleep lag))
+
+    (.release capture)
+    (cv/normalize! @acc 0 255 cv/NORM_MINMAX)
+    (cv/convert-to! @acc CvType/CV_8UC3)
+
+    (cv/imwrite @acc output)
+    (println "Long exposure:" output " > " @acc)
+    @acc
+    ))
+
+(defn script-helper[script-file]
+  (let [
+        file (clojure.java.io/as-file script-file)
+        parent (.getParent file)
+        file-name (str/replace (.getName file) #"\.[^.]*$" "")
+        help-file (str  parent "/" file-name ".md")
+        ]
+    {:file file :parent parent :file-name file-name :help-file help-file}
+  ))
+
+(defn print-help[script-file summary]
+  (let [{:keys [file parent file-name help-file]} (script-helper script-file)]
+  (println (slurp help-file) "\n\n")
+  (println "Usage: " (.getName file))
+  (println summary)))
+
 (defn on-shutdown[fn]
   (.addShutdownHook (Runtime/getRuntime) (Thread. fn)))
 
@@ -402,22 +434,27 @@
   (let [a (if (instance? clojure.lang.Atom _myvideofn)
             _myvideofn
             (atom (load-video-fn _myvideofn)))]
-    (let [___f (clojure.java.io/as-file _myvideofn) ___p (.getParent ___f)]
-      (if (and (string? _myvideofn) (.exists ___f ))
-        (do (println "Watching " ___p)
-            (beholder/watch #(do (println %) (reset! a (load-video-fn _myvideofn))) ___p))))
-    a
-    ))
+    (if (string? _myvideofn)
+      (let [___f (clojure.java.io/as-file _myvideofn) ___p (.getParent ___f)]
+        (if (.exists ___f )
+          (do (println "Watching " ___p)
+              (beholder/watch #(do (println %) (reset! a (load-video-fn _myvideofn))) ___p))))
+      )
+    a))
 
 (defn simple-cam-window
   ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
   ([_options _myvideofn]
-   (let [__options (if (string? _options) (read-string (slurp _options)) _options)
-         options (if
-                   (contains? __options :video)
-                   (merge-with merge DEFAULTS __options)
-                   (merge-with merge DEFAULTS {:video __options}))
+   (let [__options (if (string? _options) (try (read-string (slurp _options)) (catch Exception e _options)) _options)
+         options (cond
+                   (and (map? __options) (contains? __options :video))
+                     (merge-with merge DEFAULTS __options)
+                   (int? (try (Integer/parseInt __options) (catch Exception e false)))
+                     (merge-with merge DEFAULTS {:video {:device (read-string __options)}})
+                   :default
+                     (merge-with merge DEFAULTS {:video __options})
+                   )
          capture (vid/capture-device (-> options :video))
          window (show (cv/new-mat (-> options :frame :width) (-> options :frame :height)   cv/CV_8UC3 (cv/new-scalar 255 255 255)) options)
          buffer (cv/new-mat)
