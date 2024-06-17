@@ -9,14 +9,17 @@
   ; (println "Loading")
   (cond
     (instance? java.io.File values)
-      (s->obj (slurp values) klass)
+    (do (println "Loading from file:" values " " (slurp values))
+      (s->obj (slurp values) klass))
     (string? values)
       (try
-        ;(println "!" values "!" (.exists (clojure.java.io/as-file values)))
+        (println "!" values "!" (.exists (clojure.java.io/as-file values)))
         (if (.exists (clojure.java.io/as-file values))
           (s->obj (clojure.java.io/as-file values) klass)
-          (let [ r (read-string values) ] (s->obj r klass)))
-        (catch Exception e (let [ r (read-string values) ] (s->obj r klass))))
+          (let [ r (read-string values)
+                 _ (println ">>" r " " (coll? r)) ]
+            (s->obj r klass)))
+        (catch Exception e (do (.printStackTrace e) (let [ r (read-string values) ] (s->obj r klass)))))
     (map? values)
       (if (nil? (:class values)) (throw (Exception. (str "Missing :class in map " values))) (j/to-java (eval (:class values)) values))
     (coll? values)

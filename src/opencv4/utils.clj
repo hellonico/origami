@@ -113,6 +113,13 @@
      (java.io.ByteArrayInputStream. (.toArray matOfBytes)))))
 (def >>> mat-to-buffered-image)
 
+; merge with above
+(defn mat-to-array-png [src]
+  (let [matOfBytes (org.opencv.core.MatOfByte.)]
+    (org.opencv.imgcodecs.Imgcodecs/imencode ".png" src matOfBytes)
+    (.toArray matOfBytes)))
+(def >png mat-to-array-png)
+
 (defn buffered-image-to-mat [bi]
   ; (javax.imageio.ImageIO/write bi "jpg"  (clojure.java.io/file "target/debug.jpg")) 
   (let [nbio (java.awt.image.BufferedImage. (.getWidth bi) (.getHeight bi) java.awt.image.BufferedImage/TYPE_3BYTE_BGR)
@@ -366,13 +373,20 @@
      pane)))
 (def imshow show)
 
-(defn take-one[cam output]
+
+(defn take-one-mat[cam]
   (let[ capture (vid/capture-device cam) target (cv/new-mat)]
     (.read capture target)
     (.release capture)
+    target))
+(def <cam take-one-mat)
+
+(defn take-one[cam output]
+  (let [target (<cam cam)]
     (cv/imwrite target output)
     (println "One shot:" output " > " target)
     target))
+
 
 (defn long-exposure[cam output frames lag]
   (let[ capture (vid/capture-device cam) target (cv/new-mat) acc (atom nil)]
@@ -446,7 +460,12 @@
   ([] (simple-cam-window {} identity))
   ([myvideofn] (simple-cam-window {} myvideofn))
   ([_options _myvideofn]
-   (let [__options (if (string? _options) (try (read-string (slurp _options)) (catch Exception e _options)) _options)
+   (let [__options (if (string? _options)
+                       (if (.exists (io/as-file _options))
+                          (read-string (slurp _options))
+                          (read-string _options))
+                       _options
+                       )
          options (cond
                    (and (map? __options) (contains? __options :video))
                      (merge-with merge DEFAULTS __options)

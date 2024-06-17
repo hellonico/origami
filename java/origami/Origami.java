@@ -2,9 +2,7 @@ package origami;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
-import clojure.lang.PersistentArrayMap;
 import clojure.lang.Symbol;
-import javafx.beans.property.Property;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -19,17 +17,16 @@ import origami.tween.Tweens;
 import origami.video.VideoHandler;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
 
-import static java.lang.System.getProperties;
 import static org.opencv.core.Core.getNumberOfCPUs;
 import static org.opencv.imgcodecs.Imgcodecs.imencode;
 

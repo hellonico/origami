@@ -109,7 +109,7 @@ public class Camera {
                     Camera.this.device(Camera.this.device);
                     break;
                 case 's':
-                    imwrite("origami_screenshot_" + new Date().toString().toLowerCase() + ".jpg", Camera.this.buffer);
+                    imwrite("origami_screenshot_" + new Date().toString().toLowerCase() + ".jpg", Camera.this.last);
                 default:
                     ;
             }

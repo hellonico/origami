@@ -25,9 +25,9 @@ public class OrigamiJniExtractor extends DefaultJniExtractor {
 
     @Override
     public File extractJni(String libPath, String libname) throws IOException {
-        if(Origami.DEBUG) {
+//        if(Origami.DEBUG) {
             System.out.println("Loading:" + libname + " from:" + libPath);
-        }
+//        }
         if (libPath.equalsIgnoreCase("natives/linux_arm64/")) {
             String uname = sh("uname -a");
             boolean check = uname.contains("nvidia");
