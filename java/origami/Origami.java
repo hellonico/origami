@@ -149,7 +149,7 @@ public class Origami {
                     System.out.printf("Already loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
                 }
             } else {
-                NativeLoader.setJniExtractor(new OrigamiJniExtractor((Class) null));
+                NativeLoader.setJniExtractor(new OrigamiJniExtractor(null));
                 NativeLoader.loadLibrary(Core.NATIVE_LIBRARY_NAME);
                 if (DEBUG) {
                     System.out.printf("Loaded: %s\n", Core.NATIVE_LIBRARY_NAME);
