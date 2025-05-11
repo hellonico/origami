@@ -25,3 +25,4 @@ origami.iml
 .clj-kondo/
 .cpcache/
 .lsp/
+lein_help.sh
