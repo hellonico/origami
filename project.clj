@@ -49,7 +49,7 @@
                    [org.scijava/native-lib-loader "2.5.0" :exclusions [org.slf4j/slf4j-api]]
                    [org.clojure/clojure "1.11.3" :scope "provided"]
                    [opencv/opencv "4.11.0-0"]
-                   [opencv/opencv-native "4.11.0-0"]
+                   [opencv/opencv-native "4.11.0-1"]
                    ; java.data breaking with newer versions
                    [org.clojure/java.data "1.0.64" :exclusions [org.clojure/clojure]]
                    [com.nextjournal/beholder "1.0.2"]
