@@ -1,30 +1,30 @@
 [submodule "modules/opencv4-native"]
 	path = modules/opencv4-native
-	url = https://github.com/hellonico/opencv4-native.git
+	url = git@github.com:hellonico/opencv4-native.git
 [submodule "modules/origami-scripting"]
 	path = modules/origami-scripting
-	url = https://github.com/hellonico/origami-scripting.git
+	url = git@github.com:hellonico/origami-scripting.git
 [submodule "modules/origami-filters"]
 	path = modules/origami-filters
-	url = https://github.com/hellonico/origami-filters.git
+	url = git@github.com:hellonico/origami-filters.git
 [submodule "modules/kotlin-samples"]
 	path = modules/kotlin-samples
-	url = https://github.com/hellonico/origami-kotlin-samples.git
+	url = git@github.com:hellonico/origami-kotlin-samples.git
 [submodule "modules/jetbrains-compose-webcam"]
 	path = modules/jetbrains-compose-webcam
-	url = https://github.com/hellonico/origami-compose-article.git
+	url = git@github.com:hellonico/origami-compose-article.git
 [submodule "modules/clojure-cli-samples"]
 	path = modules/clojure-cli-samples
-	url = https://github.com/hellonico/origami-clojure-cli-samples.git
+	url = git@github.com:hellonico/origami-clojure-cli-samples.git
 [submodule "modules/llamaclj-on-cam"]
 	path = modules/llamaclj-on-cam
-	url = https://github.com/hellonico/origami-llamaclj.git
+	url = git@github.com:hellonico/origami-llamaclj.git
 [submodule "modules/starter-scala"]
 	path = modules/starter-scala
-	url = https://github.com/hellonico/origami-starter-scala.g8.git
+	url = git@github.com:hellonico/origami-starter-scala.g8.git
 [submodule "modules/web-docs"]
 	path = modules/web-docs
-	url = https://github.com/hellonico/origami-docs.git
+	url = git@github.com:hellonico/origami-docs.git
 [submodule "modules/jbangs"]
 	path = modules/jbangs
-	url = https://github.com/hellonico/origami-jbang.git
+	url = git@github.com:hellonico/origami-jbang.git
