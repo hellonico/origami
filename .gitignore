@@ -26,3 +26,5 @@ origami.iml
 .cpcache/
 .lsp/
 lein_help.sh
+*.log
+junit.properties

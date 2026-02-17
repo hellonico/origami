@@ -1,10 +1,6 @@
 (ns opencv4.video
-  (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [clojure.set])
-  (:import (java.io IOException PushbackReader)
-           [org.opencv.videoio Videoio]
-           (origami.video VideoCapture)))
+  (:require [clojure.set])
+  (:import  [org.opencv.videoio Videoio]))
 
 (declare new-videocapture)
 (declare debug-device)
@@ -16,43 +12,22 @@
 (defn- key-to-prop [k]
   (eval (read-string (key-to-prop-s k))))
 
-
-(defn load-edn
-  "Load edn from an io/reader source (filename or io/resource)."
-  [source]
-  (try
-    (with-open [r (io/reader source)]
-      (edn/read (PushbackReader. r)))
-    (catch IOException e
-      (printf "Couldn't open '%s': %s\n" source (.getMessage e)))
-    (catch RuntimeException e
-      (printf "Error parsing edn file '%s': %s\n" source (.getMessage e)))))
-
 (defn capture-device [ video ]
-  (let [capture (VideoCapture.)
+  (let [capture (new-videocapture)
+        is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
         video-map (cond
-                      ; TODO: check string for file
-                      (map? video) video
-                      (integer? video) {:device video}
-                      (map? (read-string video)) (read-string video)
-                      (and (string? video) (integer? (read-string video))) {:device (read-string video)}
-                      (and (string? video) (clojure.string/ends-with? video ".edn")) (read-string (slurp video))
-                      :else {:device 0})
-        device (-> video-map :device)
-        debug? (true? (dissoc video-map :debug))
+                    (map? video) video
+                    is-setting-file? (read-string (slurp video))
+                    :else {})
+        device (if  (= video-map {}) video (-> video-map :device))
+        debug? (dissoc video-map :debug)
         settings
          (keys
-          (clojure.set/rename-keys (dissoc video-map :lag :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
-        ; open the device before settings
-        (.open capture device)
-        ; some lag after opening
-        (Thread/sleep (or (video-map :lag) 50))
+          (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
         (doseq [s settings]
-          (let [prop (key-to-prop s) v  (-> video-map s)]
-            (if debug? (println prop ">" v))
-          (try (.set capture  prop v) (catch Exception _))))
-        (if debug? (debug-device capture))
-        ;(debug-device capture)
+            (.set capture (key-to-prop s) (-> video-map s)))
+      (.open capture device)
+      (if debug? (debug-device capture))
   capture))
 
 (defn debug-device [capture]
@@ -70,12 +45,12 @@
       (if (and (not (= 0.0 v)) (not (= -1.0 v)))
       (println k  ":" v))))))
 (defn new-videowriter 
+([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4 ] 
+  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4 ))
 ([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ] 
   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ))
 ([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 ] 
   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 ))
-([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ] 
-  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 ))
 ([] 
   (new org.opencv.videoio.VideoWriter )))
 (defn new-videocapture 
@@ -306,6 +281,7 @@
 (def CAP_PROP_XI_SENSOR_FEATURE_SELECTOR Videoio/CAP_PROP_XI_SENSOR_FEATURE_SELECTOR)
 (def CAP_PROP_XI_SENSOR_FEATURE_VALUE Videoio/CAP_PROP_XI_SENSOR_FEATURE_VALUE)
 (def CAP_PROP_ARAVIS_AUTOTRIGGER Videoio/CAP_PROP_ARAVIS_AUTOTRIGGER)
+(def CAP_PROP_ANDROID_DEVICE_TORCH Videoio/CAP_PROP_ANDROID_DEVICE_TORCH)
 (def CAP_PROP_IOS_DEVICE_FOCUS Videoio/CAP_PROP_IOS_DEVICE_FOCUS)
 (def CAP_PROP_IOS_DEVICE_EXPOSURE Videoio/CAP_PROP_IOS_DEVICE_EXPOSURE)
 (def CAP_PROP_IOS_DEVICE_FLASH Videoio/CAP_PROP_IOS_DEVICE_FLASH)
@@ -349,6 +325,7 @@
 (def VIDEO_ACCELERATION_D3D11 Videoio/VIDEO_ACCELERATION_D3D11)
 (def VIDEO_ACCELERATION_VAAPI Videoio/VIDEO_ACCELERATION_VAAPI)
 (def VIDEO_ACCELERATION_MFX Videoio/VIDEO_ACCELERATION_MFX)
+(def VIDEO_ACCELERATION_DRM Videoio/VIDEO_ACCELERATION_DRM)
 (def CAP_ANY Videoio/CAP_ANY)
 (def CAP_VFW Videoio/CAP_VFW)
 (def CAP_V4L Videoio/CAP_V4L)
@@ -396,6 +373,19 @@
 (def CAP_PROP_OBSENSOR_INTRINSIC_FY Videoio/CAP_PROP_OBSENSOR_INTRINSIC_FY)
 (def CAP_PROP_OBSENSOR_INTRINSIC_CX Videoio/CAP_PROP_OBSENSOR_INTRINSIC_CX)
 (def CAP_PROP_OBSENSOR_INTRINSIC_CY Videoio/CAP_PROP_OBSENSOR_INTRINSIC_CY)
+(def CAP_PROP_OBSENSOR_RGB_POS_MSEC Videoio/CAP_PROP_OBSENSOR_RGB_POS_MSEC)
+(def CAP_PROP_OBSENSOR_DEPTH_POS_MSEC Videoio/CAP_PROP_OBSENSOR_DEPTH_POS_MSEC)
+(def CAP_PROP_OBSENSOR_DEPTH_WIDTH Videoio/CAP_PROP_OBSENSOR_DEPTH_WIDTH)
+(def CAP_PROP_OBSENSOR_DEPTH_HEIGHT Videoio/CAP_PROP_OBSENSOR_DEPTH_HEIGHT)
+(def CAP_PROP_OBSENSOR_DEPTH_FPS Videoio/CAP_PROP_OBSENSOR_DEPTH_FPS)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K1 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K1)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K2 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K2)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K3 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K3)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K4 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K4)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K5 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K5)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_K6 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_K6)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_P1 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_P1)
+(def CAP_PROP_OBSENSOR_COLOR_DISTORTION_P2 Videoio/CAP_PROP_OBSENSOR_COLOR_DISTORTION_P2)
 (def CAP_PROP_POS_MSEC Videoio/CAP_PROP_POS_MSEC)
 (def CAP_PROP_POS_FRAMES Videoio/CAP_PROP_POS_FRAMES)
 (def CAP_PROP_POS_AVI_RATIO Videoio/CAP_PROP_POS_AVI_RATIO)
@@ -466,6 +456,8 @@
 (def CAP_PROP_CODEC_EXTRADATA_INDEX Videoio/CAP_PROP_CODEC_EXTRADATA_INDEX)
 (def CAP_PROP_FRAME_TYPE Videoio/CAP_PROP_FRAME_TYPE)
 (def CAP_PROP_N_THREADS Videoio/CAP_PROP_N_THREADS)
+(def CAP_PROP_PTS Videoio/CAP_PROP_PTS)
+(def CAP_PROP_DTS_DELAY Videoio/CAP_PROP_DTS_DELAY)
 (def VIDEOWRITER_PROP_QUALITY Videoio/VIDEOWRITER_PROP_QUALITY)
 (def VIDEOWRITER_PROP_FRAMEBYTES Videoio/VIDEOWRITER_PROP_FRAMEBYTES)
 (def VIDEOWRITER_PROP_NSTRIPES Videoio/VIDEOWRITER_PROP_NSTRIPES)
@@ -474,3 +466,8 @@
 (def VIDEOWRITER_PROP_HW_ACCELERATION Videoio/VIDEOWRITER_PROP_HW_ACCELERATION)
 (def VIDEOWRITER_PROP_HW_DEVICE Videoio/VIDEOWRITER_PROP_HW_DEVICE)
 (def VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL Videoio/VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL)
+(def VIDEOWRITER_PROP_RAW_VIDEO Videoio/VIDEOWRITER_PROP_RAW_VIDEO)
+(def VIDEOWRITER_PROP_KEY_INTERVAL Videoio/VIDEOWRITER_PROP_KEY_INTERVAL)
+(def VIDEOWRITER_PROP_KEY_FLAG Videoio/VIDEOWRITER_PROP_KEY_FLAG)
+(def VIDEOWRITER_PROP_PTS Videoio/VIDEOWRITER_PROP_PTS)
+(def VIDEOWRITER_PROP_DTS_DELAY Videoio/VIDEOWRITER_PROP_DTS_DELAY)
