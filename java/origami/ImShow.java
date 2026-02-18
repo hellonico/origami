@@ -94,15 +94,20 @@ public class ImShow {
     }
 
     public void showImage(Mat img) {
-        // TODO: check this: removed after setting Height and Width Public
-        //        if (SizeCustom) {
-            Imgproc.resize(img, img, new Size(Width, Height));
-        //        }
+        if (Window.isResizable() && Window.getWidth() != 0 && Window.getHeight() != 0) {
+            this.Height = Window.getHeight();
+            this.Width = Window.getWidth();
+        }
+
+        Imgproc.resize(img, img, new Size(Width, Height));
+
         BufferedImage bufImage = null;
         try {
             bufImage = Origami.matToBufferedImage(img);
             image.setImage(bufImage);
-            Window.pack();
+            if (Window.getWidth() == 0) {
+                Window.pack();
+            }
             label.updateUI();
             Window.setVisible(true);
         } catch (Exception e) {
