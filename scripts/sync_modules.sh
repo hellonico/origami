@@ -57,8 +57,13 @@ echo "Updating origami-wasabi..."
 sed -i '' "s|implementation(\"origami:origami:[^\"]*\")|implementation(\"origami:origami:$VERSION\")|" modules/origami-wasabi/build.gradle.kts
 (cd modules/origami-wasabi && git diff --quiet && echo "No changes in origami-wasabi" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
+# origami-viewer
+echo "Updating origami-viewer..."
+sed -i '' "/<artifactId>origami<\/artifactId>/{n;s|<version>.*</version>|<version>$VERSION</version>|;}" modules/origami-viewer/pom.xml
+(cd modules/origami-viewer && git diff --quiet && echo "No changes in origami-viewer" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+
 # Stage submodule changes in main repo
 # We use git add to ensure the updated submodule commit pointer is staged for the main repo commit
-git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala modules/opencv-live-video-stream-over-http modules/origami-dnn modules/origami-wasabi
+git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala modules/opencv-live-video-stream-over-http modules/origami-dnn modules/origami-wasabi modules/origami-viewer
 
 echo "Submodules synced and staged."
