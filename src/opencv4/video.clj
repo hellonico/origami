@@ -1,67 +1,78 @@
 (ns opencv4.video
-  (:require [clojure.set])
-  (:import  [org.opencv.videoio Videoio]))
+  (:require [clojure.set]
+            [clojure.edn :as edn])
+  (:import  [org.opencv.videoio Videoio]
+            [java.io PushbackReader]))
+
+(defn load-edn [r]
+  (edn/read (PushbackReader. r)))
 
 (declare new-videocapture)
 (declare debug-device)
 
 (defn- key-to-prop-s [k]
-    (let [ks (name k) prop (str "CAP_PROP_" (clojure.string/upper-case (clojure.string/replace ks  "-" "_")))]
+  (let [ks (name k) prop (str "CAP_PROP_" (clojure.string/upper-case (clojure.string/replace ks  "-" "_")))]
     (str "org.opencv.videoio.Videoio/" prop)))
 
 (defn- key-to-prop [k]
   (eval (read-string (key-to-prop-s k))))
 
-(defn capture-device [ video ]
+(defn capture-device [video]
   (let [capture (new-videocapture)
         is-setting-file? (and (string? video) (clojure.string/ends-with? video ".edn"))
+        is-edn-string? (and (string? video) (clojure.string/starts-with? video "{"))
         video-map (cond
                     (map? video) video
                     is-setting-file? (read-string (slurp video))
+                    is-edn-string? (read-string video)
                     :else {})
-        device (if  (= video-map {}) video (-> video-map :device))
+        device (if (= video-map {})
+                 (if (string? video)
+                   (if (re-matches #"\d+" video) (Integer/parseInt video) video)
+                   video)
+                 (-> video-map :device))
         debug? (dissoc video-map :debug)
         settings
-         (keys
-          (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height } ) )  ]
-        (doseq [s settings]
-            (.set capture (key-to-prop s) (-> video-map s)))
-      (.open capture device)
-      (if debug? (debug-device capture))
-  capture))
+        (keys
+         (clojure.set/rename-keys (dissoc video-map :fn :debug :device) {:width :frame-width :height :frame-height}))]
+    (doseq [s settings]
+      (.set capture (key-to-prop s) (-> video-map s)))
+    (.open capture device)
+    (if debug? (debug-device capture))
+    capture))
 
 (defn debug-device [capture]
-(let[ cam-keys 
-    (->> (ns-map 'opencv4.video)
-    (keys)
-    (map str)
-    (filter #(clojure.string/includes? % "CAP_PROP_") )
-    (map #(second (clojure.string/split % #"CAP_PROP_")))
-    (map #(clojure.string/lower-case %))
-    (map #(clojure.string/replace %  "_" "-"))
-    (map keyword))] 
+  (let [cam-keys
+        (->> (ns-map 'opencv4.video)
+             (keys)
+             (map str)
+             (filter #(clojure.string/includes? % "CAP_PROP_"))
+             (map #(second (clojure.string/split % #"CAP_PROP_")))
+             (map #(clojure.string/lower-case %))
+             (map #(clojure.string/replace %  "_" "-"))
+             (map keyword))]
     (doseq [k cam-keys]
-    (let [v (.get capture (key-to-prop k))]
-      (if (and (not (= 0.0 v)) (not (= -1.0 v)))
-      (println k  ":" v))))))
-(defn new-videowriter 
-([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4 ] 
-  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4 ))
-([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ] 
-  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 ))
-([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 ] 
-  (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5 ))
-([] 
-  (new org.opencv.videoio.VideoWriter )))
-(defn new-videocapture 
-([java_lang_string_0 ] 
-  (new org.opencv.videoio.VideoCapture java_lang_string_0 ))
-([java_lang_string_0 int_1 org_opencv_core_matofint_2 ] 
-  (new org.opencv.videoio.VideoCapture java_lang_string_0 int_1 org_opencv_core_matofint_2 ))
-([int_0 int_1 ] 
-  (new org.opencv.videoio.VideoCapture int_0 int_1 ))
-([] 
-  (new org.opencv.videoio.VideoCapture )))
+      (let [v (.get capture (key-to-prop k))]
+        (if (and (not (= 0.0 v)) (not (= -1.0 v)))
+          (println k  ":" v))))))
+(defn new-videowriter
+  ([java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4]
+   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3 boolean_4))
+  ([java_lang_string_0 int_1 double_2 org_opencv_core_size_3]
+   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 double_2 org_opencv_core_size_3))
+  ([java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5]
+   (new org.opencv.videoio.VideoWriter java_lang_string_0 int_1 int_2 double_3 org_opencv_core_size_4 boolean_5))
+  ([]
+   (new org.opencv.videoio.VideoWriter)))
+(defn new-videocapture
+  ([java_lang_string_0]
+   (new org.opencv.videoio.VideoCapture java_lang_string_0))
+  ([java_lang_string_0 int_1 org_opencv_core_matofint_2]
+   (new org.opencv.videoio.VideoCapture java_lang_string_0 int_1 org_opencv_core_matofint_2))
+  ([int_0 int_1]
+   (new org.opencv.videoio.VideoCapture int_0 int_1))
+  ([]
+   (new org.opencv.videoio.VideoCapture)))
 (def CAP_PROP_DC1394_OFF Videoio/CAP_PROP_DC1394_OFF)
 (def CAP_PROP_DC1394_MODE_MANUAL Videoio/CAP_PROP_DC1394_MODE_MANUAL)
 (def CAP_PROP_DC1394_MODE_AUTO Videoio/CAP_PROP_DC1394_MODE_AUTO)
