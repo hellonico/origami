@@ -45,8 +45,14 @@ echo "Updating opencv-live-video-stream-over-http..."
 sed -i '' "/<artifactId>origami<\/artifactId>/{n;s|<version>.*</version>|<version>$VERSION</version>|;}" modules/opencv-live-video-stream-over-http/pom.xml
 (cd modules/opencv-live-video-stream-over-http && git diff --quiet && echo "No changes in opencv-live-video-stream-over-http" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
+# origami-dnn
+echo "Updating origami-dnn..."
+sed -i '' "s|origami/origami \"[^\"]*\"|origami/origami \"$VERSION\"|" modules/origami-dnn/project.clj
+sed -i '' "s|origami/origami {:mvn/version \"[^\"]*\"}|origami/origami {:mvn/version \"$VERSION\"}|" modules/origami-dnn/deps.edn
+(cd modules/origami-dnn && git diff --quiet && echo "No changes in origami-dnn" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+
 # Stage submodule changes in main repo
 # We use git add to ensure the updated submodule commit pointer is staged for the main repo commit
-git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala modules/opencv-live-video-stream-over-http
+git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala modules/opencv-live-video-stream-over-http modules/origami-dnn
 
 echo "Submodules synced and staged."

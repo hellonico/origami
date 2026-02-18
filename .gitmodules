@@ -31,3 +31,6 @@
 [submodule "modules/opencv-live-video-stream-over-http"]
 	path = modules/opencv-live-video-stream-over-http
 	url = https://github.com/hellonico/opencv-live-video-stream-over-http.git
+[submodule "modules/origami-dnn"]
+	path = modules/origami-dnn
+	url = https://github.com/hellonico/origami-dnn.git
