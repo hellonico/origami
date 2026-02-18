@@ -35,8 +35,13 @@ for f in modules/jbangs/*.java; do
 done
 (cd modules/jbangs && git diff --quiet && echo "No changes in jbangs" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
+# starter-scala
+echo "Updating starter-scala..."
+sed -i '' "s|\"origami\" % \"origami\" % \".*\"|\"origami\" % \"origami\" % \"$VERSION\"|" modules/starter-scala/src/main/g8/build.sbt
+(cd modules/starter-scala && git diff --quiet && echo "No changes in starter-scala" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+
 # Stage submodule changes in main repo
 # We use git add to ensure the updated submodule commit pointer is staged for the main repo commit
-git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs
+git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala
 
 echo "Submodules synced and staged."
