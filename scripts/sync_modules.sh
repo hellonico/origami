@@ -28,8 +28,15 @@ echo "Updating origami-filters..."
 sed -i '' "s|implementation group: 'origami', name: 'origami', version:'.*'|implementation group: 'origami', name: 'origami', version:'$VERSION'|" modules/origami-filters/build.gradle
 (cd modules/origami-filters && git diff --quiet && echo "No changes in origami-filters" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
+# jbangs
+echo "Updating jbangs..."
+for f in modules/jbangs/*.java; do
+  sed -i '' "s|//DEPS origami:origami:.*|//DEPS origami:origami:$VERSION|" "$f"
+done
+(cd modules/jbangs && git diff --quiet && echo "No changes in jbangs" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+
 # Stage submodule changes in main repo
 # We use git add to ensure the updated submodule commit pointer is staged for the main repo commit
-git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters
+git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs
 
 echo "Submodules synced and staged."
