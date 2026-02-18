@@ -1,12 +1,13 @@
 #!/bin/bash
 # Get the version from project.clj
 VERSION=$(grep 'defproject origami/origami' project.clj | sed 's/.*"\(.*\)".*/\1/')
-echo "Syncing submodules to version: $VERSION"
+FILTERS_VERSION=$(grep 'defproject origami/filters' modules/origami-filters/project.clj 2>/dev/null | sed 's/.*"\(.*\)".*/\1/' || echo "1.48")
+echo "Syncing submodules to origami: $VERSION, filters: $FILTERS_VERSION"
 
 # clojure-cli-samples
 echo "Updating clojure-cli-samples..."
 sed -i '' "s|origami/origami {:mvn/version \".*\"}|origami/origami {:mvn/version \"$VERSION\"}|" modules/clojure-cli-samples/deps.edn
-(cd modules/clojure-cli-samples && git diff --quiet && echo "No changes in clojure-cli-samples" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+(cd modules/clojure-cli-samples && bash bump.sh "$VERSION" "$FILTERS_VERSION" && git diff --quiet && echo "No changes in clojure-cli-samples" || (git commit -am "Bump origami to $VERSION, filters to $FILTERS_VERSION" && echo "Committed."))
 
 # llamaclj-on-cam
 echo "Updating llamaclj-on-cam..."
