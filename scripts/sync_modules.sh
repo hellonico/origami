@@ -20,7 +20,7 @@ sed -i '' "s|implementation(\"origami:origami:.*\")|implementation(\"origami:ori
 
 # kotlin-samples
 echo "Updating kotlin-samples..."
-sed -i '' "s|implementation 'origami:origami:.*'|implementation 'origami:origami:$VERSION'|" modules/kotlin-samples/build.gradle
+sed -i '' "s|implementation(\"origami:origami:.*\")|implementation(\"origami:origami:$VERSION\")|" modules/kotlin-samples/build.gradle.kts
 (cd modules/kotlin-samples && git diff --quiet && echo "No changes in kotlin-samples" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
 # origami-filters
