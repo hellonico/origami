@@ -1,9 +1,6 @@
 [submodule "modules/opencv4-native"]
 	path = modules/opencv4-native
 	url = git@github.com:hellonico/opencv4-native.git
-[submodule "modules/origami-scripting"]
-	path = modules/origami-scripting
-	url = git@github.com:hellonico/origami-scripting.git
 [submodule "modules/origami-filters"]
 	path = modules/origami-filters
 	url = git@github.com:hellonico/origami-filters.git
