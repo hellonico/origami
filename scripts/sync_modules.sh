@@ -40,8 +40,13 @@ echo "Updating starter-scala..."
 sed -i '' "s|\"origami\" % \"origami\" % \".*\"|\"origami\" % \"origami\" % \"$VERSION\"|" modules/starter-scala/src/main/g8/build.sbt
 (cd modules/starter-scala && git diff --quiet && echo "No changes in starter-scala" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
 
+# opencv-live-video-stream-over-http
+echo "Updating opencv-live-video-stream-over-http..."
+sed -i '' "/<artifactId>origami<\/artifactId>/{n;s|<version>.*</version>|<version>$VERSION</version>|;}" modules/opencv-live-video-stream-over-http/pom.xml
+(cd modules/opencv-live-video-stream-over-http && git diff --quiet && echo "No changes in opencv-live-video-stream-over-http" || (git commit -am "Bump origami to $VERSION" && echo "Committed."))
+
 # Stage submodule changes in main repo
 # We use git add to ensure the updated submodule commit pointer is staged for the main repo commit
-git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala
+git add modules/clojure-cli-samples modules/llamaclj-on-cam modules/jetbrains-compose-webcam modules/kotlin-samples modules/origami-filters modules/jbangs modules/starter-scala modules/opencv-live-video-stream-over-http
 
 echo "Submodules synced and staged."

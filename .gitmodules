@@ -28,3 +28,6 @@
 [submodule "modules/jbangs"]
 	path = modules/jbangs
 	url = git@github.com:hellonico/origami-jbang.git
+[submodule "modules/opencv-live-video-stream-over-http"]
+	path = modules/opencv-live-video-stream-over-http
+	url = https://github.com/hellonico/opencv-live-video-stream-over-http.git
