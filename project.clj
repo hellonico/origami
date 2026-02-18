@@ -17,13 +17,15 @@
                    ["mxnet" {:url "https://repository.apache.org/content/repositories/staging/"}]]
     :aliases {"api" ["with-profile" "dev" "run" "-m" "opencv4.api"]}
     :release-tasks
-    [["vcs" "assert-committed"]
+     ["vcs" "assert-committed"]
      ["change" "version" "leiningen.release/bump-version" "release"]
+     ["shell" "./scripts/sync_modules.sh"]
      ["vcs" "commit"]
      ["vcs" "tag" "--no-sign"]
      ; ["deploy" "vendredi"]
      ["deploy" "clojars"]
      ["change" "version" "leiningen.release/bump-version"]
+     ["shell" "./scripts/sync_modules.sh"]
      ["vcs" "commit"]
      ["vcs" "push"]]
     :java-source-paths ["java" "test-java"]
@@ -37,7 +39,7 @@
                      :x11     :x11
                      :all     (constantly true)}
 
-    :profiles {:dev {:plugins        [[lein-codox "0.10.7"] [lein-junit "1.1.9"] [jonase/eastwood "0.3.5"] [quickie "0.4.1"]]
+    :profiles {:dev {:plugins        [[lein-codox "0.10.7"] [lein-junit "1.1.9"] [jonase/eastwood "0.3.5"] [quickie "0.4.1"] [lein-shell "0.5.0"]]
                      :source-paths   ["dev"]
                      :resource-paths ["resources-dev"]
                      :dependencies   [; testing
