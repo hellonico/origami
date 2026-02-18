@@ -34,6 +34,3 @@
 [submodule "modules/origami-wasabi"]
 	path = modules/origami-wasabi
 	url = https://github.com/hellonico/origami-wasabi.git
-[submodule "modules/origami-viewer"]
-	path = modules/origami-viewer
-	url = https://github.com/hellonico/origami-viewer.git
