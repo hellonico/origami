@@ -34,3 +34,6 @@
 [submodule "modules/origami-dnn"]
 	path = modules/origami-dnn
 	url = https://github.com/hellonico/origami-dnn.git
+[submodule "modules/origami-wasabi"]
+	path = modules/origami-wasabi
+	url = https://github.com/hellonico/origami-wasabi.git
